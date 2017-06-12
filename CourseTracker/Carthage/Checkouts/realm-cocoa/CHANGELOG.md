@@ -1,3 +1,14 @@
+2.8.1 Release notes (2017-06-12)
+=============================================================
+
+Add support for building with Xcode 9 Beta 1.
+
+### Bugfixes
+
+* Fix setting a float property to NaN.
+* Fix a crash when using compact on launch in combination with collection
+  notifications.
+
 2.8.0 Release notes (2017-06-02)
 =============================================================
 

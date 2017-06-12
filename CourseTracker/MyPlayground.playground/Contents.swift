@@ -7,6 +7,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 
 var str = "Hello, playground"
 
+//
 //func fetchQuote(completionHandler: @escaping (Quote) -> Void){
 //    
 //    let url = URL(string: "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en")

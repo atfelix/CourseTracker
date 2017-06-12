@@ -1,0 +1,156 @@
+//
+//  CalendarViewController.swift
+//  CourseTracker
+//
+//  Created by Rushan on 2017-06-11.
+//  Copyright © 2017 Adam Felix. All rights reserved.
+//
+
+import UIKit
+import JTAppleCalendar
+
+class CalendarViewController: UIViewController{
+    
+    //MARK: Properties
+    @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var year: UILabel!
+    @IBOutlet weak var month: UILabel!
+    
+    @IBOutlet weak var listTableView: UITableView!
+    
+    //Build colors from hex codes
+    let outsideMonthColor = UIColor.gray
+    let monthColor = UIColor.white
+    let selectedMonthColor = UIColor.black
+    let currentDateSelectedViewColor = UIColor.cyan
+    
+    //set date
+    let formatter = DateFormatter()
+    
+    
+    //MARK: ViewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupCalendarView()
+        
+        
+        let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(gesture:)))
+        doubleTapGesture.numberOfTapsRequired = 2  // add double tap
+        calendarView.addGestureRecognizer(doubleTapGesture)
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: Helper Methods
+    
+    func didDoubleTapCollectionView(gesture: UITapGestureRecognizer) {
+        let point = gesture.location(in: gesture.view!)
+        let cellState = calendarView.cellStatus(at: point)
+        print(cellState!.date)
+    }
+    
+    
+    //handles the color schema
+    func handleCellColor(view: JTAppleCell?, cellState: CellState){
+        guard let validCell = view as? CalendarCell else {
+            return
+        }
+        if cellState.isSelected{
+            validCell.selectedView.isHidden = false
+            validCell.dateLabel.textColor = selectedMonthColor
+        }else{
+            validCell.selectedView.isHidden = true
+            if cellState.dateBelongsTo == .thisMonth {
+                validCell.dateLabel.textColor = monthColor
+            }else{
+                validCell.dateLabel.textColor = outsideMonthColor
+            }
+        }
+    }
+    
+    //if cell is selected, show selection
+    func handleCellSelected(view: JTAppleCell?, cellState: CellState){
+        guard let validCell = view as? CalendarCell else {
+            return
+        }
+        if validCell.isSelected{
+            validCell.selectedView.isHidden = false
+        }else{
+            validCell.selectedView.isHidden = true
+        }
+        
+    }
+
+    func setupCalendarView(){
+        //setup calendar spacing
+        calendarView.minimumLineSpacing = 0
+        calendarView.minimumInteritemSpacing = 0
+        
+        //setup labels
+        calendarView.visibleDates { (visibleDates) in
+            self.setupViewsOfCalendar(from: visibleDates)
+        }
+    }
+    
+    func setupViewsOfCalendar(from visibleDates: DateSegmentInfo){
+        let date = visibleDates.monthDates.first!.date
+        //year title
+        self.formatter.dateFormat = "yyyy"
+        self.year.text = self.formatter.string(from: date)
+        //month title
+        self.formatter.dateFormat = "MMMM"
+        self.month.text = self.formatter.string(from: date)
+    }
+}
+//MARK: Calendar DataSource Methods
+extension CalendarViewController: JTAppleCalendarViewDataSource {
+
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+        
+        //configure calendar
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        
+        let startDate = formatter.date(from: "2017 01 01")!
+        let endDate = formatter.date(from: "2017 12 31")!
+        
+        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
+        return parameters
+    }
+}
+//MARK: Calendar Delegate Methods
+extension CalendarViewController: JTAppleCalendarViewDelegate {
+    //display the cell
+    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier:"CalendarCell", for: indexPath) as! CalendarCell
+        cell.dateLabel.text = cellState.text
+        
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellColor(view: cell, cellState: cellState)
+        
+        return cell
+    }
+    
+    //select a cell
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellColor(view: cell, cellState: cellState)
+    }
+    //deselect a cell
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellColor(view: cell, cellState: cellState)
+    }
+    //scroll to a new calendar page
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        setupViewsOfCalendar(from: visibleDates)
+    }
+}
+
+}
