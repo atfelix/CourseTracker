@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import Foundation
 
 class ListTableViewCell: UITableViewCell {
-
+    
+    //MARK: Properties
+    @IBOutlet weak var listData: UILabel!
+    @IBOutlet weak var listNumber: UILabel!
+    @IBOutlet weak var listColor: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +26,5 @@ class ListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

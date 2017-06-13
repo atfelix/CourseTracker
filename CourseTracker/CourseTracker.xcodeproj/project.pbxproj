@@ -24,6 +24,7 @@
 		317DDF121EED116A00F02C3B /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF111EED116A00F02C3B /* CalendarCell.swift */; };
 		317DDF141EED129C00F02C3B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF131EED129C00F02C3B /* CalendarViewController.swift */; };
 		31EEE9221EEF5BBC00094B8F /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EEE9211EEF5BBC00094B8F /* ListTableViewCell.swift */; };
+		31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		317DDF131EED129C00F02C3B /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		31B29A9D1EEC8CEC00BF3F91 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		31EEE9211EEF5BBC00094B8F /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				317DDF111EED116A00F02C3B /* CalendarCell.swift */,
-				317DDF131EED129C00F02C3B /* CalendarViewController.swift */,
 				31EEE9211EEF5BBC00094B8F /* ListTableViewCell.swift */,
+				317DDF131EED129C00F02C3B /* CalendarViewController.swift */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -210,11 +212,20 @@
 			children = (
 				110F4EC81EEB617F00D88F8E /* AppDelegate.swift */,
 				110F4ECA1EEB617F00D88F8E /* ViewController.swift */,
-				317DDF091EECE13100F02C3B /* PageViewController.swift */,
-				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
-				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
+				31EEE9231EEF885800094B8F /* Selection */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		31EEE9231EEF885800094B8F /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				317DDF091EECE13100F02C3B /* PageViewController.swift */,
+				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
+				31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */,
+				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
+			);
+			name = Selection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +388,7 @@
 				317DDF121EED116A00F02C3B /* CalendarCell.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
+				31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
 				317DDF141EED129C00F02C3B /* CalendarViewController.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import JTAppleCalendar
 
-class CalendarViewController: UIViewController{
+class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     //MARK: Properties
     @IBOutlet weak var calendarView: JTAppleCalendarView!
@@ -18,13 +18,13 @@ class CalendarViewController: UIViewController{
     
     @IBOutlet weak var listTableView: UITableView!
     
-    //Build colors from hex codes
+    
+    //Set colors of Calendar
     let outsideMonthColor = UIColor.gray
     let monthColor = UIColor.white
     let selectedMonthColor = UIColor.black
     let currentDateSelectedViewColor = UIColor.cyan
-    
-    //set date
+    //Set date of Calendar
     let formatter = DateFormatter()
     
     
@@ -46,8 +46,29 @@ class CalendarViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: Helper Methods
+    //MARK: TableView Methods
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
+        //sets the cell
+        cell.textLabel?.text = String(indexPath.row)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    //MARK: Calendar Helper Methods
     func didDoubleTapCollectionView(gesture: UITapGestureRecognizer) {
         let point = gesture.location(in: gesture.view!)
         let cellState = calendarView.cellStatus(at: point)
@@ -151,6 +172,5 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setupViewsOfCalendar(from: visibleDates)
     }
-}
 
 }
