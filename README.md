@@ -1,9 +1,13 @@
 # CourseTracker
 
-University course tracking iOS for students
+Application for students in post secondary institutions (College/ University) that helps students navigate their way through campus and plan out there day. 
 
 # User Case
 
-The user will identify whether or not they are a current student or a future student. The user will then select the University 
-of their choice. The user will then proceed to their courses manager where they will add the courses they are enrolled in and
-provide the assignments and how the marks are distributed. The app. will provide the user with there data in an organized and effecient manor.
+The user will select the University that they attend. The user will then select the courses they are currently taking. The courses will then be automatically displayed in a calendar with details about the course. The user can select “navigation” to find out the fastest possible route to get to their classes. 
+
+# API & Carthage
+
+University API’s: Waterloo, UFT, UBC etc.
+Maps: Google Maps
+Calendar: JTAppleCalendar
