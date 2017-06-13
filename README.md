@@ -1,6 +1,6 @@
 # CourseTracker
 
-Application for students in post secondary institutions (College/ University) that helps students navigate their way through campus and plan out there day. 
+Application for students in post secondary institutions (College/ University) that helps students navigate their way through campus and plan out their day. 
 
 # User Case
 
