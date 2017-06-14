@@ -1,4 +1,3 @@
-//
 //  CalendarViewController.swift
 //  CourseTracker
 //
@@ -27,20 +26,29 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //Set date of Calendar
     let formatter = DateFormatter()
     
+    //UserDate
+    let userData = UserData()
+    //Events
+    var eventsAtCalendar = [Event]()
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //setup the tableView
+        self.listTableView.backgroundColor = UIColor.black
+        self.listTableView.separatorColor = UIColor.clear
+        
+        //setup the Calendar
         setupCalendarView()
         
-        
+        //Tap on Calendar
         let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(gesture:)))
         doubleTapGesture.numberOfTapsRequired = 2  // add double tap
         calendarView.addGestureRecognizer(doubleTapGesture)
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,14 +60,20 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return eventsAtCalendar.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
-        //sets the cell
-        cell.textLabel?.text = String(indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ListTableViewCell
+        var event = eventsAtCalendar[indexPath.row]
+        //set Color if you want
+        listTableView.backgroundColor = UIColor.black
+        cell.backgroundColor = UIColor.black
+        //set cells to user event data
+        cell.listImage.backgroundColor = event.color
+        cell.listData.text = event.title
+        cell.listTime.text = "\(event.startDate)"
         
         return cell
     }
@@ -67,7 +81,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     //MARK: Calendar Helper Methods
     func didDoubleTapCollectionView(gesture: UITapGestureRecognizer) {
         let point = gesture.location(in: gesture.view!)
@@ -106,7 +120,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
     }
-
+    
     func setupCalendarView(){
         //setup calendar spacing
         calendarView.minimumLineSpacing = 0
@@ -130,7 +144,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 }
 //MARK: Calendar DataSource Methods
 extension CalendarViewController: JTAppleCalendarViewDataSource {
-
+    
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
         //configure calendar
@@ -162,6 +176,20 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell, cellState: cellState)
         handleCellColor(view: cell, cellState: cellState)
+        
+        
+        let eventsAtDate = userData.events?.filter({event -> Bool in
+            let temp: Date = event.startDate as Date
+            let isSameDay = Calendar.current.isDate(temp, equalTo: date, toGranularity: .day)
+            return isSameDay
+        })
+        //if it exists
+        if let filteredEvents = eventsAtDate{
+            eventsAtCalendar = filteredEvents
+            listTableView.reloadData()
+        }
+        //set user data at a certain date based on what courses they select
+        //then show the courses in the table view
     }
     //deselect a cell
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -172,5 +200,5 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setupViewsOfCalendar(from: visibleDates)
     }
-
+    
 }

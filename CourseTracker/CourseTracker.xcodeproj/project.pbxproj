@@ -16,15 +16,19 @@
 		110F4EE91EEB617F00D88F8E /* CourseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */; };
 		11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB431EEC77E900569DE9 /* Realm.framework */; };
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
+		3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */; };
+		315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616931EF0991700CE51D3 /* CalendarCell.swift */; };
+		315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616951EF0997000CE51D3 /* CalendarViewController.swift */; };
+		315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */; };
+		3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616991EF09F2F00CE51D3 /* UserData.swift */; };
 		317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */; };
 		317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */; };
 		317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
 		317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0B1EED032B00F02C3B /* Charts.framework */; };
 		317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */; };
-		317DDF121EED116A00F02C3B /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF111EED116A00F02C3B /* CalendarCell.swift */; };
-		317DDF141EED129C00F02C3B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF131EED129C00F02C3B /* CalendarViewController.swift */; };
-		31EEE9221EEF5BBC00094B8F /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EEE9211EEF5BBC00094B8F /* ListTableViewCell.swift */; };
 		31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */; };
+		6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */; };
+		C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,16 +64,26 @@
 		110F4EEA1EEB617F00D88F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11B3EB431EEC77E900569DE9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		315616931EF0991700CE51D3 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		315616951EF0997000CE51D3 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		315616991EF09F2F00CE51D3 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUniversityViewController.swift; sourceTree = "<group>"; };
 		317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		317DDF091EECE13100F02C3B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		317DDF0B1EED032B00F02C3B /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
-		317DDF111EED116A00F02C3B /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
-		317DDF131EED129C00F02C3B /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		31B29A9D1EEC8CEC00BF3F91 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		31EEE9211EEF5BBC00094B8F /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		37DB3FC3A4B43C107CEBDAD4 /* Pods-CourseTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.release.xcconfig"; sourceTree = "<group>"; };
+		39B01FD6C5EF2C6B201C9995 /* Pods-CourseTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		48DB551F1F9415D6C4940CEC /* Pods-CourseTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourseTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AD5671C1C19054E9FDD516E /* Pods-CourseTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerUITests/Pods-CourseTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		86B543BEE81FE6B6B0C4323A /* Pods-CourseTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerUITests/Pods-CourseTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourseTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourseTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F717E6CA9A93122D3130BA09 /* Pods-CourseTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +95,7 @@
 				11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */,
 				317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */,
 				317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */,
+				C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +127,7 @@
 				110F4EE71EEB617F00D88F8E /* CourseTrackerUITests */,
 				110F4EC61EEB617F00D88F8E /* Products */,
 				11B3EB421EEC77E900569DE9 /* Frameworks */,
+				67E1E572893882F38B601DC5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,18 +178,29 @@
 				317DDF0B1EED032B00F02C3B /* Charts.framework */,
 				11B3EB431EEC77E900569DE9 /* Realm.framework */,
 				11B3EB441EEC77E900569DE9 /* RealmSwift.framework */,
+				4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */,
+				ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */,
+				B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		317DDF101EED112A00F02C3B /* Calendar */ = {
+		315616071EF06A8100CE51D3 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				317DDF111EED116A00F02C3B /* CalendarCell.swift */,
-				31EEE9211EEF5BBC00094B8F /* ListTableViewCell.swift */,
-				317DDF131EED129C00F02C3B /* CalendarViewController.swift */,
+				315616931EF0991700CE51D3 /* CalendarCell.swift */,
+				315616951EF0997000CE51D3 /* CalendarViewController.swift */,
+				315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */,
+				315616991EF09F2F00CE51D3 /* UserData.swift */,
 			);
 			name = Calendar;
+			sourceTree = "<group>";
+		};
+		3156169D1EF0D98C00CE51D3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		31B29A9E1EEC8D9B00BF3F91 /* APIs */ = {
@@ -184,7 +213,8 @@
 		31B29A9F1EEC8DAC00BF3F91 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				317DDF101EED112A00F02C3B /* Calendar */,
+				3156169D1EF0D98C00CE51D3 /* Map */,
+				315616071EF06A8100CE51D3 /* Calendar */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -228,6 +258,19 @@
 			name = Selection;
 			sourceTree = "<group>";
 		};
+		67E1E572893882F38B601DC5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				39B01FD6C5EF2C6B201C9995 /* Pods-CourseTracker.debug.xcconfig */,
+				37DB3FC3A4B43C107CEBDAD4 /* Pods-CourseTracker.release.xcconfig */,
+				48DB551F1F9415D6C4940CEC /* Pods-CourseTrackerTests.debug.xcconfig */,
+				F717E6CA9A93122D3130BA09 /* Pods-CourseTrackerTests.release.xcconfig */,
+				5AD5671C1C19054E9FDD516E /* Pods-CourseTrackerUITests.debug.xcconfig */,
+				86B543BEE81FE6B6B0C4323A /* Pods-CourseTrackerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,10 +278,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 110F4EED1EEB617F00D88F8E /* Build configuration list for PBXNativeTarget "CourseTracker" */;
 			buildPhases = (
+				1D9C5A551AA84B9915D4E368 /* [CP] Check Pods Manifest.lock */,
 				110F4EC11EEB617F00D88F8E /* Sources */,
 				110F4EC21EEB617F00D88F8E /* Frameworks */,
 				110F4EC31EEB617F00D88F8E /* Resources */,
 				11B3EB471EEC780700569DE9 /* ShellScript */,
+				782FC64653041B8B14FC6C15 /* [CP] Embed Pods Frameworks */,
+				03F550E59D75B630A13095E1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,9 +299,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 110F4EF01EEB617F00D88F8E /* Build configuration list for PBXNativeTarget "CourseTrackerTests" */;
 			buildPhases = (
+				2C622E22233C94920BD9B4F0 /* [CP] Check Pods Manifest.lock */,
 				110F4ED51EEB617F00D88F8E /* Sources */,
 				110F4ED61EEB617F00D88F8E /* Frameworks */,
 				110F4ED71EEB617F00D88F8E /* Resources */,
+				08856D5F1D579E09BD833458 /* [CP] Embed Pods Frameworks */,
+				1FB308FE3985DD2301933961 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,9 +320,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 110F4EF31EEB617F00D88F8E /* Build configuration list for PBXNativeTarget "CourseTrackerUITests" */;
 			buildPhases = (
+				69EACD16538EF71A6DDDC661 /* [CP] Check Pods Manifest.lock */,
 				110F4EE01EEB617F00D88F8E /* Sources */,
 				110F4EE11EEB617F00D88F8E /* Frameworks */,
 				110F4EE21EEB617F00D88F8E /* Resources */,
+				71F4B7F944CED73B082C5BBB /* [CP] Embed Pods Frameworks */,
+				E115400EF1D326B263F7E2EF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -297,6 +349,7 @@
 				TargetAttributes = {
 					110F4EC41EEB617F00D88F8E = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					110F4ED81EEB617F00D88F8E = {
@@ -359,6 +412,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03F550E59D75B630A13095E1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		08856D5F1D579E09BD833458 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		11B3EB471EEC780700569DE9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -376,6 +459,111 @@
 			shellPath = "/bin/sh\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n";
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		1D9C5A551AA84B9915D4E368 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1FB308FE3985DD2301933961 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C622E22233C94920BD9B4F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		69EACD16538EF71A6DDDC661 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		71F4B7F944CED73B082C5BBB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CourseTrackerUITests/Pods-CourseTrackerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		782FC64653041B8B14FC6C15 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E115400EF1D326B263F7E2EF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CourseTrackerUITests/Pods-CourseTrackerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -384,14 +572,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */,
-				31EEE9221EEF5BBC00094B8F /* ListTableViewCell.swift in Sources */,
-				317DDF121EED116A00F02C3B /* CalendarCell.swift in Sources */,
+				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
 				31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */,
+				315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
-				317DDF141EED129C00F02C3B /* CalendarViewController.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
+				3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */,
+				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,8 +730,10 @@
 		};
 		110F4EEE1EEB617F00D88F8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39B01FD6C5EF2C6B201C9995 /* Pods-CourseTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -553,14 +744,17 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lighthouse.CourseTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		110F4EEF1EEB617F00D88F8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37DB3FC3A4B43C107CEBDAD4 /* Pods-CourseTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -577,6 +771,7 @@
 		};
 		110F4EF11EEB617F00D88F8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48DB551F1F9415D6C4940CEC /* Pods-CourseTrackerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -591,6 +786,7 @@
 		};
 		110F4EF21EEB617F00D88F8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F717E6CA9A93122D3130BA09 /* Pods-CourseTrackerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -605,6 +801,7 @@
 		};
 		110F4EF41EEB617F00D88F8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AD5671C1C19054E9FDD516E /* Pods-CourseTrackerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CourseTrackerUITests/Info.plist;
@@ -618,6 +815,7 @@
 		};
 		110F4EF51EEB617F00D88F8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86B543BEE81FE6B6B0C4323A /* Pods-CourseTrackerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CourseTrackerUITests/Info.plist;

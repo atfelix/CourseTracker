@@ -8,13 +8,18 @@
 
 import UIKit
 
-class AddCourseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AddCourseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     //MARK: Properties
     @IBOutlet weak var courseTableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
     
-    //Tableview Headers
+    //Searchbar
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searchActive : Bool = false
+    var filtered:[String] = []
+    
+    //Tableview Items
     var previouslySelectedHeaderIndex: Int?
     var selectedHeaderIndex: Int?
     var selectedItemIndex: Int?
@@ -29,10 +34,14 @@ class AddCourseViewController: UIViewController, UITableViewDataSource, UITableV
         self.courseTableView.estimatedRowHeight = 45
         self.courseTableView.rowHeight = UITableViewAutomaticDimension
         self.courseTableView.allowsMultipleSelection = true
+        
+        //set Searchbar delegate
+        searchBar.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         self.courseTableView.reloadData() //reload tableview
     }
 
@@ -51,13 +60,57 @@ class AddCourseViewController: UIViewController, UITableViewDataSource, UITableV
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    //MARK: Search Helper Methods
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    //search the table
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        let filteredItems = self.cells.items.filter({ (item) -> Bool in
+            let tmp: NSString = item.value as NSString
+            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            return range.location != NSNotFound
+        })
+        //return filtered items
+        filtered = filteredItems.map({ (item) -> String in
+            return item.value
+        })
+        
+        
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.courseTableView.reloadData()
+    }
 
-    //MARK: Helper Methods
+    //MARK: Table Helper Methods
     //set up the input
     func setup(){
+        //button color
         self.addButton.layer.cornerRadius = 4
+        //table color
+        courseTableView.backgroundColor = UIColor.white
+        courseTableView.separatorColor = UIColor.clear
         
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "Computer Sceince"))
+        self.cells.append(CourseTableViewCell.HeaderItem(value: "Arts"))
         self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
         self.cells.append(CourseTableViewCell.Item(value: "Course 2"))
         self.cells.append(CourseTableViewCell.Item(value: "Course 3"))
@@ -65,16 +118,35 @@ class AddCourseViewController: UIViewController, UITableViewDataSource, UITableV
         self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
         self.cells.append(CourseTableViewCell.Item(value: "Course 2"))
         self.cells.append(CourseTableViewCell.Item(value: "Course 3"))
+        self.cells.append(CourseTableViewCell.HeaderItem(value: "Computer Science"))
+        self.cells.append(CourseTableViewCell.HeaderItem(value: "Drama"))
         self.cells.append(CourseTableViewCell.HeaderItem(value: "Engineering"))
         self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
         self.cells.append(CourseTableViewCell.HeaderItem(value: "Economics"))
         self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
+        self.cells.append(CourseTableViewCell.HeaderItem(value: "Film Studies"))
+        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
+        self.cells.append(CourseTableViewCell.HeaderItem(value: "Geography"))
+        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
+        self.cells.append(CourseTableViewCell.HeaderItem(value: "History"))
+        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
+        self.cells.append(CourseTableViewCell.HeaderItem(value: "International"))
+        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
 
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        //if search is active
+        if(searchActive) {
+            return filtered.count
+        }else{
+            //return data.count
         return self.cells.items.count
+        }
     }
+    
     
     //Dequeue cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,10 +154,11 @@ class AddCourseViewController: UIViewController, UITableViewDataSource, UITableV
         let value = item.value
         let isChecked = item.isChecked as Bool
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell") {
+        if let cell = courseTableView.dequeueReusableCell(withIdentifier: "CourseCell") {
             cell.textLabel?.text = value
             //header selection
             if item as? CourseTableViewCell.HeaderItem != nil {
+                //set color of headers
                 cell.backgroundColor = UIColor.black
                 cell.textLabel?.textColor = UIColor.white
                 cell.accessoryType = .none
@@ -95,6 +168,9 @@ class AddCourseViewController: UIViewController, UITableViewDataSource, UITableV
                 } else {
                     cell.accessoryType = .none
                 }
+            }
+            if(searchActive){
+                cell.textLabel?.text = filtered[indexPath.row]
             }
             
             return cell
@@ -127,11 +203,11 @@ class AddCourseViewController: UIViewController, UITableViewDataSource, UITableV
                 self.previouslySelectedHeaderIndex = self.selectedHeaderIndex
                 self.selectedHeaderIndex = (indexPath as NSIndexPath).row
             }
-            
+            //collapse
             if let previouslySelectedHeaderIndex = self.previouslySelectedHeaderIndex {
                 self.cells.collapse(previouslySelectedHeaderIndex)
             }
-            
+            //expand
             if self.previouslySelectedHeaderIndex != self.selectedHeaderIndex {
                 self.cells.expand(self.selectedHeaderIndex!)
             } else {
@@ -158,5 +234,4 @@ class AddCourseViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
     }
-
 }
