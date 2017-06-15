@@ -152,5 +152,3 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         setupViewsOfCalendar(from: visibleDates)
     }
 }
-
-}

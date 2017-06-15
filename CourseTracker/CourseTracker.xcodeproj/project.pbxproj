@@ -14,8 +14,10 @@
 		110F4ED31EEB617F00D88F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F4ED11EEB617F00D88F8E /* LaunchScreen.storyboard */; };
 		110F4EDE1EEB617F00D88F8E /* CourseTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EDD1EEB617F00D88F8E /* CourseTrackerTests.swift */; };
 		110F4EE91EEB617F00D88F8E /* CourseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */; };
+		1130E8C11EF073B700F46485 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1130E8C01EF073B700F46485 /* Alamofire.framework */; };
 		11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB431EEC77E900569DE9 /* Realm.framework */; };
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
+		11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215C1EF2CF7C0089C6BD /* Models.swift */; };
 		317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */; };
 		317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */; };
 		317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
@@ -57,8 +59,10 @@
 		110F4EE41EEB617F00D88F8E /* CourseTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourseTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTrackerUITests.swift; sourceTree = "<group>"; };
 		110F4EEA1EEB617F00D88F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1130E8C01EF073B700F46485 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		11B3EB431EEC77E900569DE9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		11BF215C1EF2CF7C0089C6BD /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUniversityViewController.swift; sourceTree = "<group>"; };
 		317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		317DDF091EECE13100F02C3B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1130E8C11EF073B700F46485 /* Alamofire.framework in Frameworks */,
 				11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */,
 				11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */,
 				317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */,
@@ -154,6 +159,7 @@
 		11B3EB421EEC77E900569DE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1130E8C01EF073B700F46485 /* Alamofire.framework */,
 				317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */,
 				317DDF0B1EED032B00F02C3B /* Charts.framework */,
 				11B3EB431EEC77E900569DE9 /* Realm.framework */,
@@ -183,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				317DDF101EED112A00F02C3B /* Calendar */,
+				11BF215C1EF2CF7C0089C6BD /* Models.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -358,6 +365,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			outputPaths = (
 			);
@@ -378,6 +386,7 @@
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
+				11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */,
 				317DDF141EED129C00F02C3B /* CalendarViewController.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
 			);
