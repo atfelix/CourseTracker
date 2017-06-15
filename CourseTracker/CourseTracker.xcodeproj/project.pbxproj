@@ -18,10 +18,11 @@
 		11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB431EEC77E900569DE9 /* Realm.framework */; };
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
 		11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215C1EF2CF7C0089C6BD /* Models.swift */; };
+		11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215E1EF30E600089C6BD /* UofTAPI.swift */; };
+		11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF21601EF310630089C6BD /* API_KEYS.swift */; };
 		317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */; };
 		317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */; };
 		317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
-		317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0B1EED032B00F02C3B /* Charts.framework */; };
 		317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */; };
 		317DDF121EED116A00F02C3B /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF111EED116A00F02C3B /* CalendarCell.swift */; };
 		317DDF141EED129C00F02C3B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF131EED129C00F02C3B /* CalendarViewController.swift */; };
@@ -63,6 +64,8 @@
 		11B3EB431EEC77E900569DE9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		11BF215C1EF2CF7C0089C6BD /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		11BF215E1EF30E600089C6BD /* UofTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UofTAPI.swift; sourceTree = "<group>"; };
+		11BF21601EF310630089C6BD /* API_KEYS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API_KEYS.swift; sourceTree = "<group>"; };
 		317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUniversityViewController.swift; sourceTree = "<group>"; };
 		317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		317DDF091EECE13100F02C3B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 				1130E8C11EF073B700F46485 /* Alamofire.framework in Frameworks */,
 				11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */,
 				11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */,
-				317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */,
 				317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +183,8 @@
 		31B29A9E1EEC8D9B00BF3F91 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				11BF215E1EF30E600089C6BD /* UofTAPI.swift */,
+				11BF21601EF310630089C6BD /* API_KEYS.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -363,7 +367,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
@@ -382,7 +385,9 @@
 			files = (
 				317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */,
 				31EEE9221EEF5BBC00094B8F /* ListTableViewCell.swift in Sources */,
+				11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */,
 				317DDF121EED116A00F02C3B /* CalendarCell.swift in Sources */,
+				11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
