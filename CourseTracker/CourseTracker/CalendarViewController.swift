@@ -8,15 +8,22 @@
 import UIKit
 import JTAppleCalendar
 
-class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource{
     
     //MARK: Properties
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
+    @IBOutlet weak var dateTapped: UILabel!
     
+    //TableView
     @IBOutlet weak var listTableView: UITableView!
     
+    //AddEvent
+    @IBOutlet weak var addEvent: UIButton!
+    
+    //ChangeLayout
+    @IBOutlet weak var changeLayout: UIButton!
     
     //Set colors of Calendar
     let outsideMonthColor = UIColor.gray
@@ -25,6 +32,23 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     let currentDateSelectedViewColor = UIColor.cyan
     //Set date of Calendar
     let formatter = DateFormatter()
+    let dateFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = Calendar.current.timeZone
+        let locale = Locale(identifier: "en_US_POSIX")
+        formatter.locale = locale
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    let displayDateFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateStyle = DateFormatter.Style.medium
+        formatter.timeStyle = DateFormatter.Style.none
+        return formatter
+    }()
+    var firstDate : Date?
+    var currentDate = Date()
     
     //UserDate
     let userData = UserData()
@@ -37,12 +61,12 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         
         //setup the tableView
         self.listTableView.backgroundColor = UIColor.black
-        self.listTableView.separatorColor = UIColor.clear
+        self.listTableView.separatorColor = UIColor.lightGray
         
         //setup the Calendar
         setupCalendarView()
         
-        //Tap on Calendar
+        //Tap on Calendar to change View
         let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(gesture:)))
         doubleTapGesture.numberOfTapsRequired = 2  // add double tap
         calendarView.addGestureRecognizer(doubleTapGesture)
@@ -54,6 +78,20 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: Button Actions
+    @IBAction func addEventTapped(_ sender: Any) {
+        performSegue(withIdentifier: "AddEvent", sender: sender)
+    }
+    
+    //Change background color of calendar
+    @IBAction func changeLayoutTapped(_ sender: UIButton) {
+//        self.calendarView.backgroundColor = UIColor.init(red: 200/255, green: 100/255, blue: 100/255, alpha: 1.0)
+        var numberOfRows : Int = 6
+        numberOfRows = Int(sender.title(for: .normal)!)!
+        calendarView.reloadData()
+        
+    }
+    
     //MARK: TableView Methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -63,7 +101,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         return eventsAtCalendar.count
     }
     
-    
+    //set data in table row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ListTableViewCell
         var event = eventsAtCalendar[indexPath.row]
@@ -72,17 +110,20 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         cell.backgroundColor = UIColor.black
         //set cells to user event data
         cell.listImage.backgroundColor = event.color
+        cell.listLocation.text = event.location
         cell.listData.text = event.title
         cell.listTime.text = "\(event.startDate)"
         
         return cell
     }
-    
+    //select item
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //MARK: Calendar Helper Methods
+    
+    //This will change the layout to week view
     func didDoubleTapCollectionView(gesture: UITapGestureRecognizer) {
         let point = gesture.location(in: gesture.view!)
         let cellState = calendarView.cellStatus(at: point)
@@ -91,10 +132,19 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     //handles the color schema
-    func handleCellColor(view: JTAppleCell?, cellState: CellState){
+    func handleCellColor(view: JTAppleCell?, cellState: CellState, isToday: Bool){
         guard let validCell = view as? CalendarCell else {
             return
         }
+        validCell.selectedView.isHidden = !cellState.isSelected
+        //if cell is today cell
+        if isToday{
+            validCell.todayView.isHidden = false
+            validCell.todayView.backgroundColor = UIColor.black
+            return
+        }
+        
+        //if cell is selected
         if cellState.isSelected{
             validCell.selectedView.isHidden = false
             validCell.dateLabel.textColor = selectedMonthColor
@@ -125,6 +175,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         //setup calendar spacing
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
+        calendarView.allowsMultipleSelection = false
         
         //setup labels
         calendarView.visibleDates { (visibleDates) in
@@ -135,47 +186,52 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     func setupViewsOfCalendar(from visibleDates: DateSegmentInfo){
         let date = visibleDates.monthDates.first!.date
         //year title
-        self.formatter.dateFormat = "yyyy"
-        self.year.text = self.formatter.string(from: date)
+        formatter.dateFormat = "yyyy"
+        self.year.text = formatter.string(from: date)
         //month title
-        self.formatter.dateFormat = "MMMM"
-        self.month.text = self.formatter.string(from: date)
+        formatter.dateFormat = "MMMM"
+        self.month.text = formatter.string(from: date)
     }
-}
+
 //MARK: Calendar DataSource Methods
-extension CalendarViewController: JTAppleCalendarViewDataSource {
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
         //configure calendar
-        formatter.dateFormat = "yyyy MM dd"
-        formatter.timeZone = Calendar.current.timeZone
-        formatter.locale = Calendar.current.locale
+//        formatter.dateFormat = "yyyy MM dd"
+//        formatter.timeZone = Calendar.current.timeZone
+//        formatter.locale = Calendar.current.locale
+//        
+        let startDate = dateFormatter.date(from: "2017 06 01")!
+        let endDate = dateFormatter.date(from: "2017 12 31")!
         
-        let startDate = formatter.date(from: "2017 01 01")!
-        let endDate = formatter.date(from: "2017 12 31")!
-        
-        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
+        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate, numberOfRows: 5, generateInDates:  .forAllMonths, generateOutDates: .tillEndOfRow, firstDayOfWeek: .sunday )
         return parameters
     }
-}
+
 //MARK: Calendar Delegate Methods
-extension CalendarViewController: JTAppleCalendarViewDelegate {
+
     //display the cell
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier:"CalendarCell", for: indexPath) as! CalendarCell
+        //sets datelabel to current cell state
         cell.dateLabel.text = cellState.text
-        
         handleCellSelected(view: cell, cellState: cellState)
-        handleCellColor(view: cell, cellState: cellState)
-        
+        //if today else
+        if dateFormatter.string(from: date) == dateFormatter.string(from: currentDate){
+            handleCellColor(view: cell, cellState: cellState, isToday: true)
+        }else{
+            handleCellColor(view: cell, cellState: cellState, isToday: false)
+        }
         return cell
     }
     
     //select a cell
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        
         handleCellSelected(view: cell, cellState: cellState)
-        handleCellColor(view: cell, cellState: cellState)
+        
+        handleCellColor(view: cell, cellState: cellState, isToday: false)
         
         
         let eventsAtDate = userData.events?.filter({event -> Bool in
@@ -183,18 +239,21 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
             let isSameDay = Calendar.current.isDate(temp, equalTo: date, toGranularity: .day)
             return isSameDay
         })
-        //if it exists
+        //if it exists then filter events and reload table
         if let filteredEvents = eventsAtDate{
             eventsAtCalendar = filteredEvents
             listTableView.reloadData()
         }
-        //set user data at a certain date based on what courses they select
-        //then show the courses in the table view
+        //set the current date
+        let selectedDates = calendarView.selectedDates
+        if firstDate == nil{
+            self.dateTapped.text = "\(displayDateFormatter.string(from: selectedDates.first!))"
+        }
     }
     //deselect a cell
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell, cellState: cellState)
-        handleCellColor(view: cell, cellState: cellState)
+        handleCellColor(view: cell, cellState: cellState, isToday: false)
     }
     //scroll to a new calendar page
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {

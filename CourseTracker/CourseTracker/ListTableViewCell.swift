@@ -14,6 +14,7 @@ class ListTableViewCell: UITableViewCell{
     @IBOutlet weak var listImage: UIImageView!
     @IBOutlet weak var listTime: UILabel!
     @IBOutlet weak var listData: UILabel!
+    @IBOutlet weak var listLocation: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
