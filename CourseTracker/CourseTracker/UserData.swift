@@ -50,6 +50,7 @@ class CustomEvent: Event{
         self.endDate = endDate
         self.color = color
     }
+
 }
 
 //initialize User Data from API
@@ -57,15 +58,21 @@ class UserData {
     var events : [Event]?
     
     init() {
-        
+        //temp data
         let courseA = CourseEvent(title: "COSC1390", location: "Campus A",  startDate: Date(), endDate: Date())
         let courseB = CourseEvent(title: "MFMO1234", location: "Campus B", startDate: Date(), endDate: Date())
         let courseC = CourseEvent(title: "PLAF9232", location: "Campus C", startDate: Date(), endDate: Date())
         
+        let customA = CustomEvent(title: "Dinner with friend", location: "Bennys Bar", startDate: Date(), endDate: Date())
+        let customB = CustomEvent(title: "Gym", location: "Bennys Gym", startDate: Date(), endDate: Date())
+        
+        //add events to array
         events = []
         events?.append(courseA)
         events?.append(courseB)
+        events?.append(customA)
         events?.append(courseC)
+        events?.append(customB)
     }
 }
 
