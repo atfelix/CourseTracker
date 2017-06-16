@@ -25,7 +25,7 @@ class CourseEvent: Event{
     var endDate: Date
     var color : UIColor
     
-    init(title: String, location: String, startDate: Date, endDate: Date, color: UIColor = UIColor.red) {
+    init(title: String, location: String, startDate: Date, endDate: Date, color: UIColor = UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)) {
         self.title = title
         self.location = location
         self.startDate = startDate
@@ -43,7 +43,7 @@ class CustomEvent: Event{
     var endDate: Date
     var color: UIColor
     
-    init(title: String, location: String, startDate: Date, endDate : Date, color: UIColor = UIColor.blue){
+    init(title: String, location: String, startDate: Date, endDate : Date, color: UIColor = UIColor.init(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)){
         self.title = title
         self.location = location
         self.startDate = startDate
