@@ -9,7 +9,7 @@
 import UIKit
 
 //event protocol
-protocol Event {
+protocol EventProtocol {
     var title : String {get set}
     var location: String {get set}
     var startDate: Date { get set }
@@ -18,7 +18,7 @@ protocol Event {
 }
 
 //declare course events
-class CourseEvent: Event{
+class CourseEvent: EventProtocol{
     var title : String
     var location: String
     var startDate: Date
@@ -36,7 +36,7 @@ class CourseEvent: Event{
 }
 
 //declare custom events
-class CustomEvent: Event{
+class CustomEvent: EventProtocol{
     var title: String
     var location: String
     var startDate: Date
@@ -55,7 +55,7 @@ class CustomEvent: Event{
 
 //initialize User Data from API
 class UserData {
-    var events : [Event]?
+    var events : [EventProtocol]?
     
     init() {
         //temp data

@@ -46,7 +46,7 @@ class AddEventViewController: UIViewController {
     }
     //add event to Custom Events in User Data
     @IBAction func addEventTapped(_ sender: Any) {
-        let newEvent = UserData()
+//        let newEvent = UserData()
 //        
 //        if let calendarForEvent = newEvent.events?.append(CustomEvent){
 //            let newEvent =

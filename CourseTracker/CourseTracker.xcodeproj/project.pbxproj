@@ -17,23 +17,20 @@
 		1130E8C11EF073B700F46485 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1130E8C01EF073B700F46485 /* Alamofire.framework */; };
 		11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB431EEC77E900569DE9 /* Realm.framework */; };
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
-		3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */; };
+		11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215C1EF2CF7C0089C6BD /* Models.swift */; };
+		11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215E1EF30E600089C6BD /* UofTAPI.swift */; };
+		11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF21601EF310630089C6BD /* API_KEYS.swift */; };
 		31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31170ED51EF32D45004AFE2F /* MapViewController.swift */; };
 		313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */; };
 		315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616931EF0991700CE51D3 /* CalendarCell.swift */; };
 		315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616951EF0997000CE51D3 /* CalendarViewController.swift */; };
 		315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */; };
 		3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616991EF09F2F00CE51D3 /* UserData.swift */; };
-		11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215C1EF2CF7C0089C6BD /* Models.swift */; };
-		11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215E1EF30E600089C6BD /* UofTAPI.swift */; };
-		11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF21601EF310630089C6BD /* API_KEYS.swift */; };
 		317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */; };
 		317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */; };
 		317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
 		317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */; };
 		31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */; };
-		6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */; };
-		C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,30 +67,26 @@
 		1130E8C01EF073B700F46485 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		11B3EB431EEC77E900569DE9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		11BF215C1EF2CF7C0089C6BD /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		11BF215E1EF30E600089C6BD /* UofTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UofTAPI.swift; sourceTree = "<group>"; };
+		11BF21601EF310630089C6BD /* API_KEYS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API_KEYS.swift; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		315616931EF0991700CE51D3 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		315616951EF0997000CE51D3 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		315616991EF09F2F00CE51D3 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		11BF215C1EF2CF7C0089C6BD /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		11BF215E1EF30E600089C6BD /* UofTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UofTAPI.swift; sourceTree = "<group>"; };
-		11BF21601EF310630089C6BD /* API_KEYS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API_KEYS.swift; sourceTree = "<group>"; };
 		317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUniversityViewController.swift; sourceTree = "<group>"; };
 		317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		317DDF091EECE13100F02C3B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		317DDF0B1EED032B00F02C3B /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
 		31B29A9D1EEC8CEC00BF3F91 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		37DB3FC3A4B43C107CEBDAD4 /* Pods-CourseTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.release.xcconfig"; sourceTree = "<group>"; };
 		39B01FD6C5EF2C6B201C9995 /* Pods-CourseTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		48DB551F1F9415D6C4940CEC /* Pods-CourseTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourseTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD5671C1C19054E9FDD516E /* Pods-CourseTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerUITests/Pods-CourseTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		86B543BEE81FE6B6B0C4323A /* Pods-CourseTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerUITests/Pods-CourseTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
-		ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourseTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourseTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F717E6CA9A93122D3130BA09 /* Pods-CourseTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,7 +99,6 @@
 				11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */,
 				11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */,
 				317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */,
-				C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +113,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,12 +177,8 @@
 			children = (
 				1130E8C01EF073B700F46485 /* Alamofire.framework */,
 				317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */,
-				317DDF0B1EED032B00F02C3B /* Charts.framework */,
 				11B3EB431EEC77E900569DE9 /* Realm.framework */,
 				11B3EB441EEC77E900569DE9 /* RealmSwift.framework */,
-				4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */,
-				ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */,
-				B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -590,9 +576,7 @@
 			files = (
 				317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
-				31EEE9221EEF5BBC00094B8F /* ListTableViewCell.swift in Sources */,
 				11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */,
-				317DDF121EED116A00F02C3B /* CalendarCell.swift in Sources */,
 				11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
@@ -602,7 +586,6 @@
 				31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */,
 				313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */,
 				11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */,
-				317DDF141EED129C00F02C3B /* CalendarViewController.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
 				3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */,
 				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
@@ -760,6 +743,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -781,6 +765,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
