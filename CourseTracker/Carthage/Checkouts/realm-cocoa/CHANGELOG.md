@@ -1,3 +1,15 @@
+2.8.2 Release notes (2017-06-16)
+=============================================================
+
+### Bugfixes
+
+* Fix an issue where synchronized Realms would eventually disconnect from the
+  remote server if the user object used to define their sync configuration
+  was destroyed.
+* Restore support for changing primary keys in migrations (broken in 2.8.0).
+* Revert handling of adding objects with nil properties to a Realm to the
+  pre-2.8.0 behavior.
+
 2.8.1 Release notes (2017-06-12)
 =============================================================
 

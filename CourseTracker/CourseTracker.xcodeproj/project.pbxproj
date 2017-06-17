@@ -19,8 +19,8 @@
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
 		11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215C1EF2CF7C0089C6BD /* Models.swift */; };
 		11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215E1EF30E600089C6BD /* UofTAPI.swift */; };
-		11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF21601EF310630089C6BD /* API_KEYS.swift */; };
 		31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31170ED51EF32D45004AFE2F /* MapViewController.swift */; };
+		312F1E0E1EF4AF1C007FB4E8 /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F1E0D1EF4AF1C007FB4E8 /* API_KEYS.swift */; };
 		313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */; };
 		315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616931EF0991700CE51D3 /* CalendarCell.swift */; };
 		315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616951EF0997000CE51D3 /* CalendarViewController.swift */; };
@@ -69,8 +69,8 @@
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		11BF215C1EF2CF7C0089C6BD /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		11BF215E1EF30E600089C6BD /* UofTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UofTAPI.swift; sourceTree = "<group>"; };
-		11BF21601EF310630089C6BD /* API_KEYS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API_KEYS.swift; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		312F1E0D1EF4AF1C007FB4E8 /* API_KEYS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API_KEYS.swift; sourceTree = "<group>"; };
 		313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		315616931EF0991700CE51D3 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		315616951EF0997000CE51D3 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				11BF215E1EF30E600089C6BD /* UofTAPI.swift */,
-				11BF21601EF310630089C6BD /* API_KEYS.swift */,
+				312F1E0D1EF4AF1C007FB4E8 /* API_KEYS.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -577,12 +577,12 @@
 				317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
 				11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */,
-				11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
 				31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */,
 				315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
+				312F1E0E1EF4AF1C007FB4E8 /* API_KEYS.swift in Sources */,
 				31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */,
 				313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */,
 				11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */,
