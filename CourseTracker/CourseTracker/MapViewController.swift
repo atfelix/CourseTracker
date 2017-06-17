@@ -18,10 +18,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //MARK: Properties
     @IBOutlet weak var returnButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     var myLocation:CLLocationCoordinate2D?
     //set location tracking
     let locationManager = CLLocationManager()
+    
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -46,7 +48,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
+        //adds annotation to the map
         addLongPressGesture()
+        //adds polylines from source to destination and prints distance
+        setupRouteInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +98,53 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.locationManager.stopUpdatingLocation()
         }
     }
-    
+    //set up the routes
+    func setupRouteInfo(){
+        let sourceLocation = CLLocationCoordinate2D(latitude: 43.66, longitude: -79.39)
+        let destinationLocation = CLLocationCoordinate2D(latitude: 51.22, longitude: -85.33)
+        //set data for source
+        let sourceAnnotation = MKPointAnnotation()
+        sourceAnnotation.title = "title 1"
+        sourceAnnotation.coordinate = sourceLocation
+        //set data for destination
+        let destinationAnnotation = MKPointAnnotation()
+        destinationAnnotation.title = "title 2"
+        destinationAnnotation.coordinate = destinationLocation
+        //put annotation on map
+        mapView.showAnnotations([sourceAnnotation, destinationAnnotation], animated: true)
+        //placemark
+        let sourcePM = MKPlacemark(coordinate: sourceLocation)
+        let destinationPM = MKPlacemark(coordinate: destinationLocation)
+        //map items
+        let sourceMapItem = MKMapItem(placemark: sourcePM)
+        let destinationMapItem = MKMapItem(placemark: destinationPM)
+        
+        //map the coords
+        let directionRequest = MKDirectionsRequest()
+        directionRequest.source = sourceMapItem
+        directionRequest.destination = destinationMapItem
+        directionRequest.transportType = .automobile
+        
+        let directions = MKDirections(request: directionRequest)
+        directions.calculate { (response, error) in
+            if error != nil{
+                print(error ?? "")
+                return
+            }//draw the line
+            if let response = response{
+                let route = response.routes[0]
+                //draw the polyline
+                self.mapView.add(route.polyline, level: .aboveRoads)
+                let distance = route.distance / 1000  //sets the distance
+                let result = String(format: "%.1f", distance)  //to 1 decimal
+                //set distance label
+                self.distanceLabel.text = "Distance = \(result) KM"
+                let routeRect = route.polyline.boundingMapRect //bounds of the line
+                self.mapView.setRegion(MKCoordinateRegionForMapRect(routeRect), animated: true)
+                
+            }
+        }
+    }
     //centers the map
     func centerMap(_ center:CLLocationCoordinate2D){
         self.saveCurrentLocation(center)
@@ -152,6 +203,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         view.pinTintColor =  .red
         return view
+    }
+    //sets the line for the route path
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let render = MKPolylineRenderer(overlay: overlay)
+        render.lineWidth = 4.0
+        render.strokeColor = UIColor.blue
+        return render
     }
     
 }
