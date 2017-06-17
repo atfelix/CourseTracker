@@ -2,14 +2,20 @@
 //  ListTableViewCell.swift
 //  CourseTracker
 //
-//  Created by Rushan on 2017-06-12.
+//  Created by Rushan on 2017-06-13.
 //  Copyright © 2017 Adam Felix. All rights reserved.
 //
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
+class ListTableViewCell: UITableViewCell{
 
+    //MARK: Tableview Properties
+    @IBOutlet weak var listImage: UIImageView!
+    @IBOutlet weak var listTime: UILabel!
+    @IBOutlet weak var listData: UILabel!
+    @IBOutlet weak var listLocation: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,7 +24,8 @@ class ListTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
+    
+    
 
 }

@@ -9,14 +9,21 @@
 import UIKit
 import JTAppleCalendar
 
+
 class CalendarCell: JTAppleCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var selectedView: UIView!
     
-    //Alerts
-    @IBOutlet weak var firstAlert: UIImageView! //red, for Courses
-    @IBOutlet weak var secondAlert: UIImageView! //blue for Food
-    @IBOutlet weak var thirdAlert: UIImageView!  //green for athletics
+    @IBOutlet weak var todayView: UIView!
     
+    //if cell has user data , call cell.create dot otherwise don't
+    override func prepareForReuse() {
+        dateLabel.backgroundColor = UIColor.clear
+        todayView.backgroundColor = UIColor.clear
+        todayView.isHidden = true
+    }
+
 }
+
+
