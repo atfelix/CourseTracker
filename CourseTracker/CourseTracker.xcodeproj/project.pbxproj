@@ -14,6 +14,7 @@
 		110F4ED31EEB617F00D88F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F4ED11EEB617F00D88F8E /* LaunchScreen.storyboard */; };
 		110F4EDE1EEB617F00D88F8E /* CourseTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EDD1EEB617F00D88F8E /* CourseTrackerTests.swift */; };
 		110F4EE91EEB617F00D88F8E /* CourseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */; };
+		1130E8C11EF073B700F46485 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1130E8C01EF073B700F46485 /* Alamofire.framework */; };
 		11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB431EEC77E900569DE9 /* Realm.framework */; };
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
 		3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */; };
@@ -23,10 +24,12 @@
 		315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616951EF0997000CE51D3 /* CalendarViewController.swift */; };
 		315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */; };
 		3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616991EF09F2F00CE51D3 /* UserData.swift */; };
+		11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215C1EF2CF7C0089C6BD /* Models.swift */; };
+		11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215E1EF30E600089C6BD /* UofTAPI.swift */; };
+		11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF21601EF310630089C6BD /* API_KEYS.swift */; };
 		317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */; };
 		317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */; };
 		317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
-		317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0B1EED032B00F02C3B /* Charts.framework */; };
 		317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */; };
 		31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */; };
 		6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */; };
@@ -64,6 +67,7 @@
 		110F4EE41EEB617F00D88F8E /* CourseTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourseTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTrackerUITests.swift; sourceTree = "<group>"; };
 		110F4EEA1EEB617F00D88F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1130E8C01EF073B700F46485 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		11B3EB431EEC77E900569DE9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +76,9 @@
 		315616951EF0997000CE51D3 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		315616991EF09F2F00CE51D3 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		11BF215C1EF2CF7C0089C6BD /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		11BF215E1EF30E600089C6BD /* UofTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UofTAPI.swift; sourceTree = "<group>"; };
+		11BF21601EF310630089C6BD /* API_KEYS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API_KEYS.swift; sourceTree = "<group>"; };
 		317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUniversityViewController.swift; sourceTree = "<group>"; };
 		317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		317DDF091EECE13100F02C3B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -95,9 +102,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1130E8C11EF073B700F46485 /* Alamofire.framework in Frameworks */,
 				11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */,
 				11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */,
-				317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */,
 				317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */,
 				C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */,
 			);
@@ -178,6 +185,7 @@
 		11B3EB421EEC77E900569DE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1130E8C01EF073B700F46485 /* Alamofire.framework */,
 				317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */,
 				317DDF0B1EED032B00F02C3B /* Charts.framework */,
 				11B3EB431EEC77E900569DE9 /* Realm.framework */,
@@ -211,6 +219,8 @@
 		31B29A9E1EEC8D9B00BF3F91 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				11BF215E1EF30E600089C6BD /* UofTAPI.swift */,
+				11BF21601EF310630089C6BD /* API_KEYS.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -221,6 +231,7 @@
 				315616991EF09F2F00CE51D3 /* UserData.swift */,
 				3156169D1EF0D98C00CE51D3 /* Map */,
 				315616071EF06A8100CE51D3 /* Calendar */,
+				11BF215C1EF2CF7C0089C6BD /* Models.swift */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -456,8 +467,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			outputPaths = (
 			);
@@ -579,6 +590,10 @@
 			files = (
 				317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
+				31EEE9221EEF5BBC00094B8F /* ListTableViewCell.swift in Sources */,
+				11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */,
+				317DDF121EED116A00F02C3B /* CalendarCell.swift in Sources */,
+				11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
 				31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */,
@@ -586,6 +601,8 @@
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
 				31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */,
 				313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */,
+				11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */,
+				317DDF141EED129C00F02C3B /* CalendarViewController.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
 				3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */,
 				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
