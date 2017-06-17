@@ -36,16 +36,26 @@ final class RealmInt: Object {
 }
 
 final class GeoLocation: Object {
+    dynamic var id = ""
     dynamic var longitude: Double = 0.0
     dynamic var latitude: Double = 0.0
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 final class Time: Object {
-    dynamic var dayOfWeek: String?
+    dynamic var id: String?
+    dynamic var dayOfWeek: String!
     dynamic var date: NSDate?
     dynamic var startTime: Int = 0
     dynamic var endTime: Int = 0
     dynamic var duration: Int = 0
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 final class Address: Object {
@@ -78,9 +88,15 @@ final class Building: Object {
 }
 
 final class Event: Object {
+    dynamic var id: String?
     dynamic var title: String?
+    dynamic var location: String?
     dynamic var time: Time?
     dynamic var building: Building?
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 final class ParkingLocation: Object {

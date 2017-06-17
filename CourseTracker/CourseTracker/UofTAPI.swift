@@ -30,6 +30,12 @@ struct UofTAPI {
     private static let key = UNIVERSITY_OF_TORONTO_API_KEY
     private static let realm = try! Realm()
 
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
     private static func makeRequestURL(method: Method, skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
         var components = URLComponents()
         components.scheme = UofTAPI.httpScheme
@@ -73,13 +79,72 @@ struct UofTAPI {
 
             if let JSON = response.result.value as? [[String:Any]], JSON.count > 0 {
                 for event in JSON {
-
+                    addOrUpdateEvent(fromJSON: event)
                 }
+                makeAthleticsRequest(skip: skip + limit, limit: limit)
+            }
+            else {
+                return
             }
         }
     }
 
-    
+    static func addOrUpdateEvent(fromJSON json: [String:Any]) {
+        guard
+            let dateString = json["date"] as? String,
+            let eventsOnDate = json["events"] as? [[String:Any]] else {
+                print(#file, #function, #line, "JSON does not conform to Events Prototype JSON")
+                return
+        }
+
+        for eventJSON in eventsOnDate {
+            guard
+                let title = eventJSON["title"] as? String,
+                let location = eventJSON["location"] as? String,
+                let buildingID = eventJSON["building_id"] as? String else {
+                    print(#file, #function, #line, "JSON does not conform to Event Prototype JSON")
+                    continue
+            }
+            let event = Event()
+            event.title = title
+            event.location = location
+
+            let time = Time()
+            addOrUpdateTime(time: time, fromJSON: eventJSON, dateString: dateString)
+
+            event.time = time
+
+            let building = realm.objects(Building.self).filter("id == '\(buildingID)'").first
+            event.building = building
+
+            event.id = [dateString, buildingID, title, "\(time.startTime)", "\(time.endTime)"].joined(separator: "##")
+
+            try! realm.write {
+                realm.add(event, update: true)
+            }
+        }
+    }
+
+    static func addOrUpdateTime(time: Time, fromJSON json: [String: Any], dateString: String?) {
+        guard
+            let startTime = json["start_time"] as? Int,
+            let endTime = json["end_time"] as? Int,
+            let duration = json["duration"] as? Int else {
+                print("JSON does not conform to Time Prototype JSON")
+                return
+        }
+
+        time.dayOfWeek = json["day"] as? String
+        time.date = dateFormatter.date(from: dateString ?? "")! as NSDate
+        time.startTime = startTime
+        time.endTime = endTime
+        time.duration = duration
+        time.id = [time.dayOfWeek ?? "NO DAY OF WEEK", "\(time.date?.description ?? "NO DATE")", "\(time.startTime)", "\(time.endTime)", "\(time.duration)"].joined(separator: " ## ")
+
+        try! realm.write {
+            realm.add(time, update: true)
+        }
+    }
 
     static func makeBuildingRequest(skip: Int, limit: Int = UofTAPI.maxLimit) {
         
@@ -121,6 +186,7 @@ struct UofTAPI {
         let geoLocation = GeoLocation()
         geoLocation.latitude = latitude
         geoLocation.longitude = longitude
+        geoLocation.id = "\(latitude) \(longitude)"
 
         let building = Building()
         building.id = id
@@ -142,6 +208,7 @@ struct UofTAPI {
             let geoLocation = GeoLocation()
             geoLocation.latitude = location[0]
             geoLocation.longitude = location[1]
+            geoLocation.id = "\(latitude) \(longitude)"
             building.polygon.append(geoLocation)
         }
 

@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UofTAPI.makeBuildingRequest(skip: 0)
+        //UofTAPI.makeBuildingRequest(skip: 0)
+        UofTAPI.makeAthleticsRequest(skip: 0)
     }
 
     override func didReceiveMemoryWarning() {
