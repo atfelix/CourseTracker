@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import CourseTracker
+//@testable import CourseTracker
 
 class CourseTrackerTests: XCTestCase {
     
