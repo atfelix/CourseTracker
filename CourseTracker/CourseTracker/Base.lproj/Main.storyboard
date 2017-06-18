@@ -751,55 +751,37 @@
                                     <action selector="returnButtonTapped:" destination="UKB-6N-eur" eventType="touchUpInside" id="90o-4U-QNi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3x-Ae-42D">
-                                <rect key="frame" x="301" y="589" width="52" height="58"/>
+                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3x-Ae-42D">
+                                <rect key="frame" x="311" y="599" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="52" id="qhl-6G-AWz"/>
-                                    <constraint firstAttribute="height" constant="58" id="z4D-zm-Aau"/>
+                                    <constraint firstAttribute="height" constant="48" id="4sm-xU-u5d"/>
+                                    <constraint firstAttribute="width" constant="48" id="YUy-Ff-Ho6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" image="location-1"/>
+                                <size key="titleShadowOffset" width="5" height="5"/>
+                                <state key="normal" image="NearMe" backgroundImage="location-1">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="locationButtonTapped:" destination="UKB-6N-eur" eventType="touchUpInside" id="WYJ-e0-gt4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-dy-1Xj">
-                                <rect key="frame" x="89" y="28" width="270" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coords label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwU-Qd-ECH">
-                                <rect key="frame" x="89" y="77" width="270" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.070661641659999996" green="0.19441321489999999" blue="0.19251289960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cVF-AU-Ler" firstAttribute="top" secondItem="t3x-Ae-42D" secondAttribute="bottom" constant="20" id="1oQ-z3-DmW"/>
                             <constraint firstItem="zPn-Wi-19X" firstAttribute="top" secondItem="Fab-fo-QJG" secondAttribute="top" id="5Z7-Lx-ctc"/>
-                            <constraint firstItem="YwU-Qd-ECH" firstAttribute="trailing" secondItem="3UN-dy-1Xj" secondAttribute="trailing" id="7Xr-lP-Phz"/>
                             <constraint firstItem="MTY-J6-jlL" firstAttribute="leading" secondItem="Fab-fo-QJG" secondAttribute="leadingMargin" id="ABb-DF-1GC"/>
-                            <constraint firstItem="YwU-Qd-ECH" firstAttribute="leading" secondItem="3UN-dy-1Xj" secondAttribute="leading" id="J0r-ce-z09"/>
-                            <constraint firstItem="3UN-dy-1Xj" firstAttribute="trailing" secondItem="Fab-fo-QJG" secondAttribute="trailingMargin" id="JIa-hh-jF0"/>
+                            <constraint firstItem="t3x-Ae-42D" firstAttribute="leading" secondItem="Fab-fo-QJG" secondAttribute="leadingMargin" constant="295" id="KKw-MQ-asS"/>
                             <constraint firstItem="zPn-Wi-19X" firstAttribute="leading" secondItem="Fab-fo-QJG" secondAttribute="leading" id="ORD-Gn-R2F"/>
-                            <constraint firstItem="3UN-dy-1Xj" firstAttribute="leading" secondItem="MTY-J6-jlL" secondAttribute="trailing" constant="8" id="TrB-KL-Beh"/>
                             <constraint firstItem="MTY-J6-jlL" firstAttribute="top" secondItem="N6Q-aZ-0T1" secondAttribute="bottom" id="UYG-TB-1ad"/>
                             <constraint firstItem="cVF-AU-Ler" firstAttribute="top" secondItem="zPn-Wi-19X" secondAttribute="bottom" id="Vqc-hw-g7E"/>
-                            <constraint firstItem="t3x-Ae-42D" firstAttribute="leading" secondItem="Fab-fo-QJG" secondAttribute="leadingMargin" constant="285" id="dFN-p5-xsG"/>
+                            <constraint firstItem="cVF-AU-Ler" firstAttribute="top" secondItem="t3x-Ae-42D" secondAttribute="bottom" constant="20" id="elB-nn-UDG"/>
                             <constraint firstAttribute="trailing" secondItem="zPn-Wi-19X" secondAttribute="trailing" id="gGs-oa-1qz"/>
-                            <constraint firstItem="3UN-dy-1Xj" firstAttribute="top" secondItem="N6Q-aZ-0T1" secondAttribute="bottom" constant="8" id="j5A-sB-a5A"/>
-                            <constraint firstItem="t3x-Ae-42D" firstAttribute="top" secondItem="YwU-Qd-ECH" secondAttribute="bottom" constant="491" id="r41-Zb-9fb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="t3x-Ae-42D" secondAttribute="trailing" constant="6" id="vyx-Wd-KpD"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="distanceLabel" destination="3UN-dy-1Xj" id="hWT-Sq-NiY"/>
                         <outlet property="locationButton" destination="t3x-Ae-42D" id="oRv-rT-abk"/>
-                        <outlet property="locationLabel" destination="YwU-Qd-ECH" id="B6N-tG-Dku"/>
                         <outlet property="mapView" destination="zPn-Wi-19X" id="VxR-xr-DbI"/>
                         <outlet property="returnButton" destination="MTY-J6-jlL" id="C6Q-Io-MHy"/>
                     </connections>
@@ -939,6 +921,7 @@
         <image name="Cornell" width="2087" height="1736"/>
         <image name="Drop" width="256" height="256"/>
         <image name="Edit" width="128" height="128"/>
+        <image name="NearMe" width="1600" height="1600"/>
         <image name="ic_stars_2x" width="24" height="24"/>
         <image name="location-1" width="24" height="24"/>
     </resources>

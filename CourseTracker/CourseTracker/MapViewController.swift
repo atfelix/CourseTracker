@@ -23,21 +23,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Edit Location button-----
-        locationButton.layer.backgroundColor = UIColor.white.cgColor
-        locationButton.layer.cornerRadius = 0.5 * locationButton.bounds.size.width
-        locationButton.clipsToBounds = true
-        locationButton.layer.shadowPath = UIBezierPath(roundedRect: locationButton.bounds, cornerRadius: locationButton.layer.cornerRadius).cgPath
-        locationButton.layer.shadowOffset = CGSize(width: 0, height: 17)
-        locationButton.layer.shadowRadius = 11
-        locationButton.layer.shadowOpacity = 0.2
-        //Edit complete------------
         //Set Map View-------------
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.isZoomEnabled = true //zoom
         mapView.isScrollEnabled = true //scroll
-        //End Map View-------------
         
         centerMapAroundUserLocation(animated: true)
         
@@ -72,7 +62,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //center map around user
     func centerMapAroundUserLocation(animated: Bool) {
         let location = CLLocationCoordinate2D(latitude: 43.66, longitude: -79.39)
-        let region = MKCoordinateRegionMakeWithDistance(location, 5000.0, 7000.0)
+        let region = MKCoordinateRegionMakeWithDistance(location, 500.0, 1000.0)
         //set to region
         mapView.setRegion(region, animated: true)
     }

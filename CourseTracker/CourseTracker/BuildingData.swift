@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class BuildingData: NSObject, MKAnnotation {
-    
+    //building information
     var name: String?
     var address: String?
     var latitude: Double

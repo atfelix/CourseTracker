@@ -6,6 +6,16 @@
 		<key>latitude</key>
 		<real>43.66</real>
 		<key>longitude</key>
+		<real>-79.39</real>
+		<key>name</key>
+		<string>UFT</string>
+		<key>address</key>
+		<string>UFT St</string>
+	</dict>
+	<dict>
+		<key>latitude</key>
+		<real>43.66</real>
+		<key>longitude</key>
 		<real>-79.40000000000001</real>
 		<key>name</key>
 		<string>Campus A</string>
@@ -14,9 +24,9 @@
 	</dict>
 	<dict>
 		<key>latitude</key>
-		<real>43.65</real>
+		<real>43.664545</real>
 		<key>longitude</key>
-		<real>-79.40000000000001</real>
+		<real>-79.402121112</real>
 		<key>name</key>
 		<string>Campus B</string>
 		<key>address</key>
@@ -24,13 +34,23 @@
 	</dict>
 	<dict>
 		<key>latitude</key>
-		<real>43.65</real>
+		<real>43.664565656788</real>
 		<key>longitude</key>
-		<real>-79.39</real>
+		<real>-79.408999889</real>
 		<key>name</key>
 		<string>Campus C</string>
 		<key>address</key>
 		<string>123 Third St</string>
+	</dict>
+	<dict>
+		<key>latitude</key>
+		<real>43.66989898</real>
+		<key>longitude</key>
+		<real>-79.41000023092093</real>
+		<key>name</key>
+		<string>Campus D</string>
+		<key>address</key>
+		<string>123 Fourth St</string>
 	</dict>
 </array>
 </plist>
