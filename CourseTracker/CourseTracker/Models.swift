@@ -104,9 +104,14 @@ final class ParkingLocation: Object {
     dynamic var title = ""
     dynamic var building: Building?
     dynamic var campus = ""
+    dynamic var type = ""
     dynamic var parkingDescription = ""
     dynamic var geoLocation: GeoLocation?
     dynamic var address: String?
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 final class TextbookMeetingSection: Object {
@@ -119,6 +124,10 @@ final class TextbookCourse: Object {
     dynamic var code = ""
     dynamic var requirement = ""
     let textbookMeetingSections = List<TextbookMeetingSection>()
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 final class Textbook: Object {
@@ -131,6 +140,10 @@ final class Textbook: Object {
     dynamic var price = 0.0
     dynamic var url = ""
     let courses = List<TextbookCourse>()
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 final class CourseMeetingSection: Object {
