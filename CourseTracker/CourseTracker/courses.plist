@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>ASTR3433</string>
+		<key>department</key>
+		<string>ASTR</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>ASTR2944</string>
+		<key>department</key>
+		<string>ASTR</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>ALAP2323</string>
+		<key>department</key>
+		<string>GEO</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>COSC2123</string>
+		<key>department</key>
+		<string>CSC</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>COSC2121</string>
+		<key>department</key>
+		<string>CSC</string>
+	</dict>
+</array>
+</plist>

@@ -8,230 +8,166 @@
 
 import UIKit
 
-class AddCourseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class AddCourseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
+    
+    //temp info
+    let data = DataSource()
     
     //MARK: Properties
-    @IBOutlet weak var courseTableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
-    
-    //Searchbar
+    //collectionView
+    @IBOutlet weak var courseCollectionView: UICollectionView!
+    //searchBar
     @IBOutlet weak var searchBar: UISearchBar!
-    var searchActive : Bool = false
-    var filtered:[String] = []
-    
-    //Tableview Items
-    var previouslySelectedHeaderIndex: Int?
-    var selectedHeaderIndex: Int?
-    var selectedItemIndex: Int?
-    
-    var cells: CourseTableViewCell!
+    var dataSourceForSearchResult:[String]?
+    var searchBarActive:Bool = false
     
     //MARK: ViewdidLoad
     override func viewDidLoad() {
-        //Set the tableview
-        cells = CourseTableViewCell()
-        self.setup()
-        self.courseTableView.estimatedRowHeight = 45
-        self.courseTableView.rowHeight = UITableViewAutomaticDimension
-        self.courseTableView.allowsMultipleSelection = true
-        
-        //set Searchbar delegate
+        super.viewDidLoad()
         searchBar.delegate = self
+        courseCollectionView.dataSource = self
+        courseCollectionView.delegate = self
+        
+        
+        self.dataSourceForSearchResult = [String]()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewDidAppear(true)
         
-        self.courseTableView.reloadData() //reload tableview
+        if let indexPath = getIndexPathForSelectedCell(){
+            highlightCell(indexPath, flag: false)
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: Helper Methods
     //Add button
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        if let selectedItemIndex = self.selectedItemIndex {
-            let selectedItemValue = self.cells.items[selectedItemIndex].value
-            
-            let alert = UIAlertController(title: "Current Selection", message: selectedItemValue, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
+        
+        performSegue(withIdentifier: "ShowCalendar", sender: sender)
+    }
+    
+    func getIndexPathForSelectedCell() -> IndexPath? {
+        var indexPath: IndexPath?
+        
+        if courseCollectionView.indexPathsForSelectedItems!.count > 0 {
+            indexPath = courseCollectionView.indexPathsForSelectedItems![0]
+        }
+        return indexPath
+    }
+    
+    func highlightCell(_ indexPath : IndexPath, flag: Bool) {
+        
+        let cell = courseCollectionView.cellForItem(at: indexPath)
+        
+        if flag {
+            cell?.contentView.backgroundColor = UIColor.black
+        } else {
+            cell?.contentView.backgroundColor = nil
         }
     }
     
-    //MARK: Search Helper Methods
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
+    //MARK: SearchBar
+    func filterContentForSearchText(searchText:String){
+//        self.dataSourceForSearchResult = self.data?.filter({ (text:String) -> Bool in
+//            return text.contains(searchText)
+//        })
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false;
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.characters.count > 0 {
+            self.searchBarActive    = true
+            self.filterContentForSearchText(searchText: searchText)
+            self.courseCollectionView?.reloadData()
+        }else{
+            self.searchBarActive = false
+            self.courseCollectionView?.reloadData()
+        }
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
+        self .cancelSearching()
+        self.courseCollectionView?.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
+        self.searchBarActive = true
+        self.view.endEditing(true)
     }
     
-    //search the table
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.setShowsCancelButton(true, animated: true)
+    }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.searchBarActive = false
+        self.searchBar.setShowsCancelButton(false, animated: false)
+    }
+    func cancelSearching(){
+        self.searchBarActive = false
+        self.searchBar.resignFirstResponder()
+        self.searchBar.text = ""
+    }
+    
+    //MARK: DataSource/ Delegate
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+                let headerView: DepartmentCollectionReusableView = courseCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! DepartmentCollectionReusableView
+
+                headerView.departmentLabel.text = data.getGroupLabelAtIndex(indexPath.section)
+                
+                headerView.backgroundColor = UIColor.black
         
-        let filteredItems = self.cells.items.filter({ (item) -> Bool in
-            let tmp: NSString = item.value as NSString
-            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-            return range.location != NSNotFound
-        })
-        //return filtered items
-        filtered = filteredItems.map({ (item) -> String in
-            return item.value
-        })
-        
-        
-        if(filtered.count == 0){
-            searchActive = false;
-        } else {
-            searchActive = true;
+                return headerView
         }
-        self.courseTableView.reloadData()
-    }
-
-    //MARK: Table Helper Methods
-    //set up the input
-    func setup(){
-        //button color
-        self.addButton.layer.cornerRadius = 4
-        //table color
-        courseTableView.backgroundColor = UIColor.white
-        courseTableView.separatorColor = UIColor.clear
-        
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "Arts"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 2"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 3"))
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "Business"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 2"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 3"))
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "Computer Science"))
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "Drama"))
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "Engineering"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "Economics"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "Film Studies"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "Geography"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "History"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
-        self.cells.append(CourseTableViewCell.HeaderItem(value: "International"))
-        self.cells.append(CourseTableViewCell.Item(value: "Course 1"))
-
+    
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return data.departments.count
     }
     
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        //if search is active
-        if(searchActive) {
-            return filtered.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //search is active then
+        if self.searchBarActive {
+            return self.dataSourceForSearchResult!.count;
         }else{
-            //return data.count
-        return self.cells.items.count
+            return data.numberOfRowsInEachGroup(section)
         }
     }
     
-    
-    //Dequeue cell
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = self.cells.items[(indexPath as NSIndexPath).row]
-        let value = item.value
-        let isChecked = item.isChecked as Bool
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = courseCollectionView.dequeueReusableCell(withReuseIdentifier: "CourseIcon", for: indexPath) as! CourseCollectionViewCell
+        //set the course data
+        let courses: [Course] = data.coursesInGroup(indexPath.section)
+        let course = courses[indexPath.row]
         
-        if let cell = courseTableView.dequeueReusableCell(withIdentifier: "CourseCell") {
-            cell.textLabel?.text = value
-            //header selection
-            if item as? CourseTableViewCell.HeaderItem != nil {
-                //set color of headers
-                cell.backgroundColor = UIColor.black
-                cell.textLabel?.textColor = UIColor.white
-                cell.accessoryType = .none
-            } else {
-                if isChecked {
-                    cell.accessoryType = .checkmark
-                } else {
-                    cell.accessoryType = .none
-                }
-            }
-            if(searchActive){
-                cell.textLabel?.text = filtered[indexPath.row]
-            }
-            
-            return cell
+        let name = course.name!
+        cell.courseLabel.text = name.capitalized
+        
+        
+        //implement search 
+        if (self.searchBarActive) {
+            cell.courseLabel!.text = self.dataSourceForSearchResult![indexPath.row];
         }
         
-        return UITableViewCell()
+        return cell
     }
     
-    //Handles the drop down
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let item = self.cells.items[(indexPath as NSIndexPath).row]
-        
-        if item is CourseTableViewCell.HeaderItem {
-            return 60
-        } else if (item.isHidden) {
-            return 0
-        } else {
-            return UITableViewAutomaticDimension
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        highlightCell(indexPath, flag: true)
     }
     
-    //Select a cell
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = self.cells.items[(indexPath as NSIndexPath).row]
-        
-        if item is CourseTableViewCell.HeaderItem {
-            if self.selectedHeaderIndex == nil {
-                self.selectedHeaderIndex = (indexPath as NSIndexPath).row
-            } else {
-                self.previouslySelectedHeaderIndex = self.selectedHeaderIndex
-                self.selectedHeaderIndex = (indexPath as NSIndexPath).row
-            }
-            //collapse
-            if let previouslySelectedHeaderIndex = self.previouslySelectedHeaderIndex {
-                self.cells.collapse(previouslySelectedHeaderIndex)
-            }
-            //expand
-            if self.previouslySelectedHeaderIndex != self.selectedHeaderIndex {
-                self.cells.expand(self.selectedHeaderIndex!)
-            } else {
-                self.selectedHeaderIndex = nil
-                self.previouslySelectedHeaderIndex = nil
-            }
-            
-            self.courseTableView.beginUpdates()
-            self.courseTableView.endUpdates()
-            
-        } else {
-            if (indexPath as NSIndexPath).row != self.selectedItemIndex {
-                let cell = self.courseTableView.cellForRow(at: indexPath)
-                cell?.accessoryType = UITableViewCellAccessoryType.checkmark
-                
-                if let selectedItemIndex = self.selectedItemIndex {
-                    let previousCell = self.courseTableView.cellForRow(at: IndexPath(row: selectedItemIndex, section: 0))
-                    previousCell?.accessoryType = UITableViewCellAccessoryType.none
-                    cells.items[selectedItemIndex].isChecked = false
-                }
-                
-                self.selectedItemIndex = (indexPath as NSIndexPath).row
-                cells.items[self.selectedItemIndex!].isChecked = true
-            }
-        }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        highlightCell(indexPath, flag: false)
     }
+    
 }
