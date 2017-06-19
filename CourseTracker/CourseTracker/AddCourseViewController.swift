@@ -147,7 +147,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = courseCollectionView.dequeueReusableCell(withReuseIdentifier: "CourseIcon", for: indexPath) as! CourseCollectionViewCell
         //set the course data
-        let courses: [Course] = data.coursesInGroup(indexPath.section)
+        let courses: [CourseUI] = data.coursesInGroup(indexPath.section)
         let course = courses[indexPath.row]
         
         let name = course.name!

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Course {
+class CourseUI {
     var name:String?
     var department:String?
     

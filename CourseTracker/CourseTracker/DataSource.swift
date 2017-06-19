@@ -14,7 +14,7 @@ class DataSource{
         populateData()
     }
     
-    var courses:[Course] = []
+    var courses:[CourseUI] = []
     var departments:[String] = []
     
     func numberOfRowsInEachGroup(_ index: Int) -> Int{
@@ -39,7 +39,7 @@ class DataSource{
                         let name = dict["name"] as! String
                         let dept = dict["department"] as! String
                         
-                        let course = Course(name: name, department: dept)
+                        let course = CourseUI(name: name, department: dept)
                         if !departments.contains(dept){
                             departments.append(dept)
                         }
@@ -51,9 +51,9 @@ class DataSource{
     }
     
     //Courses for each Group
-    func coursesInGroup(_ index: Int) -> [Course]{
+    func coursesInGroup(_ index: Int) -> [CourseUI]{
         let item = departments[index]
-        let filteredCourses = courses.filter { (course: Course) -> Bool in
+        let filteredCourses = courses.filter { (course: CourseUI) -> Bool in
             return course.department == item
         }
         return filteredCourses
