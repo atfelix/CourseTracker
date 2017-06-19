@@ -11,6 +11,40 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="Uqt-7B-6kZ">
+            <objects>
+                <viewController id="jSo-nm-6Kc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5gB-wP-LU0"/>
+                        <viewControllerLayoutGuide type="bottom" id="cw8-F4-reG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AW2-d5-R6V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to www.utoronto.ca or Call (416) 978-2011 and enroll today!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9F-JK-UoM">
+                                <rect key="frame" x="16" y="182" width="343" height="202"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="202" id="m62-2F-rHc"/>
+                                    <constraint firstAttribute="width" constant="343" id="o0v-Ee-v4i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h9F-JK-UoM" firstAttribute="centerX" secondItem="AW2-d5-R6V" secondAttribute="centerX" id="BH6-Gs-ecx"/>
+                            <constraint firstItem="h9F-JK-UoM" firstAttribute="centerY" secondItem="AW2-d5-R6V" secondAttribute="centerY" constant="-50.5" id="Yht-BJ-MWc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QjV-lR-Rhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1324" y="465.51724137931041"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CourseTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -107,7 +141,7 @@
                                     <color key="titleColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="i1C-DJ-rMf" kind="show" id="ADA-uG-NmT"/>
+                                    <segue destination="jSo-nm-6Kc" kind="presentation" id="9lU-35-q68"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A student's guide to higher education" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0j-qr-iCy">
@@ -342,7 +376,7 @@
                                                         </view>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeC-wc-Wbd">
                                                             <rect key="frame" x="37" y="28" width="40" height="40"/>
-                                                            <color key="backgroundColor" red="0.8060571142169779" green="0.86976522842639592" blue="0.54795946135006957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="YYq-ST-JzC"/>
                                                                 <constraint firstAttribute="height" constant="40" id="s27-m7-o8P"/>
@@ -559,8 +593,8 @@
                                     <constraint firstAttribute="height" constant="35" id="hyw-33-dM1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Calculate Route">
-                                    <color key="titleColor" red="0.80605711420000004" green="0.86976522840000003" blue="0.54795946139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Calculate Route" image="ic_location_on_white">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="mapButtonTapped:" destination="i1C-DJ-rMf" eventType="touchUpInside" id="Dcr-Hl-7rW"/>
@@ -993,7 +1027,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ag-GA-rkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-604" y="448"/>
+            <point key="canvasLocation" x="-604" y="466"/>
         </scene>
     </scenes>
     <resources>
@@ -1006,9 +1040,7 @@
         <image name="Drop" width="256" height="256"/>
         <image name="Edit" width="128" height="128"/>
         <image name="NearMe" width="800" height="800"/>
+        <image name="ic_location_on_white" width="24" height="24"/>
         <image name="ic_stars_2x" width="24" height="24"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Z77-lh-7e4"/>
-    </inferredMetricsTieBreakers>
 </document>
