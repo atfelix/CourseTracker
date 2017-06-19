@@ -11,4 +11,8 @@ import UIKit
 class CourseCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var courseLabel: UILabel!
+    
+    public var indexPath: IndexPath!
+    
+    
 }

@@ -251,10 +251,13 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         //set the courseLabel indicator to yellow or silver for different events
         if CourseEvent.self != nil {
             cell.coursesLabel.backgroundColor = UIColor.yellow
+            cell.coursesLabel.layer.cornerRadius = 2.5
+            cell.coursesLabel.layer.masksToBounds = true
         }
         if CustomEvent.self != nil{
-            
             cell.customLabel.backgroundColor = UIColor.lightGray
+            cell.customLabel.layer.cornerRadius = 2.5
+            cell.customLabel.layer.masksToBounds = true
         }
         
         
