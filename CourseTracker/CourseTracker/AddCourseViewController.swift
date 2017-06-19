@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddCourseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class AddCourseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
     
     //temp info
     var departments = ["Computer Science", "Drama", "Earth Science", "Geography", "Mathematics"]
@@ -17,16 +17,9 @@ class AddCourseViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: Properties
     @IBOutlet weak var addButton: UIButton!
     
-    //Searchbar
-    @IBOutlet weak var searchBar: UISearchBar!
-    var searchActive : Bool = false
-    var filtered:[String] = []
-    
     //MARK: ViewdidLoad
     override func viewDidLoad() {
 
-        //set Searchbar delegate
-        searchBar.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
