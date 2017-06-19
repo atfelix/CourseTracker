@@ -12,7 +12,7 @@ import Alamofire
 extension UofTAPI {
 
     static func updateBuildingsDB() {
-        makeBuildingRequest(skip: realm.objects(Building.self).count)
+        makeBuildingRequest(skip: 0)
     }
 
     static func makeBuildingsRequestURL(skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
@@ -33,7 +33,11 @@ extension UofTAPI {
                 for building in JSON {
                     addOrUpdateBuilding(fromJSON: building)
                 }
-                makeBuildingRequest(skip: skip + limit, limit: limit)
+
+                if JSON.count == limit {
+                    sleep(10)
+                    makeBuildingRequest(skip: skip + limit, limit: limit)
+                }
             }
         }
     }

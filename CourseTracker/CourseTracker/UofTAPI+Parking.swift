@@ -11,6 +11,10 @@ import Alamofire
 
 extension UofTAPI {
 
+    static func updateParkingDB() {
+        makeParkingRequest(skip: 0)
+    }
+
     static func makeParkingRequestURL(skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
         return makeRequestURL(method: .parking, skip: skip, limit: limit)
     }

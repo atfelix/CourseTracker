@@ -54,7 +54,10 @@ extension UofTAPI {
                 for athleticDate in JSON {
                     addOrUpdateAthleticDate(fromJSON: athleticDate)
                 }
-                makeAthleticsRequest(skip: skip + limit, limit: limit)
+                if JSON.count == limit {
+                    sleep(10)
+                    makeAthleticsRequest(skip: skip + limit, limit: limit)
+                }
             }
         }
     }
