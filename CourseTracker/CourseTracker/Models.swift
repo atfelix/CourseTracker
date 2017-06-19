@@ -36,26 +36,8 @@ final class RealmInt: Object {
 }
 
 final class GeoLocation: Object {
-    dynamic var id = ""
     dynamic var longitude: Double = 0.0
     dynamic var latitude: Double = 0.0
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-final class Time: Object {
-    dynamic var id: String?
-    dynamic var dayOfWeek: String!
-    dynamic var date: NSDate?
-    dynamic var startTime: Int = 0
-    dynamic var endTime: Int = 0
-    dynamic var duration: Int = 0
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
 }
 
 final class Address: Object {
@@ -87,26 +69,38 @@ final class Building: Object {
     }
 }
 
-final class Event: Object {
-    dynamic var id: String?
-    dynamic var title: String?
-    dynamic var location: String?
-    dynamic var time: Time?
-    dynamic var building: Building?
+final class AthleticDate: Object {
+    dynamic var date: String?
+    let athleticEvents = List<AthleticEvent>()
 
     override static func primaryKey() -> String? {
-        return "id"
+        return "date"
     }
+}
+
+final class AthleticEvent: Object {
+    dynamic var title = ""
+    dynamic var campus = ""
+    dynamic var location = ""
+    dynamic var buildingID = ""
+    dynamic var startTime = 0
+    dynamic var endTime = 0
+    dynamic var duration = 0
 }
 
 final class ParkingLocation: Object {
     dynamic var id = ""
     dynamic var title = ""
-    dynamic var building: Building?
+    dynamic var buildingID = ""
     dynamic var campus = ""
+    dynamic var type = ""
     dynamic var parkingDescription = ""
     dynamic var geoLocation: GeoLocation?
     dynamic var address: String?
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 final class TextbookMeetingSection: Object {
@@ -119,6 +113,10 @@ final class TextbookCourse: Object {
     dynamic var code = ""
     dynamic var requirement = ""
     let textbookMeetingSections = List<TextbookMeetingSection>()
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 final class Textbook: Object {
@@ -131,14 +129,26 @@ final class Textbook: Object {
     dynamic var price = 0.0
     dynamic var url = ""
     let courses = List<TextbookCourse>()
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 final class CourseMeetingSection: Object {
     dynamic var code = ""
     dynamic var size = 0
     dynamic var enrolment = 0
-    let times = List<Time>()
+    let times = List<CourseTime>()
     let instructors = List<RealmString>()
+}
+
+final class CourseTime: Object {
+    dynamic var day = ""
+    dynamic var startTime = 0
+    dynamic var endTime = 0
+    dynamic var duration = 0
+    dynamic var location = ""
 }
 
 final class Course: Object {
@@ -155,4 +165,8 @@ final class Course: Object {
     dynamic var term = ""
     let breadths = List<RealmInt>()
     let courseMeetingSections = List<CourseMeetingSection>()
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
