@@ -43,7 +43,7 @@ extension UofTAPI {
 
                 if JSON.count == limit {
                     sleep(5)
-                    makeCoursesRequest(skip: skip, limit: limit)
+                    makeCoursesRequest(skip: skip + limit, limit: limit)
                 }
             }
         }
