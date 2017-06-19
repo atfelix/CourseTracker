@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-604" y="-254.12293853073464"/>
+            <point key="canvasLocation" x="-604" y="-244"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="sHb-fT-d0S">
@@ -170,10 +170,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Columbia" translatesAutoresizingMaskIntoConstraints="NO" id="r5c-GO-rO1">
-                                <rect key="frame" x="0.0" y="95" width="375" height="572"/>
+                                <rect key="frame" x="0.0" y="123.5" width="375" height="543.5"/>
                             </imageView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bk-j2-Q3X">
-                                <rect key="frame" x="0.0" y="110.5" width="375" height="382.5"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="354"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -182,7 +182,10 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Your University" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTY-Us-Osz">
-                                <rect key="frame" x="16" y="28" width="343" height="27.5"/>
+                                <rect key="frame" x="16" y="28" width="343" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="P8s-iK-nLG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <color key="textColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -209,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLC-WM-Xa8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="178" y="-961"/>
+            <point key="canvasLocation" x="176.80000000000001" y="-961.16941529235385"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="KP5-qO-YLm">
@@ -596,7 +599,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY2-OT-Q0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="176.80000000000001" y="-244.22788605697153"/>
+            <point key="canvasLocation" x="177" y="-244"/>
         </scene>
         <!--Add Event View Controller-->
         <scene sceneID="sgS-1m-Db1">
@@ -836,28 +839,74 @@
                                 <color key="textColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y7b-bM-Hq3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y7b-bM-Hq3">
                                 <rect key="frame" x="0.0" y="117" width="375" height="447"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="10" reuseIdentifier="CourseCell" textLabel="Qah-UF-VMc" style="IBUITableViewCellStyleDefault" id="zPe-Pk-xAe">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="10" reuseIdentifier="CourseCell" rowHeight="83" id="zPe-Pk-xAe" customClass="DepartmentTableViewCell" customModule="CourseTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zPe-Pk-xAe" id="uQS-rU-9eI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qah-UF-VMc">
-                                                    <rect key="frame" x="25" y="0.0" width="335" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5GP-6D-aXV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="a1Q-6p-HIV">
+                                                        <size key="itemSize" width="71" height="73"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CourseIcon" id="QI1-N1-wTf" customClass="CourseCollectionViewCell" customModule="CourseTracker" customModuleProvider="target">
+                                                            <rect key="frame" x="5" y="5" width="71" height="73"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="73"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dni-Dr-a2L">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="71" height="73"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="dni-Dr-a2L" firstAttribute="leading" secondItem="QI1-N1-wTf" secondAttribute="leading" id="2cV-NV-EW3"/>
+                                                                <constraint firstItem="dni-Dr-a2L" firstAttribute="top" secondItem="QI1-N1-wTf" secondAttribute="top" id="jcm-PU-Q5J"/>
+                                                                <constraint firstAttribute="trailing" secondItem="dni-Dr-a2L" secondAttribute="trailing" id="ox2-m1-lqC"/>
+                                                                <constraint firstAttribute="bottom" secondItem="dni-Dr-a2L" secondAttribute="bottom" id="pFR-m9-J0D"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="courseLabel" destination="dni-Dr-a2L" id="t8g-lz-tZZ"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="zPe-Pk-xAe" id="dg8-PW-iLW"/>
+                                                        <outlet property="delegate" destination="zPe-Pk-xAe" id="IyR-Ua-HYj"/>
+                                                    </connections>
+                                                </collectionView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="5GP-6D-aXV" secondAttribute="trailing" id="DmM-uh-mdm"/>
+                                                <constraint firstAttribute="bottom" secondItem="5GP-6D-aXV" secondAttribute="bottom" id="HwN-uJ-gX9"/>
+                                                <constraint firstItem="5GP-6D-aXV" firstAttribute="top" secondItem="uQS-rU-9eI" secondAttribute="top" id="TpN-LG-NHF"/>
+                                                <constraint firstItem="5GP-6D-aXV" firstAttribute="leading" secondItem="uQS-rU-9eI" secondAttribute="leading" id="oUe-2T-y7G"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="0.85225813360000002" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="courseCollectionView" destination="5GP-6D-aXV" id="2NY-7S-Mt2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -875,6 +924,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addButtonTapped:" destination="ltj-Ic-wEJ" eventType="touchUpInside" id="iZK-og-iIq"/>
+                                    <segue destination="i1C-DJ-rMf" kind="show" identifier="ShowCalendar" id="Z77-lh-7e4"/>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" barStyle="black" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVt-na-U8i">
@@ -910,13 +960,12 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="a2L-0Q-0Sy" id="AQw-5m-MBA"/>
-                        <outlet property="courseTableView" destination="y7b-bM-Hq3" id="yhX-7v-g4N"/>
                         <outlet property="searchBar" destination="gVt-na-U8i" id="0bj-z9-Jfl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJm-Yr-sqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="-961"/>
+            <point key="canvasLocation" x="964" y="-961.16941529235385"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vkx-O0-sUS">
@@ -950,4 +999,7 @@
         <image name="ic_stars_2x" width="24" height="24"/>
         <image name="location-1" width="48" height="48"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Z77-lh-7e4"/>
+    </inferredMetricsTieBreakers>
 </document>

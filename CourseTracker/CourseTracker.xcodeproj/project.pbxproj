@@ -20,6 +20,8 @@
 		3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105109C1EF6759800F34D43 /* BuildingData.swift */; };
 		3105109F1EF67D5900F34D43 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3105109E1EF67D5900F34D43 /* buildings.plist */; };
 		31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31170ED51EF32D45004AFE2F /* MapViewController.swift */; };
+		313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */; };
+		3136745B1EF75974008B3DC6 /* DepartmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3136745A1EF75974008B3DC6 /* DepartmentTableViewCell.swift */; };
 		313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */; };
 		315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616931EF0991700CE51D3 /* CalendarCell.swift */; };
 		315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616951EF0997000CE51D3 /* CalendarViewController.swift */; };
@@ -30,7 +32,6 @@
 		317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
 		317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0B1EED032B00F02C3B /* Charts.framework */; };
 		317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */; };
-		31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */; };
 		6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */; };
 		C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,8 @@
 		3105109C1EF6759800F34D43 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 		3105109E1EF67D5900F34D43 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
+		3136745A1EF75974008B3DC6 /* DepartmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentTableViewCell.swift; sourceTree = "<group>"; };
 		313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		315616931EF0991700CE51D3 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		315616951EF0997000CE51D3 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		317DDF0B1EED032B00F02C3B /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
 		31B29A9D1EEC8CEC00BF3F91 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		37DB3FC3A4B43C107CEBDAD4 /* Pods-CourseTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.release.xcconfig"; sourceTree = "<group>"; };
 		39B01FD6C5EF2C6B201C9995 /* Pods-CourseTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		48DB551F1F9415D6C4940CEC /* Pods-CourseTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,7 +267,8 @@
 				317DDF091EECE13100F02C3B /* PageViewController.swift */,
 				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
 				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
-				31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */,
+				3136745A1EF75974008B3DC6 /* DepartmentTableViewCell.swift */,
+				313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */,
 			);
 			name = Selection;
 			sourceTree = "<group>";
@@ -587,14 +590,15 @@
 				317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
+				313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
-				31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */,
 				315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
 				31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */,
 				313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */,
 				3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
+				3136745B1EF75974008B3DC6 /* DepartmentTableViewCell.swift in Sources */,
 				3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */,
 				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
 			);
