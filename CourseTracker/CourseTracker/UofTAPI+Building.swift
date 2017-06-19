@@ -35,7 +35,7 @@ extension UofTAPI {
                 }
 
                 if JSON.count == limit {
-                    sleep(10)
+                    sleep(5)
                     makeBuildingRequest(skip: skip + limit, limit: limit)
                 }
             }

@@ -34,7 +34,11 @@ extension UofTAPI {
                 for textbook in JSON {
                     addOrUpdateTextbook(fromJSON: textbook)
                 }
-                makeTextbooksRequest(skip: skip + limit, limit: limit)
+
+                if JSON.count == limit {
+                    sleep(5)
+                    makeTextbooksRequest(skip: skip + limit, limit: limit)
+                }
             }
         }
     }

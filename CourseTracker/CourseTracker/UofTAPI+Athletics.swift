@@ -55,7 +55,7 @@ extension UofTAPI {
                     addOrUpdateAthleticDate(fromJSON: athleticDate)
                 }
                 if JSON.count == limit {
-                    sleep(10)
+                    sleep(5)
                     makeAthleticsRequest(skip: skip + limit, limit: limit)
                 }
             }

@@ -33,7 +33,11 @@ extension UofTAPI {
                 for parking in JSON {
                     addOrUpdateParking(fromJSON: parking)
                 }
-                makeParkingRequest(skip: skip + limit, limit: limit)
+
+                if JSON.count == limit {
+                    sleep(5)
+                    makeParkingRequest(skip: skip + limit, limit: limit)
+                }
             }
         }
     }
