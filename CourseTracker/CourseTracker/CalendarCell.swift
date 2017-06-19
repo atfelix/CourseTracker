@@ -17,6 +17,10 @@ class CalendarCell: JTAppleCell {
     
     @IBOutlet weak var todayView: UIView!
     
+    @IBOutlet weak var coursesLabel: UILabel!
+    @IBOutlet weak var customLabel: UILabel!
+    
+    
     //if cell has user data , call cell.create dot otherwise don't
     override func prepareForReuse() {
         dateLabel.backgroundColor = UIColor.clear

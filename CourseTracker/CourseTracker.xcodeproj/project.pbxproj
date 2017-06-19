@@ -14,13 +14,13 @@
 		110F4ED31EEB617F00D88F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F4ED11EEB617F00D88F8E /* LaunchScreen.storyboard */; };
 		110F4EDE1EEB617F00D88F8E /* CourseTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EDD1EEB617F00D88F8E /* CourseTrackerTests.swift */; };
 		110F4EE91EEB617F00D88F8E /* CourseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */; };
-		1130E8C11EF073B700F46485 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1130E8C01EF073B700F46485 /* Alamofire.framework */; };
 		11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB431EEC77E900569DE9 /* Realm.framework */; };
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
-		11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215C1EF2CF7C0089C6BD /* Models.swift */; };
-		11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BF215E1EF30E600089C6BD /* UofTAPI.swift */; };
+		3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */; };
+		3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105109C1EF6759800F34D43 /* BuildingData.swift */; };
+		3105109F1EF67D5900F34D43 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3105109E1EF67D5900F34D43 /* buildings.plist */; };
 		31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31170ED51EF32D45004AFE2F /* MapViewController.swift */; };
-		312F1E0E1EF4AF1C007FB4E8 /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F1E0D1EF4AF1C007FB4E8 /* API_KEYS.swift */; };
+		313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */; };
 		313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */; };
 		315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616931EF0991700CE51D3 /* CalendarCell.swift */; };
 		315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616951EF0997000CE51D3 /* CalendarViewController.swift */; };
@@ -29,8 +29,14 @@
 		317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */; };
 		317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */; };
 		317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
+		317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0B1EED032B00F02C3B /* Charts.framework */; };
 		317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */; };
-		31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */; };
+		31A955D11EF84EB500EEF0CD /* courses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A955D01EF84EB500EEF0CD /* courses.plist */; };
+		31F1D88F1EF8282000F215F2 /* DepartmentCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1D88E1EF8282000F215F2 /* DepartmentCollectionReusableView.swift */; };
+		31F1D8911EF8453900F215F2 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1D8901EF8453900F215F2 /* DataSource.swift */; };
+		31F1D8941EF8475A00F215F2 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1D8931EF8475A00F215F2 /* Course.swift */; };
+		6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */; };
+		C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +70,12 @@
 		110F4EE41EEB617F00D88F8E /* CourseTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourseTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTrackerUITests.swift; sourceTree = "<group>"; };
 		110F4EEA1EEB617F00D88F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1130E8C01EF073B700F46485 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		11B3EB431EEC77E900569DE9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		11BF215C1EF2CF7C0089C6BD /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		11BF215E1EF30E600089C6BD /* UofTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UofTAPI.swift; sourceTree = "<group>"; };
+		3105109C1EF6759800F34D43 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
+		3105109E1EF67D5900F34D43 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		312F1E0D1EF4AF1C007FB4E8 /* API_KEYS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API_KEYS.swift; sourceTree = "<group>"; };
+		313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		315616931EF0991700CE51D3 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		315616951EF0997000CE51D3 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -79,14 +84,21 @@
 		317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUniversityViewController.swift; sourceTree = "<group>"; };
 		317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		317DDF091EECE13100F02C3B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		317DDF0B1EED032B00F02C3B /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
+		31A955D01EF84EB500EEF0CD /* courses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = courses.plist; sourceTree = "<group>"; };
 		31B29A9D1EEC8CEC00BF3F91 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		31F1D88E1EF8282000F215F2 /* DepartmentCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentCollectionReusableView.swift; sourceTree = "<group>"; };
+		31F1D8901EF8453900F215F2 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		31F1D8931EF8475A00F215F2 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		37DB3FC3A4B43C107CEBDAD4 /* Pods-CourseTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.release.xcconfig"; sourceTree = "<group>"; };
 		39B01FD6C5EF2C6B201C9995 /* Pods-CourseTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		48DB551F1F9415D6C4940CEC /* Pods-CourseTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourseTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD5671C1C19054E9FDD516E /* Pods-CourseTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerUITests/Pods-CourseTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		86B543BEE81FE6B6B0C4323A /* Pods-CourseTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerUITests/Pods-CourseTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourseTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourseTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F717E6CA9A93122D3130BA09 /* Pods-CourseTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,10 +107,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1130E8C11EF073B700F46485 /* Alamofire.framework in Frameworks */,
 				11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */,
 				11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */,
+				317DDF0C1EED032B00F02C3B /* Charts.framework in Frameworks */,
 				317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */,
+				C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,10 +190,13 @@
 		11B3EB421EEC77E900569DE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1130E8C01EF073B700F46485 /* Alamofire.framework */,
 				317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */,
+				317DDF0B1EED032B00F02C3B /* Charts.framework */,
 				11B3EB431EEC77E900569DE9 /* Realm.framework */,
 				11B3EB441EEC77E900569DE9 /* RealmSwift.framework */,
+				4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */,
+				ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */,
+				B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -198,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				31170ED51EF32D45004AFE2F /* MapViewController.swift */,
+				3105109E1EF67D5900F34D43 /* buildings.plist */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -205,8 +224,6 @@
 		31B29A9E1EEC8D9B00BF3F91 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				11BF215E1EF30E600089C6BD /* UofTAPI.swift */,
-				312F1E0D1EF4AF1C007FB4E8 /* API_KEYS.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -215,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				315616991EF09F2F00CE51D3 /* UserData.swift */,
-				11BF215C1EF2CF7C0089C6BD /* Models.swift */,
+				3105109C1EF6759800F34D43 /* BuildingData.swift */,
 				3156169D1EF0D98C00CE51D3 /* Map */,
 				315616071EF06A8100CE51D3 /* Calendar */,
 			);
@@ -255,10 +272,22 @@
 			children = (
 				317DDF091EECE13100F02C3B /* PageViewController.swift */,
 				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
-				31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */,
-				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
+				31F1D8921EF8454300F215F2 /* Course */,
 			);
 			name = Selection;
+			sourceTree = "<group>";
+		};
+		31F1D8921EF8454300F215F2 /* Course */ = {
+			isa = PBXGroup;
+			children = (
+				31A955D01EF84EB500EEF0CD /* courses.plist */,
+				31F1D8931EF8475A00F215F2 /* Course.swift */,
+				31F1D8901EF8453900F215F2 /* DataSource.swift */,
+				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
+				313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */,
+				31F1D88E1EF8282000F215F2 /* DepartmentCollectionReusableView.swift */,
+			);
+			name = Course;
 			sourceTree = "<group>";
 		};
 		67E1E572893882F38B601DC5 /* Pods */ = {
@@ -394,6 +423,8 @@
 			files = (
 				110F4ED31EEB617F00D88F8E /* LaunchScreen.storyboard in Resources */,
 				110F4ED01EEB617F00D88F8E /* Assets.xcassets in Resources */,
+				31A955D11EF84EB500EEF0CD /* courses.plist in Resources */,
+				3105109F1EF67D5900F34D43 /* buildings.plist in Resources */,
 				110F4ECE1EEB617F00D88F8E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,18 +478,18 @@
 		};
 		11B3EB471EEC780700569DE9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = "/bin/sh\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n";
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
@@ -576,17 +607,18 @@
 			files = (
 				317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
-				11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
+				31F1D8911EF8453900F215F2 /* DataSource.swift in Sources */,
+				313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
-				31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */,
 				315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
-				312F1E0E1EF4AF1C007FB4E8 /* API_KEYS.swift in Sources */,
+				31F1D8941EF8475A00F215F2 /* Course.swift in Sources */,
 				31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */,
 				313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */,
-				11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */,
+				3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
+				31F1D88F1EF8282000F215F2 /* DepartmentCollectionReusableView.swift in Sources */,
 				3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */,
 				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
 			);
@@ -743,7 +775,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -765,7 +796,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
