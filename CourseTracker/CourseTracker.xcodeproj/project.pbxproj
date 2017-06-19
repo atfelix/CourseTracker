@@ -20,6 +20,7 @@
 		119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */; };
 		119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */; };
 		119C969A1EF5E5980035FD9A /* UofTAPI+Textbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96991EF5E5980035FD9A /* UofTAPI+Textbook.swift */; };
+		11AB670B1EF81B1500AB1F00 /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AB670A1EF81B1500AB1F00 /* API_KEYS.swift */; };
 		11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB431EEC77E900569DE9 /* Realm.framework */; };
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
 		3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */; };
@@ -82,6 +83,7 @@
 		119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Building.swift"; sourceTree = "<group>"; };
 		119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Parking.swift"; sourceTree = "<group>"; };
 		119C96991EF5E5980035FD9A /* UofTAPI+Textbook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Textbook.swift"; sourceTree = "<group>"; };
+		11AB670A1EF81B1500AB1F00 /* API_KEYS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API_KEYS.swift; sourceTree = "<group>"; };
 		11B3EB431EEC77E900569DE9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		3105109C1EF6759800F34D43 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
@@ -236,13 +238,13 @@
 		31B29A9E1EEC8D9B00BF3F91 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				11AB670A1EF81B1500AB1F00 /* API_KEYS.swift */,
 				11BF215E1EF30E600089C6BD /* UofTAPI.swift */,
 				119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */,
 				119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */,
 				1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */,
 				119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */,
 				119C96991EF5E5980035FD9A /* UofTAPI+Textbook.swift */,
-				11BF21601EF310630089C6BD /* API_KEYS.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -629,15 +631,15 @@
 				31EEE9221EEF5BBC00094B8F /* ListTableViewCell.swift in Sources */,
 				1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */,
 				11BF215F1EF30E600089C6BD /* UofTAPI.swift in Sources */,
-				317DDF121EED116A00F02C3B /* CalendarCell.swift in Sources */,
 				119C969A1EF5E5980035FD9A /* UofTAPI+Textbook.swift in Sources */,
-				11BF21611EF310630089C6BD /* API_KEYS.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
 				119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */,
 				317DDF0A1EECE13100F02C3B /* PageViewController.swift in Sources */,
 				31F1D8911EF8453900F215F2 /* DataSource.swift in Sources */,
 				313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
+				11AB670B1EF81B1500AB1F00 /* API_KEYS.swift in Sources */,
+				31EEE9261EEF88B500094B8F /* CourseTableViewCell.swift in Sources */,
 				315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
 				31F1D8941EF8475A00F215F2 /* Course.swift in Sources */,
@@ -645,7 +647,6 @@
 				313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */,
 				11BF215D1EF2CF7C0089C6BD /* Models.swift in Sources */,
 				119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */,
-				317DDF141EED129C00F02C3B /* CalendarViewController.swift in Sources */,
 				119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */,
 				3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,

@@ -12,6 +12,10 @@ import RealmSwift
 
 extension UofTAPI {
 
+    static func updateTextbookDB() {
+        makeTextbooksRequest(skip: 0)
+    }
+
     static func makeTextbooksRequestURL(skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
         return makeRequestURL(method: .textbooks, skip: skip, limit: limit)
     }
@@ -30,7 +34,11 @@ extension UofTAPI {
                 for textbook in JSON {
                     addOrUpdateTextbook(fromJSON: textbook)
                 }
-                makeTextbooksRequest(skip: skip + limit, limit: limit)
+
+                if JSON.count == limit {
+                    sleep(5)
+                    makeTextbooksRequest(skip: skip + limit, limit: limit)
+                }
             }
         }
     }

@@ -11,6 +11,16 @@ import Alamofire
 
 extension UofTAPI {
 
+    static func updateCourseDB() {
+        print("DON'T EVER UPDATE COURSES API KNOWLEDGE.")
+        print("THERE ARE TOO MANY COURSES FOR THIS TO BE DONE BY THE PHONE.")
+        print("ONLY EVER RUN THIS COMMAND IF THERE ARE NO COURSES IN THE DATABASE.")
+
+        if realm.objects(Course.self).count == 0 {
+            makeCoursesRequest(skip: 0)
+        }
+    }
+
     static func makeCoursesRequestURL(skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
         return makeRequestURL(method: .courses, skip: skip, limit: limit)
     }
@@ -26,10 +36,15 @@ extension UofTAPI {
             print("=================")
 
             if let JSON = response.result.value as? [[String:Any]], JSON.count > 0 {
+
                 for course in JSON {
                     addOrUpdateCourse(fromJSON: course)
                 }
-                //makeCoursesRequest(skip: skip, limit: limit)
+
+                if JSON.count == limit {
+                    sleep(5)
+                    makeCoursesRequest(skip: skip + limit, limit: limit)
+                }
             }
         }
     }
