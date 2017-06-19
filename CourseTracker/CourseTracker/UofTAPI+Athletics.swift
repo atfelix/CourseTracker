@@ -11,7 +11,7 @@ import Alamofire
 
 extension UofTAPI {
 
-    static func updateAthleticsDB() {
+    static func updateAthleticDB() {
         guard
             let latestAthleticsDate = realm.objects(AthleticDate.self).sorted(byKeyPath: "date", ascending:false).first,
             let latestDate = latestAthleticsDate.date else {

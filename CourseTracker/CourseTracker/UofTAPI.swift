@@ -40,6 +40,14 @@ struct UofTAPI {
     static let realm = try! Realm()
     static let maxLimit = 100
 
+    static func updateDB() {
+        updateAthleticDB()
+        updateBuildingDB()
+        updateTextbookDB()
+        updateParkingDB()
+        updateCourseDB()
+    }
+
     static func makeRequestURL(method: Method, skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
         var components = URLComponents()
         components.scheme = UofTAPI.httpScheme
@@ -69,9 +77,5 @@ struct UofTAPI {
 
 
         return URL(string: urlString)
-    }
-
-    static func updateDB() {
-
     }
 }

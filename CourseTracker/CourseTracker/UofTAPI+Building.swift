@@ -11,7 +11,7 @@ import Alamofire
 
 extension UofTAPI {
 
-    static func updateBuildingsDB() {
+    static func updateBuildingDB() {
         makeBuildingRequest(skip: 0)
     }
 

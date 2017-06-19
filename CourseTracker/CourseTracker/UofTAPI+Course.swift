@@ -11,7 +11,7 @@ import Alamofire
 
 extension UofTAPI {
 
-    static func updateCoursesDB() {
+    static func updateCourseDB() {
         print("DON'T EVER UPDATE COURSES API KNOWLEDGE.")
         print("THERE ARE TOO MANY COURSES FOR THIS TO BE DONE BY THE PHONE.")
         print("ONLY EVER RUN THIS COMMAND IF THERE ARE NO COURSES IN THE DATABASE.")
