@@ -13,11 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UofTAPI.makeBuildingRequest(skip: 0)
-        UofTAPI.makeAthleticsRequest(skip: 0)
-        UofTAPI.makeParkingRequest(skip: 0)
-        UofTAPI.makeTextbooksRequest(skip: 0)
-        UofTAPI.makeCoursesRequest(skip: 0)
+        continueButton.layer.cornerRadius = 4
+
+        UofTAPI.updateDB()
     }
 
     override func didReceiveMemoryWarning() {
