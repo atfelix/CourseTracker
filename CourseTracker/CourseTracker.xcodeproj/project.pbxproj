@@ -264,8 +264,8 @@
 			children = (
 				317DDF091EECE13100F02C3B /* PageViewController.swift */,
 				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
-				31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */,
 				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
+				31EEE9251EEF88B500094B8F /* CourseTableViewCell.swift */,
 			);
 			name = Selection;
 			sourceTree = "<group>";

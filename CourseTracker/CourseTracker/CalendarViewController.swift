@@ -156,7 +156,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         cell.listImage.backgroundColor = event.color
         cell.listLocation.text = event.location
         cell.listData.text = event.title
-        cell.listTime.text = "\(event.startDate)"
+        cell.listTime.text = "\(event.startDate) - \(event.endDate)"
         
         return cell
     }
@@ -180,7 +180,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         
-        //if cell is selected
+        //if cell is selected change color
         if cellState.isSelected{
             validCell.selectedView.isHidden = false
             validCell.dateLabel.textColor = selectedMonthColor
@@ -232,12 +232,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 //MARK: Calendar DataSource Methods
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        
-        //configure calendar
-//        formatter.dateFormat = "yyyy MM dd"
-//        formatter.timeZone = Calendar.current.timeZone
-//        formatter.locale = Calendar.current.locale
-//        
+  
         let startDate = dateFormatter.date(from: "2017 06 01")!
         let endDate = dateFormatter.date(from: "2017 12 31")!
         
@@ -252,6 +247,17 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier:"CalendarCell", for: indexPath) as! CalendarCell
         //sets datelabel to current cell state
         cell.dateLabel.text = cellState.text
+
+        //set the courseLabel indicator to yellow or silver for different events
+        if CourseEvent.self != nil {
+            cell.coursesLabel.backgroundColor = UIColor.yellow
+        }
+        if CustomEvent.self != nil{
+            
+            cell.customLabel.backgroundColor = UIColor.lightGray
+        }
+        
+        
         handleCellSelected(view: cell, cellState: cellState)
         //if today else
         if dateFormatter.string(from: date) == dateFormatter.string(from: currentDate){
