@@ -52,7 +52,6 @@ extension UofTAPI {
         let geoLocation = GeoLocation()
         geoLocation.latitude = latitude
         geoLocation.longitude = longitude
-        geoLocation.id = "\(latitude) \(longitude)"
 
         let building = Building()
         building.id = id
@@ -74,7 +73,6 @@ extension UofTAPI {
             let geoLocation = GeoLocation()
             geoLocation.latitude = location[0]
             geoLocation.longitude = location[1]
-            geoLocation.id = "\(latitude) \(longitude)"
             building.polygon.append(geoLocation)
         }
 

@@ -26,12 +26,59 @@ extension UofTAPI {
             print("================")
 
             if let JSON = response.result.value as? [[String:Any]], JSON.count > 0 {
-                for event in JSON {
-                    addOrUpdateEvent(fromJSON: event)
+                for athleticDate in JSON {
+                    addOrUpdateAthleticDate(fromJSON: athleticDate)
                 }
                 makeAthleticsRequest(skip: skip + limit, limit: limit)
             }
         }
     }
 
+    static func addOrUpdateAthleticDate(fromJSON json: [String:Any]) {
+        guard
+            let date = json["date"] as? String,
+            let events = json["events"] as? [[String: Any]] else {
+                print("JSON does not conform to Athletic Date Prototype JSON")
+                return
+        }
+
+        let athleticDate = AthleticDate()
+        athleticDate.date = date
+
+        for event in events {
+            addOrUpdateAthleticEvent(athleticDate: athleticDate, fromJSON: event)
+        }
+
+        try! realm.write {
+            realm.add(athleticDate, update: true)
+        }
+    }
+
+    static func addOrUpdateAthleticEvent(athleticDate: AthleticDate, fromJSON json: [String:Any]) {
+        guard
+            let title = json["title"] as? String,
+            let campus = json["campus"] as? String,
+            let location = json["location"] as? String,
+            let buildingID = json["building_id"] as? String,
+            let startTime = json["start_time"] as? Int,
+            let endTime = json["end_time"] as? Int,
+            let duration = json["duration"] as? Int else {
+                print("JSON does not conform to Athletic Event Prototype JSON")
+                return
+        }
+
+        let athleticEvent = AthleticEvent()
+        athleticEvent.title = title
+        athleticEvent.campus = campus
+        athleticEvent.location = location
+        athleticEvent.buildingID = buildingID
+        athleticEvent.startTime = startTime
+        athleticEvent.endTime = endTime
+        athleticEvent.duration = duration
+
+        try! realm.write {
+            athleticDate.athleticEvents.append(athleticEvent)
+            realm.add(athleticEvent)
+        }
+    }
 }

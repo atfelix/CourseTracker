@@ -52,12 +52,11 @@ extension UofTAPI {
         let geoLocation = GeoLocation()
         geoLocation.latitude = latitude
         geoLocation.longitude = longitude
-        geoLocation.id = "\(latitude) \(longitude)"
 
         let parkingLocation = ParkingLocation()
         parkingLocation.id = id
         parkingLocation.title = title
-        parkingLocation.building = realm.objects(Building.self).filter("id == '\(buildingID)'").first
+        parkingLocation.buildingID = buildingID
         parkingLocation.campus = campus
         parkingLocation.type = type
         parkingLocation.parkingDescription = parkingDescription

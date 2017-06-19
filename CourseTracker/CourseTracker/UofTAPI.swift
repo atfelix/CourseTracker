@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  UofTAPI.swift
 //  CourseTracker
 //
 //  Created by atfelix on 2017-06-15.
@@ -40,9 +40,5 @@ struct UofTAPI {
                                  URLQueryItem(name: "limit", value: "\(limit)"),
                                  URLQueryItem(name: "key", value: "\(UofTAPI.key)")]
         return components.url
-    }
-
-    static func makeCoursesRequestURL(skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
-        return makeRequestURL(method: .courses, skip: skip, limit: limit)
     }
 }
