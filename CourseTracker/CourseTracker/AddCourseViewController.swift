@@ -11,7 +11,7 @@ import UIKit
 class AddCourseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
     
     //temp info
-    var Courses = ["COSC2323", "JASS2323", "LAKL4242"]
+    let data = DataSource()
     
     //MARK: Properties
     @IBOutlet weak var addButton: UIButton!
@@ -19,11 +19,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var courseCollectionView: UICollectionView!
     //searchBar
     @IBOutlet weak var searchBar: UISearchBar!
-    var dataSource:[String]?
     var dataSourceForSearchResult:[String]?
     var searchBarActive:Bool = false
-    var searchBarBoundsY:CGFloat?
-    var refreshControl:UIRefreshControl?
     
     //MARK: ViewdidLoad
     override func viewDidLoad() {
@@ -32,9 +29,17 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         courseCollectionView.dataSource = self
         courseCollectionView.delegate = self
         
-        self.dataSource = Courses
+        
         self.dataSourceForSearchResult = [String]()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if let indexPath = getIndexPathForSelectedCell(){
+            highlightCell(indexPath, flag: false)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,11 +54,31 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         performSegue(withIdentifier: "ShowCalendar", sender: sender)
     }
     
+    func getIndexPathForSelectedCell() -> IndexPath? {
+        var indexPath: IndexPath?
+        
+        if courseCollectionView.indexPathsForSelectedItems!.count > 0 {
+            indexPath = courseCollectionView.indexPathsForSelectedItems![0]
+        }
+        return indexPath
+    }
+    
+    func highlightCell(_ indexPath : IndexPath, flag: Bool) {
+        
+        let cell = courseCollectionView.cellForItem(at: indexPath)
+        
+        if flag {
+            cell?.contentView.backgroundColor = UIColor.black
+        } else {
+            cell?.contentView.backgroundColor = nil
+        }
+    }
+    
     //MARK: SearchBar
     func filterContentForSearchText(searchText:String){
-        self.dataSourceForSearchResult = self.dataSource?.filter({ (text:String) -> Bool in
-            return text.contains(searchText)
-        })
+//        self.dataSourceForSearchResult = self.data?.filter({ (text:String) -> Bool in
+//            return text.contains(searchText)
+//        })
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -95,31 +120,18 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     //MARK: DataSource/ Delegate
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            switch kind {
-            //header
-            case UICollectionElementKindSectionHeader:
-                
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as UICollectionReusableView
+                let headerView: DepartmentCollectionReusableView = courseCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! DepartmentCollectionReusableView
+
+                headerView.departmentLabel.text = data.getGroupLabelAtIndex(indexPath.section)
                 
                 headerView.backgroundColor = UIColor.black
-//                headerView.de
+        
                 return headerView
-            //footer if needed
-            case UICollectionElementKindSectionFooter:
-                let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Footer", for: indexPath) as UICollectionReusableView
-                
-                footerView.backgroundColor = UIColor.black
-                return footerView
-                
-            default:
-                
-                assert(false, "Unexpected element kind")
-            }
         }
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return data.departments.count
     }
     
     
@@ -128,37 +140,34 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         if self.searchBarActive {
             return self.dataSourceForSearchResult!.count;
         }else{
-            return self.dataSource!.count
+            return data.numberOfRowsInEachGroup(section)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = courseCollectionView.dequeueReusableCell(withReuseIdentifier: "CourseIcon", for: indexPath) as! CourseCollectionViewCell
-        cell.indexPath = indexPath
-        //implement cell selection
-        if cell.isSelected == true{
-            cell.backgroundColor = UIColor.black
-        }else{
-            cell.backgroundColor = UIColor.clear
-        }
+        //set the course data
+        let courses: [Course] = data.coursesInGroup(indexPath.section)
+        let course = courses[indexPath.row]
+        
+        let name = course.name!
+        cell.courseLabel.text = name.capitalized
+        
+        
         //implement search 
         if (self.searchBarActive) {
             cell.courseLabel!.text = self.dataSourceForSearchResult![indexPath.row];
-        }else{
-            cell.courseLabel!.text = self.dataSource![indexPath.row];
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = courseCollectionView.cellForItem(at: indexPath)
-        //implement cell selection
-        if cell?.isSelected == true{
-            cell?.backgroundColor = UIColor.black
-        }else{
-            cell?.backgroundColor = UIColor.clear
-        }
+        highlightCell(indexPath, flag: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        highlightCell(indexPath, flag: false)
     }
     
 }
