@@ -58,6 +58,19 @@ class DataSource{
         }
         return filteredCourses
     }
+    
+    // Delete Items
+    func deleteItems(items: [CourseUI]) {
+        
+        for item in items {
+            // remove item
+            let index = courses.indexOfObject(item)
+            if index != -1 {
+                courses.remove(at: index)
+            }
+        }
+    }
+    
 }
 
 

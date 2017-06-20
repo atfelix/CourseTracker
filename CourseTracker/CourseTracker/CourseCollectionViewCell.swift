@@ -12,4 +12,5 @@ class CourseCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var courseLabel: UILabel!
     
+    
 }
