@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+
 class AddCourseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource{
     
     //temp info
@@ -17,6 +20,10 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //popover view controller
     var popoverViewController : PopoverViewController?
+    
+    //array of courses in the tableview that have been added
+    var tableCourses = [CourseAdded]()
+    
     //array of selected courses
     var selectedArray = [CourseUI]()
     
@@ -97,8 +104,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
             return SelectedTableViewCell()
         }
     }
-    
-    
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -253,6 +259,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         let cell = courseCollectionView.dequeueReusableCell(withReuseIdentifier: "CourseIcon", for: indexPath) as! CourseCollectionViewCell
         //set the course data
         let courses: [CourseUI] = data.coursesInGroup(indexPath.section)
+        
         let course = courses[indexPath.row]
         
         let name = course.name!
@@ -271,6 +278,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     //call pop over as you select an item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        
+        
         if let popover = self.popoverViewController {
             
             let cell = self.courseCollectionView!.cellForItem(at: indexPath) as! CourseCollectionViewCell
@@ -284,9 +293,12 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
             let cell = self.courseCollectionView!.cellForItem(at: indexPath) as! CourseCollectionViewCell
             
             _ = self.popoverViewController!.view
+            //set course label
             self.popoverViewController!.popCourseLabel.text = cell.courseLabel.text
             //set description
+//            self.popoverViewController!.popDescriptionLabel.text = 
             //set textbooks
+//            self.popoverViewController!.popTextbookLabel.text
             
             self.popoverViewController!.modalPresentationStyle = .overCurrentContext
             let popover = self.popoverViewController!.popoverPresentationController
@@ -296,30 +308,31 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
             popover?.sourceRect = CGRect(x: UIScreen.main.bounds.width * 0.5 - 200, y: UIScreen.main.bounds.height * 0.5 - 100, width: 242, height: 174)
             
             popover?.sourceView = self.view
-
-            self.popoverViewController!.preferredContentSize = CGSize(width: 242, height: 174)
+            
+            self.popoverViewController!.preferredContentSize = CGSize(width: 242, height: 180)
             
             self.present(self.popoverViewController!, animated: true, completion: nil)
         }
-        
+
         //select a cell
         highlightCell(indexPath, flag: true)
         //puts selected courses into an array
         selectedCourses()
         
+        
         courseCollectionView.reloadData()
     }
-    
-    
-    
+
+    //de select an item in collectionview
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+
         //de select a cell
         highlightCell(indexPath, flag: false)
         
         courseCollectionView.reloadData()
     }
-    
-    //
+
+    //layout the collapsable headers
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //set sections size to zero if button is tapped
         if sectionsToCollapse.contains(indexPath.section) {
