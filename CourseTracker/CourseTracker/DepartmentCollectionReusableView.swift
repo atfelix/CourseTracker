@@ -11,4 +11,6 @@ import UIKit
 class DepartmentCollectionReusableView: UICollectionReusableView {
         
     @IBOutlet weak var departmentLabel: UILabel!
+    @IBOutlet weak var button: UIButton!
+    
 }

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
         continueButton.layer.cornerRadius = 4
 
-        UofTAPI.updateDB()
+        //UofTAPI.updateDB()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +25,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    //1) put selected courses inside a cache
+    //2) tap on each course will present a pop over view
+            //-this will show textbook prices
+            //title, edition, author, imageURL, price
+            //then click cancel or add to add it to a cache
     
     
 }
