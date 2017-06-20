@@ -8,10 +8,7 @@
 
 import UIKit
 
-
-
-
-class AddCourseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource{
+class AddCourseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses{
     
     //temp info
     let data = DataSource()
@@ -20,9 +17,6 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //popover view controller
     var popoverViewController : PopoverViewController?
-    
-    //array of courses in the tableview that have been added
-    var tableCourses = [CourseAdded]()
     
     //array of selected courses
     var selectedArray = [CourseUI]()
@@ -86,8 +80,12 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         //
         //        }
     }
-    
-    
+    //MARK: Popover Delegate Method
+    func didSelectCourse(course: CourseUI){
+        selectedArray.append(course)
+        
+        selectedTableView.reloadData()
+    }
     
     //MARK: Tableview Delegate/ Datasource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -283,7 +281,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         if let popover = self.popoverViewController {
             
             let cell = self.courseCollectionView!.cellForItem(at: indexPath) as! CourseCollectionViewCell
-            popover.popCourseLabel.text = cell.courseLabel.text
+            self.popoverViewController!.course = data.courses[indexPath.row]
+             self.popoverViewController?.delegate = self
             
         }
         else {
@@ -292,13 +291,15 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
             
             let cell = self.courseCollectionView!.cellForItem(at: indexPath) as! CourseCollectionViewCell
             
-            _ = self.popoverViewController!.view
             //set course label
-            self.popoverViewController!.popCourseLabel.text = cell.courseLabel.text
+            self.popoverViewController!.course = data.courses[indexPath.row]
+            self.popoverViewController?.delegate = self
             //set description
 //            self.popoverViewController!.popDescriptionLabel.text = 
             //set textbooks
 //            self.popoverViewController!.popTextbookLabel.text
+            
+            
             
             self.popoverViewController!.modalPresentationStyle = .overCurrentContext
             let popover = self.popoverViewController!.popoverPresentationController
@@ -322,6 +323,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         
         courseCollectionView.reloadData()
     }
+
 
     //de select an item in collectionview
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

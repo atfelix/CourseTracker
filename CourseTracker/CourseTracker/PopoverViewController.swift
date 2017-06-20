@@ -8,28 +8,32 @@
 
 import UIKit
 
-protocol CourseAdded {
-    var courseTitle : String {get set}
+protocol SelectedCourses: class {
+    func didSelectCourse(course: CourseUI)
 }
 
 class PopoverViewController: UIViewController {
+    
+   var course:CourseUI?
     
     //MARK: Properties
     @IBOutlet var popCourseLabel: UILabel!
     @IBOutlet weak var popDescriptionLabel: UILabel!
     @IBOutlet weak var popTextbookLabel: UILabel!
     
-
     //buttons
     @IBOutlet weak var addSelected: UIButton!
     
     @IBOutlet weak var cancelSelected: UIButton!
     
+    weak var delegate: SelectedCourses?
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        self.popCourseLabel.text = course?.name
         // Do any additional setup after loading the view.
     }
 
@@ -39,16 +43,15 @@ class PopoverViewController: UIViewController {
     }
 
     //MARK: Helper Methods
+    
     @IBAction func addSelectedTapped(_ sender: Any) {
         //add the selected cell to the tableview Cell
-//        
-//        
-//        self.yourArray.append(msg)
-//        
-//        self.tblView.beginUpdates()
-//        self.tblView.insertRows(at: [IndexPath.init(row: self.yourArray.count-1, section: 0)], with: .automatic)
-//        self.tblView.endUpdates()
-//    
+
+        delegate?.didSelectCourse(course: self.course!)
+        
+        
+        self.dismiss(animated: true, completion: nil)
+        
     }
 
     @IBAction func cancelSelectedTapped(_ sender: Any) {
