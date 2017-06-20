@@ -11,8 +11,9 @@ import UIKit
 class AddCourseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
     
     //temp info
-    let data = DataSource()
-    
+//    let data = DataSource()
+    let data = CourseStore()
+
     //MARK: Properties
     @IBOutlet weak var addButton: UIButton!
     //collectionView
@@ -147,10 +148,10 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = courseCollectionView.dequeueReusableCell(withReuseIdentifier: "CourseIcon", for: indexPath) as! CourseCollectionViewCell
         //set the course data
-        let courses: [CourseUI] = data.coursesInGroup(indexPath.section)
+        let courses = data.coursesInGroup(indexPath.section)
         let course = courses[indexPath.row]
         
-        let name = course.name!
+        let name = course.name
         cell.courseLabel.text = name.capitalized
         
         
