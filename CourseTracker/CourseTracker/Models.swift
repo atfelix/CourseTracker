@@ -9,24 +9,6 @@
 import Foundation
 import RealmSwift
 
-enum DayOfWeek: String {
-    case Monday
-    case Tuesday
-    case Wednesday
-    case Thursday
-    case Friday
-    case Saturday
-    case Sunday
-}
-
-enum TextbookRequirement: String {
-    case required
-    case recommended
-    case alternate
-    case optional
-    case referenced
-}
-
 final class RealmString: Object {
     dynamic var string: String?
 }
@@ -86,6 +68,19 @@ final class AthleticEvent: Object {
     dynamic var startTime = 0
     dynamic var endTime = 0
     dynamic var duration = 0
+    
+    dynamic var building: Building? {
+        get {
+            var _building: Building? = nil
+            do {
+                try _building = Realm().objects(Building.self).filter("id == '\(buildingID)'").first
+            }
+            catch {
+                print("Realm Error occurred:  Could not find building")
+            }
+            return _building
+        }
+    }
 }
 
 final class ParkingLocation: Object {
@@ -149,6 +144,42 @@ final class CourseTime: Object {
     dynamic var endTime = 0
     dynamic var duration = 0
     dynamic var location = ""
+
+    dynamic var building: Building? {
+        get {
+            var _building: Building? = nil
+            let locationSplit = location.components(separatedBy: " ")
+
+            if locationSplit.count == 0 {
+                print("No building code for CourseTime")
+                return nil
+            }
+
+            let buildingCode = locationSplit[0]
+
+            do {
+                try _building = Realm().objects(Building.self).filter("code == '\(buildingCode)").first
+            }
+            catch {
+                print("Realm error occurred: Could not find Building with code: \(buildingCode)")
+            }
+
+            return _building
+        }
+    }
+
+    dynamic var room: String? {
+        get {
+            let locationSplit = location.components(separatedBy: " ")
+
+            guard locationSplit.count > 1 else {
+                print("No building room exists for CourseTime")
+                return nil
+            }
+
+            return locationSplit[1]
+        }
+    }
 }
 
 final class Course: Object {
@@ -168,5 +199,26 @@ final class Course: Object {
 
     override static func primaryKey() -> String? {
         return "id"
+    }
+}
+
+final class Department: Object {
+    dynamic var shortCode = ""
+    
+    dynamic var courses: [Course] {
+        get {
+            do {
+                let predicate = NSPredicate(format: "id BEGINSWITH %@", shortCode)
+                return try Array(Realm().objects(Course.self).filter(predicate))
+            }
+            catch let error {
+                print("Realm read error: \(error.localizedDescription)")
+                return []
+            }
+        }
+    }
+
+    override static func primaryKey() -> String? {
+        return "shortCode"
     }
 }

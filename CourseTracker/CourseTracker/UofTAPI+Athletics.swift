@@ -92,8 +92,13 @@ extension UofTAPI {
             addOrUpdateAthleticEvent(athleticDate: athleticDate, fromJSON: event)
         }
 
-        try! realm.write {
-            realm.add(athleticDate, update: true)
+        do {
+            try realm.write {
+                realm.add(athleticDate, update: true)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
 
@@ -119,9 +124,14 @@ extension UofTAPI {
         athleticEvent.endTime = endTime
         athleticEvent.duration = duration
 
-        try! realm.write {
-            athleticDate.athleticEvents.append(athleticEvent)
-            realm.add(athleticEvent)
+        do {
+            try realm.write {
+                athleticDate.athleticEvents.append(athleticEvent)
+                realm.add(athleticEvent)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
 }

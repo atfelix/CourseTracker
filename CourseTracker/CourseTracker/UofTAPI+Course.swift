@@ -91,8 +91,13 @@ extension UofTAPI {
             addOrUpdateCourseMeetingSection(course: course, fromJSON: meetingSection)
         }
 
-        try! realm.write {
-            realm.add(course, update: true)
+        do {
+            try realm.write {
+                realm.add(course, update: true)
+            }
+        }
+        catch let error {
+             UofTAPI.logRealmError(error)
         }
     }
 
@@ -122,9 +127,14 @@ extension UofTAPI {
             meetingSection.instructors.append(realmString)
         }
 
-        try! realm.write {
-            realm.add(meetingSection)
-            course.courseMeetingSections.append(meetingSection)
+        do {
+            try realm.write {
+                realm.add(meetingSection)
+                course.courseMeetingSections.append(meetingSection)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
 
@@ -146,8 +156,13 @@ extension UofTAPI {
         courseTime.duration = duration
         courseTime.location = location
 
-        try! realm.write {
-            meetingSection.times.append(courseTime)
+        do {
+            try realm.write {
+                meetingSection.times.append(courseTime)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
 }

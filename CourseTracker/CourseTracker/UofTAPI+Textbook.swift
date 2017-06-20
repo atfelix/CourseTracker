@@ -13,7 +13,7 @@ import RealmSwift
 extension UofTAPI {
 
     static func updateTextbookDB() {
-        makeTextbooksRequest(skip: 0)
+        makeTextbooksRequest(skip: realm.objects(Textbook.self).count)
     }
 
     static func makeTextbooksRequestURL(skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
@@ -72,8 +72,13 @@ extension UofTAPI {
             addOrUpdateTextbookCourse(textbook: textbook, fromJSON: course)
         }
 
-        try! realm.write {
-            realm.add(textbook, update: true)
+        do {
+            try realm.write {
+                realm.add(textbook, update: true)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
 
@@ -96,9 +101,14 @@ extension UofTAPI {
             addOrUpdateTextbookMeetingSection(textbookCourse: textbookCourse, fromJSON: meetingSection)
         }
 
-        try! realm.write {
-            textbook.courses.append(textbookCourse)
-            realm.add(textbookCourse, update: true)
+        do {
+            try realm.write {
+                textbook.courses.append(textbookCourse)
+                realm.add(textbookCourse, update: true)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
 
@@ -119,9 +129,14 @@ extension UofTAPI {
             textbookMeetingSection.instructors.append(realmString)
         }
 
-        try! realm.write {
-            textbookCourse.textbookMeetingSections.append(textbookMeetingSection)
-            realm.add(textbookMeetingSection)
+        do {
+            try realm.write {
+                textbookCourse.textbookMeetingSections.append(textbookMeetingSection)
+                realm.add(textbookMeetingSection)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
 }

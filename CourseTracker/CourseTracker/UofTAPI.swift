@@ -22,23 +22,17 @@ enum Method: String {
     case parking = "/transportation/parking"
 }
 
-enum FilterQueryType: String {
-    case Equal = ""
-    case NotEqual = "!"
-    case LessThan = "<"
-    case GreaterThan = ">"
-    case LessThanOrEqual = "<="
-    case GreaterThanOrEqual = ">="
-}
-
 struct UofTAPI {
     static let httpScheme = "https"
     static let baseURLString = "cobalt.qas.im"
     static let pathStart = "/api/1.0"
     static let key = UNIVERSITY_OF_TORONTO_API_KEY
-
-    static let realm = try! Realm()
     static let maxLimit = 100
+
+    private static let config = Realm.Configuration(shouldCompactOnLaunch: { totalBytes, usedBytes in
+        return true
+    })
+    static let realm = try! Realm(configuration: config)
 
     static func updateDB() {
         updateAthleticDB()
@@ -77,5 +71,9 @@ struct UofTAPI {
 
 
         return URL(string: urlString)
+    }
+
+    static func logRealmError(_ error: Error) {
+        print("Realm write error: \(error.localizedDescription)")
     }
 }

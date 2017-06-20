@@ -12,7 +12,7 @@ import Alamofire
 extension UofTAPI {
 
     static func updateParkingDB() {
-        makeParkingRequest(skip: 0)
+        makeParkingRequest(skip: realm.objects(ParkingLocation.self).count)
     }
 
     static func makeParkingRequestURL(skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
@@ -70,8 +70,13 @@ extension UofTAPI {
         parkingLocation.parkingDescription = parkingDescription
         parkingLocation.address = address
 
-        try! realm.write {
-            realm.add(parkingLocation, update: true)
+        do {
+            try realm.write {
+                realm.add(parkingLocation, update: true)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
 }

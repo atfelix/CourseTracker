@@ -12,7 +12,7 @@ import Alamofire
 extension UofTAPI {
 
     static func updateBuildingDB() {
-        makeBuildingRequest(skip: 0)
+        makeBuildingRequest(skip: realm.objects(Building.self).count)
     }
 
     static func makeBuildingsRequestURL(skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
@@ -84,8 +84,13 @@ extension UofTAPI {
             building.polygon.append(geoLocation)
         }
 
-        try! realm.write {
-            realm.add(building, update: true)
+        do {
+            try realm.write {
+                realm.add(building, update: true)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
 
@@ -107,10 +112,13 @@ extension UofTAPI {
         address.postalCode = postalCode
         address.id = [street, city, province, country, postalCode].joined(separator: ", ")
 
-        try! realm.write {
-            realm.add(address, update: true)
+        do {
+            try realm.write {
+                realm.add(address, update: true)
+            }
+        }
+        catch let error {
+            UofTAPI.logRealmError(error)
         }
     }
-
-
 }
