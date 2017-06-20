@@ -9,8 +9,14 @@
 import UIKit
 
 class PopoverViewController: UIViewController {
-
+    
+    //MARK: Properties
     @IBOutlet var popCourseLabel: UILabel!
+
+    @IBOutlet weak var addSelected: UIButton!
+    
+    @IBOutlet weak var cancelSelected: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,5 +29,13 @@ class PopoverViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func addSelectedTapped(_ sender: Any) {
+        
+    }
+
+    @IBAction func cancelSelectedTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
 }

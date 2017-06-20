@@ -382,7 +382,7 @@
                                                         </view>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeC-wc-Wbd">
                                                             <rect key="frame" x="37" y="28" width="40" height="40"/>
-                                                            <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="YYq-ST-JzC"/>
                                                                 <constraint firstAttribute="height" constant="40" id="s27-m7-o8P"/>
@@ -600,7 +600,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Calculate Route" image="ic_location_on_white">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.23398344604065666" green="0.8232868020304569" blue="0.58470260763634518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="mapButtonTapped:" destination="i1C-DJ-rMf" eventType="touchUpInside" id="Dcr-Hl-7rW"/>
@@ -865,45 +865,66 @@
         <!--Popover View Controller-->
         <scene sceneID="64n-9c-o5v">
             <objects>
-                <viewController storyboardIdentifier="Popover" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k9s-TO-qFy" customClass="PopoverViewController" customModule="CourseTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Popover" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k9s-TO-qFy" customClass="PopoverViewController" customModule="CourseTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rYy-6h-TNT"/>
                         <viewControllerLayoutGuide type="bottom" id="wZE-oH-tyr"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Vib-vf-3V4">
-                        <rect key="frame" x="0.0" y="0.0" width="242" height="150"/>
+                    <view key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Vib-vf-3V4">
+                        <rect key="frame" x="0.0" y="0.0" width="242" height="174"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drj-9s-Hh3">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drj-9s-Hh3">
                                 <rect key="frame" x="0.0" y="0.0" width="242" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TextBook Information" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLm-Ke-qOb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TextBook Information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLm-Ke-qOb">
                                 <rect key="frame" x="0.0" y="91" width="242" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course Description" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieF-8u-NDX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieF-8u-NDX">
                                 <rect key="frame" x="0.0" y="34" width="242" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0a-QK-6ua">
+                                <rect key="frame" x="16" y="149" width="87" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addSelectedTapped:" destination="k9s-TO-qFy" eventType="touchUpInside" id="uSn-Hp-EgH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y7-QJ-POe">
+                                <rect key="frame" x="139" y="150" width="87" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelSelectedTapped:" destination="k9s-TO-qFy" eventType="touchUpInside" id="QBh-H9-INP"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="242" height="150"/>
+                    <size key="freeformSize" width="242" height="174"/>
                     <connections>
+                        <outlet property="addSelected" destination="n0a-QK-6ua" id="kwN-5J-VJK"/>
+                        <outlet property="cancelSelected" destination="9y7-QJ-POe" id="1Wu-Lt-lVh"/>
                         <outlet property="popCourseLabel" destination="drj-9s-Hh3" id="5HN-iI-Mah"/>
                     </connections>
                 </viewController>
@@ -957,7 +978,7 @@
                                 <rect key="frame" x="0.0" y="143" width="375" height="308"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="a1Q-6p-HIV">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="a1Q-6p-HIV">
                                     <size key="itemSize" width="71" height="73"/>
                                     <size key="headerReferenceSize" width="50" height="27"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1028,24 +1049,41 @@
                                 <rect key="frame" x="0.0" y="451" width="375" height="146"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectedCourses" textLabel="vVb-fq-SWF" rowHeight="30" style="IBUITableViewCellStyleDefault" id="QWz-jq-gxC" customClass="SelectedTableViewCell" customModule="CourseTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectedCourses" rowHeight="30" id="QWz-jq-gxC" customClass="SelectedTableViewCell" customModule="CourseTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWz-jq-gxC" id="4iZ-5l-FqW" customClass="SelectedTableViewCell" customModule="CourseTracker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="29.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vVb-fq-SWF">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="29.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXe-hK-EWk">
+                                                    <rect key="frame" x="8" y="0.0" width="335" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-y4-4PI">
+                                                    <rect key="frame" x="341" y="0.0" width="26" height="30"/>
+                                                    <state key="normal" title="Button" image="ic_close"/>
+                                                    <connections>
+                                                        <action selector="deleteCourseTapped:" destination="ltj-Ic-wEJ" eventType="touchUpInside" id="ee7-ey-Lq1"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="CXe-hK-EWk" secondAttribute="trailing" constant="32" id="CMq-zt-y3L"/>
+                                                <constraint firstAttribute="bottom" secondItem="lYa-y4-4PI" secondAttribute="bottom" id="ONN-7c-fCc"/>
+                                                <constraint firstItem="CXe-hK-EWk" firstAttribute="top" secondItem="4iZ-5l-FqW" secondAttribute="top" id="QoZ-dH-T1c"/>
+                                                <constraint firstAttribute="trailing" secondItem="lYa-y4-4PI" secondAttribute="trailing" constant="8" id="TDk-qc-4Kl"/>
+                                                <constraint firstItem="lYa-y4-4PI" firstAttribute="top" secondItem="4iZ-5l-FqW" secondAttribute="top" id="rNG-VJ-bHt"/>
+                                                <constraint firstItem="lYa-y4-4PI" firstAttribute="leading" secondItem="4iZ-5l-FqW" secondAttribute="leading" constant="341" id="w0I-RA-lM6"/>
+                                                <constraint firstAttribute="bottom" secondItem="CXe-hK-EWk" secondAttribute="bottom" id="xy7-uO-LZS"/>
+                                                <constraint firstItem="CXe-hK-EWk" firstAttribute="leading" secondItem="4iZ-5l-FqW" secondAttribute="leading" constant="8" id="z6S-i9-Ic8"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="selectedCourseTitle" destination="vVb-fq-SWF" id="S0g-Fu-1ML"/>
+                                            <outlet property="deleteCourseButton" destination="lYa-y4-4PI" id="msZ-A8-6MY"/>
+                                            <outlet property="selectedCourseTitle" destination="CXe-hK-EWk" id="NbL-t3-PtW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1139,6 +1177,7 @@
         <image name="Drop" width="256" height="256"/>
         <image name="Edit" width="128" height="128"/>
         <image name="NearMe" width="800" height="800"/>
+        <image name="ic_close" width="24" height="24"/>
         <image name="ic_location_on_white" width="24" height="24"/>
         <image name="ic_stars_2x" width="24" height="24"/>
     </resources>

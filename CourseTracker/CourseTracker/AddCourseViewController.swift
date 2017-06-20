@@ -108,6 +108,31 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     //MARK: Helper Methods
+    
+    //delete the course button
+    @IBAction func deleteCourseTapped(_ sender: Any) {
+            var deletedCourses:[CourseUI] = []
+            
+            let indexpaths = courseCollectionView?.indexPathsForSelectedItems
+            
+            if let indexpaths = indexpaths {
+                
+                for item  in indexpaths {
+                    _ = courseCollectionView!.cellForItem(at: item)
+    
+                    courseCollectionView?.deselectItem(at:item , animated: true)
+                    //courses for section
+                    let sectionCourse = data.coursesInGroup(item.section)
+                    deletedCourses.append(sectionCourse[item.row])
+                }
+                
+                data.deleteItems(items: deletedCourses)
+                
+                courseCollectionView?.deleteItems(at: indexpaths)
+        }
+    }
+    
+    
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         
@@ -241,7 +266,9 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         
         return cell
     }
-    //
+    
+    
+    //call pop over as you select an item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let popover = self.popoverViewController {
@@ -261,15 +288,16 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
             //set description
             //set textbooks
             
-            self.popoverViewController!.modalPresentationStyle = .popover
+            self.popoverViewController!.modalPresentationStyle = .overCurrentContext
             let popover = self.popoverViewController!.popoverPresentationController
             
             
             popover?.passthroughViews = [self.view]
-            popover?.sourceRect = CGRect(x: 250, y: 500, width: 0, height: 0)
-            self.popoverViewController!.preferredContentSize = CGSize(width: 375, height: 150)
+            popover?.sourceRect = CGRect(x: UIScreen.main.bounds.width * 0.5 - 200, y: UIScreen.main.bounds.height * 0.5 - 100, width: 242, height: 174)
             
-            popover!.sourceView = self.view
+            popover?.sourceView = self.view
+
+            self.popoverViewController!.preferredContentSize = CGSize(width: 242, height: 174)
             
             self.present(self.popoverViewController!, animated: true, completion: nil)
         }
@@ -281,6 +309,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         
         courseCollectionView.reloadData()
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         //de select a cell

@@ -14,7 +14,6 @@
 		110F4ED31EEB617F00D88F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110F4ED11EEB617F00D88F8E /* LaunchScreen.storyboard */; };
 		110F4EDE1EEB617F00D88F8E /* CourseTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EDD1EEB617F00D88F8E /* CourseTrackerTests.swift */; };
 		110F4EE91EEB617F00D88F8E /* CourseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */; };
-		1179200E1EF866FF00858073 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1179200D1EF866FF00858073 /* Alamofire.framework */; };
 		1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */; };
 		119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */; };
 		119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */; };
@@ -38,15 +37,19 @@
 		3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616991EF09F2F00CE51D3 /* UserData.swift */; };
 		317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */; };
 		317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */; };
-		317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */; };
 		31A955D11EF84EB500EEF0CD /* courses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A955D01EF84EB500EEF0CD /* courses.plist */; };
 		31A955D81EF8C42D00EEF0CD /* SelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */; };
 		31A955DA1EF8CFA200EEF0CD /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */; };
+		31CBBB981EF97D21009DA415 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB941EF97D21009DA415 /* Alamofire.framework */; };
+		31CBBB991EF97D21009DA415 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB941EF97D21009DA415 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		31CBBB9A1EF97D21009DA415 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB951EF97D21009DA415 /* JTAppleCalendar.framework */; };
+		31CBBB9B1EF97D21009DA415 /* JTAppleCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB951EF97D21009DA415 /* JTAppleCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		31CBBB9D1EF97D21009DA415 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB961EF97D21009DA415 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		31CBBB9F1EF97D21009DA415 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB971EF97D21009DA415 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31F1D88F1EF8282000F215F2 /* DepartmentCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1D88E1EF8282000F215F2 /* DepartmentCollectionReusableView.swift */; };
 		31F1D8911EF8453900F215F2 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1D8901EF8453900F215F2 /* DataSource.swift */; };
 		31F1D8941EF8475A00F215F2 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1D8931EF8475A00F215F2 /* Course.swift */; };
 		6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */; };
-		C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D79368FC603CE4631008E09 /* Pods_CourseTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,23 @@
 			remoteInfo = CourseTracker;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		31CBBBA01EF97D21009DA415 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				31CBBB9D1EF97D21009DA415 /* Realm.framework in Embed Frameworks */,
+				31CBBB991EF97D21009DA415 /* Alamofire.framework in Embed Frameworks */,
+				31CBBB9F1EF97D21009DA415 /* RealmSwift.framework in Embed Frameworks */,
+				31CBBB9B1EF97D21009DA415 /* JTAppleCalendar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		110F4EC51EEB617F00D88F8E /* CourseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +128,10 @@
 		31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedTableViewCell.swift; sourceTree = "<group>"; };
 		31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		31B29A9D1EEC8CEC00BF3F91 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		31CBBB941EF97D21009DA415 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		31CBBB951EF97D21009DA415 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
+		31CBBB961EF97D21009DA415 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		31CBBB971EF97D21009DA415 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		31F1D88E1EF8282000F215F2 /* DepartmentCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentCollectionReusableView.swift; sourceTree = "<group>"; };
 		31F1D8901EF8453900F215F2 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		31F1D8931EF8475A00F215F2 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -127,11 +151,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1179200E1EF866FF00858073 /* Alamofire.framework in Frameworks */,
+				31CBBB9A1EF97D21009DA415 /* JTAppleCalendar.framework in Frameworks */,
 				11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */,
 				11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */,
-				317DDF0E1EED0DFE00F02C3B /* JTAppleCalendar.framework in Frameworks */,
-				C5FE17688DBFBF7A0672FAAF /* Pods_CourseTracker.framework in Frameworks */,
+				31CBBB981EF97D21009DA415 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +180,10 @@
 		110F4EBC1EEB617F00D88F8E = {
 			isa = PBXGroup;
 			children = (
+				31CBBB941EF97D21009DA415 /* Alamofire.framework */,
+				31CBBB951EF97D21009DA415 /* JTAppleCalendar.framework */,
+				31CBBB961EF97D21009DA415 /* Realm.framework */,
+				31CBBB971EF97D21009DA415 /* RealmSwift.framework */,
 				31B29A9D1EEC8CEC00BF3F91 /* MyPlayground.playground */,
 				110F4EC71EEB617F00D88F8E /* CourseTracker */,
 				110F4EDC1EEB617F00D88F8E /* CourseTrackerTests */,
@@ -363,6 +390,7 @@
 				11B3EB471EEC780700569DE9 /* ShellScript */,
 				782FC64653041B8B14FC6C15 /* [CP] Embed Pods Frameworks */,
 				03F550E59D75B630A13095E1 /* [CP] Copy Pods Resources */,
+				31CBBBA01EF97D21009DA415 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

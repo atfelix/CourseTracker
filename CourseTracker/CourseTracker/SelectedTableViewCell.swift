@@ -12,4 +12,5 @@ class SelectedTableViewCell: UITableViewCell {
     
     //MARK: Properties
     @IBOutlet weak var selectedCourseTitle: UILabel!
+    @IBOutlet weak var deleteCourseButton: UIButton!
 }
