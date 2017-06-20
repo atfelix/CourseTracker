@@ -15,6 +15,7 @@
 		110F4EDE1EEB617F00D88F8E /* CourseTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EDD1EEB617F00D88F8E /* CourseTrackerTests.swift */; };
 		110F4EE91EEB617F00D88F8E /* CourseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */; };
 		1179200E1EF866FF00858073 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1179200D1EF866FF00858073 /* Alamofire.framework */; };
+		117920101EF9979500858073 /* UofTAPI+CourseShortCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179200F1EF9979500858073 /* UofTAPI+CourseShortCode.swift */; };
 		1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */; };
 		119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */; };
 		119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */; };
@@ -79,6 +80,7 @@
 		110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTrackerUITests.swift; sourceTree = "<group>"; };
 		110F4EEA1EEB617F00D88F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1179200D1EF866FF00858073 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		1179200F1EF9979500858073 /* UofTAPI+CourseShortCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+CourseShortCode.swift"; sourceTree = "<group>"; };
 		1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Course.swift"; sourceTree = "<group>"; };
 		119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Athletics.swift"; sourceTree = "<group>"; };
 		119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Building.swift"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				11E94F591EF8644C009D6718 /* UofTAPI.swift */,
 				119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */,
 				119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */,
+				1179200F1EF9979500858073 /* UofTAPI+CourseShortCode.swift */,
 				1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */,
 				119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */,
 				119C96991EF5E5980035FD9A /* UofTAPI+Textbook.swift */,
@@ -637,6 +640,7 @@
 				11E94F581EF8642F009D6718 /* PageViewController.swift in Sources */,
 				119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */,
 				31F1D8911EF8453900F215F2 /* DataSource.swift in Sources */,
+				117920101EF9979500858073 /* UofTAPI+CourseShortCode.swift in Sources */,
 				313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */,
 				317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */,
 				11AB670B1EF81B1500AB1F00 /* API_KEYS.swift in Sources */,

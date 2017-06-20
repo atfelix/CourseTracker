@@ -40,6 +40,16 @@ struct UofTAPI {
         updateTextbookDB()
         updateParkingDB()
         updateCourseDB()
+
+        if realm.objects(CourseShortCode.self).count == 0 {
+            createCouseShortCodeinDB()
+        }
+
+        //guard let shortCode = realm.objects(CourseShortCode.self).filter("shortCode == 'AST'").first else { print("blah"); return}
+        let courses = realm.objects(Course.self).filter("term BEGINSWITH '2017 Summer'")
+        for course in courses {
+            print(course.code, course.name)
+        }
     }
 
     static func makeRequestURL(method: Method, skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {

@@ -202,13 +202,13 @@ final class Course: Object {
     }
 }
 
-final class Department: Object {
+final class CourseShortCode: Object {
     dynamic var shortCode = ""
     
     dynamic var courses: [Course] {
         get {
             do {
-                let predicate = NSPredicate(format: "id BEGINSWITH %@", shortCode)
+                let predicate = NSPredicate(format: "id BEGINSWITH %@ AND term BEGINSWITH %@", shortCode, "2017 Summer")
                 return try Array(Realm().objects(Course.self).filter(predicate))
             }
             catch let error {
