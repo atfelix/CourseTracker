@@ -11,7 +11,7 @@ import RealmSwift
 
 class CourseStore {
 
-    let departments: [CourseShortCode]
+    var departments = [CourseShortCode]()
 
     private static let config = Realm.Configuration(shouldCompactOnLaunch: { totalBytes, usedBytes in
         return true
@@ -20,7 +20,14 @@ class CourseStore {
 
     init() {
         do {
-            try departments = Array(Realm().objects(CourseShortCode.self))
+            let _departmentCodes: [CourseShortCode]
+            try _departmentCodes = Array(Realm().objects(CourseShortCode.self))
+
+            for code in _departmentCodes {
+                if CourseStore.countForCourses(code: code) > 0 {
+                    departments.append(code)
+                }
+            }
         }
         catch let error {
             print("Error: \(error.localizedDescription)")
@@ -60,5 +67,14 @@ class CourseStore {
         let department = departments[index].shortCode
         let predicate = NSPredicate(format: "term BEGINSWITH '2017 Summer' AND code BEGINSWITH '\(department)'")
         return Array(CourseStore.realm.objects(Course.self).filter(predicate))
+    }
+
+    static private func countForCourses(code: CourseShortCode) -> Int {
+        return CourseStore.coursesForCode(code: code).count
+    }
+
+    static private func coursesForCode(code: CourseShortCode) -> [Course] {
+        let predicate = NSPredicate(format: "term BEGINSWITH '2017 Summer' AND code BEGINSWITH '\(code.shortCode)'")
+        return Array(CourseStore.realm.objects(Course.self).filter(predicate)) 
     }
 }

@@ -151,8 +151,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         let courses = data.coursesInGroup(indexPath.section)
         let course = courses[indexPath.row]
         
-        let name = course.name
-        cell.courseLabel.text = name.capitalized
+        let name = course.code
+        cell.courseLabel.text = name
         
         
         //implement search 
