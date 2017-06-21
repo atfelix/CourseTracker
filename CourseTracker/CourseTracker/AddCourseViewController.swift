@@ -15,6 +15,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var courseCollectionView: UICollectionView!
     @IBOutlet weak var selectedTableView: UITableView!
+    @IBOutlet weak var tableHeaderView: UIView!
+    
     @IBOutlet weak var searchBar: UISearchBar!
 
     var dataSource:[String]?
@@ -44,6 +46,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         selectedTableView.delegate = self
         selectedTableView.rowHeight = UITableViewAutomaticDimension
         selectedTableView.estimatedRowHeight = 28
+        
+        self.tableHeaderView.viewWithTag(1000)
         
     }
     // MARK: Popover Delegate
@@ -88,7 +92,11 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
             }
             
             courseStore.deleteItems(courses: deletedCourses)
-            selectedTableView?.deleteRows(at: indexpaths, with: .none)
+            selectedTableView?.deleteRows(at: indexPaths, with: .none)
+            
+            //selectedArray.remove(at: indexPath.row)
+            
+            selectedTableView.reloadData()
         }
         
     }
@@ -101,9 +109,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     //button that collapses the header
     func headerBtnTapped(with button: UIButton){
         
-        //rotate the button
-        button.transform = button.transform.rotated(by: CGFloat.pi/2)
-        
+               
         //get header index
         guard let index = sectionsToCollapse.index(of: button.tag) else {
             sectionsToCollapse.append(button.tag)
