@@ -9,12 +9,12 @@
 import UIKit
 
 protocol SelectedCourses: class {
-    func didSelectCourse(course: CourseUI)
+    func didSelectCourse(course: Course)
 }
 
 class PopoverViewController: UIViewController {
     
-   var course:CourseUI?
+   var course:Course?
     
     //MARK: Properties
     @IBOutlet var popCourseLabel: UILabel!

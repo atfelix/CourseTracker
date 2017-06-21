@@ -12,6 +12,7 @@ import RealmSwift
 class CourseStore {
 
     var departments = [CourseShortCode]()
+    var courses = [Course]()
 
     private static let config = Realm.Configuration(shouldCompactOnLaunch: { totalBytes, usedBytes in
         return true
@@ -21,12 +22,18 @@ class CourseStore {
     init() {
         do {
             let _departmentCodes: [CourseShortCode]
+            let _courses: [Course]
             try _departmentCodes = Array(Realm().objects(CourseShortCode.self))
+            try _courses = Array(Realm().objects(Course.self).filter("term BEGINSWITH '2017 Summer'"))
 
             for code in _departmentCodes {
                 if CourseStore.countForCourses(code: code) > 0 {
                     departments.append(code)
                 }
+            }
+            
+            for course in _courses {
+                courses.append(course)
             }
         }
         catch let error {
@@ -57,6 +64,15 @@ class CourseStore {
         }
 
         return rowsInGroup
+    }
+    
+    func deleteItems(courses: [Course]) {
+        for course in courses {
+            let index = self.courses.indexOfObject(course)
+            if index != -1 {
+                self.courses.remove(at: index)
+            }
+        }
     }
 
     private func coursesForIndex(_ index: Int) -> [Course]? {

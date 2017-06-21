@@ -20,7 +20,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     var popoverViewController : PopoverViewController?
     
     //array of selected courses
-    var selectedArray = [CourseUI]()
+    var selectedArray = [Course]()
     
     //MARK: Properties
     @IBOutlet weak var calendarButton: UIButton!
@@ -82,7 +82,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         //        }
     }
     //MARK: Popover Delegate Method
-    func didSelectCourse(course: CourseUI){
+    func didSelectCourse(course: Course){
         selectedArray.append(course)
         
         selectedTableView.reloadData()
@@ -116,25 +116,25 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //delete the course button
     @IBAction func deleteCourseTapped(_ sender: Any) {
-            var deletedCourses:[CourseUI] = []
-            
-            let indexpaths = courseCollectionView?.indexPathsForSelectedItems
-            
-            if let indexpaths = indexpaths {
-                
-                for item  in indexpaths {
-                    _ = courseCollectionView!.cellForItem(at: item)
-    
-                    courseCollectionView?.deselectItem(at:item , animated: true)
-                    //courses for section
-                    let sectionCourse = data.coursesInGroup(item.section)
-                    deletedCourses.append(sectionCourse[item.row])
-                }
-                
-                data.deleteItems(items: deletedCourses)
-                
-                courseCollectionView?.deleteItems(at: indexpaths)
-        }
+//            var deletedCourses:[Course] = []
+//            
+//            let indexpaths = courseCollectionView?.indexPathsForSelectedItems
+//            
+//            if let indexpaths = indexpaths {
+//                
+//                for item  in indexpaths {
+//                    _ = courseCollectionView!.cellForItem(at: item)
+//    
+//                    courseCollectionView?.deselectItem(at:item , animated: true)
+//                    //courses for section
+//                    let sectionCourse = data.coursesInGroup(item.section)
+//                    deletedCourses.append(sectionCourse[item.row])
+//                }
+//                
+//                data.deleteItems(courses: deletedCourses)
+//                
+//                courseCollectionView?.deleteItems(at: indexpaths)
+//        }
     }
     
     
@@ -200,7 +200,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self .cancelSearching()
+        self.cancelSearching()
         self.courseCollectionView?.reloadData()
     }
     
