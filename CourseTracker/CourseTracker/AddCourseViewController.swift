@@ -43,7 +43,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         selectedTableView.dataSource = self
         selectedTableView.delegate = self
         selectedTableView.rowHeight = UITableViewAutomaticDimension
-        selectedTableView.estimatedRowHeight = 28
+        selectedTableView.estimatedRowHeight = 44
         
     }
     // MARK: Popover Delegate
