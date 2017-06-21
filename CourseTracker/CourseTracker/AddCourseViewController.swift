@@ -40,9 +40,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         selectedTableView.dataSource = self
         selectedTableView.delegate = self
     }
-    
-    // MARK: Popover Delegate Method
-    
+    // MARK: Popover Delegate
+
     func didSelectCourse(course: Course){
         selectedArray.append(course)
         selectedTableView.reloadData()
@@ -82,8 +81,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
             }
             
             courseStore.deleteItems(courses: deletedCourses)
-            
-            selectedTableView?.deleteRows(at: indexPaths, with: .none)
+            selectedTableView?.deleteRows(at: indexpaths, with: .none)
         }
     }
 
