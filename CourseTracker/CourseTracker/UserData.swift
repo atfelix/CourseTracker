@@ -57,6 +57,7 @@ class CustomEvent: EventProtocol{
 class UserData {
     var events : [EventProtocol]?
     
+    
     init() {
         //temp data
         let courseA = CourseEvent(title: "COSC1390", location: "Campus A",  startDate: Date(), endDate: Date())

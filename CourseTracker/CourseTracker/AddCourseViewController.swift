@@ -42,15 +42,21 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     //MARK: ViewdidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        //search bar data
         searchBar.delegate = self
+        self.dataSourceForSearchResult = [String]()
+        
+        //collectionview data
         courseCollectionView.delegate = self
         courseCollectionView.dataSource = courseStore
         courseStore.delegate = self
         
-        self.dataSourceForSearchResult = [String]()
-        
+        //table view data
         selectedTableView.dataSource = self
         selectedTableView.delegate = self
+        selectedTableView.rowHeight = UITableViewAutomaticDimension
+        selectedTableView.estimatedRowHeight = 28
+        
     }
     //MARK: Popover Delegate
     
@@ -87,6 +93,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //delete the course button
     @IBAction func deleteCourseTapped(_ sender: Any) {
+        //
         var deletedCourses:[Course] = []
         
         let indexpaths = selectedTableView?.indexPathsForSelectedRows
@@ -105,10 +112,9 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
             data.deleteItems(courses: deletedCourses)
             
             selectedTableView?.deleteRows(at: indexpaths, with: .none)
-            selectedArray.remove(at: <#T##Int#>)
         }
+        
     }
-    
     
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
@@ -118,6 +124,10 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //button that collapses the header
     func headerBtnTapped(with button: UIButton){
+        
+        //rotate the button
+        button.transform = button.transform.rotated(by: CGFloat.pi/2)
+        
         //get header index
         guard let index = sectionsToCollapse.index(of: button.tag) else {
             sectionsToCollapse.append(button.tag)
@@ -127,7 +137,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         //remove header from Sections to Collapse
         sectionsToCollapse.remove(at: index)
         courseCollectionView.reloadData()
-        
+
     }
     
     //get indexpath of selected cell

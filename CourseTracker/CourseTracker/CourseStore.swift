@@ -105,7 +105,6 @@ class CourseStore: NSObject {
             let courses = coursesForIndex(indexPath.section) else {
                 return nil
         }
-        print(courses[indexPath.item])
         return courses[indexPath.item]
     }
 }
