@@ -28,6 +28,7 @@
 		11E94F581EF8642F009D6718 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
 		11E94F5A1EF8644C009D6718 /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E94F591EF8644C009D6718 /* UofTAPI.swift */; };
 		11E94F5C1EF86466009D6718 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E94F5B1EF86466009D6718 /* Models.swift */; };
+		11EDFEA51EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */; };
 		3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */; };
 		3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105109C1EF6759800F34D43 /* BuildingData.swift */; };
 		3105109F1EF67D5900F34D43 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3105109E1EF67D5900F34D43 /* buildings.plist */; };
@@ -116,6 +117,7 @@
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		11E94F591EF8644C009D6718 /* UofTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UofTAPI.swift; sourceTree = "<group>"; };
 		11E94F5B1EF86466009D6718 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCourseViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		3105109C1EF6759800F34D43 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 		3105109E1EF67D5900F34D43 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				31F1D8931EF8475A00F215F2 /* CourseUI.swift */,
 				116219B71EF9BFB1009E1885 /* CourseStore.swift */,
 				116219B91EFACCB4009E1885 /* CourseStore+UICollectionViewDataSource.swift */,
+				11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */,
 				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
 				31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */,
 				31A955D31EF8C35500EEF0CD /* TableCells */,
@@ -693,6 +696,7 @@
 				119C969A1EF5E5980035FD9A /* UofTAPI+Textbook.swift in Sources */,
 				11E94F581EF8642F009D6718 /* PageViewController.swift in Sources */,
 				31A955D81EF8C42D00EEF0CD /* SelectedTableViewCell.swift in Sources */,
+				11EDFEA51EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift in Sources */,
 				119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */,
 				117920101EF9979500858073 /* UofTAPI+CourseShortCode.swift in Sources */,
 				313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */,
