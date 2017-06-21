@@ -52,18 +52,9 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         selectedTableView.dataSource = self
         selectedTableView.delegate = self
     }
+    //MARK: Popover Delegate
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if let indexPath = getIndexPathForSelectedCell(){
-        }
-    }
-    
-    //MARK: Tableview Helper Methods
-    
-    //MARK: Popover Delegate Method
-    
+    //Delegate Method
     func didSelectCourse(course: Course){
         selectedArray.append(course)
         
@@ -114,6 +105,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
             data.deleteItems(courses: deletedCourses)
             
             selectedTableView?.deleteRows(at: indexpaths, with: .none)
+            selectedArray.remove(at: <#T##Int#>)
         }
     }
     
