@@ -45,7 +45,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         selectedTableView.dataSource = self
         selectedTableView.delegate = self
         selectedTableView.rowHeight = UITableViewAutomaticDimension
-        selectedTableView.estimatedRowHeight = 28
+        selectedTableView.estimatedRowHeight = 44
         
         self.tableHeaderView.viewWithTag(1000)
         
@@ -97,6 +97,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
             //selectedArray.remove(at: indexPath.row)
             
             selectedTableView.reloadData()
+
         }
         
     }

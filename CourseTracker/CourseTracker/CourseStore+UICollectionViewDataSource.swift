@@ -38,6 +38,13 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
         headerView.button.tag = indexPath.section
         headerView.button.addTarget(self, action: #selector(headerButtonTapped(with:)), for: .touchUpInside)
 
+        if sectionsToCollapse.index(of: indexPath.section) != nil {
+            headerView.button.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+        }
+        else {
+            headerView.button.transform = CGAffineTransform(rotationAngle: 0)
+        }
+
         headerView.departmentLabel.text = getGroupLabelAtIndex(indexPath.section)
 
         headerView.backgroundColor = .black
