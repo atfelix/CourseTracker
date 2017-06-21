@@ -30,15 +30,21 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //search bar data
         searchBar.delegate = self
+        self.dataSourceForSearchResult = [String]()
+        
+        //collectionview data
         courseCollectionView.delegate = self
         courseCollectionView.dataSource = courseStore
         courseStore.delegate = self
         
-        self.dataSourceForSearchResult = [String]()
-        
+        //table view data
         selectedTableView.dataSource = self
         selectedTableView.delegate = self
+        selectedTableView.rowHeight = UITableViewAutomaticDimension
+        selectedTableView.estimatedRowHeight = 28
+        
     }
     // MARK: Popover Delegate
 
@@ -69,6 +75,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //delete the course button
     @IBAction func deleteCourseTapped(_ sender: Any) {
+        //
         var deletedCourses:[Course] = []
 
         if let indexPaths = selectedTableView?.indexPathsForSelectedRows {
@@ -83,8 +90,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
             courseStore.deleteItems(courses: deletedCourses)
             selectedTableView?.deleteRows(at: indexPaths, with: .none)
         }
+        
     }
-
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         
@@ -93,6 +100,10 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //button that collapses the header
     func headerBtnTapped(with button: UIButton){
+        
+        //rotate the button
+        button.transform = button.transform.rotated(by: CGFloat.pi/2)
+        
         //get header index
         guard let index = sectionsToCollapse.index(of: button.tag) else {
             sectionsToCollapse.append(button.tag)
@@ -102,7 +113,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         //remove header from Sections to Collapse
         sectionsToCollapse.remove(at: index)
         courseCollectionView.reloadData()
-        
+
     }
     
     //get indexpath of selected cell
