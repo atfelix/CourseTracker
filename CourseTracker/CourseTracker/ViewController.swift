@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
         continueButton.layer.cornerRadius = 4
 
-        //UofTAPI.updateDB()
+//        UofTAPI.updateDB()
     }
 
     override func didReceiveMemoryWarning() {

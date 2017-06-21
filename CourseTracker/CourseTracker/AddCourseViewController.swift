@@ -12,7 +12,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //temp info
     let data = CourseStore()
-
+    
     //collectionview sections to collapse
     var sectionsToCollapse = [Int]()
     
@@ -54,17 +54,16 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         
         if let indexPath = getIndexPathForSelectedCell(){
-            highlightCell(indexPath, flag: false)
         }
     }
-
+    
     //MARK: Tableview Helper Methods
-
+    
     //MARK: Popover Delegate Method
-
+    
     func didSelectCourse(course: Course){
         selectedArray.append(course)
         
@@ -74,19 +73,17 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     //MARK: Tableview Delegate/ Datasource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = selectedTableView.dequeueReusableCell(withIdentifier: "SelectedCourses") as? SelectedTableViewCell{
-            
-            let selected = selectedArray[indexPath.row]
-            
-            cell.selectedCourseTitle.text = selected.name
-            //add course to cell other wise
-            return cell
-        } else {
-            //return the tableview cell
-            return SelectedTableViewCell()
-        }
+        let cell = selectedTableView.dequeueReusableCell(withIdentifier: "SelectedCourses") as! SelectedTableViewCell
+        
+        let selected = selectedArray[indexPath.row]
+        
+        cell.selectedCourseTitle.text = selected.name
+        //add course to cell other wise
+        return cell
+        
+        
     }
-
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -99,24 +96,24 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //delete the course button
     @IBAction func deleteCourseTapped(_ sender: Any) {
-            var deletedCourses:[Course] = []
+        var deletedCourses:[Course] = []
+        
+        let indexpaths = selectedTableView?.indexPathsForSelectedRows
+        
+        if let indexpaths = indexpaths {
             
-            let indexpaths = selectedTableView?.indexPathsForSelectedRows
+            for item  in indexpaths {
+                _ = selectedTableView!.cellForRow(at: item)
+                
+                selectedTableView?.deselectRow(at:item , animated: true)
+                //courses for section
+                let sectionCourse = data.coursesInGroup(item.section)
+                deletedCourses.append(sectionCourse[item.row])
+            }
             
-            if let indexpaths = indexpaths {
-                
-                for item  in indexpaths {
-                    _ = selectedTableView!.cellForRow(at: item)
-    
-                    selectedTableView?.deselectRow(at:item , animated: true)
-                    //courses for section
-                    let sectionCourse = data.coursesInGroup(item.section)
-                    deletedCourses.append(sectionCourse[item.row])
-                }
-                
-                data.deleteItems(courses: deletedCourses)
-                
-                selectedTableView?.deleteRows(at: indexpaths, with: .none)
+            data.deleteItems(courses: deletedCourses)
+            
+            selectedTableView?.deleteRows(at: indexpaths, with: .none)
         }
     }
     
@@ -149,18 +146,6 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
             indexPath = courseCollectionView.indexPathsForSelectedItems![0]
         }
         return indexPath
-    }
-    //when cell is selected
-    func highlightCell(_ indexPath : IndexPath, flag: Bool) {
-        
-        let cell = courseCollectionView.cellForItem(at: indexPath)
-        
-        if flag {
-            cell?.contentView.backgroundColor = .black
-            //initialize pop up view controller
-        } else {
-            cell?.contentView.backgroundColor = .clear
-        }
     }
     
     //MARK: SearchBar
@@ -260,64 +245,14 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     //call pop over as you select an item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
-        
-        if let popover = self.popoverViewController {
-            
-            let cell = self.courseCollectionView!.cellForItem(at: indexPath) as! CourseCollectionViewCell
-            self.popoverViewController!.course = data.courses[indexPath.row]
-             self.popoverViewController?.delegate = self
-            
-        }
-        else {
-            
-            self.popoverViewController = self.storyboard?.instantiateViewController(withIdentifier: "Popover") as? PopoverViewController
-            
-            let cell = self.courseCollectionView!.cellForItem(at: indexPath) as! CourseCollectionViewCell
-            
-            //set course label
-            self.popoverViewController!.course = data.courses[indexPath.row]
-            self.popoverViewController?.delegate = self
-            //set description
-//            self.popoverViewController!.popDescriptionLabel.text = 
-            //set textbooks
-//            self.popoverViewController!.popTextbookLabel.text
-            
-            
-            
-            self.popoverViewController!.modalPresentationStyle = .overCurrentContext
-            let popover = self.popoverViewController!.popoverPresentationController
-            
-            
-            popover?.passthroughViews = [self.view]
-            popover?.sourceRect = CGRect(x: UIScreen.main.bounds.width * 0.5 - 200, y: UIScreen.main.bounds.height * 0.5 - 100, width: 242, height: 174)
-            
-            popover?.sourceView = self.view
-            
-            self.popoverViewController!.preferredContentSize = CGSize(width: 242, height: 180)
-            
-            self.present(self.popoverViewController!, animated: true, completion: nil)
-        }
-
-        //select a cell
-        highlightCell(indexPath, flag: true)
-        //puts selected courses into an array
-        //selectedCourses()
-        
+        let popover = self.storyboard?.instantiateViewController(withIdentifier: "Popover") as! PopoverViewController
+        popover.course = courseStore.courseFor(indexPath: indexPath)
+        popover.delegate = self
+        self.present(popover, animated: true, completion: nil)
         
         courseCollectionView.reloadData()
     }
-
-
-    //de select an item in collectionview
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-
-        //de select a cell
-        highlightCell(indexPath, flag: false)
-        
-        courseCollectionView.reloadData()
-    }
-
+    
     //layout the collapsable headers
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //set sections size to zero if button is tapped
@@ -327,8 +262,9 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         //if already collapsed then return to original size
         return defaultItemSize
     }
-
+    
     func reloadData() {
         courseCollectionView.reloadData()
     }
+    
 }

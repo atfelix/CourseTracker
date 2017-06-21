@@ -33,7 +33,7 @@ class PopoverViewController: UIViewController {
         super.viewDidLoad()
 
         
-        self.popCourseLabel.text = course?.name
+        self.popCourseLabel.text = course?.name ?? "wtf"
         // Do any additional setup after loading the view.
     }
 
@@ -47,7 +47,7 @@ class PopoverViewController: UIViewController {
     @IBAction func addSelectedTapped(_ sender: Any) {
         //add the selected cell to the tableview Cell
 
-        delegate?.didSelectCourse(course: self.course!)
+        delegate?.didSelectCourse(course: course!)
         
         
         self.dismiss(animated: true, completion: nil)
