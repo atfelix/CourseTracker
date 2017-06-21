@@ -81,7 +81,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
             }
             
             courseStore.deleteItems(courses: deletedCourses)
-            selectedTableView?.deleteRows(at: indexpaths, with: .none)
+            selectedTableView?.deleteRows(at: indexPaths, with: .none)
         }
     }
 
