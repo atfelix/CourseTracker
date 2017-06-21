@@ -6,20 +6,26 @@
 //  Copyright © 2017 Adam Felix. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RealmSwift
 
-class CourseStore {
+protocol CourseStoreDelegate: class {
+    func reloadData()
+}
+
+class CourseStore: NSObject {
 
     var departments = [CourseShortCode]()
     var courses = [Course]()
+    var sectionsToCollapse = [Int]()
+    weak var delegate: CourseStoreDelegate!
 
     private static let config = Realm.Configuration(shouldCompactOnLaunch: { totalBytes, usedBytes in
         return true
     })
     static let realm = try! Realm(configuration: config)
 
-    init() {
+    override init() {
         do {
             let _departmentCodes: [CourseShortCode]
             let _courses: [Course]
@@ -68,10 +74,9 @@ class CourseStore {
     
     func deleteItems(courses: [Course]) {
         for course in courses {
-            let index = self.courses.indexOfObject(course)
-            if index != -1 {
-                self.courses.remove(at: index)
-            }
+            guard let index = self.courses.index(of: course) else { continue }
+
+            self.courses.remove(at: index)
         }
     }
 
@@ -82,7 +87,8 @@ class CourseStore {
 
         let department = departments[index].shortCode
         let predicate = NSPredicate(format: "term BEGINSWITH '2017 Summer' AND code BEGINSWITH '\(department)'")
-        return Array(CourseStore.realm.objects(Course.self).filter(predicate))
+        let courses = Array(CourseStore.realm.objects(Course.self).filter(predicate))
+        return courses
     }
 
     static private func countForCourses(code: CourseShortCode) -> Int {
@@ -92,5 +98,14 @@ class CourseStore {
     static private func coursesForCode(code: CourseShortCode) -> [Course] {
         let predicate = NSPredicate(format: "term BEGINSWITH '2017 Summer' AND code BEGINSWITH '\(code.shortCode)'")
         return Array(CourseStore.realm.objects(Course.self).filter(predicate)) 
+    }
+
+    func courseFor(indexPath: IndexPath) -> Course? {
+        guard
+            let courses = coursesForIndex(indexPath.section) else {
+                return nil
+        }
+
+        return courses[indexPath.item]
     }
 }

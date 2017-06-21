@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddCourseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses{
+class AddCourseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
     //temp info
     let data = CourseStore()
@@ -34,6 +34,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     var dataSource:[String]?
     var dataSourceForSearchResult:[String]?
     var searchBarActive:Bool = false
+    let courseStore = CourseStore()
     
     //default cell size
     let defaultItemSize = CGSize(width: 100, height: 100)
@@ -43,7 +44,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         super.viewDidLoad()
         searchBar.delegate = self
         courseCollectionView.delegate = self
-        courseCollectionView.dataSource = self
+        courseCollectionView.dataSource = courseStore
+        courseStore.delegate = self
         
         self.dataSourceForSearchResult = [String]()
         
@@ -58,30 +60,11 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
             highlightCell(indexPath, flag: false)
         }
     }
+
     //MARK: Tableview Helper Methods
-    func selectedCourses() {
-        //1) Create an array.
-        //2) Add selected items to array.
-        //3) Once done, populate your tableview from the array.
-        
-        
-        //        let course = tempCourse[indexPath.row].it?.date!
-        //
-        //
-        //        for item in 0..<collection.numberOfItemsInSection(0) {
-        //
-        //            let myPath = NSIndexPath(forRow: item, inSection: 0)
-        //            let partecipant = partecipantsAtEvent[myPath.row].date!
-        //
-        //
-        //            if price == partecipant {
-        //
-        //                selectedArray.append(partecipant)
-        //            }
-        //
-        //        }
-    }
+
     //MARK: Popover Delegate Method
+
     func didSelectCourse(course: Course){
         selectedArray.append(course)
         
@@ -116,25 +99,25 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
     
     //delete the course button
     @IBAction func deleteCourseTapped(_ sender: Any) {
-//            var deletedCourses:[Course] = []
-//            
-//            let indexpaths = courseCollectionView?.indexPathsForSelectedItems
-//            
-//            if let indexpaths = indexpaths {
-//                
-//                for item  in indexpaths {
-//                    _ = courseCollectionView!.cellForItem(at: item)
-//    
-//                    courseCollectionView?.deselectItem(at:item , animated: true)
-//                    //courses for section
-//                    let sectionCourse = data.coursesInGroup(item.section)
-//                    deletedCourses.append(sectionCourse[item.row])
-//                }
-//                
-//                data.deleteItems(courses: deletedCourses)
-//                
-//                courseCollectionView?.deleteItems(at: indexpaths)
-//        }
+            var deletedCourses:[Course] = []
+            
+            let indexpaths = selectedTableView?.indexPathsForSelectedRows
+            
+            if let indexpaths = indexpaths {
+                
+                for item  in indexpaths {
+                    _ = selectedTableView!.cellForRow(at: item)
+    
+                    selectedTableView?.deselectRow(at:item , animated: true)
+                    //courses for section
+                    let sectionCourse = data.coursesInGroup(item.section)
+                    deletedCourses.append(sectionCourse[item.row])
+                }
+                
+                data.deleteItems(courses: deletedCourses)
+                
+                selectedTableView?.deleteRows(at: indexpaths, with: .none)
+        }
     }
     
     
@@ -319,7 +302,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         //select a cell
         highlightCell(indexPath, flag: true)
         //puts selected courses into an array
-        selectedCourses()
+        //selectedCourses()
         
         
         courseCollectionView.reloadData()
@@ -344,6 +327,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDataSource, UIC
         //if already collapsed then return to original size
         return defaultItemSize
     }
-    
-    
+
+    func reloadData() {
+        courseCollectionView.reloadData()
+    }
 }

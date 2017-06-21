@@ -9,12 +9,12 @@
 import Foundation
 
 class CourseUI {
-    var name:String?
-    var department:String?
-    
-    
-    init(name: String, department: String) {
-        self.name = name
-        self.department = department
-    }
+//    var name:String?
+//    var department:String?
+//    
+//    
+//    init(name: String, department: String) {
+//        self.name = name
+//        self.department = department
+//    }
 }
