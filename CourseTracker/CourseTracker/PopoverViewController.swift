@@ -10,6 +10,7 @@ import UIKit
 
 protocol SelectedCourses: class {
     func didSelectCourse(course: Course)
+    func didCancel()
 }
 
 class PopoverViewController: UIViewController {
@@ -52,13 +53,10 @@ class PopoverViewController: UIViewController {
     @IBAction func addSelectedTapped(_ sender: Any) {
         //add the selected cell to the tableview Cell
         delegate?.didSelectCourse(course: course!)
-        
-        self.dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func cancelSelectedTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        delegate?.didCancel()
     }
     
     

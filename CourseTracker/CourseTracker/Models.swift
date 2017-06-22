@@ -245,6 +245,11 @@ final class CourseShortCode: Object {
     }
 }
 
-final class User: Object{
+final class Student: Object{
+    dynamic var name: String?
     let courses = List<Course>()
+    
+    override static func primaryKey() -> String? {
+        return "name"
+    }
 }

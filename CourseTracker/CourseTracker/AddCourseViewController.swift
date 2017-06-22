@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
@@ -25,7 +26,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     var sectionsToCollapse = [Int]()
     var popoverViewController : PopoverViewController?
     var selectedArray = [Course]()
-    var user: User!
+    var student: Student!
+    var realm: Realm!
 
     let courseStore = CourseStore()
     
@@ -33,7 +35,14 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //search bar data
+        //Student
+        realm = try! Realm()
+        
+        selectedArray = Array(student.courses)
+
+        
+        
+        //SearchBar
         searchBar.delegate = self
         self.dataSourceForSearchResult = [String]()
         
@@ -54,8 +63,27 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     // MARK: Popover Delegate
 
     func didSelectCourse(course: Course){
+        
+        defer {
+            self.dismiss(animated: true, completion: nil)
+            selectedTableView.reloadData()
+        }
+        
         selectedArray.append(course)
-        selectedTableView.reloadData()
+        
+        do {
+            try realm.write{
+                student.courses.append(course)
+            }
+        }
+        catch let error {
+            print("Realm write error: \(error.localizedDescription)")
+            return
+        }
+    }
+    
+    func didCancel() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: Tableview Delegate / Datasource
@@ -77,32 +105,47 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         return selectedArray.count
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            selectedArray.remove(at: indexPath.row)
+            try! realm.write {
+                student.courses.remove(objectAtIndex: indexPath.row)
+            }
+            tableView.reloadData()
+        }
+    }
+    
     //MARK: Helper Methods
     
     //delete the course button
-    @IBAction func deleteCourseTapped(_ sender: Any) {
-        //
-        var deletedCourses:[Course] = []
-
-        if let indexPaths = selectedTableView?.indexPathsForSelectedRows {
-            
-            for indexPath  in indexPaths {
-                _ = selectedTableView!.cellForRow(at: indexPath)
-                
-                selectedTableView?.deselectRow(at:indexPath , animated: true)
-                deletedCourses.append(courseStore.courseFor(indexPath: indexPath)!)
-            }
-            
-            courseStore.deleteItems(courses: deletedCourses)
-            selectedTableView?.deleteRows(at: indexPaths, with: .none)
-            
-            //selectedArray.remove(at: indexPath.row)
-            
-            selectedTableView.reloadData()
-
-        }
-        
-    }
+//    @IBAction func deleteCourseTapped(_ sender: Any) {
+//        //
+//        var deletedCourses:[Course] = []
+//
+//        if let indexPaths = selectedTableView?.indexPathsForSelectedRows {
+//            
+//            for indexPath  in indexPaths {
+//                _ = selectedTableView!.cellForRow(at: indexPath)
+//                
+//                selectedTableView?.deselectRow(at:indexPath , animated: true)
+//                deletedCourses.append(courseStore.courseFor(indexPath: indexPath)!)
+//            }
+//            
+//            courseStore.deleteItems(courses: deletedCourses)
+//            selectedTableView?.deleteRows(at: indexPaths, with: .none)
+//            
+//            //selectedArray.remove(at: indexPath.row)
+//            
+//            selectedTableView.reloadData()
+//
+//        }
+//        
+//    }
+    
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         
