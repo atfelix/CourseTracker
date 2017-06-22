@@ -121,37 +121,19 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //MARK: Helper Methods
     
-    //delete the course button
-//    @IBAction func deleteCourseTapped(_ sender: Any) {
-//        //
-//        var deletedCourses:[Course] = []
-//
-//        if let indexPaths = selectedTableView?.indexPathsForSelectedRows {
-//            
-//            for indexPath  in indexPaths {
-//                _ = selectedTableView!.cellForRow(at: indexPath)
-//                
-//                selectedTableView?.deselectRow(at:indexPath , animated: true)
-//                deletedCourses.append(courseStore.courseFor(indexPath: indexPath)!)
-//            }
-//            
-//            courseStore.deleteItems(courses: deletedCourses)
-//            selectedTableView?.deleteRows(at: indexPaths, with: .none)
-//            
-//            //selectedArray.remove(at: indexPath.row)
-//            
-//            selectedTableView.reloadData()
-//
-//        }
-//        
-//    }
-    
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         
         performSegue(withIdentifier: "ShowCalendar", sender: sender)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCalendar" {
+            let calendarVC = segue.destination as! CalendarViewController
+            calendarVC.student = student
+        }
+    }
+
     //button that collapses the header
     func headerBtnTapped(with button: UIButton){
                
