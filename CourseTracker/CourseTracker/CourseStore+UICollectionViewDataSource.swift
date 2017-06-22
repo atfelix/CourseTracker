@@ -20,8 +20,12 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CourseIcon", for: indexPath) as! CourseCollectionViewCell
         let course = courseFor(indexPath: indexPath)
+        
         cell.courseLabel.text = course?.code
         cell.courseLabel.textColor = .white
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 2
+        
         return cell
     }
 

@@ -45,10 +45,10 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         selectedTableView.dataSource = self
         selectedTableView.delegate = self
         selectedTableView.rowHeight = UITableViewAutomaticDimension
-        selectedTableView.estimatedRowHeight = 44
+        selectedTableView.estimatedRowHeight = 27
         
-        self.tableHeaderView.viewWithTag(1000)
-        
+        //layouts
+        calendarButton.layer.cornerRadius = 4
     }
     // MARK: Popover Delegate
 
@@ -64,6 +64,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         let cell = selectedTableView.dequeueReusableCell(withIdentifier: "SelectedCourses") as! SelectedTableViewCell
         let selected = selectedArray[indexPath.row]
         cell.selectedCourseTitle.text = selected.name
+        
         return cell
     }
     
@@ -109,7 +110,6 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //button that collapses the header
     func headerBtnTapped(with button: UIButton){
-        
                
         //get header index
         guard let index = sectionsToCollapse.index(of: button.tag) else {
@@ -134,6 +134,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     //MARK: SearchBar
+    
     func filterContentForSearchText(searchText:String){
         //        self.dataSourceForSearchResult = self.data.filter({ (text:String) -> Bool in
         //            return text.contains(searchText)
@@ -175,11 +176,12 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         self.searchBar.resignFirstResponder()
         self.searchBar.text = ""
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
-    }
     
+    //MARK: Collectionview helper methods
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 100, height: 100)
+//    }    
     func reloadData() {
         courseCollectionView.reloadData()
     }

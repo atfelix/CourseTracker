@@ -32,8 +32,14 @@ class PopoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        self.popCourseLabel.text = course?.name ?? "wtf"
+        //set the pop over labels
+        self.popCourseLabel.text = course?.name ?? "No Course Name Found"
+        self.popDescriptionLabel.text = course?.courseDescription
+        var textbookText = "No Textbooks"
+        if let firstTextbook = course?.textbooks.first {
+            textbookText = String(format: "\(firstTextbook.title): $%.2f", firstTextbook.price)
+        }
+        self.popTextbookLabel.text =  textbookText
     }
     
     override func didReceiveMemoryWarning() {

@@ -200,6 +200,28 @@ final class Course: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    dynamic var textbooks: [Textbook]{
+        get {
+            var _textbooks = [Textbook]()
+            do {
+                let textbooks = try Array(Realm().objects(Textbook.self))
+                
+                for textbook in textbooks {
+                    for course in textbook.courses {
+                        if id == course.id {
+                            _textbooks.append(textbook)
+                        }
+                    }
+                }
+                return _textbooks
+            }
+            catch let error {
+                print("Realm read error: \(error.localizedDescription)")
+                return []
+            }
+        }
+    }
 }
 
 final class CourseShortCode: Object {
@@ -221,4 +243,8 @@ final class CourseShortCode: Object {
     override static func primaryKey() -> String? {
         return "shortCode"
     }
+}
+
+final class User: Object{
+    let courses = List<Course>()
 }
