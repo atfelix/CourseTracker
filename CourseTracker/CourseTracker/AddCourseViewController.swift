@@ -25,6 +25,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     var sectionsToCollapse = [Int]()
     var popoverViewController : PopoverViewController?
     var selectedArray = [Course]()
+    var user: User!
 
     let courseStore = CourseStore()
     
