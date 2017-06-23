@@ -29,6 +29,9 @@
 		11E94F5A1EF8644C009D6718 /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E94F591EF8644C009D6718 /* UofTAPI.swift */; };
 		11E94F5C1EF86466009D6718 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E94F5B1EF86466009D6718 /* Models.swift */; };
 		11EDFEA51EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */; };
+		11EDFEA71EFD6C1B00654CA3 /* Models+Textbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EDFEA61EFD6C1B00654CA3 /* Models+Textbook.swift */; };
+		11EDFEA91EFD6C9800654CA3 /* Models+Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EDFEA81EFD6C9800654CA3 /* Models+Course.swift */; };
+		11EDFEAB1EFD6CE400654CA3 /* Models+Athletics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EDFEAA1EFD6CE400654CA3 /* Models+Athletics.swift */; };
 		3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */; };
 		3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105109C1EF6759800F34D43 /* BuildingData.swift */; };
 		3105109F1EF67D5900F34D43 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3105109E1EF67D5900F34D43 /* buildings.plist */; };
@@ -118,6 +121,9 @@
 		11E94F591EF8644C009D6718 /* UofTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UofTAPI.swift; sourceTree = "<group>"; };
 		11E94F5B1EF86466009D6718 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCourseViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
+		11EDFEA61EFD6C1B00654CA3 /* Models+Textbook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Models+Textbook.swift"; sourceTree = "<group>"; };
+		11EDFEA81EFD6C9800654CA3 /* Models+Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Models+Course.swift"; sourceTree = "<group>"; };
+		11EDFEAA1EFD6CE400654CA3 /* Models+Athletics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Models+Athletics.swift"; sourceTree = "<group>"; };
 		3105109C1EF6759800F34D43 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 		3105109E1EF67D5900F34D43 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +318,9 @@
 				315616991EF09F2F00CE51D3 /* UserData.swift */,
 				3105109C1EF6759800F34D43 /* BuildingData.swift */,
 				11E94F5B1EF86466009D6718 /* Models.swift */,
+				11EDFEAA1EFD6CE400654CA3 /* Models+Athletics.swift */,
+				11EDFEA81EFD6C9800654CA3 /* Models+Course.swift */,
+				11EDFEA61EFD6C1B00654CA3 /* Models+Textbook.swift */,
 				3156169D1EF0D98C00CE51D3 /* Map */,
 				315616071EF06A8100CE51D3 /* Calendar */,
 			);
@@ -689,6 +698,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */,
+				11EDFEAB1EFD6CE400654CA3 /* Models+Athletics.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
 				31A955DA1EF8CFA200EEF0CD /* PopoverViewController.swift in Sources */,
 				1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */,
@@ -716,7 +726,9 @@
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
 				31F1D88F1EF8282000F215F2 /* DepartmentCollectionReusableView.swift in Sources */,
 				3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */,
+				11EDFEA91EFD6C9800654CA3 /* Models+Course.swift in Sources */,
 				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
+				11EDFEA71EFD6C1B00654CA3 /* Models+Textbook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
