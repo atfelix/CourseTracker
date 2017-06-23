@@ -156,6 +156,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: TableView Methods
     
     //tableview animation
+    //animation method
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         //set the cell.frame to a initial position outside the screen
@@ -165,17 +166,15 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         let translation : CGPoint = tableView.panGestureRecognizer.translation(in: tableView.superview)
         //animate towards the desired final position
         if (translation.x > 0){
-            cell.frame = CGRect(x: cellFrame.origin.x - tableView.frame.width, y: 0, width: 0, height: 0)
+            cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
         }else{
-            cell.frame = CGRect(x: cellFrame.origin.x + tableView.frame.width, y: 0, width: 0, height: 0)
+            cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
+        }
         
-        
-        UIView.animate(withDuration: 1.5) {
+        UIView.animate(withDuration: 1.0) {
             cell.frame = cellFrame
         }
-        }
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

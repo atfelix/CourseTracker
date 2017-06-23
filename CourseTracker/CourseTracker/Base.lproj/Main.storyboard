@@ -886,6 +886,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="distanceLabel" destination="igK-pn-ZlM" id="IXX-Db-blr"/>
                         <outlet property="locationButton" destination="t3x-Ae-42D" id="oRv-rT-abk"/>
                         <outlet property="mapView" destination="zPn-Wi-19X" id="VxR-xr-DbI"/>
                         <outlet property="returnButton" destination="MTY-J6-jlL" id="C6Q-Io-MHy"/>

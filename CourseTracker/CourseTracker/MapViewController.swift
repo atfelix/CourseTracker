@@ -18,8 +18,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //MARK: Properties
     @IBOutlet weak var returnButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
     @IBOutlet weak var mapView: MKMapView!
 
+    var locationManager: CLLocationManager!
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,10 +67,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let location = CLLocationCoordinate2D(latitude: 43.66, longitude: -79.39)
         let region = MKCoordinateRegionMakeWithDistance(location, 500.0, 1000.0)
         //set to region
+        
         mapView.setRegion(region, animated: true)
     }
 
     func getRouteInfo() -> [BuildingData]{
+        
+        let myLocation = CLLocation(latitude: 43.66, longitude: -79.39)
+        
         var buildingArray: Array = [BuildingData]()
         //get the array of building data
         var buildings: NSArray?
@@ -83,11 +90,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 annotation.name = (item as AnyObject).value(forKey: "name") as? String
                 //append the building array with annotation items
                 buildingArray.append(annotation)
+                
+                let distance = myLocation.distance(from: CLLocation(latitude: lat, longitude: long))
+                let result = String(format: "%.1f", distance/1000)
+                self.distanceLabel.text = "Distance = \(result) KM"
+    
+                
             }
         }
         return buildingArray
     }
-    
     //MARK: MapView Delegate
     
     //sets the line for the route path

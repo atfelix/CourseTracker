@@ -9,19 +9,19 @@
 import UIKit
 import RealmSwift
 
-import IBAnimatable 
+import IBAnimatable
 
 class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
     // MARK: Properties
-
+    
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var courseCollectionView: UICollectionView!
     @IBOutlet weak var selectedTableView: UITableView!
     @IBOutlet weak var tableHeaderView: UIView!
     
     @IBOutlet weak var searchBar: UISearchBar!
-
+    
     var dataSource:[String]?
     var dataSourceForSearchResult:[String]?
     var searchBarActive:Bool = false
@@ -30,17 +30,17 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     var selectedArray = [Course]()
     var student: Student!
     var realm: Realm!
-
+    
     let courseStore = CourseStore()
     
     // MARK: View Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Student
         realm = try! Realm()
-
+        
         selectedArray = Array(student.courses)
         
         //SearchBar
@@ -62,7 +62,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         calendarButton.layer.cornerRadius = 4
     }
     // MARK: Popover Delegate
-
+    
     func didSelectCourse(course: Course){
         
         defer {
@@ -91,31 +91,25 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //animation method
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    
-        //setup 3d structure
-        var rotation : CATransform3D
-        rotation = CATransform3DMakeRotation(CGFloat((90*(Double.pi
-            ))/180), 0.0, 0.7, 0.4)
-        rotation.m34 = 1.0 / -600
         
-        //define the state before animation
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 10, height: 10)
-        cell.alpha = 0
-    
-        cell.layer.transform = rotation
-        cell.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+        //set the cell.frame to a initial position outside the screen
+        let cellFrame : CGRect = cell.frame
         
-        //state after the animation
-        UIView.beginAnimations("rotation", context: nil)
-        UIView.setAnimationDuration(0.8)
-        cell.layer.transform = CATransform3DIdentity
-        cell.alpha = 1
-        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-        //commit
-        UIView.commitAnimations()
+        //check the scrolling direction to verify from which side of the screen the cell should come
+        let translation : CGPoint = tableView.panGestureRecognizer.translation(in: tableView.superview)
+        //animate towards the desired final position
+        if (translation.x > 0){
+            cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
+        }else{
+            cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
+        }
+        
+        UIView.animate(withDuration: 1.5) {
+            cell.frame = cellFrame
+        }
     }
-
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = selectedTableView.dequeueReusableCell(withIdentifier: "SelectedCourses") as! SelectedTableViewCell
@@ -124,7 +118,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         
         return cell
     }
-
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -148,7 +142,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     //MARK: Helper Methods
-
+    
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "ShowCalendar", sender: sender)
@@ -162,10 +156,10 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
             calendarVC.student = student
         }
     }
-
+    
     //button that collapses the header
     func headerBtnTapped(with button: UIButton){
-               
+        
         //get header index
         guard let index = sectionsToCollapse.index(of: button.tag) else {
             sectionsToCollapse.append(button.tag)
@@ -175,7 +169,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         //remove header from Sections to Collapse
         sectionsToCollapse.remove(at: index)
         courseCollectionView.reloadData()
-
+        
     }
     
     //get indexpath of selected cell
@@ -233,10 +227,10 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     //MARK: Collectionview helper methods
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 100, height: 100)
-//    }    
+    
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //        return CGSize(width: 100, height: 100)
+    //    }
     func reloadData() {
         courseCollectionView.reloadData()
     }
