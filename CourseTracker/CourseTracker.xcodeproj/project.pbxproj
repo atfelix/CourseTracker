@@ -349,7 +349,6 @@
 			isa = PBXGroup;
 			children = (
 				110F4EC81EEB617F00D88F8E /* AppDelegate.swift */,
-				110F4ECA1EEB617F00D88F8E /* ViewController.swift */,
 				31EEE9231EEF885800094B8F /* Selection */,
 			);
 			name = "View Controllers";
@@ -359,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				317DDF091EECE13100F02C3B /* PageViewController.swift */,
+				110F4ECA1EEB617F00D88F8E /* ViewController.swift */,
 				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
 				31F1D8921EF8454300F215F2 /* Course */,
 			);

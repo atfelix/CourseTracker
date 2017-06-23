@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
@@ -15,6 +16,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var courseCollectionView: UICollectionView!
     @IBOutlet weak var selectedTableView: UITableView!
+    @IBOutlet weak var tableHeaderView: UIView!
+    
     @IBOutlet weak var searchBar: UISearchBar!
 
     var dataSource:[String]?
@@ -23,6 +26,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     var sectionsToCollapse = [Int]()
     var popoverViewController : PopoverViewController?
     var selectedArray = [Course]()
+    var student: Student!
+    var realm: Realm!
 
     let courseStore = CourseStore()
     
@@ -30,7 +35,14 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //search bar data
+        //Student
+        realm = try! Realm()
+        
+        selectedArray = Array(student.courses)
+
+        
+        
+        //SearchBar
         searchBar.delegate = self
         self.dataSourceForSearchResult = [String]()
         
@@ -43,14 +55,35 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         selectedTableView.dataSource = self
         selectedTableView.delegate = self
         selectedTableView.rowHeight = UITableViewAutomaticDimension
-        selectedTableView.estimatedRowHeight = 44
+        selectedTableView.estimatedRowHeight = 27
         
+        //layouts
+        calendarButton.layer.cornerRadius = 4
     }
     // MARK: Popover Delegate
 
     func didSelectCourse(course: Course){
+        
+        defer {
+            self.dismiss(animated: true, completion: nil)
+            selectedTableView.reloadData()
+        }
+        
         selectedArray.append(course)
-        selectedTableView.reloadData()
+        
+        do {
+            try realm.write{
+                student.courses.append(course)
+            }
+        }
+        catch let error {
+            print("Realm write error: \(error.localizedDescription)")
+            return
+        }
+    }
+    
+    func didCancel() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: Tableview Delegate / Datasource
@@ -60,6 +93,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         let cell = selectedTableView.dequeueReusableCell(withIdentifier: "SelectedCourses") as! SelectedTableViewCell
         let selected = selectedArray[indexPath.row]
         cell.selectedCourseTitle.text = selected.name
+        
         return cell
     }
     
@@ -71,39 +105,38 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         return selectedArray.count
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            selectedArray.remove(at: indexPath.row)
+            try! realm.write {
+                student.courses.remove(objectAtIndex: indexPath.row)
+            }
+            tableView.reloadData()
+        }
+    }
+    
     //MARK: Helper Methods
     
-    //delete the course button
-    @IBAction func deleteCourseTapped(_ sender: Any) {
-        //
-        var deletedCourses:[Course] = []
-
-        if let indexPaths = selectedTableView?.indexPathsForSelectedRows {
-            
-            for indexPath  in indexPaths {
-                _ = selectedTableView!.cellForRow(at: indexPath)
-                
-                selectedTableView?.deselectRow(at:indexPath , animated: true)
-                deletedCourses.append(courseStore.courseFor(indexPath: indexPath)!)
-            }
-            
-            courseStore.deleteItems(courses: deletedCourses)
-            selectedTableView?.deleteRows(at: indexPaths, with: .none)
-        }
-        
-    }
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         
         performSegue(withIdentifier: "ShowCalendar", sender: sender)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCalendar" {
+            let calendarVC = segue.destination as! CalendarViewController
+            calendarVC.student = student
+        }
+    }
+
     //button that collapses the header
     func headerBtnTapped(with button: UIButton){
-        
-        //rotate the button
-        button.transform = button.transform.rotated(by: CGFloat.pi/2)
-        
+               
         //get header index
         guard let index = sectionsToCollapse.index(of: button.tag) else {
             sectionsToCollapse.append(button.tag)
@@ -127,6 +160,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     //MARK: SearchBar
+    
     func filterContentForSearchText(searchText:String){
         //        self.dataSourceForSearchResult = self.data.filter({ (text:String) -> Bool in
         //            return text.contains(searchText)
@@ -168,11 +202,12 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         self.searchBar.resignFirstResponder()
         self.searchBar.text = ""
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
-    }
     
+    //MARK: Collectionview helper methods
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 100, height: 100)
+//    }    
     func reloadData() {
         courseCollectionView.reloadData()
     }

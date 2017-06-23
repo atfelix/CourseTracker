@@ -10,18 +10,19 @@ import UIKit
 
 class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
-    let pages = ["AddUniversityViewController", "AddCourseViewController"]
+    let pages = ["ViewController","AddUniversityViewController",]
+
 //    var index : Int?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         delegate = self
         dataSource = self
         
         //initialize vc
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddUniversityViewController")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewController")
         setViewControllers([vc!], direction: .forward, animated: true, completion: nil)
         
     }
@@ -80,7 +81,5 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             }
         }
     }
-    
-    
 
 }

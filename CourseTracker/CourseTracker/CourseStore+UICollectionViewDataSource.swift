@@ -20,8 +20,11 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CourseIcon", for: indexPath) as! CourseCollectionViewCell
         let course = courseFor(indexPath: indexPath)
+        
         cell.courseLabel.text = course?.code
-        cell.courseLabel.textColor = .white
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 1
+        
         return cell
     }
 
@@ -55,6 +58,9 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
     func headerButtonTapped(with button: UIButton){
 
         defer { delegate.reloadData() }
+        
+        //rotate the button
+        button.transform = button.transform.rotated(by: CGFloat.pi/2)
 
         guard let index = sectionsToCollapse.index(of: button.tag) else {
             sectionsToCollapse.append(button.tag)

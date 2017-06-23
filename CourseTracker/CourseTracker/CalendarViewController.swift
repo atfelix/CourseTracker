@@ -6,6 +6,7 @@
 //
 import UIKit
 import JTAppleCalendar
+import RealmSwift
 
 class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource{
 
@@ -58,6 +59,10 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //Events
     var eventsAtCalendar = [EventProtocol]()
 
+    //Student
+    var student: Student!
+    
+    
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +97,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     //MARK: Button Actions
+    
     @IBAction func addEventTapped(_ sender: Any) {
         performSegue(withIdentifier: "AddEvent", sender: sender)
     }
@@ -102,8 +108,16 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func mapButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "ShowMap", sender: sender)
     }
-    @IBAction func addCourseTapped(_ sender: Any) {
-        performSegue(withIdentifier: "AddCourse", sender: sender)
+//    @IBAction func addCourseTapped(_ sender: Any) {
+//        performSegue(withIdentifier: "AddCourse", sender: sender)
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+            if segue.identifier == "AddCourse" {
+                let addCourseVC = segue.destination as! AddCourseViewController
+                addCourseVC.student = student
+        }
     }
 
 
@@ -141,21 +155,27 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventsAtCalendar.count
+        return student.courses.count
     }
 
     //set data in table row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ListTableViewCell
-        var event = eventsAtCalendar[indexPath.row]
+//        var event = eventsAtCalendar[indexPath.row]
         //set Color if you want
         listTableView.backgroundColor = UIColor.black
         cell.backgroundColor = UIColor.black
         //set cells to user event data
-        cell.listImage.backgroundColor = event.color
-        cell.listLocation.text = event.location
-        cell.listData.text = event.title
-        cell.listTime.text = "\(event.startDate) - \(event.endDate)"
+//        cell.listImage.backgroundColor = event.color
+//        cell.listLocation.text = event.location
+//        cell.listData.text = event.title
+//        cell.listTime.text = "\(event.startDate) - \(event.endDate)"
+        
+        let course = student.courses[indexPath.row]
+        cell.listImage.backgroundColor =  UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
+        cell.listLocation.text = course.campus
+        cell.listData.text = course.name
+        cell.listTime.text = "NO TIME YET"
 
         return cell
     }
@@ -246,7 +266,17 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         //sets datelabel to current cell state
         cell.dateLabel.text = cellState.text
 
+        
+        //date -> ?
+        
+        print(dateFormatter.string(from: currentDate))
+        
+        let yellowDate = dateFormatter.string(from: date)
+        
+
+        
         //set the courseLabel indicator to yellow or silver for different events
+        
         if CourseEvent.self != nil {
             cell.coursesLabel.backgroundColor = UIColor.yellow
             cell.coursesLabel.layer.cornerRadius = 2.5
@@ -292,7 +322,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         if firstDate == nil{
             self.dateTapped.text = "\(displayDateFormatter.string(from: selectedDates.first!))"
         }
-
     }
 
     //deselect a cell

@@ -10,6 +10,7 @@ import UIKit
 
 protocol SelectedCourses: class {
     func didSelectCourse(course: Course)
+    func didCancel()
 }
 
 class PopoverViewController: UIViewController {
@@ -21,7 +22,8 @@ class PopoverViewController: UIViewController {
     //labels
     @IBOutlet weak var popDescriptionLabel: UILabel!
     @IBOutlet weak var popTextbookLabel: UILabel!
-    
+    //view
+    @IBOutlet weak var popView: UIView!
     //buttons
     @IBOutlet weak var addSelected: UIButton!
     @IBOutlet weak var cancelSelected: UIButton!
@@ -31,9 +33,18 @@ class PopoverViewController: UIViewController {
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        //set the pop over layer
+        popView.layer.cornerRadius = 20
+        popView.layer.masksToBounds = true
         
-        
-        self.popCourseLabel.text = course?.name ?? "wtf"
+        //set the pop over labels
+        self.popCourseLabel.text = course?.name ?? "No Course Name Found"
+        self.popDescriptionLabel.text = course?.courseDescription
+        var textbookText = "No Textbooks"
+        if let firstTextbook = course?.textbooks.first {
+            textbookText = String(format: "\(firstTextbook.title): $%.2f", firstTextbook.price)
+        }
+        self.popTextbookLabel.text =  textbookText
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,13 +57,10 @@ class PopoverViewController: UIViewController {
     @IBAction func addSelectedTapped(_ sender: Any) {
         //add the selected cell to the tableview Cell
         delegate?.didSelectCourse(course: course!)
-        
-        self.dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func cancelSelectedTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        delegate?.didCancel()
     }
     
     

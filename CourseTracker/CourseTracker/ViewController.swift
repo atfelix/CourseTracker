@@ -7,16 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var continueButton: UIButton!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        continueButton.layer.cornerRadius = 4
-
+        
 //        UofTAPI.updateDB()
     }
 
@@ -24,14 +21,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    //1) put selected courses inside a cache
-    //2) tap on each course will present a pop over view
-            //-this will show textbook prices
-            //title, edition, author, imageURL, price
-            //then click cancel or add to add it to a cache
     
     
 }
