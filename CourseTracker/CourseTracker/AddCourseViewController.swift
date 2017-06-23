@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 
+import IBAnimatable 
+
 class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
     // MARK: Properties
@@ -35,12 +37,11 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Student
         realm = try! Realm()
-        
-        selectedArray = Array(student.courses)
 
-        
+        selectedArray = Array(student.courses)
         
         //SearchBar
         searchBar.delegate = self
@@ -87,6 +88,33 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     // MARK: Tableview Delegate / Datasource
+    
+    //animation method
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
+        //setup 3d structure
+        var rotation : CATransform3D
+        rotation = CATransform3DMakeRotation(CGFloat((90*(Double.pi
+            ))/180), 0.0, 0.7, 0.4)
+        rotation.m34 = 1.0 / -600
+        
+        //define the state before animation
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 10, height: 10)
+        cell.alpha = 0
+    
+        cell.layer.transform = rotation
+        cell.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+        
+        //state after the animation
+        UIView.beginAnimations("rotation", context: nil)
+        UIView.setAnimationDuration(0.8)
+        cell.layer.transform = CATransform3DIdentity
+        cell.alpha = 1
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        //commit
+        UIView.commitAnimations()
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -96,7 +124,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         
         return cell
     }
-    
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -120,15 +148,16 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     //MARK: Helper Methods
-    
+
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
-        
         performSegue(withIdentifier: "ShowCalendar", sender: sender)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowCalendar" {
+            
             let calendarVC = segue.destination as! CalendarViewController
             calendarVC.student = student
         }

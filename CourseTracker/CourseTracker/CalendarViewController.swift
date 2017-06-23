@@ -8,6 +8,8 @@ import UIKit
 import JTAppleCalendar
 import RealmSwift
 
+import IBAnimatable
+
 class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource{
 
     //MARK: Properties
@@ -20,7 +22,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var slidingView: UIView!
     @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
-
+    
     //AddEvent
     @IBOutlet weak var addEvent: UIButton!
     //AddCourses
@@ -66,6 +68,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Animations
 
         //setup the tableView
         self.listTableView.backgroundColor = UIColor.black
@@ -150,6 +154,29 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     //MARK: TableView Methods
+    
+    //tableview animation
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        //set the cell.frame to a initial position outside the screen
+        let cellFrame : CGRect = cell.frame
+        
+        //check the scrolling direction to verify from which side of the screen the cell should come
+        let translation : CGPoint = tableView.panGestureRecognizer.translation(in: tableView.superview)
+        //animate towards the desired final position
+        if (translation.x > 0){
+            cell.frame = CGRect(x: cellFrame.origin.x - tableView.frame.width, y: 0, width: 0, height: 0)
+        }else{
+            cell.frame = CGRect(x: cellFrame.origin.x + tableView.frame.width, y: 0, width: 0, height: 0)
+        
+        
+        UIView.animate(withDuration: 1.5) {
+            cell.frame = cellFrame
+        }
+        }
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -270,10 +297,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         //date -> ?
         
         print(dateFormatter.string(from: currentDate))
-        
-        let yellowDate = dateFormatter.string(from: date)
-        
-
         
         //set the courseLabel indicator to yellow or silver for different events
         

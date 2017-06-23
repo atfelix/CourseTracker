@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QjV-lR-Rhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-539" y="-268"/>
+            <point key="canvasLocation" x="-539" y="-153"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -75,6 +75,8 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CT-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="hJD-UC-b0v">
                                                         <rect key="frame" x="150" y="205" width="120" height="95"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="tintColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -174,7 +176,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="w4d-St-sYH" customClass="PageViewController" customModule="CourseTracker" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="weV-XC-13F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1213" y="-964"/>
+            <point key="canvasLocation" x="-1038" y="-962"/>
         </scene>
         <!--Add University View Controller-->
         <scene sceneID="22J-P4-olg">
@@ -463,13 +465,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKn-B6-M6e">
-                                <rect key="frame" x="350" y="16" width="58" height="52"/>
+                                <rect key="frame" x="350" y="20" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="4Ww-Fx-DYp"/>
-                                    <constraint firstAttribute="width" constant="58" id="h7W-6I-S6E"/>
+                                    <constraint firstAttribute="height" constant="50" id="4Ww-Fx-DYp"/>
+                                    <constraint firstAttribute="width" constant="50" id="h7W-6I-S6E"/>
                                 </constraints>
-                                <state key="normal" image="LocateNew">
+                                <state key="normal" image="whiteCompass">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -480,10 +482,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otG-Em-cds">
                                 <rect key="frame" x="0.0" y="553" width="414" height="183"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2O-E7-pV7">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2O-E7-pV7">
                                         <rect key="frame" x="0.0" y="35" width="414" height="148"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -499,23 +501,18 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miy-V4-Kpe">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_stars_2x" translatesAutoresizingMaskIntoConstraints="NO" id="L33-06-oVQ">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_stars_2x" translatesAutoresizingMaskIntoConstraints="NO" id="L33-06-oVQ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                            <integer key="value" value="39"/>
+                                                                            <integer key="value" value="47"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstItem="L33-06-oVQ" firstAttribute="top" secondItem="miy-V4-Kpe" secondAttribute="top" id="9Iy-wz-GaL"/>
-                                                                <constraint firstAttribute="bottom" secondItem="L33-06-oVQ" secondAttribute="bottom" id="KEa-2W-hO2"/>
-                                                                <constraint firstAttribute="trailing" secondItem="L33-06-oVQ" secondAttribute="trailing" id="cvy-MB-Gjv"/>
-                                                                <constraint firstItem="L33-06-oVQ" firstAttribute="leading" secondItem="miy-V4-Kpe" secondAttribute="leading" id="hK9-vC-f3t"/>
-                                                            </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksb-NV-oEt">
                                                             <rect key="frame" x="128" y="0.0" width="286" height="28"/>
@@ -635,12 +632,12 @@
                         <constraints>
                             <constraint firstItem="m68-ZX-rt8" firstAttribute="leading" secondItem="DIQ-Qz-HXP" secondAttribute="leadingMargin" constant="-8" id="1gv-99-jT3"/>
                             <constraint firstAttribute="trailing" secondItem="n7g-ru-p9g" secondAttribute="trailing" id="28O-r4-g5U"/>
-                            <constraint firstAttribute="trailing" secondItem="tKn-B6-M6e" secondAttribute="trailing" constant="6" id="29D-hB-c2v"/>
+                            <constraint firstAttribute="trailing" secondItem="tKn-B6-M6e" secondAttribute="trailing" constant="14" id="29D-hB-c2v"/>
                             <constraint firstItem="Oyz-52-ndh" firstAttribute="top" secondItem="otG-Em-cds" secondAttribute="bottom" id="QDP-sd-BZn"/>
                             <constraint firstAttribute="trailing" secondItem="otG-Em-cds" secondAttribute="trailing" id="Qy4-D8-aHw"/>
                             <constraint firstItem="m68-ZX-rt8" firstAttribute="top" secondItem="ava-H3-mnl" secondAttribute="bottom" id="UxO-6X-vwk"/>
                             <constraint firstItem="otG-Em-cds" firstAttribute="top" secondItem="n7g-ru-p9g" secondAttribute="bottom" id="Xan-i7-Zcm"/>
-                            <constraint firstItem="tKn-B6-M6e" firstAttribute="top" secondItem="ava-H3-mnl" secondAttribute="bottom" constant="-4" id="cxF-Uu-zXe"/>
+                            <constraint firstItem="tKn-B6-M6e" firstAttribute="top" secondItem="ava-H3-mnl" secondAttribute="bottom" id="cxF-Uu-zXe"/>
                             <constraint firstItem="n7g-ru-p9g" firstAttribute="top" secondItem="ava-H3-mnl" secondAttribute="bottom" constant="2" id="kfF-hO-jDf"/>
                             <constraint firstItem="otG-Em-cds" firstAttribute="leading" secondItem="DIQ-Qz-HXP" secondAttribute="leading" id="miK-gp-SpM"/>
                             <constraint firstItem="n7g-ru-p9g" firstAttribute="leading" secondItem="DIQ-Qz-HXP" secondAttribute="leading" id="r78-7y-bir"/>
@@ -1151,7 +1148,7 @@
                                             <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="pyR-cy-wpc" firstAttribute="leading" secondItem="mFj-Qw-Y99" secondAttribute="leading" id="6Al-GQ-CBH"/>
                                         <constraint firstAttribute="bottom" secondItem="pyR-cy-wpc" secondAttribute="bottom" id="893-Tk-sPT"/>
@@ -1160,16 +1157,16 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectedCourses" rowHeight="37" id="MnD-gp-4d9" customClass="SelectedTableViewCell" customModule="CourseTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectedCourses" rowHeight="37" id="MnD-gp-4d9" customClass="SelectedTableViewCell" customModule="CourseTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="48" width="414" height="37"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MnD-gp-4d9" id="pkG-0D-xPa">
+                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MnD-gp-4d9" id="pkG-0D-xPa">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZ0-Pe-kCm">
                                                     <rect key="frame" x="8" y="0.0" width="383" height="37"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <color key="tintColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1184,6 +1181,7 @@
                                                     </state>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="kZ0-Pe-kCm" firstAttribute="centerY" secondItem="pkG-0D-xPa" secondAttribute="centerY" id="3yL-Iz-BVG"/>
                                                 <constraint firstItem="kZ0-Pe-kCm" firstAttribute="top" secondItem="fAi-Wg-deo" secondAttribute="top" id="Eus-di-TNy"/>
@@ -1302,7 +1300,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twy-NN-kGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1336" y="-269"/>
+            <point key="canvasLocation" x="-1038" y="-153"/>
         </scene>
     </scenes>
     <resources>
@@ -1311,7 +1309,6 @@
         <image name="Circle" width="128" height="128"/>
         <image name="Columbia" width="1120" height="572"/>
         <image name="Cornell" width="2087" height="1736"/>
-        <image name="LocateNew" width="179" height="179"/>
         <image name="NearMe" width="800" height="800"/>
         <image name="Sweden" width="512" height="384"/>
         <image name="arrowLeft" width="24" height="24"/>
@@ -1319,6 +1316,7 @@
         <image name="ic_compare_arrows_white" width="24" height="24"/>
         <image name="ic_date_range_white" width="24" height="24"/>
         <image name="ic_stars_2x" width="24" height="24"/>
+        <image name="whiteCompass" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TkO-7K-ADK"/>

@@ -16,6 +16,10 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
         }
         return 0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        
+    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CourseIcon", for: indexPath) as! CourseCollectionViewCell
@@ -24,6 +28,22 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.courseLabel.text = course?.code
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 1
+        
+        //set the cell.frame to a initial position outside the screen
+        let cellFrame : CGRect = cell.frame
+        
+        //check the scrolling direction to verify from which side of the screen the cell should come
+        let translation : CGPoint = collectionView.panGestureRecognizer.translation(in: collectionView.superview)
+        //animate towards the desired final position
+        if (translation.x > 0){
+            cell.frame = CGRect(x: cellFrame.origin.x , y: 0, width: 0, height: 0)
+        }else{
+            cell.frame = CGRect(x: cellFrame.origin.x , y: 0, width: 0, height: 0)
+        }
+        
+        UIView.animate(withDuration: 0.5) { 
+            cell.frame = cellFrame
+        }
         
         return cell
     }
