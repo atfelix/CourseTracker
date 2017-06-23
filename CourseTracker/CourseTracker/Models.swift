@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import JTAppleCalendar
 
 final class RealmString: Object {
     dynamic var string: String?
@@ -51,38 +52,6 @@ final class Building: Object {
     }
 }
 
-final class AthleticDate: Object {
-    dynamic var date: String?
-    let athleticEvents = List<AthleticEvent>()
-
-    override static func primaryKey() -> String? {
-        return "date"
-    }
-}
-
-final class AthleticEvent: Object {
-    dynamic var title = ""
-    dynamic var campus = ""
-    dynamic var location = ""
-    dynamic var buildingID = ""
-    dynamic var startTime = 0
-    dynamic var endTime = 0
-    dynamic var duration = 0
-    
-    dynamic var building: Building? {
-        get {
-            var _building: Building? = nil
-            do {
-                try _building = Realm().objects(Building.self).filter("id == '\(buildingID)'").first
-            }
-            catch {
-                print("Realm Error occurred:  Could not find building")
-            }
-            return _building
-        }
-    }
-}
-
 final class ParkingLocation: Object {
     dynamic var id = ""
     dynamic var title = ""
@@ -98,158 +67,26 @@ final class ParkingLocation: Object {
     }
 }
 
-final class TextbookMeetingSection: Object {
-    dynamic var code = ""
-    let instructors = List<RealmString>()
-}
-
-final class TextbookCourse: Object {
-    dynamic var id = ""
-    dynamic var code = ""
-    dynamic var requirement = ""
-    let textbookMeetingSections = List<TextbookMeetingSection>()
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-final class Textbook: Object {
-    dynamic var id = ""
-    dynamic var isbn = ""
-    dynamic var title = ""
-    dynamic var edition = -1
-    dynamic var author = ""
-    dynamic var imageURL = ""
-    dynamic var price = 0.0
-    dynamic var url = ""
-    let courses = List<TextbookCourse>()
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-final class CourseMeetingSection: Object {
-    dynamic var code = ""
-    dynamic var size = 0
-    dynamic var enrolment = 0
-    let times = List<CourseTime>()
-    let instructors = List<RealmString>()
-}
-
-final class CourseTime: Object {
-    dynamic var day = ""
-    dynamic var startTime = 0
-    dynamic var endTime = 0
-    dynamic var duration = 0
-    dynamic var location = ""
-
-    dynamic var building: Building? {
-        get {
-            var _building: Building? = nil
-            let locationSplit = location.components(separatedBy: " ")
-
-            if locationSplit.count == 0 {
-                print("No building code for CourseTime")
-                return nil
-            }
-
-            let buildingCode = locationSplit[0]
-
-            do {
-                try _building = Realm().objects(Building.self).filter("code == '\(buildingCode)").first
-            }
-            catch {
-                print("Realm error occurred: Could not find Building with code: \(buildingCode)")
-            }
-
-            return _building
-        }
-    }
-
-    dynamic var room: String? {
-        get {
-            let locationSplit = location.components(separatedBy: " ")
-
-            guard locationSplit.count > 1 else {
-                print("No building room exists for CourseTime")
-                return nil
-            }
-
-            return locationSplit[1]
-        }
-    }
-}
-
-final class Course: Object {
-    dynamic var id = ""
-    dynamic var code = ""
-    dynamic var name = ""
-    dynamic var courseDescription = ""
-    dynamic var division = ""
-    dynamic var department = ""
-    dynamic var prerequistes = ""
-    dynamic var exclusions = ""
-    dynamic var level = 0
-    dynamic var campus = ""
-    dynamic var term = ""
-    let breadths = List<RealmInt>()
-    let courseMeetingSections = List<CourseMeetingSection>()
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    dynamic var textbooks: [Textbook]{
-        get {
-            var _textbooks = [Textbook]()
-            do {
-                let textbooks = try Array(Realm().objects(Textbook.self))
-                
-                for textbook in textbooks {
-                    for course in textbook.courses {
-                        if id == course.id {
-                            _textbooks.append(textbook)
-                        }
-                    }
-                }
-                return _textbooks
-            }
-            catch let error {
-                print("Realm read error: \(error.localizedDescription)")
-                return []
-            }
-        }
-    }
-}
-
-final class CourseShortCode: Object {
-    dynamic var shortCode = ""
-    
-    dynamic var courses: [Course] {
-        get {
-            do {
-                let predicate = NSPredicate(format: "id BEGINSWITH %@ AND term BEGINSWITH %@", shortCode, "2017 Summer")
-                return try Array(Realm().objects(Course.self).filter(predicate))
-            }
-            catch let error {
-                print("Realm read error: \(error.localizedDescription)")
-                return []
-            }
-        }
-    }
-
-    override static func primaryKey() -> String? {
-        return "shortCode"
-    }
-}
-
 final class Student: Object{
     dynamic var name: String?
     let courses = List<Course>()
-    
+
     override static func primaryKey() -> String? {
         return "name"
+    }
+
+    func coursesFor(day: JTAppleCalendar.DaysOfWeek) -> [Course] {
+        var coursesForDay = [Course]()
+
+        for course in courses {
+            for time in course.courseTimes {
+                if time.timeAsDayOfWeek() == day.rawValue {
+                    coursesForDay.append(course)
+                    break
+                }
+            }
+        }
+
+        return coursesForDay
     }
 }
