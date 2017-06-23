@@ -30,7 +30,7 @@ class CourseStore: NSObject {
             let _departmentCodes: [CourseShortCode]
             let _courses: [Course]
             try _departmentCodes = Array(Realm().objects(CourseShortCode.self))
-            try _courses = Array(Realm().objects(Course.self).filter("term BEGINSWITH '2017 Summer' AND courseMeetingSections.count > 0"))
+            try _courses = Array(Realm().objects(Course.self).filter("term BEGINSWITH '2017 Summer'"))
 
             for code in _departmentCodes {
                 if CourseStore.countForCourses(code: code) > 0 {

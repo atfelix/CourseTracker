@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import JTAppleCalendar
 
 final class RealmString: Object {
     dynamic var string: String?
@@ -63,5 +64,29 @@ final class ParkingLocation: Object {
 
     override static func primaryKey() -> String? {
         return "id"
+    }
+}
+
+final class Student: Object{
+    dynamic var name: String?
+    let courses = List<Course>()
+
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+
+    func coursesFor(day: JTAppleCalendar.DaysOfWeek) -> [Course] {
+        var coursesForDay = [Course]()
+
+        for course in courses {
+            for time in course.courseTimes {
+                if time.timeAsDayOfWeek() == day.rawValue {
+                    coursesForDay.append(course)
+                    break
+                }
+            }
+        }
+
+        return coursesForDay
     }
 }

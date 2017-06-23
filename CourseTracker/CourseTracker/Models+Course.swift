@@ -97,6 +97,19 @@ final class CourseTime: Object {
             return false
         }
     }
+
+    func timeAsDayOfWeek() -> Int {
+        switch day {
+            case "SUNDAY":    return 1
+            case "MONDAY":    return 2
+            case "TUESDAY":   return 3
+            case "WEDNESDAY": return 4
+            case "THURSDAY":  return 5
+            case "FRIDAY":    return 6
+            case "SATURDAY":  return 7
+            default:          return -1
+        }
+    }
 }
 
 final class Course: Object {
@@ -139,6 +152,15 @@ final class Course: Object {
             }
         }
     }
+
+    dynamic var courseTimes: [CourseTime] {
+        for courseMeetingSection in courseMeetingSections {
+            if courseMeetingSection.isLecture {
+                return Array(courseMeetingSection.times)
+            }
+        }
+        return []
+    }
 }
 
 final class CourseShortCode: Object {
@@ -160,9 +182,4 @@ final class CourseShortCode: Object {
     override static func primaryKey() -> String? {
         return "shortCode"
     }
-}
-
-
-final class User: Object{
-    let courses = List<Course>()
 }
