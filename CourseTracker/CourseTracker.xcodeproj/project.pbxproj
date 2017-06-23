@@ -44,7 +44,6 @@
 		31A955D11EF84EB500EEF0CD /* courses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A955D01EF84EB500EEF0CD /* courses.plist */; };
 		31A955D81EF8C42D00EEF0CD /* SelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */; };
 		31A955DA1EF8CFA200EEF0CD /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */; };
-		31C834C91EFC93AF00B9331D /* CustomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C834C81EFC93AF00B9331D /* CustomAnimation.swift */; };
 		31CBBB981EF97D21009DA415 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB941EF97D21009DA415 /* Alamofire.framework */; };
 		31CBBB991EF97D21009DA415 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB941EF97D21009DA415 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31CBBB9A1EF97D21009DA415 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB951EF97D21009DA415 /* JTAppleCalendar.framework */; };
@@ -136,7 +135,6 @@
 		31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedTableViewCell.swift; sourceTree = "<group>"; };
 		31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		31B29A9D1EEC8CEC00BF3F91 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		31C834C81EFC93AF00B9331D /* CustomAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimation.swift; sourceTree = "<group>"; };
 		31CBBB941EF97D21009DA415 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		31CBBB951EF97D21009DA415 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
 		31CBBB961EF97D21009DA415 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -366,7 +364,6 @@
 				116219B71EF9BFB1009E1885 /* CourseStore.swift */,
 				116219B91EFACCB4009E1885 /* CourseStore+UICollectionViewDataSource.swift */,
 				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
-				31C834C81EFC93AF00B9331D /* CustomAnimation.swift */,
 				11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */,
 				31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */,
 				31A955D31EF8C35500EEF0CD /* TableCells */,
@@ -720,7 +717,6 @@
 				31F1D88F1EF8282000F215F2 /* DepartmentCollectionReusableView.swift in Sources */,
 				3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */,
 				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
-				31C834C91EFC93AF00B9331D /* CustomAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

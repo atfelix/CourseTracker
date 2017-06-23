@@ -97,6 +97,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     //MARK: Button Actions
+    
     @IBAction func addEventTapped(_ sender: Any) {
         performSegue(withIdentifier: "AddEvent", sender: sender)
     }
@@ -265,17 +266,27 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         //sets datelabel to current cell state
         cell.dateLabel.text = cellState.text
 
+        
+        //date -> ?
+        
+        print(dateFormatter.string(from: currentDate))
+        
+        let yellowDate = dateFormatter.string(from: date)
+        
+
+        
         //set the courseLabel indicator to yellow or silver for different events
+        
         if CourseEvent.self != nil {
             cell.coursesLabel.backgroundColor = UIColor.yellow
             cell.coursesLabel.layer.cornerRadius = 2.5
             cell.coursesLabel.layer.masksToBounds = true
         }
-//        if CustomEvent.self != nil{
-//            cell.customLabel.backgroundColor = UIColor.lightGray
-//            cell.customLabel.layer.cornerRadius = 2.5
-//            cell.customLabel.layer.masksToBounds = true
-//        }
+        if CustomEvent.self != nil{
+            cell.customLabel.backgroundColor = UIColor.lightGray
+            cell.customLabel.layer.cornerRadius = 2.5
+            cell.customLabel.layer.masksToBounds = true
+        }
 
 
         handleCellSelected(view: cell, cellState: cellState)
