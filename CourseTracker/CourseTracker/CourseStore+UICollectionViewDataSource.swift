@@ -22,9 +22,8 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
         let course = courseFor(indexPath: indexPath)
         
         cell.courseLabel.text = course?.code
-        cell.courseLabel.textColor = .white
         cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.borderWidth = 2
+        cell.layer.borderWidth = 1
         
         return cell
     }

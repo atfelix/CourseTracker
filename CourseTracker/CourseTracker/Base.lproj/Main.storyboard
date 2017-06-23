@@ -476,7 +476,7 @@
                                     <segue destination="ltj-Ic-wEJ" kind="showDetail" identifier="AddCourse" id="TkO-7K-ADK"/>
                                 </connections>
                             </button>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otG-Em-cds">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otG-Em-cds">
                                 <rect key="frame" x="0.0" y="518" width="414" height="183"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2O-E7-pV7">
@@ -585,12 +585,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgF-fO-i1h">
-                                        <rect key="frame" x="0.0" y="0.0" width="36" height="35"/>
+                                        <rect key="frame" x="0.0" y="1" width="36" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="EQ2-V4-Hkd"/>
                                         </constraints>
-                                        <state key="normal" image="Drop"/>
+                                        <state key="normal" image="ic_compare_arrows_white"/>
                                         <connections>
                                             <action selector="dropTableTapped:" destination="i1C-DJ-rMf" eventType="touchUpInside" id="dn7-er-fOI"/>
                                         </connections>
@@ -889,25 +889,16 @@
                         <viewControllerLayoutGuide type="top" id="rYy-6h-TNT"/>
                         <viewControllerLayoutGuide type="bottom" id="wZE-oH-tyr"/>
                     </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Vib-vf-3V4">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Vib-vf-3V4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EiC-XA-lsG">
+                            <view opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EiC-XA-lsG">
                                 <rect key="frame" x="71" y="244" width="272" height="249"/>
                                 <subviews>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course ID" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drj-9s-Hh3">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="33"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="XkN-Qo-yke"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieF-8u-NDX">
                                         <rect key="frame" x="8" y="33" width="256" height="120"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="Aqh-aY-FtY"/>
                                         </constraints>
@@ -915,13 +906,24 @@
                                         <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0a-QK-6ua">
-                                        <rect key="frame" x="16" y="219" width="87" height="30"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Textbook Information" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLm-Ke-qOb">
+                                        <rect key="frame" x="8" y="153" width="256" height="66"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="87" id="D0z-hV-auT"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="dtt-p6-nxf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0a-QK-6ua">
+                                        <rect key="frame" x="16" y="219" width="123" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="123" id="D0z-hV-auT"/>
                                             <constraint firstAttribute="height" constant="30" id="vWd-ir-oXs"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add">
                                             <color key="titleColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -931,10 +933,11 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y7-QJ-POe">
                                         <rect key="frame" x="138" y="219" width="117" height="30"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="117" id="5XC-x0-BXj"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -942,29 +945,30 @@
                                             <action selector="cancelSelectedTapped:" destination="k9s-TO-qFy" eventType="touchUpInside" id="QBh-H9-INP"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Textbook Information" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLm-Ke-qOb">
-                                        <rect key="frame" x="8" y="153" width="256" height="66"/>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course ID" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drj-9s-Hh3">
+                                        <rect key="frame" x="8" y="0.0" width="256" height="33"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="dtt-p6-nxf"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="XkN-Qo-yke"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="TLm-Ke-qOb" secondAttribute="trailing" constant="8" id="3EI-kF-teV"/>
                                     <constraint firstAttribute="width" constant="272" id="59H-ih-d6m"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="ieF-8u-NDX" secondAttribute="trailing" id="5FF-Tu-PoH"/>
-                                    <constraint firstItem="9y7-QJ-POe" firstAttribute="leading" secondItem="n0a-QK-6ua" secondAttribute="trailing" constant="35" id="5wT-rz-aOC"/>
+                                    <constraint firstItem="9y7-QJ-POe" firstAttribute="leading" secondItem="n0a-QK-6ua" secondAttribute="trailing" constant="-1" id="5wT-rz-aOC"/>
                                     <constraint firstAttribute="bottom" secondItem="9y7-QJ-POe" secondAttribute="bottom" id="76O-Rj-84n"/>
                                     <constraint firstItem="TLm-Ke-qOb" firstAttribute="leading" secondItem="EiC-XA-lsG" secondAttribute="leading" constant="8" id="9lr-nv-box"/>
                                     <constraint firstAttribute="trailing" secondItem="9y7-QJ-POe" secondAttribute="trailing" constant="17" id="Eqy-KM-b5U"/>
-                                    <constraint firstItem="drj-9s-Hh3" firstAttribute="leading" secondItem="EiC-XA-lsG" secondAttribute="leading" id="M2e-8A-CKF"/>
+                                    <constraint firstItem="drj-9s-Hh3" firstAttribute="leading" secondItem="EiC-XA-lsG" secondAttribute="leading" constant="8" id="M2e-8A-CKF"/>
                                     <constraint firstItem="n0a-QK-6ua" firstAttribute="top" secondItem="TLm-Ke-qOb" secondAttribute="bottom" id="RrC-AX-pgM"/>
-                                    <constraint firstAttribute="trailing" secondItem="drj-9s-Hh3" secondAttribute="trailing" id="UIb-UW-Cde"/>
-                                    <constraint firstItem="9y7-QJ-POe" firstAttribute="leading" secondItem="n0a-QK-6ua" secondAttribute="trailing" constant="35" id="Wfx-Fx-Cma"/>
+                                    <constraint firstAttribute="trailing" secondItem="drj-9s-Hh3" secondAttribute="trailing" constant="8" id="UIb-UW-Cde"/>
+                                    <constraint firstItem="9y7-QJ-POe" firstAttribute="leading" secondItem="n0a-QK-6ua" secondAttribute="trailing" constant="-1" id="Wfx-Fx-Cma"/>
                                     <constraint firstItem="9y7-QJ-POe" firstAttribute="baseline" secondItem="n0a-QK-6ua" secondAttribute="baseline" id="cbz-wp-Gs1"/>
                                     <constraint firstItem="TLm-Ke-qOb" firstAttribute="top" secondItem="ieF-8u-NDX" secondAttribute="bottom" id="d1z-RR-fbq"/>
                                     <constraint firstItem="ieF-8u-NDX" firstAttribute="leading" secondItem="EiC-XA-lsG" secondAttribute="leadingMargin" id="fKl-PL-CjG"/>
@@ -990,11 +994,12 @@
                         <outlet property="popCourseLabel" destination="drj-9s-Hh3" id="Iwi-tM-6ce"/>
                         <outlet property="popDescriptionLabel" destination="ieF-8u-NDX" id="03I-Lo-HpD"/>
                         <outlet property="popTextbookLabel" destination="TLm-Ke-qOb" id="ERD-mS-YDe"/>
+                        <outlet property="popView" destination="EiC-XA-lsG" id="h9W-B3-N43"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GP9-Td-BU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="-1632"/>
+            <point key="canvasLocation" x="911.59420289855075" y="-1632.0652173913045"/>
         </scene>
         <!--Add Course View Controller-->
         <scene sceneID="nUL-dk-hcj">
@@ -1107,7 +1112,7 @@
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5GP-6D-aXV">
                                 <rect key="frame" x="0.0" y="309" width="414" height="427"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="427" id="51W-YZ-f1x"/>
                                 </constraints>
@@ -1118,7 +1123,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" alpha="0.59999999999999998" contentMode="center" reuseIdentifier="CourseIcon" id="QI1-N1-wTf" customClass="CourseCollectionViewCell" customModule="CourseTracker" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="CourseIcon" id="QI1-N1-wTf" customClass="CourseCollectionViewCell" customModule="CourseTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="27" width="100" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1129,8 +1134,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                    <color key="textColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="textColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
                                             </subviews>
@@ -1142,6 +1147,11 @@
                                             <constraint firstAttribute="trailing" secondItem="dni-Dr-a2L" secondAttribute="trailing" id="ox2-m1-lqC"/>
                                             <constraint firstAttribute="bottom" secondItem="dni-Dr-a2L" secondAttribute="bottom" id="pFR-m9-J0D"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="courseLabel" destination="dni-Dr-a2L" id="t8g-lz-tZZ"/>
                                         </connections>
@@ -1158,7 +1168,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Q0-Uv-r3U">
-                                            <rect key="frame" x="0.0" y="0.0" width="58" height="27"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="42" height="27"/>
                                             <color key="tintColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" image="ic_arrow_drop_down_circle_white"/>
                                         </button>
@@ -1171,7 +1181,7 @@
                                         <constraint firstAttribute="trailing" secondItem="Ifk-SN-O7c" secondAttribute="trailing" id="LMJ-qO-IXj"/>
                                         <constraint firstItem="9Q0-Uv-r3U" firstAttribute="leading" secondItem="W2e-ts-y0l" secondAttribute="leading" id="TeY-kT-tAD"/>
                                         <constraint firstItem="Ifk-SN-O7c" firstAttribute="top" secondItem="W2e-ts-y0l" secondAttribute="top" id="Z62-7L-hE9"/>
-                                        <constraint firstAttribute="trailing" secondItem="9Q0-Uv-r3U" secondAttribute="trailing" constant="356" id="frd-YR-uTv"/>
+                                        <constraint firstAttribute="trailing" secondItem="9Q0-Uv-r3U" secondAttribute="trailing" constant="372" id="frd-YR-uTv"/>
                                         <constraint firstAttribute="bottom" secondItem="9Q0-Uv-r3U" secondAttribute="bottom" id="q9d-7L-Qfb"/>
                                     </constraints>
                                     <connections>
@@ -1235,7 +1245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJm-Yr-sqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912" y="-964"/>
+            <point key="canvasLocation" x="911.59420289855075" y="-964.4021739130435"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vkx-O0-sUS">
@@ -1282,12 +1292,12 @@
         <image name="Circle" width="128" height="128"/>
         <image name="Columbia" width="1120" height="572"/>
         <image name="Cornell" width="2087" height="1736"/>
-        <image name="Drop" width="512" height="512"/>
         <image name="Edit" width="128" height="128"/>
         <image name="NearMe" width="800" height="800"/>
         <image name="Sweden" width="512" height="384"/>
         <image name="arrowLeft" width="24" height="24"/>
         <image name="ic_arrow_drop_down_circle_white" width="24" height="24"/>
+        <image name="ic_compare_arrows_white" width="24" height="24"/>
         <image name="ic_date_range_white" width="24" height="24"/>
         <image name="ic_directions_run_white" width="24" height="24"/>
         <image name="ic_stars_2x" width="24" height="24"/>

@@ -22,7 +22,8 @@ class PopoverViewController: UIViewController {
     //labels
     @IBOutlet weak var popDescriptionLabel: UILabel!
     @IBOutlet weak var popTextbookLabel: UILabel!
-    
+    //view
+    @IBOutlet weak var popView: UIView!
     //buttons
     @IBOutlet weak var addSelected: UIButton!
     @IBOutlet weak var cancelSelected: UIButton!
@@ -32,6 +33,9 @@ class PopoverViewController: UIViewController {
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        //set the pop over layer
+        popView.layer.cornerRadius = 20
+        popView.layer.masksToBounds = true
         
         //set the pop over labels
         self.popCourseLabel.text = course?.name ?? "No Course Name Found"
