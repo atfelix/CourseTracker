@@ -309,11 +309,9 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
         
         //date -> ?
-        
-        print(dateFormatter.string(from: currentDate))
+        //print(dateFormatter.string(from: currentDate))
         
         //set the courseLabel indicator to yellow or silver for different events
-
         if student.coursesFor(day: cellState.day).count > 0 {
             cell.coursesLabel.backgroundColor = UIColor.yellow
             cell.coursesLabel.layer.cornerRadius = 2.5
