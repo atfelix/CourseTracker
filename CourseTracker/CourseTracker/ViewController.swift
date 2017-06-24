@@ -13,10 +13,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //segue to Calendar
+        performSegue(withIdentifier: "PresentCalendar", sender: self)
         
 //        UofTAPI.updateDB()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+    
+        sleep(5)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
