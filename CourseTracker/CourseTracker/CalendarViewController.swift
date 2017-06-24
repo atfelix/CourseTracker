@@ -8,7 +8,7 @@ import UIKit
 import JTAppleCalendar
 import RealmSwift
 
-import IBAnimatable
+//import IBAnimatable
 
 class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource{
 

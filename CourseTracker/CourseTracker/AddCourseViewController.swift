@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-import IBAnimatable
+//import IBAnimatable
 
 class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
