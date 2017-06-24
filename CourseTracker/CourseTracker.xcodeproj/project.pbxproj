@@ -380,6 +380,7 @@
 				31F1D8931EF8475A00F215F2 /* CourseUI.swift */,
 				317DDF091EECE13100F02C3B /* PageViewController.swift */,
 				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
+				31A955D01EF84EB500EEF0CD /* courses.plist */,
 			);
 			name = ToDelete;
 			sourceTree = "<group>";
@@ -387,7 +388,6 @@
 		31F1D8921EF8454300F215F2 /* Course */ = {
 			isa = PBXGroup;
 			children = (
-				31A955D01EF84EB500EEF0CD /* courses.plist */,
 				116219B71EF9BFB1009E1885 /* CourseStore.swift */,
 				116219B91EFACCB4009E1885 /* CourseStore+UICollectionViewDataSource.swift */,
 				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
