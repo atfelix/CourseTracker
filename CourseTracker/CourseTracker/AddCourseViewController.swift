@@ -9,8 +9,6 @@
 import UIKit
 import RealmSwift
 
-//import IBAnimatable
-
 class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
     // MARK: Properties
@@ -145,8 +143,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "ShowCalendar", sender: sender)
-        
+        //performSegue(withIdentifier: "ShowCalendar", sender: sender)
+        dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

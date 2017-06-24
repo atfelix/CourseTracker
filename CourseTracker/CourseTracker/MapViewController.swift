@@ -6,7 +6,6 @@
 //  Copyright © 2017 Adam Felix. All rights reserved.
 //
 
-// Google maps API KEY: "AIzaSyD3pj2NAcnXZxxKoOtdNeg6L-8bjDKdIRc"
 
 
 import UIKit

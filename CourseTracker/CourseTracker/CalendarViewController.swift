@@ -112,15 +112,16 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func mapButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "ShowMap", sender: sender)
     }
-//    @IBAction func addCourseTapped(_ sender: Any) {
-//        performSegue(withIdentifier: "AddCourse", sender: sender)
-//    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-            if segue.identifier == "AddCourse" {
-                let addCourseVC = segue.destination as! AddCourseViewController
-                addCourseVC.student = student
+        if segue.identifier == "AddCourse" {
+            let addCourseVC = segue.destination as! AddCourseViewController
+            addCourseVC.student = student
+        }
+        else if segue.identifier == "AddAthletics" {
+            let addAthleticsVC = segue.destination as! AddAthleticsViewController
+            addAthleticsVC.student = student
+            addAthleticsVC.date = calendarView.selectedDates.first ?? Date()
         }
     }
 
