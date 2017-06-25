@@ -25,8 +25,6 @@
 		11AB670B1EF81B1500AB1F00 /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AB670A1EF81B1500AB1F00 /* API_KEYS.swift */; };
 		11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB431EEC77E900569DE9 /* Realm.framework */; };
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
-		11D302D41EFEE5DC007E2E8B /* AthleticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D302D31EFEE5DC007E2E8B /* AthleticTableViewCell.swift */; };
-		11D302D61EFEE9B1007E2E8B /* Int+TimeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D302D51EFEE9B1007E2E8B /* Int+TimeUtility.swift */; };
 		11E94F581EF8642F009D6718 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
 		11E94F5A1EF8644C009D6718 /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E94F591EF8644C009D6718 /* UofTAPI.swift */; };
 		11E94F5C1EF86466009D6718 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E94F5B1EF86466009D6718 /* Models.swift */; };
@@ -49,6 +47,7 @@
 		3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616991EF09F2F00CE51D3 /* UserData.swift */; };
 		317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */; };
 		317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */; };
+		3182A8661EFF398600F1DD26 /* AthleticCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3182A8651EFF398600F1DD26 /* AthleticCollectionViewCell.swift */; };
 		31A955D11EF84EB500EEF0CD /* courses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A955D01EF84EB500EEF0CD /* courses.plist */; };
 		31A955D81EF8C42D00EEF0CD /* SelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */; };
 		31A955DA1EF8CFA200EEF0CD /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */; };
@@ -123,8 +122,6 @@
 		11AB670A1EF81B1500AB1F00 /* API_KEYS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API_KEYS.swift; sourceTree = "<group>"; };
 		11B3EB431EEC77E900569DE9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		11B3EB441EEC77E900569DE9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		11D302D31EFEE5DC007E2E8B /* AthleticTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleticTableViewCell.swift; sourceTree = "<group>"; };
-		11D302D51EFEE9B1007E2E8B /* Int+TimeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+TimeUtility.swift"; sourceTree = "<group>"; };
 		11E94F591EF8644C009D6718 /* UofTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UofTAPI.swift; sourceTree = "<group>"; };
 		11E94F5B1EF86466009D6718 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCourseViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
@@ -147,6 +144,7 @@
 		317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		317DDF091EECE13100F02C3B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
+		3182A8651EFF398600F1DD26 /* AthleticCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleticCollectionViewCell.swift; sourceTree = "<group>"; };
 		31A955D01EF84EB500EEF0CD /* courses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = courses.plist; sourceTree = "<group>"; };
 		31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedTableViewCell.swift; sourceTree = "<group>"; };
 		31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
@@ -276,9 +274,8 @@
 		3140F9D21EFDE5C300679115 /* Athletics */ = {
 			isa = PBXGroup;
 			children = (
-				11D302D31EFEE5DC007E2E8B /* AthleticTableViewCell.swift */,
-				11D302D51EFEE9B1007E2E8B /* Int+TimeUtility.swift */,
 				3140F9D31EFDE60400679115 /* AddAthleticsViewController.swift */,
+				3182A8651EFF398600F1DD26 /* AthleticCollectionViewCell.swift */,
 			);
 			name = Athletics;
 			sourceTree = "<group>";
@@ -729,6 +726,7 @@
 				1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */,
 				11E94F5C1EF86466009D6718 /* Models.swift in Sources */,
 				119C969A1EF5E5980035FD9A /* UofTAPI+Textbook.swift in Sources */,
+				3182A8661EFF398600F1DD26 /* AthleticCollectionViewCell.swift in Sources */,
 				11E94F581EF8642F009D6718 /* PageViewController.swift in Sources */,
 				31A955D81EF8C42D00EEF0CD /* SelectedTableViewCell.swift in Sources */,
 				11EDFEA51EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift in Sources */,
@@ -742,11 +740,9 @@
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
 				31F1D8941EF8475A00F215F2 /* CourseUI.swift in Sources */,
 				31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */,
-				11D302D41EFEE5DC007E2E8B /* AthleticTableViewCell.swift in Sources */,
 				313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */,
 				119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */,
 				119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */,
-				11D302D61EFEE9B1007E2E8B /* Int+TimeUtility.swift in Sources */,
 				3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */,
 				116219B81EF9BFB1009E1885 /* CourseStore.swift in Sources */,
 				11E94F5A1EF8644C009D6718 /* UofTAPI.swift in Sources */,

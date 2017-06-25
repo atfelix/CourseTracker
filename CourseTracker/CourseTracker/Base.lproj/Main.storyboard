@@ -759,7 +759,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="10" maxX="20" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LI6-uz-rYm">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AthleticEvent" id="LI6-uz-rYm" customClass="AthleticCollectionViewCell" customModule="CourseTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="10" width="190" height="166"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -797,6 +797,11 @@
                                             <constraint firstItem="mrJ-Sk-sXE" firstAttribute="top" secondItem="LI6-uz-rYm" secondAttribute="top" id="ptV-ch-jh0"/>
                                             <constraint firstItem="pub-Wc-Rkw" firstAttribute="leading" secondItem="LI6-uz-rYm" secondAttribute="leading" id="ubV-lL-o3P"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="eventBackgroundView" destination="pub-Wc-Rkw" id="LmA-Hf-NVj"/>
+                                            <outlet property="eventImageView" destination="mrJ-Sk-sXE" id="oLR-Nu-EZG"/>
+                                            <outlet property="eventTitleLabel" destination="9cU-V0-Ta8" id="WFk-n0-wf7"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -826,6 +831,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="athleticCollectionView" destination="Afl-FV-Olf" id="BhB-b5-8kz"/>
                         <outlet property="athleticTableView" destination="mDM-KS-M0j" id="6xc-ws-X39"/>
                     </connections>
                 </viewController>
