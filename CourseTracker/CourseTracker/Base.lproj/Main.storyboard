@@ -782,10 +782,10 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pub-Wc-Rkw">
-                                                    <rect key="frame" x="8" y="8" width="184" height="134"/>
+                                                    <rect key="frame" x="0.0" y="8" width="200" height="134"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AthleticName" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cU-V0-Ta8">
-                                                            <rect key="frame" x="26.666666666666657" y="55" width="131" height="24"/>
+                                                            <rect key="frame" x="26.666666666666671" y="55" width="131" height="24"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -793,7 +793,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="9cU-V0-Ta8" firstAttribute="centerX" secondItem="pub-Wc-Rkw" secondAttribute="centerX" id="T1B-ad-6ME"/>
+                                                        <constraint firstItem="9cU-V0-Ta8" firstAttribute="centerX" secondItem="pub-Wc-Rkw" secondAttribute="centerX" constant="-7.8333333333333428" id="T1B-ad-6ME"/>
                                                         <constraint firstItem="9cU-V0-Ta8" firstAttribute="centerY" secondItem="pub-Wc-Rkw" secondAttribute="centerY" id="fzM-y2-vXV"/>
                                                     </constraints>
                                                 </view>
@@ -801,9 +801,9 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="pub-Wc-Rkw" firstAttribute="bottom" secondItem="LI6-uz-rYm" secondAttribute="bottomMargin" id="NwB-z9-SBe"/>
-                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="leading" secondItem="LI6-uz-rYm" secondAttribute="leadingMargin" id="OP6-cq-UhD"/>
+                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="leading" secondItem="LI6-uz-rYm" secondAttribute="leadingMargin" constant="-8" id="OP6-cq-UhD"/>
                                             <constraint firstItem="pub-Wc-Rkw" firstAttribute="top" secondItem="LI6-uz-rYm" secondAttribute="topMargin" id="Y91-0R-6GF"/>
-                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="trailing" secondItem="LI6-uz-rYm" secondAttribute="trailingMargin" id="Ztb-kM-HJx"/>
+                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="trailing" secondItem="LI6-uz-rYm" secondAttribute="trailingMargin" constant="8" id="Ztb-kM-HJx"/>
                                             <constraint firstItem="mrJ-Sk-sXE" firstAttribute="top" secondItem="LI6-uz-rYm" secondAttribute="topMargin" constant="10" id="bYo-6j-Ti4"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="mrJ-Sk-sXE" secondAttribute="trailing" constant="10" id="efF-dE-KSQ"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="mrJ-Sk-sXE" secondAttribute="bottom" constant="10" id="fdo-2B-P3S"/>
