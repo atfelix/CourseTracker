@@ -102,7 +102,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
             cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
         }
         
-        UIView.animate(withDuration: 1.5) {
+        UIView.animate(withDuration: 1.0) {
             cell.frame = cellFrame
         }
     }

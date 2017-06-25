@@ -20,7 +20,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     var student: Student!
     
     //cell scaling
-    let cellScaling: CGFloat = 0.80
+    let cellScaling: CGFloat = 0.79
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -69,6 +69,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         let layout = self.athleticCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        
         let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
         
         var offset = targetContentOffset.pointee
@@ -116,6 +117,22 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
         
         return cell
     }
-    
-    
 }
+
+//random color extension
+extension CGFloat {
+    static func random() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+}
+
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(red:   .random(),
+                       green: .random(),
+                       blue:  .random(),
+                       alpha: 1.0)
+    }
+}
+
+

@@ -34,7 +34,7 @@ class AthleticCollectionViewCell: UICollectionViewCell {
     func updateUI(){
         eventTitleLabel.text = athleticEvent.title
 //        eventImageView.image = athleticEvent.image
-//        eventBackgroundView.backgroundColor = athleticEvent.color
+        eventBackgroundView.backgroundColor = UIColor.random().withAlphaComponent(0.30)
     }
     
     

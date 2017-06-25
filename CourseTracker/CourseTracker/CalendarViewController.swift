@@ -156,7 +156,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
     //MARK: TableView Methods
     
-    //tableview animation
     //animation method
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
@@ -172,7 +171,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
         }
         
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: 0.5) {
             cell.frame = cellFrame
         }
     }
