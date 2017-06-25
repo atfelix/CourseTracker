@@ -35,16 +35,16 @@ class AthleticCollectionViewCell: UICollectionViewCell {
 //        }
 //    }
 //    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        
-//        //cell layouts
-//        self.layer.cornerRadius = 3.0
-//        layer.shadowRadius = 10
-//        layer.shadowOpacity = 0.3
-//        layer.shadowOffset = CGSize(width:5, height: 10)
-//        
-//        self.clipsToBounds = false
-//    }
-//    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        //cell layouts
+        self.layer.cornerRadius = 3.0
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width:5, height: 10)
+        
+        self.clipsToBounds = false
+    }
+//
 }

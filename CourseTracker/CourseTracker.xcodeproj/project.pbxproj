@@ -36,6 +36,8 @@
 		3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */; };
 		3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105109C1EF6759800F34D43 /* BuildingData.swift */; };
 		3105109F1EF67D5900F34D43 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3105109E1EF67D5900F34D43 /* buildings.plist */; };
+		31064C8A1EFF5255006816F8 /* AthleticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31064C891EFF5255006816F8 /* AthleticTableViewCell.swift */; };
+		31064C8C1EFF52D4006816F8 /* Int+TimeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31064C8B1EFF52D4006816F8 /* Int+TimeUtility.swift */; };
 		31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31170ED51EF32D45004AFE2F /* MapViewController.swift */; };
 		313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */; };
 		313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */; };
@@ -131,6 +133,8 @@
 		11EDFEAC1EFD9FF800654CA3 /* Date+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Utility.swift"; sourceTree = "<group>"; };
 		3105109C1EF6759800F34D43 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 		3105109E1EF67D5900F34D43 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
+		31064C891EFF5255006816F8 /* AthleticTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleticTableViewCell.swift; sourceTree = "<group>"; };
+		31064C8B1EFF52D4006816F8 /* Int+TimeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+TimeUtility.swift"; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 			children = (
 				3140F9D31EFDE60400679115 /* AddAthleticsViewController.swift */,
 				3182A8651EFF398600F1DD26 /* AthleticCollectionViewCell.swift */,
+				31064C8B1EFF52D4006816F8 /* Int+TimeUtility.swift */,
+				31064C891EFF5255006816F8 /* AthleticTableViewCell.swift */,
 			);
 			name = Athletics;
 			sourceTree = "<group>";
@@ -729,6 +735,7 @@
 				3182A8661EFF398600F1DD26 /* AthleticCollectionViewCell.swift in Sources */,
 				11E94F581EF8642F009D6718 /* PageViewController.swift in Sources */,
 				31A955D81EF8C42D00EEF0CD /* SelectedTableViewCell.swift in Sources */,
+				31064C8A1EFF5255006816F8 /* AthleticTableViewCell.swift in Sources */,
 				11EDFEA51EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift in Sources */,
 				119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */,
 				117920101EF9979500858073 /* UofTAPI+CourseShortCode.swift in Sources */,
@@ -753,6 +760,7 @@
 				11EDFEA91EFD6C9800654CA3 /* Models+Course.swift in Sources */,
 				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
 				11EDFEA71EFD6C1B00654CA3 /* Models+Textbook.swift in Sources */,
+				31064C8C1EFF52D4006816F8 /* Int+TimeUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
