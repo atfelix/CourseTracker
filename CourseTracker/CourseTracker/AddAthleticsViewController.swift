@@ -109,7 +109,8 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AthleticEvent", for: indexPath) as! AthleticCollectionViewCell
         
-//        cell.event = events[indexPath.item]
+        cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
+        cell.updateUI()
         
         return cell
     }

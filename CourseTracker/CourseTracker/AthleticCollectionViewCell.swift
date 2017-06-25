@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AthleticCollectionViewCell: UICollectionViewCell {
     
@@ -17,11 +18,7 @@ class AthleticCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
 //    
-//    var event: Event?{
-//        didSet{
-//            self.updateUI()
-//        }
-//    }
+    var athleticEvent: AthleticEvent!
 //    
 //    private func updateUI(){
 //        if let event = event{
@@ -34,7 +31,15 @@ class AthleticCollectionViewCell: UICollectionViewCell {
 //            eventTitleLabel.text = nil
 //        }
 //    }
-//    
+    
+    func updateUI(){
+        eventTitleLabel.text = athleticEvent.title
+//        eventImageView.image = athleticEvent.image
+//        eventBackgroundView.backgroundColor = athleticEvent.color
+        eventTitleLabel.sizeToFit()
+        eventImageView.sizeToFit()
+        eventBackgroundView.sizeToFit()
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
         

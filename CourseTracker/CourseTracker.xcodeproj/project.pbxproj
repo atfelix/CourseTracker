@@ -280,8 +280,8 @@
 			children = (
 				3140F9D31EFDE60400679115 /* AddAthleticsViewController.swift */,
 				3182A8651EFF398600F1DD26 /* AthleticCollectionViewCell.swift */,
-				31064C8B1EFF52D4006816F8 /* Int+TimeUtility.swift */,
 				31064C891EFF5255006816F8 /* AthleticTableViewCell.swift */,
+				31064C8B1EFF52D4006816F8 /* Int+TimeUtility.swift */,
 			);
 			name = Athletics;
 			sourceTree = "<group>";
