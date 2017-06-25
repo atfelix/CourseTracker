@@ -72,8 +72,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         //Animations
 
         //setup the tableView
-        self.listTableView.backgroundColor = UIColor.black
-        self.listTableView.separatorColor = UIColor.lightGray
+//        self.listTableView.backgroundColor = UIColor.black
+//        self.listTableView.separatorColor = UIColor.lightGray
 
         //setup the Calendar
         setupCalendarView()
@@ -88,7 +88,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         swipeDownGesture.direction = .down// add swipe down
         slidingView.addGestureRecognizer(swipeDownGesture)
 
-        //Tap on Calendar to change View
+        //Tap on Calendar Date to segue to daily route
         let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(gesture:)))
         doubleTapGesture.numberOfTapsRequired = 2  // add double tap
         calendarView.addGestureRecognizer(doubleTapGesture)
@@ -197,8 +197,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ListTableViewCell
 //        var event = eventsAtCalendar[indexPath.row]
         //set Color if you want
-        listTableView.backgroundColor = UIColor.black
-        cell.backgroundColor = UIColor.black
+//        listTableView.backgroundColor = UIColor.black
+//        cell.backgroundColor = UIColor.black
         //set cells to user event data
 //        cell.listImage.backgroundColor = event.color
 //        cell.listLocation.text = event.location
@@ -314,7 +314,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         
         //set the courseLabel indicator to yellow or silver for different events
         if student.coursesFor(day: cellState.day).count > 0 {
-            cell.coursesLabel.backgroundColor = UIColor.yellow
+            cell.coursesLabel.backgroundColor =  UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
             cell.coursesLabel.layer.cornerRadius = 2.5
             cell.coursesLabel.layer.masksToBounds = true
         }

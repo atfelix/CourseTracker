@@ -20,7 +20,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     var student: Student!
     
     //cell scaling
-    let cellScaling: CGFloat = 0.6
+    let cellScaling: CGFloat = 0.80
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -36,8 +36,10 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
         
         let layout = athleticCollectionView!.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+
         athleticCollectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
         
+        //data/ delegate
         athleticCollectionView?.dataSource = self
         athleticCollectionView?.delegate = self
         
@@ -107,7 +109,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AthleticEvent", for: indexPath) as! AthleticCollectionViewCell
+        let cell = athleticCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! AthleticCollectionViewCell
         
         cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
         cell.updateUI()

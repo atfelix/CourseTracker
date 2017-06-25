@@ -54,8 +54,6 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
 
         headerView.departmentLabel.text = getGroupLabelAtIndex(indexPath.section)
 
-        headerView.backgroundColor = .black
-
         return headerView
     }
 

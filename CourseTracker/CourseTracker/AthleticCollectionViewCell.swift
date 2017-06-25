@@ -13,11 +13,10 @@ class AthleticCollectionViewCell: UICollectionViewCell {
     
     
     //MARK: Properties
-    
     @IBOutlet weak var eventBackgroundView: UIView!
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
-//    
+    
     var athleticEvent: AthleticEvent!
 //    
 //    private func updateUI(){
@@ -36,10 +35,9 @@ class AthleticCollectionViewCell: UICollectionViewCell {
         eventTitleLabel.text = athleticEvent.title
 //        eventImageView.image = athleticEvent.image
 //        eventBackgroundView.backgroundColor = athleticEvent.color
-        eventTitleLabel.sizeToFit()
-        eventImageView.sizeToFit()
-        eventBackgroundView.sizeToFit()
     }
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         

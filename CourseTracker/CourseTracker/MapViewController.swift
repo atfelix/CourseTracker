@@ -90,14 +90,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 //append the building array with annotation items
                 buildingArray.append(annotation)
                 
-                
+                //set the distance label to current distance
                 let distance = myLocation.distance(from: CLLocation(latitude: lat, longitude: long))
                 let result = String(format: "%.1f", distance/1000)
                 self.distanceLabel.text = "Distance = \(result) KM"
-                
-                
-    
-                
             }
         }
         return buildingArray

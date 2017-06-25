@@ -183,9 +183,9 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     //MARK: SearchBar
     
     func filterContentForSearchText(searchText:String){
-        //        self.dataSourceForSearchResult = self.data.filter({ (text:String) -> Bool in
-        //            return text.contains(searchText)
-        //        })
+        self.dataSourceForSearchResult = self.dataSource?.filter({ (text:String) -> Bool in
+            return text.contains(searchText)
+        })
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
