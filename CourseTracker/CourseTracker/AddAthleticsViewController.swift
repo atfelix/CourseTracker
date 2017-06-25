@@ -19,6 +19,9 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     var athleticDate: AthleticDate!
     var student: Student!
     
+    //athletics events to pass to Calendar
+    var eventsToPass: String!
+    
     //cell scaling
     let cellScaling: CGFloat = 0.79
     
@@ -68,6 +71,15 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
         dismiss(animated: true, completion: nil)
     }
     
+    //pass athletics to calendar
+//    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "ShowCalendar") {
+//            // initialize new view controller and cast it as your view controller
+//            var calVC = segue.destination as! CalendarViewController
+//            // your new view controller should have property that will store passed value
+//            //calVC = valueToPass
+//    }
+//    
     //MARK: Scrollview Delegate
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
@@ -96,9 +108,15 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     //when selecting a row in the tableview, populate calendar tableview with the data
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        athleticTableView.course = athleticStore.
-
-        athleticTableView.reloadData()
+        
+        // Get Cell Label
+        let indexPath = tableView.indexPathForSelectedRow!
+        let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
+        
+        eventsToPass = currentCell.textLabel?.text
+        
+        //segue to Calendar
+//        performSegue(withIdentifier: "ShowCalendar", sender: self)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,16 +137,19 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return athleticDate.athleticEvents.count
     }
-    
+
     //when selecting an item populate tableview with the data of the item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //get athletic title
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = athleticCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! AthleticCollectionViewCell
         
-        cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
+        var eventName = cell.athleticEvent
+        eventName = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
         cell.updateUI()
         
         return cell

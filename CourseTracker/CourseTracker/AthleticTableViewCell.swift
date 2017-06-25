@@ -11,17 +11,17 @@ import RealmSwift
 
 class AthleticTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var athleticTitleLabel: UILabel!
+//    @IBOutlet weak var athleticTitleLabel: UILabel!
     @IBOutlet weak var campusLocationLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
 
     var athleticEvent: AthleticEvent!
 
     func update() {
-        athleticTitleLabel.text = athleticEvent.title
+//        athleticTitleLabel.text = athleticEvent.title
         campusLocationLabel.text = "\(athleticEvent.campus): \(athleticEvent.location)"
         timeLabel.text = "\(athleticEvent.startTime.convertSecondsFromMidnight())-\(athleticEvent.endTime.convertSecondsFromMidnight())"
-        athleticTitleLabel.sizeToFit()
+//        athleticTitleLabel.sizeToFit()
         campusLocationLabel.sizeToFit()
         timeLabel.sizeToFit()
     }

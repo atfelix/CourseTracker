@@ -698,46 +698,42 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AthleticCell" id="ezU-9Q-8xj" customClass="AthleticTableViewCell" customModule="CourseTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AthleticCell" id="ezU-9Q-8xj" customClass="AthleticTableViewCell" customModule="CourseTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" contentMode="center" tableViewCell="ezU-9Q-8xj" id="Lbq-Gl-fQx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CE-c7-NSf">
-                                                    <rect key="frame" x="8" y="31" width="133" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Location" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CE-c7-NSf">
+                                                    <rect key="frame" x="8" y="31" width="398" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Athletic Event Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGT-tI-9Nv">
-                                                    <rect key="frame" x="8" y="0.0" width="189" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8k-VQ-6fv">
-                                                    <rect key="frame" x="364" y="19" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timing" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8k-VQ-6fv">
+                                                    <rect key="frame" x="8" y="8" width="398" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="mUs-CQ-bBd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="SGT-tI-9Nv" firstAttribute="leading" secondItem="Lbq-Gl-fQx" secondAttribute="leading" constant="8" id="3Zn-6u-wpx"/>
-                                                <constraint firstItem="SGT-tI-9Nv" firstAttribute="top" secondItem="Lbq-Gl-fQx" secondAttribute="top" id="Cjt-lc-HTm"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="O8k-VQ-6fv" secondAttribute="trailing" id="DGJ-md-fCG"/>
-                                                <constraint firstItem="4CE-c7-NSf" firstAttribute="leading" secondItem="Lbq-Gl-fQx" secondAttribute="leading" constant="8" id="Ytr-MT-oyr"/>
-                                                <constraint firstItem="O8k-VQ-6fv" firstAttribute="centerY" secondItem="Lbq-Gl-fQx" secondAttribute="centerY" id="lip-Ef-SP6"/>
-                                                <constraint firstAttribute="bottom" secondItem="4CE-c7-NSf" secondAttribute="bottom" constant="8" id="yQT-Ta-POc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4CE-c7-NSf" secondAttribute="trailing" id="Dxn-vQ-VN2"/>
+                                                <constraint firstItem="O8k-VQ-6fv" firstAttribute="leading" secondItem="Lbq-Gl-fQx" secondAttribute="leadingMargin" id="ghb-IV-tJV"/>
+                                                <constraint firstItem="4CE-c7-NSf" firstAttribute="leading" secondItem="Lbq-Gl-fQx" secondAttribute="leadingMargin" id="i8C-Hf-9mk"/>
+                                                <constraint firstItem="4CE-c7-NSf" firstAttribute="top" secondItem="O8k-VQ-6fv" secondAttribute="bottom" constant="2" id="iDb-xy-6ZY"/>
+                                                <constraint firstItem="O8k-VQ-6fv" firstAttribute="top" secondItem="Lbq-Gl-fQx" secondAttribute="topMargin" id="reg-My-Z2q"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="O8k-VQ-6fv" secondAttribute="trailing" id="t0K-oz-QR5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.60027825342465757" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="athleticTitleLabel" destination="SGT-tI-9Nv" id="PN4-OE-Wqy"/>
                                             <outlet property="campusLocationLabel" destination="4CE-c7-NSf" id="Pvg-Cg-twP"/>
                                             <outlet property="timeLabel" destination="O8k-VQ-6fv" id="wQP-6h-1e9"/>
                                         </connections>
