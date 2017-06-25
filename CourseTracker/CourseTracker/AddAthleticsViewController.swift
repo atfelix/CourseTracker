@@ -39,6 +39,9 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
 
         athleticCollectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
         
+        //Tableview scrolling fix
+//        athleticTableView.setContentOffset(CGPoint.zero, animated: true)
+
         //data/ delegate
         athleticCollectionView?.dataSource = self
         athleticCollectionView?.delegate = self
@@ -91,11 +94,19 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    //when selecting a row in the tableview, populate calendar tableview with the data
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        athleticTableView.course = athleticStore.
+
+        athleticTableView.reloadData()
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AthleticCell", for: indexPath) as! AthleticTableViewCell
+       
         cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.row]
         cell.update()
+        
         return cell
     }
     
@@ -107,6 +118,11 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return athleticDate.athleticEvents.count
+    }
+    
+    //when selecting an item populate tableview with the data of the item
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
