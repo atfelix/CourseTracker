@@ -173,7 +173,6 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     //when selecting an item populate tableview with the data of the item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let predicate = NSPredicate(format: "location contains '\(categories[indexPath.item])'")
-
         guard let dataSource = athleticDate?.athleticEvents.filter(predicate).sorted(byKeyPath: "startTime") else { return }
 
         tableViewDataSource = Array(dataSource)

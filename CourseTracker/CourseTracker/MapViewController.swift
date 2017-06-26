@@ -22,10 +22,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var mapView: MKMapView!
 
     var locationManager: CLLocationManager!
+    var middlePoint: MKMapPoint!
+    
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Set Map View-------------
+        //Set Map View
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.isZoomEnabled = true //zoom
@@ -94,6 +96,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 let distance = myLocation.distance(from: CLLocation(latitude: lat, longitude: long))
                 let result = String(format: "%.1f", distance/1000)
                 self.distanceLabel.text = "Distance = \(result) KM"
+                
+                
+            
             }
         }
         return buildingArray
