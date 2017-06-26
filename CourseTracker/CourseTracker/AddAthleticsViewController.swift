@@ -22,6 +22,16 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        athleticCollectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+        
+        //Tableview scrolling fix
+//        athleticTableView.setContentOffset(CGPoint.zero, animated: true)
+
+        //data/ delegate
+        athleticCollectionView.dataSource = self
+        athleticCollectionView.delegate = self
+        
+        //Realm
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"

@@ -55,6 +55,11 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }()
     var firstDate : Date?
     var currentDate = Date()
+    var cellStateChanged = false {
+        didSet {
+            print("cellStateChanged changed: \(cellStateChanged)")
+        }
+    }
 
     //UserDate
     let userData = UserData()
@@ -68,12 +73,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Animations
-
-        //setup the tableView
-        self.listTableView.backgroundColor = UIColor.black
-        self.listTableView.separatorColor = UIColor.lightGray
 
         //setup the Calendar
         setupCalendarView()
@@ -159,7 +158,9 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //tableview animation
     //animation method
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
+
+        guard cellStateChanged else { return }
+
         //set the cell.frame to a initial position outside the screen
         let cellFrame : CGRect = cell.frame
         
@@ -171,9 +172,13 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }else{
             cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
         }
-        
-        UIView.animate(withDuration: 1.0) {
+
+        UIView.animate(withDuration: 0.5) {
             cell.frame = cellFrame
+        }
+
+        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            cellStateChanged = false
         }
     }
     
@@ -189,21 +194,11 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         return student.coursesFor(day: dayOfWeek).count
-//        return student.courses.count
     }
 
     //set data in table row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ListTableViewCell
-//        var event = eventsAtCalendar[indexPath.row]
-        //set Color if you want
-        listTableView.backgroundColor = UIColor.black
-        cell.backgroundColor = UIColor.black
-        //set cells to user event data
-//        cell.listImage.backgroundColor = event.color
-//        cell.listLocation.text = event.location
-//        cell.listData.text = event.title
-//        cell.listTime.text = "\(event.startDate) - \(event.endDate)"
 
         guard
             let selectedDate = calendarView.selectedDates.first,
@@ -213,14 +208,25 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
         let course = student.coursesFor(day: dayOfWeek)[indexPath.row]
         
-//        let course = student.courses[indexPath.row]
         cell.listImage.backgroundColor =  UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
         cell.listLocation.text = course.campus
         cell.listData.text = course.name
-        cell.listTime.text = "NO TIME YET"
+        cell.listTime.numberOfLines = 0
+
+        if let firstTime = course.courseTimeFor(day: dayOfWeek).first {
+            cell.listTime.text = "\(firstTime.startTime.convertSecondsFromMidnight())\n\(firstTime.endTime.convertSecondsFromMidnight())"
+        }
 
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(indexPath)
+        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            cellStateChanged = false
+        }
+    }
+
     //select item
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -363,6 +369,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         if firstDate == nil{
             self.dateTapped.text = "\(displayDateFormatter.string(from: selectedDates.first!))"
         }
+
+        cellStateChanged = true
     }
 
     //deselect a cell
@@ -374,5 +382,4 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setupViewsOfCalendar(from: visibleDates)
     }
-
 }

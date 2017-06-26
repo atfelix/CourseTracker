@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import JTAppleCalendar
 import RealmSwift
 
 final class CourseMeetingSection: Object {
@@ -160,6 +161,17 @@ final class Course: Object {
             }
         }
         return []
+    }
+
+    func courseTimeFor(day: JTAppleCalendar.DaysOfWeek) -> [CourseTime] {
+        var courseTimes = [CourseTime]()
+
+        for courseTime in self.courseTimes {
+            if courseTime.timeAsDayOfWeek() == day.rawValue {
+                courseTimes.append(courseTime)
+            }
+        }
+        return courseTimes
     }
 }
 
