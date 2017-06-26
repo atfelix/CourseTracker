@@ -163,7 +163,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="i1C-DJ-rMf" kind="presentation" identifier="PresentCalendar" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="Sri-jn-UJX"/>
+                        <segue destination="i1C-DJ-rMf" kind="presentation" identifier="PresentCalendar" modalPresentationStyle="overCurrentContext" modalTransitionStyle="flipHorizontal" id="Sri-jn-UJX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -773,15 +773,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pose" translatesAutoresizingMaskIntoConstraints="NO" id="mrJ-Sk-sXE">
-                                                    <rect key="frame" x="18" y="18" width="164" height="114"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fitness" translatesAutoresizingMaskIntoConstraints="NO" id="mrJ-Sk-sXE">
+                                                    <rect key="frame" x="8" y="8" width="184" height="134"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="184" id="0Ki-oH-vtQ"/>
+                                                        <constraint firstAttribute="height" constant="134" id="7kz-S3-mFe"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pub-Wc-Rkw">
                                                     <rect key="frame" x="0.0" y="8" width="200" height="134"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AthleticName" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cU-V0-Ta8">
-                                                            <rect key="frame" x="26.666666666666671" y="55" width="131" height="24"/>
+                                                            <rect key="frame" x="34.666666666666657" y="55" width="131" height="24"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -789,21 +793,21 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="9cU-V0-Ta8" firstAttribute="centerX" secondItem="pub-Wc-Rkw" secondAttribute="centerX" constant="-7.8333333333333428" id="T1B-ad-6ME"/>
-                                                        <constraint firstItem="9cU-V0-Ta8" firstAttribute="centerY" secondItem="pub-Wc-Rkw" secondAttribute="centerY" id="fzM-y2-vXV"/>
+                                                        <constraint firstItem="9cU-V0-Ta8" firstAttribute="centerX" secondItem="pub-Wc-Rkw" secondAttribute="centerX" id="gbw-Il-Zjn"/>
+                                                        <constraint firstItem="9cU-V0-Ta8" firstAttribute="centerY" secondItem="pub-Wc-Rkw" secondAttribute="centerY" id="l4g-Wm-XVc"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="bottom" secondItem="LI6-uz-rYm" secondAttribute="bottomMargin" id="NwB-z9-SBe"/>
-                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="leading" secondItem="LI6-uz-rYm" secondAttribute="leadingMargin" constant="-8" id="OP6-cq-UhD"/>
-                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="top" secondItem="LI6-uz-rYm" secondAttribute="topMargin" id="Y91-0R-6GF"/>
-                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="trailing" secondItem="LI6-uz-rYm" secondAttribute="trailingMargin" constant="8" id="Ztb-kM-HJx"/>
-                                            <constraint firstItem="mrJ-Sk-sXE" firstAttribute="top" secondItem="LI6-uz-rYm" secondAttribute="topMargin" constant="10" id="bYo-6j-Ti4"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="mrJ-Sk-sXE" secondAttribute="trailing" constant="10" id="efF-dE-KSQ"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="mrJ-Sk-sXE" secondAttribute="bottom" constant="10" id="fdo-2B-P3S"/>
-                                            <constraint firstItem="mrJ-Sk-sXE" firstAttribute="leading" secondItem="LI6-uz-rYm" secondAttribute="leadingMargin" constant="10" id="qhk-Ov-wYU"/>
+                                            <constraint firstItem="mrJ-Sk-sXE" firstAttribute="trailing" secondItem="LI6-uz-rYm" secondAttribute="trailingMargin" id="Did-UZ-gx1"/>
+                                            <constraint firstItem="mrJ-Sk-sXE" firstAttribute="top" secondItem="LI6-uz-rYm" secondAttribute="topMargin" id="J6b-Ff-T3q"/>
+                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="leading" secondItem="LI6-uz-rYm" secondAttribute="leading" id="Oqq-av-GQ3"/>
+                                            <constraint firstItem="pub-Wc-Rkw" firstAttribute="top" secondItem="LI6-uz-rYm" secondAttribute="top" constant="8" id="QWt-57-vbK"/>
+                                            <constraint firstAttribute="trailing" secondItem="pub-Wc-Rkw" secondAttribute="trailing" id="SYa-sh-ije"/>
+                                            <constraint firstAttribute="bottom" secondItem="pub-Wc-Rkw" secondAttribute="bottom" constant="8" id="TPL-Hm-Yw5"/>
+                                            <constraint firstItem="mrJ-Sk-sXE" firstAttribute="leading" secondItem="LI6-uz-rYm" secondAttribute="leadingMargin" id="ms5-Jv-s1B"/>
+                                            <constraint firstItem="mrJ-Sk-sXE" firstAttribute="bottom" secondItem="LI6-uz-rYm" secondAttribute="bottomMargin" id="xQh-nu-F3B"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="eventBackgroundView" destination="pub-Wc-Rkw" id="LmA-Hf-NVj"/>
@@ -1476,10 +1480,10 @@
         <image name="CT-Icon" width="130" height="95"/>
         <image name="Circle" width="128" height="128"/>
         <image name="Columbia" width="1120" height="572"/>
+        <image name="Fitness" width="252" height="196"/>
         <image name="Harvard" width="600" height="368"/>
         <image name="Harvard2" width="800" height="532"/>
         <image name="NearMe" width="800" height="800"/>
-        <image name="Pose" width="300" height="157"/>
         <image name="Sweden" width="512" height="384"/>
         <image name="arrowLeft" width="24" height="24"/>
         <image name="ic_account_balance" width="24" height="24"/>

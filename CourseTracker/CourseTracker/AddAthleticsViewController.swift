@@ -17,11 +17,20 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     //buttons
     @IBOutlet weak var saveButton: UIButton!
     
-    
+    //vars
     var date: Date!
     var athleticDate: AthleticDate!
     var student: Student!
-    let categories = ["Gym", "Pool", "Studio", "Fitness Centre", "Rock Climbing Wall", "Miscellany"]
+    
+    let categories = ["Gym", "Pool", "Studio", "Fitness Centre", "Rock Climbing Wall"]
+    let categoryImages: [UIImage] = [
+        UIImage(named: "Gym")!,
+        UIImage(named: "Pool")!,
+        UIImage(named: "Studio")!,
+        UIImage(named: "Fitness")!,
+        UIImage(named: "Rock")!     ]
+    let categoryColors: [UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow, UIColor.orange]
+    
     var tableViewDataSource = [AthleticEvent]()
 
     //athletics events to pass to Calendar
@@ -165,9 +174,14 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = athleticCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! AthleticCollectionViewCell
-
+        
         cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
         cell.category = categories[indexPath.item]
+        
+        
+        cell.eventImageView.image = categoryImages[indexPath.item]
+        cell.eventBackgroundView.backgroundColor  = categoryColors[indexPath.item].withAlphaComponent(0.30)
+        
         cell.updateUI()
         
         return cell
