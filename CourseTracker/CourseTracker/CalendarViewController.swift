@@ -142,7 +142,11 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     func didDoubleTapCollectionView(gesture: UITapGestureRecognizer) {
         let point = gesture.location(in: gesture.view!)
         let cellState = calendarView.cellStatus(at: point)
-        print(cellState!.date)
+        
+        let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowMap") as! MapViewController
+        self.present(mapVC, animated: true, completion: nil)
+        
+        print("Calculating Route for: \(cellState!.date)")
     }
 
     func didSwipeUp(gesture: UISwipeGestureRecognizer){
