@@ -12,14 +12,15 @@ import Alamofire
 extension UofTAPI {
 
     static func updateAthleticDB() {
-        guard
-            let latestAthleticsDate = realm.objects(AthleticDate.self).sorted(byKeyPath: "date", ascending:false).first,
-            let latestDate = latestAthleticsDate.date else {
-                print(#function, #line, "Realm couldn't get AthleticDate objects")
-                makeAthleticsRequest(skip: 0)
-                return
-        }
-        makeAthleticsLatestDateRequest(latestDate:latestDate)
+//        guard
+//            let latestAthleticsDate = realm.objects(AthleticDate.self).sorted(byKeyPath: "date", ascending:false).first,
+//            let latestDate = latestAthleticsDate.date else {
+//                print(#function, #line, "Realm couldn't get AthleticDate objects")
+//                makeAthleticsRequest(skip: 0)
+//                return
+//        }
+//        makeAthleticsLatestDateRequest(latestDate:latestDate)
+        makeAthleticsRequest(skip: 0)
     }
 
     static func makeAthleticsRequestURL(skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {

@@ -26,7 +26,7 @@ class ViewController: UIViewController {
             self.performSegue(withIdentifier: "PresentCalendar", sender: self)
             
         })
-        //        UofTAPI.updateDB()
+                UofTAPI.updateDB()
         
         //Student
         var students: [Student]

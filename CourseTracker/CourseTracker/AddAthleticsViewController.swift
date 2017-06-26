@@ -19,7 +19,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     //vars
     var date: Date!
-    var athleticDate: AthleticDate!
+    var athleticDate: AthleticDate?
     var student: Student!
     
     let categories = ["Gym", "Pool", "Studio", "Fitness Centre", "Rock Climbing Wall"]
@@ -75,7 +75,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
             formatter.dateFormat = "yyyy-MM-dd"
             return formatter
         }()
-        print(dateFormatter.string(from: date))
+
 
         athleticDate = try! Realm().objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").first!
     }
@@ -108,7 +108,12 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
 //    }
 //    
     //MARK: Scrollview Delegate
+
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+        if scrollView == athleticTableView {
+            return
+        }
         
         let layout = self.athleticCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         
@@ -127,7 +132,8 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: TableView Delegate/ Data
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableViewDataSource.count
+        guard let athleticDate = athleticDate else { return 0 }
+        return athleticDate.athleticEvents.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -147,8 +153,8 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "AthleticCell", for: indexPath) as! AthleticTableViewCell
-       
         cell.athleticEvent = tableViewDataSource[indexPath.row]
         cell.update()
         
@@ -162,7 +168,8 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        guard let athleticDate = athleticDate else { return 0 }
+        return athleticDate.athleticEvents.count
     }
 
     //when selecting an item populate tableview with the data of the item
@@ -174,7 +181,6 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = athleticCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! AthleticCollectionViewCell
-        
         cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
         cell.category = categories[indexPath.item]
         

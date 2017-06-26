@@ -24,10 +24,10 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     var dataSourceForSearchResult:[String]?
     var searchBarActive:Bool = false
     var sectionsToCollapse = [Int]()
-    var popoverViewController : PopoverViewController?
     var selectedArray = [Course]()
     var student: Student!
     var realm: Realm!
+    var tableViewDidAnimate = false
     
     let courseStore = CourseStore()
     
@@ -66,7 +66,9 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         
         defer {
             self.dismiss(animated: true, completion: nil)
-            selectedTableView.reloadData()
+            //selectedTableView.reloadData()
+            let indexPath = IndexPath(row: selectedArray.count - 1, section: 0)
+            selectedTableView.insertRows(at: [indexPath], with: .middle)
         }
         
         selectedArray.append(course)
@@ -90,6 +92,8 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //animation method
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        guard !tableViewDidAnimate else { return }
         
         //set the cell.frame to a initial position outside the screen
         let cellFrame : CGRect = cell.frame
@@ -105,6 +109,10 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         
         UIView.animate(withDuration: 1.0) {
             cell.frame = cellFrame
+        }
+
+        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            tableViewDidAnimate = true
         }
     }
     
