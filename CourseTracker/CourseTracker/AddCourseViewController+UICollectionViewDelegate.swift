@@ -19,5 +19,4 @@ extension AddCourseViewController: UICollectionViewDelegate {
 
         courseCollectionView.reloadData()
     }
-
 }

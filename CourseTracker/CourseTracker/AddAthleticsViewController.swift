@@ -43,11 +43,17 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
         athleticCollectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
         
         //Tableview scrolling fix
-//        athleticTableView.setContentOffset(CGPoint.zero, animated: true)
+//        athleticTableView.setContentOffset(CGPoint.zero, animated: true
 
+        athleticCollectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+        
+        //Tableview scrolling fix
+//        athleticTableView.setContentOffset(CGPoint.zero, animated: true)
+        
         //data/ delegate
-        athleticCollectionView?.dataSource = self
-        athleticCollectionView?.delegate = self
+        athleticCollectionView.dataSource = self
+        athleticCollectionView.delegate = self
+
         
         //Realm
         let dateFormatter: DateFormatter = {
