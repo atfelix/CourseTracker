@@ -53,8 +53,9 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         //table view data
         selectedTableView.dataSource = self
         selectedTableView.delegate = self
+        
+        selectedTableView.estimatedRowHeight = 40.0
         selectedTableView.rowHeight = UITableViewAutomaticDimension
-        selectedTableView.estimatedRowHeight = 27
         
         //layouts
         calendarButton.layer.cornerRadius = 4
