@@ -14,11 +14,25 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: Properties
     @IBOutlet weak var athleticTableView: UITableView!
     @IBOutlet weak var athleticCollectionView: UICollectionView!
+    //buttons
+    @IBOutlet weak var saveButton: UIButton!
     
+    //vars
     var date: Date!
-    var athleticDate: AthleticDate?
+    var athleticDate: AthleticDate!
     var student: Student!
     
+    let categories = ["Gym", "Pool", "Studio", "Fitness Centre", "Rock Climbing Wall"]
+    let categoryImages: [UIImage] = [
+        UIImage(named: "Gym")!,
+        UIImage(named: "Pool")!,
+        UIImage(named: "Studio")!,
+        UIImage(named: "Fitness")!,
+        UIImage(named: "Rock")!     ]
+    let categoryColors: [UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow, UIColor.orange]
+    
+    var tableViewDataSource = [AthleticEvent]()
+
     //athletics events to pass to Calendar
     var eventsToPass: String!
     
@@ -73,6 +87,13 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     //MARK: Helper Methods
 
+    @IBAction func saveButtonTapped(_ sender: Any) {
+    
+    
+    
+    }
+    
+    
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -133,7 +154,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "AthleticCell", for: indexPath) as! AthleticTableViewCell
-        cell.athleticEvent = athleticDate?.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.row]
+        cell.athleticEvent = tableViewDataSource[indexPath.row]
         cell.update()
         
         return cell
@@ -161,8 +182,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = athleticCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! AthleticCollectionViewCell
-
-        cell.athleticEvent = athleticDate?.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
+        cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
         cell.category = categories[indexPath.item]
         
         
