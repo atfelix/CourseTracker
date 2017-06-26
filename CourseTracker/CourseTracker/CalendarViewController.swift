@@ -55,11 +55,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }()
     var firstDate : Date?
     var currentDate = Date()
-    var cellStateChanged = false {
-        didSet {
-            print("cellStateChanged changed: \(cellStateChanged)")
-        }
-    }
+    var cellStateChanged = false
 
     //UserDate
     let userData = UserData()
@@ -376,6 +372,19 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         cellStateChanged = true
+
+        do {
+            let count = try Realm().objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").count
+            addEvent.isEnabled = count != 0
+
+            UIView.animate(withDuration: 0.2, animations: {
+                self.addEvent.alpha = (self.addEvent.isEnabled) ? 1.0 : 0.1
+            })
+        }
+        catch let error {
+            print("Realm read error:  \(error.localizedDescription)")
+        }
+
     }
 
     //deselect a cell

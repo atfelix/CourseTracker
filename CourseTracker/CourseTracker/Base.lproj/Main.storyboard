@@ -639,6 +639,7 @@
                     </view>
                     <connections>
                         <outlet property="addCourse" destination="m68-ZX-rt8" id="Knf-rS-hjV"/>
+                        <outlet property="addEvent" destination="tKn-B6-M6e" id="rtg-hY-khj"/>
                         <outlet property="calendarView" destination="o9K-pR-YTq" id="Ubz-C5-mRe"/>
                         <outlet property="dateTapped" destination="BfD-vY-Lxi" id="mMY-vw-VuU"/>
                         <outlet property="listTableView" destination="d2O-E7-pV7" id="O9g-UY-8e8"/>
@@ -702,7 +703,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" contentMode="center" tableViewCell="ezU-9Q-8xj" id="Lbq-Gl-fQx">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Location" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CE-c7-NSf">

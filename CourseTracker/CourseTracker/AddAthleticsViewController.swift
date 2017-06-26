@@ -16,7 +16,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var athleticCollectionView: UICollectionView!
     
     var date: Date!
-    var athleticDate: AthleticDate!
+    var athleticDate: AthleticDate?
     var student: Student!
     
     //athletics events to pass to Calendar
@@ -61,7 +61,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
             formatter.dateFormat = "yyyy-MM-dd"
             return formatter
         }()
-        print(dateFormatter.string(from: date))
+
 
         athleticDate = try! Realm().objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").first!
     }
@@ -87,7 +87,12 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
 //    }
 //    
     //MARK: Scrollview Delegate
+
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+        if scrollView == athleticTableView {
+            return
+        }
         
         let layout = self.athleticCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         
@@ -106,6 +111,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: TableView Delegate/ Data
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let athleticDate = athleticDate else { return 0 }
         return athleticDate.athleticEvents.count
     }
 
@@ -126,9 +132,9 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "AthleticCell", for: indexPath) as! AthleticTableViewCell
-       
-        cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.row]
+        cell.athleticEvent = athleticDate?.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.row]
         cell.update()
         
         return cell
@@ -141,6 +147,8 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        guard let athleticDate = athleticDate else { return 0 }
         return athleticDate.athleticEvents.count
     }
 
@@ -154,7 +162,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = athleticCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! AthleticCollectionViewCell
 
-        cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
+        cell.athleticEvent = athleticDate?.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
         cell.updateUI()
         
         return cell
