@@ -123,6 +123,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             let addAthleticsVC = segue.destination as! AddAthleticsViewController
             addAthleticsVC.student = student
             addAthleticsVC.date = calendarView.selectedDates.first ?? Date()
+            addAthleticsVC.athleticDate = try! Realm().objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'").first!
         }
     }
 

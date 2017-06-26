@@ -111,8 +111,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: TableView Delegate/ Data
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let athleticDate = athleticDate else { return 0 }
-        return athleticDate.athleticEvents.count
+        return tableViewDataSource.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -147,22 +146,29 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        guard let athleticDate = athleticDate else { return 0 }
-        return athleticDate.athleticEvents.count
+        return categories.count
     }
 
     //when selecting an item populate tableview with the data of the item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //get athletic title
-        
+        let predicate = NSPredicate(format: "location contains '\(categories[indexPath.item])'")
+
+        guard let dataSource = athleticDate?.athleticEvents.filter(predicate).sorted(byKeyPath: "startTime") else { return }
+
+        tableViewDataSource = Array(dataSource)
+        athleticTableView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = athleticCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! AthleticCollectionViewCell
 
         cell.athleticEvent = athleticDate?.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
+        cell.category = categories[indexPath.item]
+        
+        
+        cell.eventImageView.image = categoryImages[indexPath.item]
+        cell.eventBackgroundView.backgroundColor  = categoryColors[indexPath.item].withAlphaComponent(0.30)
+        
         cell.updateUI()
         
         return cell
