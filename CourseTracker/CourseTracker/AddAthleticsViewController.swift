@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 
+
 class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
     //MARK: Properties
@@ -195,10 +196,6 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
 }
 
-//
-
-
-
 //random color extension
 extension CGFloat {
     static func random() -> CGFloat {
@@ -214,5 +211,3 @@ extension UIColor {
                        alpha: 1.0)
     }
 }
-
-
