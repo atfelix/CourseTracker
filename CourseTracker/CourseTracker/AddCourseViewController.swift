@@ -9,6 +9,12 @@
 import UIKit
 import RealmSwift
 
+
+protocol AddCourseDelegate: class {
+    func updateCalendar() -> Void
+}
+
+
 class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
     // MARK: Properties
@@ -28,6 +34,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     var selectedArray = [Course]()
     var student: Student!
     var tableViewDidAnimate = false
+    weak var delegate: AddCourseDelegate?
     
     let courseStore = CourseStore()
     
@@ -63,7 +70,6 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         
         defer {
             self.dismiss(animated: true, completion: nil)
-            //selectedTableView.reloadData()
             let indexPath = IndexPath(row: selectedArray.count - 1, section: 0)
             selectedTableView.insertRows(at: [indexPath], with: .middle)
         }
@@ -149,8 +155,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
-        //performSegue(withIdentifier: "ShowCalendar", sender: sender)
-        dismiss(animated: true, completion: nil)
+        delegate?.updateCalendar()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

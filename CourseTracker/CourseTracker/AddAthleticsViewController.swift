@@ -9,20 +9,25 @@
 import UIKit
 import RealmSwift
 
+protocol AddAthleticsDelegate: class {
+    func updateCalendarCell(for date: Date) -> Void
+}
 
 class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
     //MARK: Properties
+
     @IBOutlet weak var athleticTableView: UITableView!
     @IBOutlet weak var athleticCollectionView: UICollectionView!
-    //buttons
     @IBOutlet weak var saveButton: UIButton!
     
     //vars
+
     var date: Date!
     var athleticDate: AthleticDate!
     var student: Student!
     var realm: Realm!
+    weak var delegate: AddAthleticsDelegate?
     
     let categories = ["Gym", "Pool", "Studio", "Fitness Centre", "Rock Climbing Wall"]
     let categoryImages: [UIImage] = [
@@ -97,18 +102,9 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        delegate?.updateCalendarCell(for: date)
     }
-    
-    //pass athletics to calendar
-//    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "ShowCalendar") {
-//            // initialize new view controller and cast it as your view controller
-//            var calVC = segue.destination as! CalendarViewController
-//            // your new view controller should have property that will store passed value
-//            //calVC = valueToPass
-//    }
-//    
+
     //MARK: Scrollview Delegate
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -127,7 +123,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
         let roundedIndex = round(index)
         
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
-        //offset
+
         targetContentOffset.pointee = offset
     }
     

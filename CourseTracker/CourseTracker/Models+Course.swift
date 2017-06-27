@@ -171,7 +171,7 @@ final class Course: Object {
                 courseTimes.append(courseTime)
             }
         }
-        return courseTimes
+        return courseTimes.sorted(by: { $0.startTime < $1.startTime })
     }
 }
 

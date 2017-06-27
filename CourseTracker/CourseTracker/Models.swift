@@ -88,6 +88,6 @@ final class Student: Object{
             }
         }
 
-        return coursesForDay
+        return coursesForDay.sorted(by: { $0.courseTimeFor(day: day).first!.startTime < $1.courseTimeFor(day: day).first!.startTime })
     }
 }
