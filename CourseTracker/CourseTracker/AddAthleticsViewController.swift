@@ -91,6 +91,8 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     //MARK: Helper Methods
     
+    @IBAction func courseButtonTapped(_ sender: Any) {
+    }
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         delegate?.updateCalendarCell(for: date)
     }
