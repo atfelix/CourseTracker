@@ -7,15 +7,39 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var realm: Realm!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
+            if oldSchemaVersion < 1 {
+                migration.enumerateObjects(ofType: Student.className()) { oldObject, newObject in
+                    if oldSchemaVersion < 1 {
+                        newObject?["athleticEvents"] = List<AthleticEvent>()
+                    }
+                }
+            }
+        }
+
+        let config = Realm.Configuration(schemaVersion: 1, migrationBlock: migrationBlock, shouldCompactOnLaunch: { totalBytes, usedBytes in
+            return true
+        })
+        realm = try! Realm(configuration: config)
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController() as! ViewController
+        viewController.realm = realm
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

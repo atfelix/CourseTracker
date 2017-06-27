@@ -21,6 +21,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     var date: Date!
     var athleticDate: AthleticDate!
     var student: Student!
+    var realm: Realm!
     
     let categories = ["Gym", "Pool", "Studio", "Fitness Centre", "Rock Climbing Wall"]
     let categoryImages: [UIImage] = [

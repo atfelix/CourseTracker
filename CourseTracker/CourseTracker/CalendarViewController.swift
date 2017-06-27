@@ -12,6 +12,8 @@ import RealmSwift
 
 class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource{
 
+    var realm: Realm!
+
     //MARK: Properties
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
@@ -118,12 +120,16 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         if segue.identifier == "AddCourse" {
             let addCourseVC = segue.destination as! AddCourseViewController
             addCourseVC.student = student
+            addCourseVC.realm = realm
         }
         else if segue.identifier == "AddAthletics" {
             let addAthleticsVC = segue.destination as! AddAthleticsViewController
             addAthleticsVC.student = student
             addAthleticsVC.date = calendarView.selectedDates.first ?? Date()
-            addAthleticsVC.athleticDate = try! Realm().objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'").first!
+            let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'")
+            print(athleticDate)
+            addAthleticsVC.athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'").first
+            addAthleticsVC.realm = realm
         }
     }
 
@@ -379,7 +385,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         cellStateChanged = true
 
         do {
-            let count = try Realm().objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").count
+            let count = try realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").count
             addEvent.isEnabled = count != 0
 
             UIView.animate(withDuration: 0.2, animations: {

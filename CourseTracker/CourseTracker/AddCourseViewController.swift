@@ -19,14 +19,14 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     @IBOutlet weak var tableHeaderView: UIView!
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
+
+    var realm: Realm!
     var dataSource:[String]?
     var dataSourceForSearchResult:[String]?
     var searchBarActive:Bool = false
     var sectionsToCollapse = [Int]()
     var selectedArray = [Course]()
     var student: Student!
-    var realm: Realm!
     var tableViewDidAnimate = false
     
     let courseStore = CourseStore()
@@ -35,9 +35,6 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Student
-        realm = try! Realm()
         
         selectedArray = Array(student.courses)
         

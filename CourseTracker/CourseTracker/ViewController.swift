@@ -9,16 +9,20 @@
 import UIKit
 import RealmSwift
 
-//import IBAnimatable
-
 class ViewController: UIViewController {
     
     //MARK: Properties
     var student: Student!
+    var realm: Realm!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+//        let config = Realm.Configuration(schemaVersion: 1, shouldCompactOnLaunch: { totalBytes, usedBytes in
+//            return true
+//        })
+//        realm = try! Realm(configuration: config)
+
         //Delay
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             
@@ -26,28 +30,18 @@ class ViewController: UIViewController {
             self.performSegue(withIdentifier: "PresentCalendar", sender: self)
             
         })
-                UofTAPI.updateDB()
-        
-        //Student
-        var students: [Student]
-        
-        do {
-            students = try Array(Realm().objects(Student.self))
-        }
-        catch let error {
-            print("Realm read error: \(error.localizedDescription)")
-            fatalError()
-        }
-        
+//                UofTAPI.updateDB()
+
+        let students = Array(realm.objects(Student.self))
+
         if let _student = students.first {
             student = _student
         }
         else {
             student = Student()
             student.name = "rush"
-            
+
             do {
-                let realm = try Realm()
                 try realm.write {
                     realm.add(student, update: true)
                 }
@@ -58,18 +52,17 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PresentCalendar" {
             let calendarVC = segue.destination as! CalendarViewController
             calendarVC.student = student
+            calendarVC.realm = realm
         }
     }
-    
-    
 }
