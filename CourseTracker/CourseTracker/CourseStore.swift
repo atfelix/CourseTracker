@@ -88,7 +88,7 @@ class CourseStore: NSObject {
         }
 
         let department = departments[index].shortCode
-        let predicate = NSPredicate(format: "term BEGINSWITH '2017 Summer' AND code BEGINSWITH '\(department)' AND courseMeetingSections.@count > 0")
+        let predicate = NSPredicate(format: "term BEGINSWITH '2017 Summer' AND code BEGINSWITH '\(department)' AND courseMeetingSecticons.@count > 0")
         let courses = Array(CourseStore.realm.objects(Course.self).filter(predicate))
         return courses
     }

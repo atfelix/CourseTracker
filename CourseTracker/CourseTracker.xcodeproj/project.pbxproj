@@ -39,6 +39,7 @@
 		31064C8A1EFF5255006816F8 /* AthleticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31064C891EFF5255006816F8 /* AthleticTableViewCell.swift */; };
 		31064C8C1EFF52D4006816F8 /* Int+TimeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31064C8B1EFF52D4006816F8 /* Int+TimeUtility.swift */; };
 		31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31170ED51EF32D45004AFE2F /* MapViewController.swift */; };
+		311983AB1F02B9A2004EA57C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 311983AA1F02B9A2004EA57C /* CoreLocation.framework */; };
 		313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */; };
 		313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */; };
 		3140F9D11EFDD22300679115 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3140F9D01EFDD22300679115 /* MapKit.framework */; };
@@ -136,6 +137,7 @@
 		31064C891EFF5255006816F8 /* AthleticTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleticTableViewCell.swift; sourceTree = "<group>"; };
 		31064C8B1EFF52D4006816F8 /* Int+TimeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+TimeUtility.swift"; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		311983AA1F02B9A2004EA57C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		3140F9D01EFDD22300679115 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -175,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				311983AB1F02B9A2004EA57C /* CoreLocation.framework in Frameworks */,
 				3140F9D11EFDD22300679115 /* MapKit.framework in Frameworks */,
 				31CBBB9A1EF97D21009DA415 /* JTAppleCalendar.framework in Frameworks */,
 				11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */,
@@ -263,6 +266,7 @@
 		11B3EB421EEC77E900569DE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				311983AA1F02B9A2004EA57C /* CoreLocation.framework */,
 				3140F9D01EFDD22300679115 /* MapKit.framework */,
 				1179200D1EF866FF00858073 /* Alamofire.framework */,
 				317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */,
@@ -289,7 +293,6 @@
 		315616071EF06A8100CE51D3 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */,
 				315616951EF0997000CE51D3 /* CalendarViewController.swift */,
 				315616931EF0991700CE51D3 /* CalendarCell.swift */,
 				11EDFEAC1EFD9FF800654CA3 /* Date+Utility.swift */,
@@ -301,6 +304,7 @@
 		3156169D1EF0D98C00CE51D3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				3105109C1EF6759800F34D43 /* BuildingData.swift */,
 				31170ED51EF32D45004AFE2F /* MapViewController.swift */,
 				3105109E1EF67D5900F34D43 /* buildings.plist */,
 			);
@@ -343,7 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				315616991EF09F2F00CE51D3 /* UserData.swift */,
-				3105109C1EF6759800F34D43 /* BuildingData.swift */,
 				11E94F5B1EF86466009D6718 /* Models.swift */,
 				11EDFEAA1EFD6CE400654CA3 /* Models+Athletics.swift */,
 				11EDFEA81EFD6C9800654CA3 /* Models+Course.swift */,
@@ -387,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				31F1D8931EF8475A00F215F2 /* CourseUI.swift */,
+				313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */,
 				317DDF091EECE13100F02C3B /* PageViewController.swift */,
 				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
 				31A955D01EF84EB500EEF0CD /* courses.plist */,
@@ -500,6 +504,7 @@
 				TargetAttributes = {
 					110F4EC41EEB617F00D88F8E = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = RXV6Y5GM2V;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -914,7 +919,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RXV6Y5GM2V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -922,7 +927,7 @@
 				INFOPLIST_FILE = CourseTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lighthouse.CourseTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lighthouse.CourseTracker1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -935,7 +940,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RXV6Y5GM2V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -943,7 +948,7 @@
 				INFOPLIST_FILE = CourseTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lighthouse.CourseTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lighthouse.CourseTracker1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
