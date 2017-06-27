@@ -59,7 +59,7 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func headerButtonTapped(with button: UIButton){
 
-        defer { delegate.reloadData() }
+        defer { delegate?.reloadData() }
         
         //rotate the button
         button.transform = button.transform.rotated(by: CGFloat.pi/2)

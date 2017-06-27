@@ -18,11 +18,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let config = Realm.Configuration(schemaVersion: 1, shouldCompactOnLaunch: { totalBytes, usedBytes in
-//            return true
-//        })
-//        realm = try! Realm(configuration: config)
-
         //Delay
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             

@@ -463,7 +463,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func updateCalendarCell(for date: Date) {
-        calendarView.reloadDates([date, Date()])
+        calendarView.reloadDates([date])
         calendarView.selectDates([date])
         listTableView.reloadData()
         dismiss(animated: true, completion: nil)

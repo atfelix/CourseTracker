@@ -123,7 +123,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let predicate = NSPredicate(format: "courseMeetingSections.@count > 0")
 
         //call the first course at the week 
-        let path = Array(realm.objects(Course.self).filter())
+//        let path = Array(realm.objects(Course.self).filter())
         
 //        do{
 //            try realm.write{

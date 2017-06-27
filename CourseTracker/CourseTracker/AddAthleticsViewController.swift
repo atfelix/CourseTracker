@@ -39,9 +39,6 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     let categoryColors: [UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow, UIColor.orange]
     
     var tableViewDataSource = [AthleticEvent]()
-
-    //athletics events to pass to Calendar
-    var eventsToPass: String!
     
     //cell scaling
     let cellScaling: CGFloat = 0.79
@@ -93,13 +90,6 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     //MARK: Helper Methods
-
-    @IBAction func saveButtonTapped(_ sender: Any) {
-    
-    
-    
-    }
-    
     
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         delegate?.updateCalendarCell(for: date)
@@ -155,9 +145,6 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
             currentCell.accessoryType = (athleticEvent.studentAttending) ? .checkmark : .none
             currentCell.backgroundColor = bgcolor
         }
-
-
-        eventsToPass = currentCell.textLabel?.text
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
