@@ -142,21 +142,33 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     //when selecting a row in the tableview, populate calendar tableview with the data
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // Get Cell Label
         let indexPath = tableView.indexPathForSelectedRow!
         let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
-        
+
+        let athleticEvent = tableViewDataSource[indexPath.row]
+
+        try! realm.write {
+            athleticEvent.studentAttending = !athleticEvent.studentAttending
+        }
+
+        let bgcolor = currentCell.backgroundColor
+        currentCell.backgroundColor = .gray
+
+        UIView.animate(withDuration: 0.4) {
+            currentCell.accessoryType = (athleticEvent.studentAttending) ? .checkmark : .none
+            currentCell.backgroundColor = bgcolor
+        }
+
+
         eventsToPass = currentCell.textLabel?.text
-        
-        //segue to Calendar
-//        performSegue(withIdentifier: "ShowCalendar", sender: self)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "AthleticCell", for: indexPath) as! AthleticTableViewCell
         cell.athleticEvent = tableViewDataSource[indexPath.row]
+        cell.selectionStyle = .none
+        cell.accessoryType = (cell.athleticEvent.studentAttending) ? .checkmark : .none
         cell.update()
         
         return cell
