@@ -11,7 +11,7 @@
 import UIKit
 import MapKit
 import CoreLocation
-
+import RealmSwift
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
@@ -29,9 +29,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var time: Int = 0
     var distance: Float = 0
     
+    //realm
+    var realm: Realm!
+    var student: Student!
+    var meetingSection : CourseMeetingSection!
+    
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Students path
+        realm = try! Realm()
+        
         //Set Map View
         mapView.delegate = self
         mapView.mapType = .standard
@@ -41,8 +50,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //Set Core Location
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // You can change the locaiton accuary here.
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        
+        mapView.showsUserLocation = true
         
         centerMapAroundUserLocation(animated: true)
         
@@ -107,9 +118,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         var buildingArray: Array = [BuildingData]()
         //get the array of building data
         var buildings: NSArray?
+        
+        //realm 
+        let predicate = NSPredicate(format: "courseMeetingSections.@count > 0")
+
+        //call the first course at the week 
+        let path = Array(realm.objects(Course.self).filter())
+        
+//        do{
+//            try realm.write{
+//                s
+//            }
+//        }
+//        catch let error{
+//            print("Realm write error: \(error.localizedDescription)")
+//        }
+//        
         if let path = Bundle.main.path(forResource: "buildings", ofType: "plist"){
             buildings = NSArray(contentsOfFile: path)
         }
+        
+        
         if let items = buildings{
             for item in items{
                 let lat = (item as AnyObject).value(forKey: "latitude") as! Double
@@ -157,21 +186,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //            locationManager.startUpdatingHeading()
     //        }
     //    }
-    //
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse{
-            locationManager.requestLocation()
-        }
-    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first{
-            print("location:: \(location)")
-        }
+        let userLocation: CLLocation = locations[0]
+        let lat = userLocation.coordinate.latitude
+        let lon = userLocation.coordinate.longitude
+        
+        print("You are at \(lat), \(lon)")
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error:: \(error)")
+        print("Error determining location: \(error)")
     }
     
     

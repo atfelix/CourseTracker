@@ -68,7 +68,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         defer {
             self.dismiss(animated: true, completion: nil)
             selectedTableView.reloadData()
-        }
+        } 
         
         selectedArray.append(course)
         

@@ -1026,7 +1026,7 @@
                                     <constraint firstAttribute="width" constant="48" id="YUy-Ff-Ho6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" image="NearMe" backgroundImage="MapIcon">
+                                <state key="normal" image="NearMe" backgroundImage="Circle">
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1458,10 +1458,10 @@
     </scenes>
     <resources>
         <image name="CT-Icon" width="130" height="95"/>
+        <image name="Circle" width="128" height="128"/>
         <image name="Columbia" width="1120" height="572"/>
         <image name="Harvard" width="600" height="368"/>
         <image name="Harvard2" width="800" height="532"/>
-        <image name="MapIcon" width="128" height="128"/>
         <image name="NearMe" width="800" height="800"/>
         <image name="Sweden" width="512" height="384"/>
         <image name="arrowLeft" width="24" height="24"/>
