@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Foundation
 
 class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
@@ -183,11 +184,22 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //MARK: SearchBar
     
-    func filterContentForSearchText(searchText:String){
-        self.dataSourceForSearchResult = self.dataSource?.filter({ (text:String) -> Bool in
-            return text.contains(searchText)
-        })
+//    func filterContentForSearchText(searchText:String){
+//        self.dataSourceForSearchResult = self.courseStore.departments.filter({ (text:String) -> Bool in
+//            return text.contains(searchText)
+//        })
+//    }
+    
+    //search function
+    func filterContentForSearchText(searchText: String) {
+//        
+//        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchText)
+//        
+//        let array = (self.courseStore.courses as NSArray).filtered(using: searchPredicate)
+//        self.dataSourceForSearchResult = array as? [String]
+        
     }
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count > 0 {

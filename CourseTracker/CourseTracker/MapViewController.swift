@@ -12,6 +12,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
     //MARK: Properties
@@ -20,9 +21,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var distanceLabel: UILabel!
     
     @IBOutlet weak var mapView: MKMapView!
-
-    var locationManager: CLLocationManager!
+    
+    //core location
+    var locationManager = CLLocationManager()
+    //print labels in middle of map
     var middlePoint: MKMapPoint!
+    var time: Int = 0
+    var distance: Float = 0
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -32,6 +37,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.mapType = .standard
         mapView.isZoomEnabled = true //zoom
         mapView.isScrollEnabled = true //scroll
+        
+        //Set Core Location
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest // You can change the locaiton accuary here.
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestLocation()
         
         centerMapAroundUserLocation(animated: true)
         
@@ -49,9 +60,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let polyline = MKPolyline(coordinates: &points, count: points.count)
         //add the poly line to the map
         mapView.add(polyline)
-
+        
     }
+    //
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //
+    //        //Set Core Location
+    //        startLocationUpdates()
+    //    }
+    
     //MARK: Helper methods
+    
+    //    func getDirections(){
+    //        if let selectedPin = selectedPin {
+    //            let mapItem = MKMapItem(placemark: selectedPin)
+    //            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+    //            mapItem.openInMapsWithLaunchOptions(launchOptions)
+    //        }
+    //    }
     
     //return to calendar
     @IBAction func returnButtonTapped(_ sender: Any) {
@@ -71,7 +98,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView.setRegion(region, animated: true)
     }
-
+    
+    //print the routes to the map
     func getRouteInfo() -> [BuildingData]{
         
         let myLocation = CLLocation(latitude: 43.66, longitude: -79.39)
@@ -88,6 +116,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 let long = (item as AnyObject).value(forKey: "longitude") as! Double
                 //initialize the buildings
                 let annotation = BuildingData(latitude: lat, longitude: long)
+                //set the name of the annotation
                 annotation.name = (item as AnyObject).value(forKey: "name") as? String
                 //append the building array with annotation items
                 buildingArray.append(annotation)
@@ -95,14 +124,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 //set the distance label to current distance
                 let distance = myLocation.distance(from: CLLocation(latitude: lat, longitude: long))
                 let result = String(format: "%.1f", distance/1000)
-                self.distanceLabel.text = "Distance = \(result) KM"
+                self.distanceLabel.text = "Distance = \(result) KM" //add time to get to route
                 
-                
-            
             }
         }
         return buildingArray
     }
+    
     //MARK: MapView Delegate
     
     //sets the line for the route path
@@ -115,5 +143,36 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         return render
     }
+    
+    //MARK: Core Location
+    
+    //    func startLocationUpdates(){
+    //        locationManager = CLLocationManager()
+    //        locationManager.delegate = self
+    //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    //        locationManager.requestAlwaysAuthorization()
+    //
+    //        if CLLocationManager.locationServicesEnabled() {
+    //            locationManager.startUpdatingLocation()
+    //            locationManager.startUpdatingHeading()
+    //        }
+    //    }
+    //
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse{
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first{
+            print("location:: \(location)")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: \(error)")
+    }
+    
     
 }

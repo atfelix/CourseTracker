@@ -488,7 +488,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otG-Em-cds">
                                 <rect key="frame" x="0.0" y="553" width="414" height="183"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2O-E7-pV7">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2O-E7-pV7">
                                         <rect key="frame" x="0.0" y="35" width="414" height="148"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -817,18 +817,6 @@
                                     <outlet property="delegate" destination="NhZ-Ju-nQz" id="PKM-LD-1Z8"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTG-rZ-u5w">
-                                <rect key="frame" x="344" y="17" width="50" height="45"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="27P-Bk-RfO"/>
-                                    <constraint firstAttribute="height" constant="45" id="Urr-JT-Jx7"/>
-                                </constraints>
-                                <color key="tintColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="NhZ-Ju-nQz" eventType="touchUpInside" id="qrd-YQ-Syq"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.068429536129999996" green="0.19392449240000001" blue="0.19210889110000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -836,7 +824,6 @@
                             <constraint firstItem="mDM-KS-M0j" firstAttribute="leading" secondItem="Edd-0n-J7J" secondAttribute="leading" id="5Eb-SN-5Ya"/>
                             <constraint firstAttribute="trailing" secondItem="Ku6-Hl-nMc" secondAttribute="trailing" constant="20" id="8Xw-pm-Olh"/>
                             <constraint firstItem="Exk-Xn-JY5" firstAttribute="leading" secondItem="Edd-0n-J7J" secondAttribute="leading" id="AkZ-D0-WRq"/>
-                            <constraint firstItem="KTG-rZ-u5w" firstAttribute="top" secondItem="a2b-iH-6t1" secondAttribute="bottom" constant="-3" id="DDZ-VC-kLG"/>
                             <constraint firstItem="Afl-FV-Olf" firstAttribute="top" secondItem="Pfq-09-iJJ" secondAttribute="bottom" constant="5" id="Fec-oo-g6c"/>
                             <constraint firstAttribute="trailing" secondItem="mDM-KS-M0j" secondAttribute="trailing" id="HYC-CA-QyJ"/>
                             <constraint firstItem="mDM-KS-M0j" firstAttribute="top" secondItem="Afl-FV-Olf" secondAttribute="bottom" constant="6" id="K01-fy-AGL"/>
@@ -846,10 +833,8 @@
                             <constraint firstItem="Afl-FV-Olf" firstAttribute="top" secondItem="Ku6-Hl-nMc" secondAttribute="bottom" id="War-Wa-XKK"/>
                             <constraint firstItem="VNf-Eb-bEx" firstAttribute="top" secondItem="Exk-Xn-JY5" secondAttribute="bottom" id="bXq-dr-m5t"/>
                             <constraint firstItem="Pfq-09-iJJ" firstAttribute="leading" secondItem="Edd-0n-J7J" secondAttribute="leading" constant="13" id="doE-NO-yLM"/>
-                            <constraint firstItem="Afl-FV-Olf" firstAttribute="top" secondItem="KTG-rZ-u5w" secondAttribute="bottom" constant="8" id="l6Q-gN-HhV"/>
                             <constraint firstAttribute="trailing" secondItem="Afl-FV-Olf" secondAttribute="trailing" id="mPx-7H-XUp"/>
                             <constraint firstItem="Ku6-Hl-nMc" firstAttribute="leading" secondItem="Edd-0n-J7J" secondAttribute="leading" constant="20" id="rTZ-AO-OEr"/>
-                            <constraint firstItem="KTG-rZ-u5w" firstAttribute="leading" secondItem="Pfq-09-iJJ" secondAttribute="trailing" constant="281" id="tdf-Xb-1BW"/>
                             <constraint firstItem="Exk-Xn-JY5" firstAttribute="top" secondItem="Edd-0n-J7J" secondAttribute="top" id="tqz-kW-iKp"/>
                             <constraint firstAttribute="trailing" secondItem="Pfq-09-iJJ" secondAttribute="trailing" constant="351" id="wHf-6J-EU2"/>
                             <constraint firstAttribute="trailing" secondItem="Exk-Xn-JY5" secondAttribute="trailing" id="xJ8-xG-Un5"/>
@@ -858,7 +843,6 @@
                     <connections>
                         <outlet property="athleticCollectionView" destination="Afl-FV-Olf" id="BhB-b5-8kz"/>
                         <outlet property="athleticTableView" destination="mDM-KS-M0j" id="6xc-ws-X39"/>
-                        <outlet property="saveButton" destination="KTG-rZ-u5w" id="P06-fn-hVF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbK-I4-2hW" userLabel="First Responder" sceneMemberID="firstResponder"/>
