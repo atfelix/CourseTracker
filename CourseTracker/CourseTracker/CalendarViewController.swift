@@ -140,6 +140,9 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         let cellState = calendarView.cellStatus(at: point)
         
         let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowMap") as! MapViewController
+        mapVC.realm = realm
+        mapVC.student = student
+        mapVC.date = calendarView.selectedDates.first ?? Date()
         self.present(mapVC, animated: true, completion: nil)
         
         print("Calculating Route for: \(cellState!.date)")

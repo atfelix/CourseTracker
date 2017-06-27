@@ -61,7 +61,7 @@ final class CourseTime: Object {
             let buildingCode = locationSplit[0]
 
             do {
-                try _building = Realm().objects(Building.self).filter("code == '\(buildingCode)").first
+                try _building = Realm().objects(Building.self).filter("code == '\(buildingCode)'").first
             }
             catch {
                 print("Realm error occurred: Could not find Building with code: \(buildingCode)")

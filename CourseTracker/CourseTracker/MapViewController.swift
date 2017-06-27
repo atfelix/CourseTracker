@@ -12,6 +12,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import RealmSwift
+import JTAppleCalendar
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
@@ -31,15 +32,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //realm
     var realm: Realm!
-//    var student: Student!
-//    var meetingSection : CourseMeetingSection!
+    var student: Student!
+    var date: Date!
     
-    //MARK: ViewDidLoad
+        //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Students path
-        realm = try! Realm()
         
         //Set Map View
         mapView.delegate = self
@@ -57,7 +55,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         centerMapAroundUserLocation(animated: true)
         
-        let buildingArray = getRouteInfo()
+        let buildingArray = getBuildingInfo()
         //add buildings to the map
         mapView.addAnnotations(buildingArray)
         
@@ -110,6 +108,33 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.setRegion(region, animated: true)
     }
     
+    func getBuildingInfo() -> [BuildingData] {
+        let myLocation = CLLocation(latitude: 43.66, longitude:-79.39)
+        var buildings = [BuildingData]()
+        let day = DaysOfWeek(rawValue: Calendar.current.component(.weekday, from: date))!
+        
+        //MARK: this might mess shit up
+        for course in student.coursesFor(day: day) {
+            
+            if let time = course.courseTimeFor(day: day).first,
+                let building = time.building,
+                let latitude = building.geoLocation?.latitude,
+                let longitude = building.geoLocation?.longitude {
+                
+                let annotation = BuildingData(latitude: latitude, longitude: longitude)
+                annotation.name = building.name
+                annotation.address = building.address?.street
+                buildings.append(annotation)
+                
+                let distance = myLocation.distance(from: CLLocation(latitude: latitude, longitude: longitude))
+                let result = String(format: "%.1f", distance / 1000)
+                self.distanceLabel.text = "Distance = \(result) KM"
+            }
+        }
+        
+        return buildings
+    }
+    
     //print the routes to the map
     func getRouteInfo() -> [BuildingData]{
         
@@ -119,21 +144,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //get the array of building data
         var buildings: NSArray?
         
-        //realm 
-//        let predicate = NSPredicate(format: "courseMeetingSections.@count > 0")
-
-        //call the first course at the week 
-//        let path = Array(realm.objects(Course.self).filter())
-        
-//        do{
-//            try realm.write{
-//                s
-//            }
-//        }
-//        catch let error{
-//            print("Realm write error: \(error.localizedDescription)")
-//        }
-//        
         if let path = Bundle.main.path(forResource: "buildings", ofType: "plist"){
             buildings = NSArray(contentsOfFile: path)
         }
