@@ -58,6 +58,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let buildingArray = getBuildingInfo()
         //add buildings to the map
         mapView.addAnnotations(buildingArray)
+        for x in buildingArray {
+            mapView.selectAnnotation(x, animated: false)
+        }
         
         //connect all the events using poly line
         var points : [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
@@ -108,9 +111,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.setRegion(region, animated: true)
     }
     
-    func getBuildingInfo() -> [BuildingData] {
+    func getBuildingInfo() -> [MKPointAnnotation] {
         let myLocation = CLLocation(latitude: 43.66, longitude:-79.39)
-        var buildings = [BuildingData]()
+        var buildings = [MKPointAnnotation]()
         let day = DaysOfWeek(rawValue: Calendar.current.component(.weekday, from: date))!
         
         //MARK: this might mess shit up
@@ -120,11 +123,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 let building = time.building,
                 let latitude = building.geoLocation?.latitude,
                 let longitude = building.geoLocation?.longitude {
+
+                let annotationView = MKPointAnnotation()
+                annotationView.coordinate.latitude = latitude
+                annotationView.coordinate.longitude = longitude
+                annotationView.title = building.name
+
                 
-                let annotation = BuildingData(latitude: latitude, longitude: longitude)
-                annotation.name = building.name
-                annotation.address = building.address?.street
-                buildings.append(annotation)
+//                let annotation = BuildingData(latitude: latitude, longitude: longitude)
+//                annotation.name = building.name
+//                annotation.address = building.address?.street
+//                annotationView.annotation = annotation
+
+                buildings.append(annotationView)
                 
                 let distance = myLocation.distance(from: CLLocation(latitude: latitude, longitude: longitude))
                 let result = String(format: "%.1f", distance / 1000)
@@ -178,7 +189,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //if there is a line make it blue and wide
         if overlay is MKPolyline{
             render.strokeColor = UIColor.blue
-            render.lineWidth = 5.0
+            render.lineWidth = 1.0
         }
         return render
     }
@@ -209,6 +220,4 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error determining location: \(error)")
     }
-    
-    
 }

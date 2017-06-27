@@ -406,8 +406,9 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             cell.coursesLabel.backgroundColor = .clear
         }
 
+        cell.customLabel.backgroundColor = .clear
+
         if let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").first {
-            cell.customLabel.backgroundColor = .clear
 
             for event in athleticDate.athleticEvents {
                 if event.studentAttending {
@@ -466,8 +467,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func updateCalendarCell(for date: Date) {
-        calendarView.reloadDates([date])
-        calendarView.selectDates([date])
+        calendarView.reloadData()
         listTableView.reloadData()
         dismiss(animated: true, completion: nil)
     }

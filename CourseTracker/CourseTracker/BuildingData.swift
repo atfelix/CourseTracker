@@ -10,12 +10,17 @@ import UIKit
 import MapKit
 
 class BuildingData: NSObject, MKAnnotation {
-    //building information
+
     var name: String?
     var address: String?
     var latitude: Double
     var longitude: Double
-//    var Polygon: [Int : Int]
+
+    var title: String? {
+        get {
+            return name
+        }
+    }
     
     var coordinate: CLLocationCoordinate2D{
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -25,5 +30,4 @@ class BuildingData: NSObject, MKAnnotation {
         self.latitude = latitude
         self.longitude = longitude
     }
-
 }
