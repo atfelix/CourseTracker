@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var realm: Realm!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
 
         let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
+
             if oldSchemaVersion < 1 {
                 migration.enumerateObjects(ofType: Student.className()) { oldObject, newObject in
                     if oldSchemaVersion < 1 {
@@ -26,9 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
+
+            if oldSchemaVersion < 2 {
+                migration.enumerateObjects(ofType: AthleticEvent.className()) { oldObject, newObject in
+                    newObject?["studentAttending"] = false
+                }
+            }
         }
 
-        let config = Realm.Configuration(schemaVersion: 1, migrationBlock: migrationBlock, shouldCompactOnLaunch: { totalBytes, usedBytes in
+        let config = Realm.Configuration(schemaVersion: 2, migrationBlock: migrationBlock, shouldCompactOnLaunch: { totalBytes, usedBytes in
             return true
         })
         realm = try! Realm(configuration: config)

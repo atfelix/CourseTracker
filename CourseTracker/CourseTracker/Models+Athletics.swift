@@ -26,6 +26,7 @@ final class AthleticEvent: Object {
     dynamic var startTime = 0
     dynamic var endTime = 0
     dynamic var duration = 0
+    dynamic var studentAttending = false
 
     dynamic var building: Building? {
         get {
