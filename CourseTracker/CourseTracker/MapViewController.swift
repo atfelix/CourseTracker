@@ -31,8 +31,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //realm
     var realm: Realm!
-    var student: Student!
-    var meetingSection : CourseMeetingSection!
+//    var student: Student!
+//    var meetingSection : CourseMeetingSection!
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -120,7 +120,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         var buildings: NSArray?
         
         //realm 
-        let predicate = NSPredicate(format: "courseMeetingSections.@count > 0")
+//        let predicate = NSPredicate(format: "courseMeetingSections.@count > 0")
 
         //call the first course at the week 
 //        let path = Array(realm.objects(Course.self).filter())
