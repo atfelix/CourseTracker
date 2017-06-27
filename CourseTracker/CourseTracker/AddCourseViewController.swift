@@ -29,7 +29,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
 
     var realm: Realm!
     var dataSource:[String]?
-    var dataSourceForSearchResult:[String]?
+    var dataSourceForSearchResult:[CourseShortCode]?
     var searchBarActive:Bool = false
     var sectionsToCollapse = [Int]()
     var selectedArray = [Course]()
@@ -48,7 +48,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         
         //SearchBar
         searchBar.delegate = self
-        self.dataSourceForSearchResult = [String]()
+        self.dataSourceForSearchResult = [CourseShortCode]()
         
         //collectionview data
         courseCollectionView.delegate = self
@@ -154,6 +154,9 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //MARK: Helper Methods
     
+    @IBAction func athleticButtonTapped(_ sender: Any) {
+        
+    }
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         delegate?.updateCalendar()
@@ -193,24 +196,15 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     }
     
     //MARK: SearchBar
-    
-//    func filterContentForSearchText(searchText:String){
-//        self.dataSourceForSearchResult = self.courseStore.departments.filter({ (text:String) -> Bool in
-//            return text.contains(searchText)
-//        })
-//    }
-    
-    //search function
+
     func filterContentForSearchText(searchText: String) {
-//        
-//        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchText)
-//        
-//        let array = (self.courseStore.courses as NSArray).filtered(using: searchPredicate)
-//        self.dataSourceForSearchResult = array as? [String]
+
+        let data = Array(realm.objects(CourseShortCode.self).filter("shortCode contains[c] '\(searchText)'"))
         
+        self.courseStore.departments = data
     }
     
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count > 0 {
             self.searchBarActive    = true
@@ -219,6 +213,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
         }
         else {
             self.searchBarActive = false
+            self.courseStore.departments = Array(realm.objects(CourseShortCode.self))
             self.courseCollectionView?.reloadData()
         }
     }
@@ -252,6 +247,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     //        return CGSize(width: 100, height: 100)
     //    }
+    
     func reloadData() {
         courseCollectionView.reloadData()
     }

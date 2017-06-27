@@ -14,7 +14,7 @@ protocol CourseStoreDelegate: class {
 }
 
 class CourseStore: NSObject {
-
+    
     var departments = [CourseShortCode]()
     var courses = [Course]()
     var sectionsToCollapse = [Int]()
