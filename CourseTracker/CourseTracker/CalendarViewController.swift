@@ -4,13 +4,14 @@
 //  Created by Rushan on 2017-06-11.
 //  Copyright © 2017 Adam Felix. All rights reserved.
 //
+
 import UIKit
 import JTAppleCalendar
 import RealmSwift
 
-//import IBAnimatable
+class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource, AddAthleticsDelegate, AddCourseDelegate {
 
-class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource{
+    var realm: Realm!
 
     //MARK: Properties
     @IBOutlet weak var calendarView: JTAppleCalendarView!
@@ -69,12 +70,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Animations
-
-        //setup the tableView
-//        self.listTableView.backgroundColor = UIColor.black
-//        self.listTableView.separatorColor = UIColor.lightGray
-
 
         //setup the Calendar
         setupCalendarView()
@@ -118,14 +113,19 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         if segue.identifier == "AddCourse" {
             let addCourseVC = segue.destination as! AddCourseViewController
             addCourseVC.student = student
+            addCourseVC.realm = realm
+            addCourseVC.delegate = self
         }
         else if segue.identifier == "AddAthletics" {
             let addAthleticsVC = segue.destination as! AddAthleticsViewController
             addAthleticsVC.student = student
             addAthleticsVC.date = calendarView.selectedDates.first ?? Date()
+            let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'")
+            addAthleticsVC.athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'").first
+            addAthleticsVC.realm = realm
+            addAthleticsVC.delegate = self
         }
     }
-
 
     //Change background color of calendar
     @IBAction func changeLayoutTapped(_ sender: UIButton) {
@@ -194,14 +194,25 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard
             let selectedDate = calendarView.selectedDates.first,
-            let dayOfWeek = DaysOfWeek(rawValue: selectedDate.dayOfWeek)else {
+            let dayOfWeek = DaysOfWeek(rawValue: selectedDate.dayOfWeek) else {
                 return 0
         }
+
+        var count = student.coursesFor(day: dayOfWeek).count
+
+        guard let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: selectedDate))'").first else {
+            return count
+        }
+
+        for event in athleticDate.athleticEvents {
+            if event.studentAttending {
+                count += 1
+            }
+        }
         
-        return student.coursesFor(day: dayOfWeek).count
+        return count
     }
 
-    //set data in table row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ListTableViewCell
         
@@ -211,31 +222,86 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
         }
 
-        let course = student.coursesFor(day: dayOfWeek)[indexPath.row]
-        
-        cell.listImage.backgroundColor =  UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
-        cell.listLocation.text = course.campus
-        cell.listData.text = course.name
-        cell.listTime.numberOfLines = 0
+        var athleticEvents = [AthleticEvent]()
 
-        if let firstTime = course.courseTimeFor(day: dayOfWeek).first {
-            cell.listTime.text = "\(firstTime.startTime.convertSecondsFromMidnight())\n\(firstTime.endTime.convertSecondsFromMidnight())"
+        if let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: selectedDate))'").first {
+            for event in athleticDate.athleticEvents {
+                if event.studentAttending {
+                    athleticEvents.append(event)
+                }
+            }
         }
 
+        let courses = student.coursesFor(day: dayOfWeek)
+        athleticEvents = athleticEvents.sorted { $0.startTime < $1.startTime }
+
+        var count = indexPath.row
+        var courseIndex = 0
+        var athleticEventIndex = 0
+
+        while count > 0 && courseIndex < courses.count && athleticEventIndex < athleticEvents.count {
+            if courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
+                courseIndex += 1
+            }
+            else {
+                athleticEventIndex += 1
+            }
+            count -= 1
+        }
+
+        if courseIndex == courses.count {
+            athleticEventIndex += count
+            let event = athleticEvents[athleticEventIndex]
+            cell.listImage.backgroundColor = UIColor.init(red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+            cell.listLocation.text = event.location
+            cell.listData.text = event.title
+            cell.listTime.numberOfLines = 0
+            cell.listTime.text = "\(event.startTime.convertSecondsFromMidnight())\n\(event.endTime.convertSecondsFromMidnight())"
+        }
+        else if athleticEventIndex == athleticEvents.count {
+            courseIndex += count
+            let course = courses[courseIndex]
+            cell.listImage.backgroundColor = UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
+            cell.listLocation.text = course.campus
+            cell.listData.text = course.name
+            cell.listTime.numberOfLines = 0
+
+            if let firstTime = course.courseTimeFor(day: dayOfWeek).first {
+                cell.listTime.text = "\(firstTime.startTime.convertSecondsFromMidnight())\n\(firstTime.endTime.convertSecondsFromMidnight())"
+            }
+        }
+        else if courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
+            let course = courses[courseIndex]
+            cell.listImage.backgroundColor = UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
+            cell.listLocation.text = course.campus
+            cell.listData.text = course.name
+            cell.listTime.numberOfLines = 0
+
+            if let firstTime = course.courseTimeFor(day: dayOfWeek).first {
+                cell.listTime.text = "\(firstTime.startTime.convertSecondsFromMidnight())\n\(firstTime.endTime.convertSecondsFromMidnight())"
+            }
+        }
+        else {
+            let event = athleticEvents[athleticEventIndex]
+            cell.listImage.backgroundColor = UIColor.init(red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+            cell.listLocation.text = event.location
+            cell.listData.text = event.title
+            cell.listTime.numberOfLines = 0
+            cell.listTime.text = "\(event.startTime.convertSecondsFromMidnight())\n\(event.endTime.convertSecondsFromMidnight())"
+        }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(indexPath)
         if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
             cellStateChanged = false
         }
     }
 
     //select item
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
 
     //MARK: Calendar Helper Methods
 
@@ -315,15 +381,19 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: Calendar Delegate Methods
     //display the cell
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier:"CalendarCell", for: indexPath) as! CalendarCell
-        //sets datelabel to current cell state
+
+        defer {
+            handleCellSelected(view: cell, cellState: cellState)
+            handleCellColor(view: cell, cellState: cellState, isToday: Calendar.current.compare(date, to: currentDate, toGranularity: .day) == .orderedSame)
+        }
+
         cell.dateLabel.text = cellState.text
 
-        
-        //date -> ?
-        //print(dateFormatter.string(from: currentDate))
-        
+
         //set the courseLabel indicator to yellow or silver for different events
+
         if student.coursesFor(day: cellState.day).count > 0 {
             cell.coursesLabel.backgroundColor =  UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
             cell.coursesLabel.layer.cornerRadius = 2.5
@@ -333,19 +403,17 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             cell.coursesLabel.backgroundColor = .clear
         }
 
-        if CustomEvent.self != nil{
-            cell.customLabel.backgroundColor = UIColor.lightGray
-            cell.customLabel.layer.cornerRadius = 2.5
-            cell.customLabel.layer.masksToBounds = true
-        }
+        if let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").first {
+            cell.customLabel.backgroundColor = .clear
 
-
-        handleCellSelected(view: cell, cellState: cellState)
-        //if today else
-        if dateFormatter.string(from: date) == dateFormatter.string(from: currentDate){
-            handleCellColor(view: cell, cellState: cellState, isToday: true)
-        }else{
-            handleCellColor(view: cell, cellState: cellState, isToday: false)
+            for event in athleticDate.athleticEvents {
+                if event.studentAttending {
+                    cell.customLabel.backgroundColor = .lightGray
+                    cell.customLabel.layer.cornerRadius = 2.5
+                    cell.customLabel.layer.masksToBounds = true
+                    break
+                }
+            }
         }
         return cell
     }
@@ -370,25 +438,18 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }
         //set the current date
         let selectedDates = calendarView.selectedDates
-        print(selectedDates)
         if firstDate == nil{
             self.dateTapped.text = "\(displayDateFormatter.string(from: selectedDates.first!))"
         }
 
         cellStateChanged = true
 
-        do {
-            let count = try Realm().objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").count
-            addEvent.isEnabled = count != 0
+        let count = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").count
+        addEvent.isEnabled = count != 0
 
-            UIView.animate(withDuration: 0.2, animations: {
-                self.addEvent.alpha = (self.addEvent.isEnabled) ? 1.0 : 0.1
-            })
-        }
-        catch let error {
-            print("Realm read error:  \(error.localizedDescription)")
-        }
-
+        UIView.animate(withDuration: 0.2, animations: {
+            self.addEvent.alpha = (self.addEvent.isEnabled) ? 1.0 : 0.1
+        })
     }
 
     //deselect a cell
@@ -399,5 +460,18 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //scroll to a new calendar page
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setupViewsOfCalendar(from: visibleDates)
+    }
+
+    func updateCalendarCell(for date: Date) {
+        calendarView.reloadDates([date, Date()])
+        calendarView.selectDates([date])
+        listTableView.reloadData()
+        dismiss(animated: true, completion: nil)
+    }
+
+    func updateCalendar() {
+        calendarView.reloadData()
+        listTableView.reloadData()
+        dismiss(animated: true, completion: nil)
     }
 }

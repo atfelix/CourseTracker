@@ -9,18 +9,25 @@
 import UIKit
 import RealmSwift
 
+protocol AddAthleticsDelegate: class {
+    func updateCalendarCell(for date: Date) -> Void
+}
+
 class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
     //MARK: Properties
+
     @IBOutlet weak var athleticTableView: UITableView!
     @IBOutlet weak var athleticCollectionView: UICollectionView!
-    //buttons
     @IBOutlet weak var saveButton: UIButton!
     
     //vars
+
     var date: Date!
-    var athleticDate: AthleticDate?
+    var athleticDate: AthleticDate!
     var student: Student!
+    var realm: Realm!
+    weak var delegate: AddAthleticsDelegate?
     
     let categories = ["Gym", "Pool", "Studio", "Fitness Centre", "Rock Climbing Wall"]
     let categoryImages: [UIImage] = [
@@ -95,18 +102,9 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        delegate?.updateCalendarCell(for: date)
     }
-    
-    //pass athletics to calendar
-//    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "ShowCalendar") {
-//            // initialize new view controller and cast it as your view controller
-//            var calVC = segue.destination as! CalendarViewController
-//            // your new view controller should have property that will store passed value
-//            //calVC = valueToPass
-//    }
-//    
+
     //MARK: Scrollview Delegate
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -125,15 +123,14 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
         let roundedIndex = round(index)
         
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
-        //offset
+
         targetContentOffset.pointee = offset
     }
     
     //MARK: TableView Delegate/ Data
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let athleticDate = athleticDate else { return 0 }
-        return athleticDate.athleticEvents.count
+        return tableViewDataSource.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -141,21 +138,33 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     //when selecting a row in the tableview, populate calendar tableview with the data
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // Get Cell Label
         let indexPath = tableView.indexPathForSelectedRow!
         let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
-        
+
+        let athleticEvent = tableViewDataSource[indexPath.row]
+
+        try! realm.write {
+            athleticEvent.studentAttending = !athleticEvent.studentAttending
+        }
+
+        let bgcolor = currentCell.backgroundColor
+        currentCell.backgroundColor = .gray
+
+        UIView.animate(withDuration: 0.4) {
+            currentCell.accessoryType = (athleticEvent.studentAttending) ? .checkmark : .none
+            currentCell.backgroundColor = bgcolor
+        }
+
+
         eventsToPass = currentCell.textLabel?.text
-        
-        //segue to Calendar
-//        performSegue(withIdentifier: "ShowCalendar", sender: self)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "AthleticCell", for: indexPath) as! AthleticTableViewCell
         cell.athleticEvent = tableViewDataSource[indexPath.row]
+        cell.selectionStyle = .none
+        cell.accessoryType = (cell.athleticEvent.studentAttending) ? .checkmark : .none
         cell.update()
         
         return cell
@@ -168,14 +177,15 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let athleticDate = athleticDate else { return 0 }
-        return athleticDate.athleticEvents.count
+        return categories.count
     }
 
     //when selecting an item populate tableview with the data of the item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let predicate = NSPredicate(format: "location contains '\(categories[indexPath.item])'")
-        tableViewDataSource = Array(athleticDate.athleticEvents.filter(predicate).sorted(byKeyPath: "startTime"))
+        guard let dataSource = athleticDate?.athleticEvents.filter(predicate).sorted(byKeyPath: "startTime") else { return }
+
+        tableViewDataSource = Array(dataSource)
         athleticTableView.reloadData()
     }
     
@@ -194,10 +204,6 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
 }
 
-//
-
-
-
 //random color extension
 extension CGFloat {
     static func random() -> CGFloat {
@@ -213,5 +219,3 @@ extension UIColor {
                        alpha: 1.0)
     }
 }
-
-

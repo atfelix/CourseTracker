@@ -10,6 +10,12 @@ import UIKit
 import RealmSwift
 import Foundation
 
+
+protocol AddCourseDelegate: class {
+    func updateCalendar() -> Void
+}
+
+
 class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, SelectedCourses, CourseStoreDelegate {
     
     // MARK: Properties
@@ -20,15 +26,16 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     @IBOutlet weak var tableHeaderView: UIView!
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
+
+    var realm: Realm!
     var dataSource:[String]?
     var dataSourceForSearchResult:[String]?
     var searchBarActive:Bool = false
     var sectionsToCollapse = [Int]()
     var selectedArray = [Course]()
     var student: Student!
-    var realm: Realm!
     var tableViewDidAnimate = false
+    weak var delegate: AddCourseDelegate?
     
     let courseStore = CourseStore()
     
@@ -36,9 +43,6 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Student
-        realm = try! Realm()
         
         selectedArray = Array(student.courses)
         
@@ -152,8 +156,7 @@ class AddCourseViewController: UIViewController, UICollectionViewDelegateFlowLay
     
     //button that segues to Calendar
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
-        //performSegue(withIdentifier: "ShowCalendar", sender: sender)
-        dismiss(animated: true, completion: nil)
+        delegate?.updateCalendar()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
