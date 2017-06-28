@@ -708,35 +708,35 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Location" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CE-c7-NSf">
                                                     <rect key="frame" x="8" y="31" width="398" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Vev-VL-HfL"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timing" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8k-VQ-6fv">
-                                                    <rect key="frame" x="8" y="8" width="398" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="mUs-CQ-bBd"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3su-Lg-Zjb">
+                                                    <rect key="frame" x="8" y="8" width="53" height="24"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="4CE-c7-NSf" firstAttribute="top" secondItem="3su-Lg-Zjb" secondAttribute="bottom" constant="-1" id="0i3-aE-BSJ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4CE-c7-NSf" secondAttribute="trailing" id="Dxn-vQ-VN2"/>
-                                                <constraint firstItem="O8k-VQ-6fv" firstAttribute="leading" secondItem="Lbq-Gl-fQx" secondAttribute="leadingMargin" id="ghb-IV-tJV"/>
+                                                <constraint firstItem="3su-Lg-Zjb" firstAttribute="top" secondItem="Lbq-Gl-fQx" secondAttribute="top" constant="8" id="MwK-ZM-3n6"/>
+                                                <constraint firstItem="3su-Lg-Zjb" firstAttribute="leading" secondItem="Lbq-Gl-fQx" secondAttribute="leading" constant="8" id="OCt-Xu-ZAh"/>
+                                                <constraint firstItem="4CE-c7-NSf" firstAttribute="bottom" secondItem="Lbq-Gl-fQx" secondAttribute="bottomMargin" id="WMz-fy-KhX"/>
                                                 <constraint firstItem="4CE-c7-NSf" firstAttribute="leading" secondItem="Lbq-Gl-fQx" secondAttribute="leadingMargin" id="i8C-Hf-9mk"/>
-                                                <constraint firstItem="4CE-c7-NSf" firstAttribute="top" secondItem="O8k-VQ-6fv" secondAttribute="bottom" constant="2" id="iDb-xy-6ZY"/>
-                                                <constraint firstItem="O8k-VQ-6fv" firstAttribute="top" secondItem="Lbq-Gl-fQx" secondAttribute="topMargin" id="reg-My-Z2q"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="O8k-VQ-6fv" secondAttribute="trailing" id="t0K-oz-QR5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.60027825342465757" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" red="0.23398344600000001" green="0.82328680200000004" blue="0.58470260760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="athleticTitleLabel" destination="3su-Lg-Zjb" id="2q2-lD-trn"/>
                                             <outlet property="campusLocationLabel" destination="4CE-c7-NSf" id="Pvg-Cg-twP"/>
-                                            <outlet property="timeLabel" destination="O8k-VQ-6fv" id="wQP-6h-1e9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1027,7 +1027,7 @@
                                     <constraint firstAttribute="width" constant="48" id="YUy-Ff-Ho6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" image="NearMe" backgroundImage="Circle">
+                                <state key="normal" image="ic_local_parking_2x" backgroundImage="Circle">
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1479,13 +1479,13 @@
         <image name="Columbia" width="1120" height="572"/>
         <image name="Harvard" width="600" height="368"/>
         <image name="Harvard2" width="800" height="532"/>
-        <image name="NearMe" width="800" height="800"/>
         <image name="Sweden" width="512" height="384"/>
         <image name="arrowLeft" width="24" height="24"/>
         <image name="ic_account_balance" width="24" height="24"/>
         <image name="ic_arrow_drop_down_circle_white" width="24" height="24"/>
         <image name="ic_compare_arrows_white" width="24" height="24"/>
         <image name="ic_date_range_white" width="24" height="24"/>
+        <image name="ic_local_parking_2x" width="24" height="24"/>
         <image name="ic_pool" width="24" height="24"/>
         <image name="imageView:mrJ-Sk-sXE:image" width="252" height="196">
             <mutableData key="keyedArchiveRepresentation">

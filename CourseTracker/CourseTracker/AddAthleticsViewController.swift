@@ -72,6 +72,9 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
         athleticCollectionView.dataSource = self
         athleticCollectionView.delegate = self
 
+        athleticTableView.rowHeight = UITableViewAutomaticDimension
+        athleticTableView.estimatedRowHeight = 60
+
         
         //Realm
         let dateFormatter: DateFormatter = {

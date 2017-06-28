@@ -69,6 +69,7 @@ extension UofTAPI {
         parkingLocation.type = type
         parkingLocation.parkingDescription = parkingDescription
         parkingLocation.address = address
+        parkingLocation.geoLocation = geoLocation
 
         do {
             try realm.write {

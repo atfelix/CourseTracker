@@ -6,21 +6,19 @@
 //  Copyright © 2017 Adam Felix. All rights reserved.
 //
 
-
-
 import UIKit
 import MapKit
 import CoreLocation
 import RealmSwift
 import JTAppleCalendar
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     //MARK: Properties
+
     @IBOutlet weak var returnButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var distanceLabel: UILabel!
-    
     @IBOutlet weak var mapView: MKMapView!
     
     //core location
@@ -35,6 +33,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     var currentOverlays: [MKOverlay?] = []
+    var currentParkingPins: [MKPointAnnotation] = []
     var buildingArray: [MKPointAnnotation]!
     var width = 0
     
@@ -67,22 +66,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.addAnnotations(buildingArray)
         self.width = buildingArray.count - 1
 
-        mapView.selectAnnotation(buildingArray[0], animated: true)
+        if buildingArray.count > 0 {
 
-        for i in stride(from: buildingArray.count - 2, through: 0, by: -1) {
-            addDirections(between: buildingArray[i + 1], and: buildingArray[i])
-        }
+            mapView.selectAnnotation(buildingArray[0], animated: true)
 
-        if let maxLatitude = buildingArray.map({ $0.coordinate.latitude }).max(),
-            let minLatitude = buildingArray.map({ $0.coordinate.latitude }).min(),
-            let maxLongitude = buildingArray.map({ $0.coordinate.longitude }).max(),
-            let minLongitude = buildingArray.map({ $0.coordinate.longitude }).min() {
+            for i in stride(from: buildingArray.count - 2, through: 0, by: -1) {
+                addDirections(between: buildingArray[i + 1], and: buildingArray[i])
+            }
 
-            let centerPoint = CLLocationCoordinate2D(latitude: (minLatitude + maxLatitude) / 2, longitude: (minLongitude + maxLongitude) / 2)
-            let latitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: maxLatitude, longitude: minLongitude))
-            let longitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: minLatitude, longitude: maxLongitude))
-            let region = MKCoordinateRegionMakeWithDistance(centerPoint, 3 * latitudinalMeters, 3 * longitudinalMeters)
-            mapView.setRegion(region, animated: true)
+            if let maxLatitude = buildingArray.map({ $0.coordinate.latitude }).max(),
+                let minLatitude = buildingArray.map({ $0.coordinate.latitude }).min(),
+                let maxLongitude = buildingArray.map({ $0.coordinate.longitude }).max(),
+                let minLongitude = buildingArray.map({ $0.coordinate.longitude }).min() {
+
+                let centerPoint = CLLocationCoordinate2D(latitude: (minLatitude + maxLatitude) / 2, longitude: (minLongitude + maxLongitude) / 2)
+                let latitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: maxLatitude, longitude: minLongitude))
+                let longitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: minLatitude, longitude: maxLongitude))
+                let region = MKCoordinateRegionMakeWithDistance(centerPoint, 3 * max(100, latitudinalMeters), 3 * max(100, longitudinalMeters))
+                mapView.setRegion(region, animated: true)
+            }
         }
 
 
@@ -100,6 +102,40 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        add the poly line to the map
         //mapView.add(polyline)
         
+    }
+
+    func addParkingLocations(type: Int) {
+
+        let stringType = ["asdf", "car", "bicycle"][type]
+        let parkingLocations = realm.objects(ParkingLocation.self).filter("type == '\(stringType)'")
+
+        for location in parkingLocations {
+            let point = MKPointAnnotation()
+            guard
+                let latitude = location.geoLocation?.latitude,
+                let longitude = location.geoLocation?.longitude else {
+                    continue
+            }
+            point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            point.title = location.parkingDescription
+            point.subtitle = "Type: \(location.type)"
+
+            mapView.addAnnotation(point)
+            currentParkingPins.append(point)
+        }
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let pin = MKPinAnnotationView()
+        if let subtitle = annotation.subtitle {
+            switch subtitle {
+                case "Type: bicycle"?: pin.pinTintColor = .green
+                case "Type: car"?: pin.pinTintColor = .blue
+                default: pin.pinTintColor = .red
+            }
+        }
+        pin.canShowCallout = true
+        return pin
     }
 
     func addDirections(between source: MKPointAnnotation, and destination: MKPointAnnotation) {
@@ -136,20 +172,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //center
     @IBAction func locationButtonTapped(_ sender: Any) {
-        centerMapAroundUserLocation(animated: true)
+        mapView.removeAnnotations(currentParkingPins)
+        currentParkingPins.removeAll()
+        struct Type {
+            static var type = 0
+        }
+        Type.type = (Type.type + 1) % 3
+        addParkingLocations(type: Type.type)
     }
     
     //center map around user
     func centerMapAroundUserLocation(animated: Bool) {
         let location = CLLocationCoordinate2D(latitude: 43.66, longitude: -79.39)
         let region = MKCoordinateRegionMakeWithDistance(location, 500.0, 1000.0)
-        //set to region
         
         mapView.setRegion(region, animated: true)
     }
     
     func getBuildingInfo() -> [MKPointAnnotation] {
-        let myLocation = CLLocation(latitude: 43.66, longitude:-79.39)
+
         var buildings = [MKPointAnnotation]()
         let day = DaysOfWeek(rawValue: Calendar.current.component(.weekday, from: date))!
 
@@ -167,9 +208,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 annotationView.subtitle = time.startTime.convertSecondsFromMidnight() + "-" + time.endTime.convertSecondsFromMidnight()
 
                 buildings.append(annotationView)
-                
-                let distance = myLocation.distance(from: CLLocation(latitude: latitude, longitude: longitude))
-                let result = String(format: "%.1f", distance / 1000)
             }
         }
         
@@ -261,7 +299,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         guard
             let view = view as? MKPinAnnotationView,
             let annotation = view.annotation as? MKPointAnnotation,
-            let index = buildingArray.index(of: annotation) else {
+            let index = buildingArray.index(of: annotation),
+            buildingArray.count > 1 else {
                 return
         }
         if index == buildingArray.count - 1 {
