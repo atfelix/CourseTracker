@@ -261,7 +261,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             let event = athleticEvents[athleticEventIndex]
             cell.listImage.image = UIImage(named: "ic_pool_white")
             cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.10)
-            cell.listLocation.text = event.location
+            cell.listLocation.text = "\(event.campus): \(event.location)"
             cell.listData.text = event.title
             cell.listTime.numberOfLines = 0
             cell.listTime.text = "\(event.startTime.convertSecondsFromMidnight())\n\(event.endTime.convertSecondsFromMidnight())"
@@ -271,7 +271,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             let course = courses[courseIndex]
             cell.listImage.image = UIImage(named: "ic_account_balance_white")
             cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.10)
-            cell.listLocation.text = course.campus
+            cell.listLocation.text = "\(course.campus)"
             cell.listData.text = course.name
             cell.listTime.numberOfLines = 0
 
@@ -283,7 +283,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             let course = courses[courseIndex]
             cell.listImage.image = UIImage(named: "ic_account_balance_white")
             cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.10)
-            cell.listLocation.text = course.campus
+            cell.listLocation.text = "\(course.campus)"
             cell.listData.text = course.name
             cell.listTime.numberOfLines = 0
 
@@ -295,7 +295,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             let event = athleticEvents[athleticEventIndex]
             cell.listImage.image = UIImage(named: "ic_pool_white")
             cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.10)
-            cell.listLocation.text = event.location
+            cell.listLocation.text = "\(event.campus): \(event.location)"
             cell.listData.text = event.title
             cell.listTime.numberOfLines = 0
             cell.listTime.text = "\(event.startTime.convertSecondsFromMidnight())\n\(event.endTime.convertSecondsFromMidnight())"
