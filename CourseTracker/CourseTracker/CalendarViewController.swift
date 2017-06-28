@@ -73,6 +73,10 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
         //setup the Calendar
         setupCalendarView()
+        
+        //table constraints
+        listTableView.estimatedRowHeight = 44.0
+        listTableView.rowHeight = UITableViewAutomaticDimension
 
         //Swipe on Table to make it go up
         let swipeUpGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeUp(gesture:)))
@@ -255,7 +259,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         if courseIndex == courses.count {
             athleticEventIndex += count
             let event = athleticEvents[athleticEventIndex]
-            cell.listImage.backgroundColor = UIColor.init(red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+            cell.listImage.image = UIImage(named: "ic_pool_white")
+            cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.10)
             cell.listLocation.text = event.location
             cell.listData.text = event.title
             cell.listTime.numberOfLines = 0
@@ -264,7 +269,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         else if athleticEventIndex == athleticEvents.count {
             courseIndex += count
             let course = courses[courseIndex]
-            cell.listImage.backgroundColor = UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
+            cell.listImage.image = UIImage(named: "ic_account_balance_white")
+            cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.10)
             cell.listLocation.text = course.campus
             cell.listData.text = course.name
             cell.listTime.numberOfLines = 0
@@ -275,7 +281,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }
         else if courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
             let course = courses[courseIndex]
-            cell.listImage.backgroundColor = UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
+            cell.listImage.image = UIImage(named: "ic_account_balance_white")
+            cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.10)
             cell.listLocation.text = course.campus
             cell.listData.text = course.name
             cell.listTime.numberOfLines = 0
@@ -286,7 +293,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }
         else {
             let event = athleticEvents[athleticEventIndex]
-            cell.listImage.backgroundColor = UIColor.init(red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+            cell.listImage.image = UIImage(named: "ic_pool_white")
+            cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.10)
             cell.listLocation.text = event.location
             cell.listData.text = event.title
             cell.listTime.numberOfLines = 0
@@ -398,7 +406,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         //set the courseLabel indicator to yellow or silver for different events
 
         if student.coursesFor(day: cellState.day).count > 0 {
-            cell.coursesLabel.backgroundColor =  UIColor.init(red: 255/255, green: 215/255, blue: 0/255, alpha: 1)
+            cell.coursesLabel.backgroundColor =  UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 1)
             cell.coursesLabel.layer.cornerRadius = 2.5
             cell.coursesLabel.layer.masksToBounds = true
         }
@@ -411,7 +419,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
             for event in athleticDate.athleticEvents {
                 if event.studentAttending {
-                    cell.customLabel.backgroundColor = .lightGray
+                    cell.customLabel.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 1)
                     cell.customLabel.layer.cornerRadius = 2.5
                     cell.customLabel.layer.masksToBounds = true
                     break
