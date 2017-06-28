@@ -51,43 +51,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-//        mapView.showsUserLocation = true
-//        
-//        centerMapAroundUserLocation(animated: true)
-
         let buildingArray = getBuildingInfo()
         //add buildings to the map
 
         mapView.addAnnotations(buildingArray)
         mapView.selectAnnotation(buildingArray[0], animated: false)
 
-        var maxLatitude = buildingArray[0].coordinate.latitude
-        var minLatitude = buildingArray[0].coordinate.latitude
-        var maxLongitude = buildingArray[0].coordinate.longitude
-        var minLongitude = buildingArray[0].coordinate.longitude
+        if let maxLatitude = buildingArray.map({ $0.coordinate.latitude }).max(),
+            let minLatitude = buildingArray.map({ $0.coordinate.latitude }).min(),
+            let maxLongitude = buildingArray.map({ $0.coordinate.longitude }).max(),
+            let minLongitude = buildingArray.map({ $0.coordinate.longitude }).min() {
 
-        for x in buildingArray {
-            let latitude = x.coordinate.latitude, longitude = x.coordinate.longitude
-            if latitude > maxLatitude {
-                maxLatitude = latitude
-            }
-            else if latitude < minLatitude {
-                minLatitude = latitude
-            }
-
-            if longitude > maxLongitude {
-                maxLongitude = longitude
-            }
-            else if longitude < minLatitude {
-                minLongitude = longitude
-            }
+            let centerPoint = CLLocationCoordinate2D(latitude: (minLatitude + maxLatitude) / 2, longitude: (minLongitude + maxLongitude) / 2)
+            let latitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: maxLatitude, longitude: minLongitude))
+            let longitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: minLatitude, longitude: maxLongitude))
+            let region = MKCoordinateRegionMakeWithDistance(centerPoint, 1.8 * latitudinalMeters, 1.8 * longitudinalMeters)
+            mapView.setRegion(region, animated: true)
         }
-
-        let centerPoint = CLLocationCoordinate2D(latitude: (minLatitude + maxLatitude) / 2, longitude: (minLongitude + maxLongitude) / 2)
-        let latitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: maxLatitude, longitude: minLongitude))
-        let longitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: minLatitude, longitude: maxLongitude))
-        let region = MKCoordinateRegionMakeWithDistance(centerPoint, 1.8 * latitudinalMeters, 1.8 * longitudinalMeters)
-        mapView.setRegion(region, animated: true)
 
 
         
