@@ -51,16 +51,45 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        mapView.showsUserLocation = true
-        
-        centerMapAroundUserLocation(animated: true)
-        
+//        mapView.showsUserLocation = true
+//        
+//        centerMapAroundUserLocation(animated: true)
+
         let buildingArray = getBuildingInfo()
         //add buildings to the map
+
         mapView.addAnnotations(buildingArray)
+        mapView.selectAnnotation(buildingArray[0], animated: false)
+
+        var maxLatitude = buildingArray[0].coordinate.latitude
+        var minLatitude = buildingArray[0].coordinate.latitude
+        var maxLongitude = buildingArray[0].coordinate.longitude
+        var minLongitude = buildingArray[0].coordinate.longitude
+
         for x in buildingArray {
-            mapView.selectAnnotation(x, animated: false)
+            let latitude = x.coordinate.latitude, longitude = x.coordinate.longitude
+            if latitude > maxLatitude {
+                maxLatitude = latitude
+            }
+            else if latitude < minLatitude {
+                minLatitude = latitude
+            }
+
+            if longitude > maxLongitude {
+                maxLongitude = longitude
+            }
+            else if longitude < minLatitude {
+                minLongitude = longitude
+            }
         }
+
+        let centerPoint = CLLocationCoordinate2D(latitude: (minLatitude + maxLatitude) / 2, longitude: (minLongitude + maxLongitude) / 2)
+        let latitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: maxLatitude, longitude: minLongitude))
+        let longitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: minLatitude, longitude: maxLongitude))
+        let region = MKCoordinateRegionMakeWithDistance(centerPoint, 1.8 * latitudinalMeters, 1.8 * longitudinalMeters)
+        mapView.setRegion(region, animated: true)
+
+
         
         //connect all the events using poly line
         var points : [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
