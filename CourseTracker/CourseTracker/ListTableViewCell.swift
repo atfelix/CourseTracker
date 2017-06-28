@@ -11,6 +11,7 @@ import UIKit
 class ListTableViewCell: UITableViewCell{
 
     //MARK: Tableview Properties
+    @IBOutlet weak var listView: UIView!
     @IBOutlet weak var listImage: UIImageView!
     @IBOutlet weak var listTime: UILabel!
     @IBOutlet weak var listData: UILabel!
