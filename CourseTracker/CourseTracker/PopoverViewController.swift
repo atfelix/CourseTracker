@@ -19,9 +19,9 @@ class PopoverViewController: UIViewController {
     
     //MARK: Properties
     @IBOutlet var popCourseLabel: UILabel!
-    //labels
     @IBOutlet weak var popDescriptionLabel: UILabel!
     @IBOutlet weak var popTextbookLabel: UILabel!
+    @IBOutlet weak var popPrereqLabel: UILabel!
     //view
     @IBOutlet weak var popView: UIView!
     //buttons
@@ -40,6 +40,13 @@ class PopoverViewController: UIViewController {
         //set the pop over labels
         self.popCourseLabel.text = course?.name ?? "No Course Name Found"
         self.popDescriptionLabel.text = course?.courseDescription
+        
+        var prereqText = "No Pre-requisites"
+        if let Prereq = course?.prerequistes {
+            prereqText = "\(Prereq)"
+        }
+        self.popPrereqLabel.text = prereqText
+        
         var textbookText = "No Textbooks"
         if let firstTextbook = course?.textbooks.first {
             textbookText = String(format: "\(firstTextbook.title): $%.2f", firstTextbook.price)
