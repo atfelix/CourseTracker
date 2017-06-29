@@ -1,6 +1,10 @@
-# CourseTracker 
+# ![](https://github.com/atfelix/CourseTracker/blob/master/CourseTracker/CT-Icon/ios/AppIcon.appiconset/Icon-App-20x20%403x.png "Course Tracker")CourseTracker 
 
 iOS application for students in post secondary institutions (College/ University) that helps students by increasing their productivity. Students plan out their courses and athletics then find where it is located.
+
+### Images
+
+Coming soon
 
 ## User Case  
 
