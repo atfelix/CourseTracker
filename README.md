@@ -1,17 +1,33 @@
 # CourseTracker
 
-Application for students in post secondary institutions (College/ University) that helps students navigate their way through campus and plan out their day. 
+iOS application for students in post secondary institutions (College/ University) that helps students by increasing their productivity. Students plan out their courses and athletics then find where it is located.
 
 # User Case
 
-The user will select the University that they attend. The user will then select the courses they are currently taking. The courses will then be automatically displayed in a calendar with details about the course. The user can select “navigation” to find out the fastest possible route to get to their classes. 
+The user will add the courses they are currently taking. The courses will then be automatically displayed in a calendar with details about the course. The user can also add real-time athletic events provided by the university at a certain date. If the user double taps on a date on the calendar they will be provided with a map that displays where each class is and provide a path with the distance for each class of the day.
 
-# Realm
+# University of Toronto API (https://cobalt.qas.im/)
 
-Used to house the Data from API calls.
+Access to real-time updated Univeristy of Toronto API.
 
-# API & Carthage
+# Realm (https://realm.io/)
 
-- University API’s: Waterloo, UFT, UBC etc. 
-- Maps: Google Maps
-- Calendar: JTAppleCalendar
+Used to house the Data from API calls and for its cross platform accessibilty. 
+
+# Alamofire (https://github.com/Alamofire/Alamofire)
+
+Easy to use network-calls.
+
+# JTAppleCalendar (https://github.com/patchthecode/JTAppleCalendar)
+
+Fully customizable calendar.
+
+# Carthage (https://github.com/Carthage/Carthage)
+
+Used as our dependancy manager.
+
+# Future Goals
+
+- Incorporate more University API’s: Waterloo, UFT, UBC etc. 
+- Better mapping, Google Maps.
+- Weekly calendar for better viewing or incorporate Apples build in calendar. 
