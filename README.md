@@ -11,22 +11,23 @@ The user will add the courses they are currently taking. The courses will then b
 - Better mapping, Google Maps.
 - Weekly calendar for better viewing or incorporate Apples build in calendar. 
 
-# [University of Toronto API](https://cobalt.qas.im/) 
+## Technologies Used
+-[University of Toronto API](https://cobalt.qas.im/) 
 
 Access to real-time updated Univeristy of Toronto API.
 
-# [Realm](https://realm.io/) 
+-[Realm](https://realm.io/) 
 
 Used to house the Data from API calls and for its cross platform accessibilty. 
 
-# [Alamofire](https://github.com/Alamofire/Alamofire) 
+-[Alamofire](https://github.com/Alamofire/Alamofire) 
 
 Easy to use network-calls.
 
-# [JTAppleCalendar](https://github.com/patchthecode/JTAppleCalendar)
+-[JTAppleCalendar](https://github.com/patchthecode/JTAppleCalendar)
 
 Fully customizable calendar.
 
-# [Carthage](https://github.com/Carthage/Carthage)
+-[Carthage](https://github.com/Carthage/Carthage)
 
 Used as our dependancy manager.
