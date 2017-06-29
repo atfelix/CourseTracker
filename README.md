@@ -2,9 +2,12 @@
 
 iOS application for students in post secondary institutions (College/ University) that helps students by increasing their productivity. Students plan out their courses and athletics then find where it is located.
 
-### Images
+### Demo Images
 
-Coming soon
+![Home](https://github.com/atfelix/CourseTracker/blob/master/Demo/Home.png "Home")
+![Calendar](https://github.com/atfelix/CourseTracker/blob/master/Demo/Calendar.png "Calendar")
+![Courses Manager](https://github.com/atfelix/CourseTracker/blob/master/Demo/Courses.png "Courses")
+![Athletics Manager](https://github.com/atfelix/CourseTracker/blob/master/Demo/Athletics.png "Athletics")
 
 ## User Case  
 
