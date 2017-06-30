@@ -18,7 +18,7 @@ The user will add the courses they are currently taking. The courses will then b
 ## Future Goals 
 - Incorporate more University API’s: Waterloo, UFT, UBC etc. 
 - Better mapping, Google Maps.
-- Weekly calendar for better viewing or incorporate Apples build in calendar. 
+- Weekly calendar for better viewing or incorporate Apples built in calendar. 
 
 ## Technologies Used
 -[University of Toronto API](https://cobalt.qas.im/) 
