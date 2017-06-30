@@ -8,8 +8,8 @@ iOS application for students in post secondary institutions (College/ University
 ![Calendar](https://github.com/atfelix/CourseTracker/blob/master/Demo/Calendar.png "Calendar")
 ![Courses Manager](https://github.com/atfelix/CourseTracker/blob/master/Demo/Courses.png "Courses")
 ![Athletics Manager](https://github.com/atfelix/CourseTracker/blob/master/Demo/Athletics.png "Athletics")
-![Map Routes](https://github.com/atfelix/CourseTracker/blob/master/Demo/Map1.png "Daily Routes")
-![Selected Route](https://github.com/atfelix/CourseTracker/blob/master/Demo/Map2.png "Selected Route")
+![Map Routes](https://github.com/atfelix/CourseTracker/blob/master/Demo/Map2.png "Daily Routes")
+![Selected Route](https://github.com/atfelix/CourseTracker/blob/master/Demo/Map1.png "Selected Route")
 
 ## User Case  
 
