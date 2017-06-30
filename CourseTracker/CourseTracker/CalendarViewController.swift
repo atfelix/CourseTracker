@@ -260,7 +260,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             athleticEventIndex += count
             let event = athleticEvents[athleticEventIndex]
             cell.listImage.image = UIImage(named: "ic_pool_white")
-            cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.10)
+            cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.20)
             cell.listLocation.text = "\(event.campus): \(event.location)"
             cell.listData.text = event.title
             cell.listTime.numberOfLines = 0
@@ -270,7 +270,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             courseIndex += count
             let course = courses[courseIndex]
             cell.listImage.image = UIImage(named: "ic_account_balance_white")
-            cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.10)
+            cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.15)
             cell.listLocation.text = "\(course.campus)"
             cell.listData.text = course.name
             cell.listTime.numberOfLines = 0
@@ -282,7 +282,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         else if courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
             let course = courses[courseIndex]
             cell.listImage.image = UIImage(named: "ic_account_balance_white")
-            cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.10)
+            cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.15)
             cell.listLocation.text = "\(course.campus)"
             cell.listData.text = course.name
             cell.listTime.numberOfLines = 0
@@ -294,7 +294,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         else {
             let event = athleticEvents[athleticEventIndex]
             cell.listImage.image = UIImage(named: "ic_pool_white")
-            cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.10)
+            cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.20)
             cell.listLocation.text = "\(event.campus): \(event.location)"
             cell.listData.text = event.title
             cell.listTime.numberOfLines = 0
