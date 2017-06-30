@@ -2,6 +2,10 @@
 
 iOS application for students in post secondary institutions (College/ University) that helps students by increasing their productivity. Students plan out their courses and athletics then find where it is located.
 
+### Timeline
+
+Started the initial research and began on Wednesday June 14th at 10:00 AM. We presented the app on Thursday June 29th at 4:00 PM.
+
 ### Demo Images
 
 ![Home](https://github.com/atfelix/CourseTracker/blob/master/Demo/Home.png "Home")
