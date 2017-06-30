@@ -306,7 +306,6 @@
 			children = (
 				3105109C1EF6759800F34D43 /* BuildingData.swift */,
 				31170ED51EF32D45004AFE2F /* MapViewController.swift */,
-				3105109E1EF67D5900F34D43 /* buildings.plist */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -394,6 +393,7 @@
 				317DDF091EECE13100F02C3B /* PageViewController.swift */,
 				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
 				31A955D01EF84EB500EEF0CD /* courses.plist */,
+				3105109E1EF67D5900F34D43 /* buildings.plist */,
 			);
 			name = ToDelete;
 			sourceTree = "<group>";
