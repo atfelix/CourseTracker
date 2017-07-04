@@ -19,13 +19,7 @@ extension UofTAPI {
     }
 
     static func addOrUpdateCourseShortCode(course: Course) {
-        let index = course.id.index(course.id.startIndex, offsetBy:3)
-        let code = course.id[Range(course.id.startIndex..<index)]
-
-        guard code.characters.count == 3 else { return }
-
-        let shortCode = CourseShortCode()
-        shortCode.shortCode = code
+        guard let shortCode = CourseShortCode(course: course) else { return }
 
         do {
             try realm.write {

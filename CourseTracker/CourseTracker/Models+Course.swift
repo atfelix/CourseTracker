@@ -194,4 +194,15 @@ final class CourseShortCode: Object {
     override static func primaryKey() -> String? {
         return "shortCode"
     }
+
+    convenience init?(course: Course) {
+        self.init()
+
+        let index = course.id.index(course.id.startIndex, offsetBy:3)
+        let code = course.id[Range(course.id.startIndex..<index)]
+
+        guard code.characters.count == 3 else { return nil }
+
+        self.shortCode = code
+    }
 }
