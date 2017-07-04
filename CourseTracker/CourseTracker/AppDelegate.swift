@@ -17,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+//        let defaultRealmPath = Realm.Configuration.defaultConfiguration.fileURL
+//        let bundleRealmPath = Bundle.main.resourceURL?.appendingPathComponent("default.realm")
+//
+//        if let defaultPath = defaultRealmPath?.absoluteString {
+//            if !FileManager.default.fileExists(atPath: defaultPath) {
+//                try! FileManager.default.copyItem(at: bundleRealmPath!, to: defaultRealmPath!)
+//            }
+//        }
+
         let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
 
             if oldSchemaVersion < 1 {
@@ -37,7 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let config = Realm.Configuration(schemaVersion: 2, migrationBlock: migrationBlock, shouldCompactOnLaunch: { totalBytes, usedBytes in
             return true
         })
+
         realm = try! Realm(configuration: config)
+//        print("==================")
+//        print(config.fileURL)
+//        print(defaultRealmPath)
+//        print("==================")
 
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

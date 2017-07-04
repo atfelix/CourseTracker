@@ -16,6 +16,11 @@
 		110F4EE91EEB617F00D88F8E /* CourseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F4EE81EEB617F00D88F8E /* CourseTrackerUITests.swift */; };
 		116219B81EF9BFB1009E1885 /* CourseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116219B71EF9BFB1009E1885 /* CourseStore.swift */; };
 		116219BA1EFACCB4009E1885 /* CourseStore+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116219B91EFACCB4009E1885 /* CourseStore+UICollectionViewDataSource.swift */; };
+		116BBA531F04827E00B6EA31 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 116BBA4D1F04827E00B6EA31 /* default.realm */; };
+		116BBA541F04827E00B6EA31 /* default.realm.lock in Resources */ = {isa = PBXBuildFile; fileRef = 116BBA4E1F04827E00B6EA31 /* default.realm.lock */; };
+		116BBA551F04827E00B6EA31 /* access_control.balance.mx in Resources */ = {isa = PBXBuildFile; fileRef = 116BBA501F04827E00B6EA31 /* access_control.balance.mx */; };
+		116BBA561F04827E00B6EA31 /* access_control.control.mx in Resources */ = {isa = PBXBuildFile; fileRef = 116BBA511F04827E00B6EA31 /* access_control.control.mx */; };
+		116BBA571F04827E00B6EA31 /* access_control.write.mx in Resources */ = {isa = PBXBuildFile; fileRef = 116BBA521F04827E00B6EA31 /* access_control.write.mx */; };
 		117920101EF9979500858073 /* UofTAPI+CourseShortCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179200F1EF9979500858073 /* UofTAPI+CourseShortCode.swift */; };
 		1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */; };
 		119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */; };
@@ -115,6 +120,11 @@
 		110F4EEA1EEB617F00D88F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		116219B71EF9BFB1009E1885 /* CourseStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseStore.swift; sourceTree = "<group>"; };
 		116219B91EFACCB4009E1885 /* CourseStore+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CourseStore+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
+		116BBA4D1F04827E00B6EA31 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
+		116BBA4E1F04827E00B6EA31 /* default.realm.lock */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm.lock; sourceTree = "<group>"; };
+		116BBA501F04827E00B6EA31 /* access_control.balance.mx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = access_control.balance.mx; sourceTree = "<group>"; };
+		116BBA511F04827E00B6EA31 /* access_control.control.mx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = access_control.control.mx; sourceTree = "<group>"; };
+		116BBA521F04827E00B6EA31 /* access_control.write.mx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = access_control.write.mx; sourceTree = "<group>"; };
 		1179200D1EF866FF00858073 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		1179200F1EF9979500858073 /* UofTAPI+CourseShortCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+CourseShortCode.swift"; sourceTree = "<group>"; };
 		1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Course.swift"; sourceTree = "<group>"; };
@@ -263,6 +273,16 @@
 			path = CourseTrackerUITests;
 			sourceTree = "<group>";
 		};
+		116BBA4F1F04827E00B6EA31 /* default.realm.management */ = {
+			isa = PBXGroup;
+			children = (
+				116BBA501F04827E00B6EA31 /* access_control.balance.mx */,
+				116BBA511F04827E00B6EA31 /* access_control.control.mx */,
+				116BBA521F04827E00B6EA31 /* access_control.write.mx */,
+			);
+			path = default.realm.management;
+			sourceTree = "<group>";
+		};
 		11B3EB421EEC77E900569DE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +389,9 @@
 		31B29AA11EEC8E2000BF3F91 /* Additional */ = {
 			isa = PBXGroup;
 			children = (
+				116BBA4D1F04827E00B6EA31 /* default.realm */,
+				116BBA4E1F04827E00B6EA31 /* default.realm.lock */,
+				116BBA4F1F04827E00B6EA31 /* default.realm.management */,
 				110F4ECF1EEB617F00D88F8E /* Assets.xcassets */,
 				110F4ED41EEB617F00D88F8E /* Info.plist */,
 			);
@@ -504,9 +527,8 @@
 				TargetAttributes = {
 					110F4EC41EEB617F00D88F8E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = RXV6Y5GM2V;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					110F4ED81EEB617F00D88F8E = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -547,9 +569,14 @@
 			files = (
 				110F4ED31EEB617F00D88F8E /* LaunchScreen.storyboard in Resources */,
 				110F4ED01EEB617F00D88F8E /* Assets.xcassets in Resources */,
+				116BBA551F04827E00B6EA31 /* access_control.balance.mx in Resources */,
+				116BBA571F04827E00B6EA31 /* access_control.write.mx in Resources */,
+				116BBA561F04827E00B6EA31 /* access_control.control.mx in Resources */,
 				31A955D11EF84EB500EEF0CD /* courses.plist in Resources */,
 				3105109F1EF67D5900F34D43 /* buildings.plist in Resources */,
 				110F4ECE1EEB617F00D88F8E /* Main.storyboard in Resources */,
+				116BBA531F04827E00B6EA31 /* default.realm in Resources */,
+				116BBA541F04827E00B6EA31 /* default.realm.lock in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,16 +946,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = RXV6Y5GM2V;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = CourseTracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lighthouse.CourseTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -940,16 +969,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = RXV6Y5GM2V;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = CourseTracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lighthouse.CourseTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};

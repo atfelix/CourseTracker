@@ -44,12 +44,6 @@ struct UofTAPI {
         if realm.objects(CourseShortCode.self).count == 0 {
             createCouseShortCodeinDB()
         }
-
-        //guard let shortCode = realm.objects(CourseShortCode.self).filter("shortCode == 'AST'").first else { print("blah"); return}
-        let courses = realm.objects(Course.self).filter("term BEGINSWITH '2017 Summer'")
-        for course in courses {
-            print(course.code, course.name)
-        }
     }
 
     static func makeRequestURL(method: Method, skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
@@ -61,26 +55,6 @@ struct UofTAPI {
                                  URLQueryItem(name: "limit", value: "\(limit)"),
                                  URLQueryItem(name: "key", value: "\(UofTAPI.key)")]
         return components.url
-    }
-
-    static func makeRequestFilterURL(method: Method, filterParameters: [String:String]?, skip: Int, limit: Int = UofTAPI.maxLimit) -> URL? {
-
-        guard let filterParameters = filterParameters, filterParameters.count > 0 else {
-            print("Filter parameters must have query types")
-            return nil
-        }
-
-        var components = URLComponents()
-        components.scheme = UofTAPI.httpScheme
-        components.host = UofTAPI.baseURLString
-        components.path = UofTAPI.pathStart + method.rawValue
-
-        guard var urlString = components.url?.absoluteString else { return nil }
-
-        urlString += "/filter?q="
-
-
-        return URL(string: urlString)
     }
 
     static func logRealmError(_ error: Error) {
