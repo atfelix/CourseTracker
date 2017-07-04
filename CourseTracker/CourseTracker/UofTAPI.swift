@@ -60,4 +60,12 @@ struct UofTAPI {
     static func logRealmError(_ error: Error) {
         print("Realm write error: \(error.localizedDescription)")
     }
+
+    static func logResponseInfo(response: DataResponse<Any>) {
+        print(response.request ?? "NO REQUEST VALUE")
+        print(response.response ?? "NO RESPONSE VALUE")
+        print(response.data ?? "NO DATA VALUE")
+        print(response.result)
+        print("================")
+    }
 }

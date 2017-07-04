@@ -12,14 +12,6 @@ import Alamofire
 extension UofTAPI {
 
     static func updateAthleticDB() {
-//        guard
-//            let latestAthleticsDate = realm.objects(AthleticDate.self).sorted(byKeyPath: "date", ascending:false).first,
-//            let latestDate = latestAthleticsDate.date else {
-//                print(#function, #line, "Realm couldn't get AthleticDate objects")
-//                makeAthleticsRequest(skip: 0)
-//                return
-//        }
-//        makeAthleticsLatestDateRequest(latestDate:latestDate)
         makeAthleticsRequest(skip: 0)
     }
 
@@ -27,29 +19,11 @@ extension UofTAPI {
         return makeRequestURL(method: .athletics, skip: skip, limit: limit)
     }
 
-    static func makeAthleticsLatestDateRequestURL(latestDate: String) -> URL? {
-
-        var components = URLComponents()
-        components.scheme = UofTAPI.httpScheme
-        components.host = UofTAPI.baseURLString
-        components.path = UofTAPI.pathStart + Method.athletics.rawValue
-
-        guard var urlString = components.url?.absoluteString else { return nil }
-
-        urlString += "/filter?limit=\(UofTAPI.maxLimit)q=date:>\(latestDate)"
-
-        return URL(string: urlString)
-    }
-
     static func makeAthleticsRequest(skip: Int, limit: Int = UofTAPI.maxLimit) {
 
         let url = makeAthleticsRequestURL(skip: skip, limit: limit)
         Alamofire.request((url?.absoluteString)!).responseJSON { response in
-            print(response.request!)
-            print(response.response!)
-            print(response.data!)
-            print(response.result)
-            print("================")
+            logResponseInfo(response: response)
 
             if let JSON = response.result.value as? [[String:Any]], JSON.count > 0 {
                 for athleticDate in JSON {
@@ -59,21 +33,6 @@ extension UofTAPI {
                     sleep(5)
                     makeAthleticsRequest(skip: skip + limit, limit: limit)
                 }
-            }
-        }
-    }
-
-    static func makeAthleticsLatestDateRequest(latestDate: String) {
-        guard let url = makeAthleticsLatestDateRequestURL(latestDate: latestDate) else { return }
-        Alamofire.request(url.absoluteString).responseJSON { response in
-            print(response.request!)
-            print(response.response!)
-            print(response.data!)
-            print(response.result)
-            print("================")
-
-            if let JSON = response.result.value as? [[String:Any]], JSON.count > 0 {
-                makeAthleticsRequest(skip: 0)
             }
         }
     }
