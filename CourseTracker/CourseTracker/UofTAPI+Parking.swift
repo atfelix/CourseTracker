@@ -39,33 +39,10 @@ extension UofTAPI {
     }
 
     static func addOrUpdateParking(fromJSON json: [String:Any]) {
-        guard
-            let id = json["id"] as? String,
-            let title = json["title"] as? String,
-            let buildingID = json["building_id"] as? String,
-            let campus = json["campus"] as? String,
-            let type = json["type"] as? String,
-            let parkingDescription = json["description"] as? String,
-            let latitude = json["lat"] as? Double,
-            let longitude = json["lng"] as? Double,
-            let address = json["address"] as? String else {
+        guard let parkingLocation = ParkingLocation(fromJSON: json) else {
                 print("JSON does not conform to Parking Prototype JSON")
                 return
         }
-
-        let geoLocation = GeoLocation()
-        geoLocation.latitude = latitude
-        geoLocation.longitude = longitude
-
-        let parkingLocation = ParkingLocation()
-        parkingLocation.id = id
-        parkingLocation.title = title
-        parkingLocation.buildingID = buildingID
-        parkingLocation.campus = campus
-        parkingLocation.type = type
-        parkingLocation.parkingDescription = parkingDescription
-        parkingLocation.address = address
-        parkingLocation.geoLocation = geoLocation
 
         do {
             try realm.write {

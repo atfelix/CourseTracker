@@ -137,6 +137,33 @@ final class ParkingLocation: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+
+    convenience init?(fromJSON json: [String:Any]) {
+        self.init()
+
+        guard
+            let id = json["id"] as? String,
+            let title = json["title"] as? String,
+            let buildingID = json["building_id"] as? String,
+            let campus = json["campus"] as? String,
+            let type = json["type"] as? String,
+            let parkingDescription = json["description"] as? String,
+            let latitude = json["lat"] as? Double,
+            let longitude = json["lng"] as? Double,
+            let address = json["address"] as? String else {
+                print("JSON does not conform to Parking Prototype JSON")
+                return
+        }
+
+        self.id = id
+        self.title = title
+        self.buildingID = buildingID
+        self.campus = campus
+        self.type = type
+        self.parkingDescription = parkingDescription
+        self.address = address
+        self.geoLocation = GeoLocation(latitude: latitude, longitude: longitude)
+    }
 }
 
 final class Student: Object{
