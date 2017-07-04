@@ -40,4 +40,28 @@ final class AthleticEvent: Object {
             return _building
         }
     }
+
+    convenience init?(fromJSON json: [String:Any]) {
+        self.init()
+
+        guard
+            let title = json["title"] as? String,
+            let campus = json["campus"] as? String,
+            let location = json["location"] as? String,
+            let buildingID = json["building_id"] as? String,
+            let startTime = json["start_time"] as? Int,
+            let endTime = json["end_time"] as? Int,
+            let duration = json["duration"] as? Int else {
+                print("JSON does not conform to Athletic Event Prototype JSON")
+                return nil
+        }
+
+        self.title = title
+        self.campus = campus
+        self.location = location
+        self.buildingID = buildingID
+        self.startTime = startTime
+        self.endTime = endTime
+        self.duration = duration
+    }
 }

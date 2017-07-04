@@ -63,26 +63,11 @@ extension UofTAPI {
     }
 
     static func addOrUpdateAthleticEvent(athleticDate: AthleticDate, fromJSON json: [String:Any]) {
-        guard
-            let title = json["title"] as? String,
-            let campus = json["campus"] as? String,
-            let location = json["location"] as? String,
-            let buildingID = json["building_id"] as? String,
-            let startTime = json["start_time"] as? Int,
-            let endTime = json["end_time"] as? Int,
-            let duration = json["duration"] as? Int else {
-                print("JSON does not conform to Athletic Event Prototype JSON")
-                return
-        }
 
-        let athleticEvent = AthleticEvent()
-        athleticEvent.title = title
-        athleticEvent.campus = campus
-        athleticEvent.location = location
-        athleticEvent.buildingID = buildingID
-        athleticEvent.startTime = startTime
-        athleticEvent.endTime = endTime
-        athleticEvent.duration = duration
+        guard let athleticEvent = AthleticEvent(fromJSON: json) else {
+            print("JSON does not conform to Athletic Event Prototype JSON")
+            return
+        }
 
         do {
             try realm.write {
