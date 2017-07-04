@@ -11,9 +11,14 @@ import RealmSwift
 
 class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource, AddAthleticsDelegate, AddCourseDelegate {
 
-    //MARK: Properties
+    // MARK: Properties
+
+    // MARK: Passed in properties
 
     var realm: Realm!
+    var student: Student!
+
+    // MARK: UI Properties
 
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
@@ -27,13 +32,15 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var addEventButton: UIButton!
     @IBOutlet weak var addCourseButton: UIButton!
 
-    //Set colors of Calendar
+    // MARK: Colour Scheme properties
+
     let outsideMonthColor = UIColor.gray
     let monthColor = UIColor.white
     let selectedMonthColor = UIColor.black
     let currentDateSelectedViewColor = UIColor.cyan
-    //Set date of Calendar
-    let formatter = DateFormatter()
+
+    // MARK: DateFormatters
+
     let dateFormatter : DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = Calendar.current.timeZone
@@ -50,10 +57,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         return formatter
     }()
 
-    var currentDate = Date()
     var cellStateChanged = false
-
-    var student: Student!
     
     
     // MARK: View life cycle
@@ -63,11 +67,25 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
         setupCalendarView()
         addGestureRecognizers()
-        
-        listTableView.estimatedRowHeight = 44.0
-        listTableView.rowHeight = UITableViewAutomaticDimension
+        setupListTableViewHeight()
+    }
 
-        self.dateTapped.text = "\(displayDateFormatter.string(from: calendarView.selectedDates.first ?? Date()))"
+    private func setupCalendarView(){
+        calendarView.minimumLineSpacing = 0
+        calendarView.minimumInteritemSpacing = 0
+        calendarView.allowsMultipleSelection = false
+
+        calendarView.visibleDates { [weak self] (visibleDates) in
+            guard let welf = self else { return }
+            welf.setupViewsOfCalendar(from: visibleDates)
+        }
+    }
+
+    private func setupViewsOfCalendar(from visibleDates: DateSegmentInfo){
+        guard let date = visibleDates.monthDates.first?.date else { return }
+
+        self.year.text = "\(Calendar.current.component(.year, from: date))"
+        self.month.text = "\(DateFormatter().monthSymbols[Calendar.current.component(.month, from: date) - 1])"
     }
 
     private func addGestureRecognizers() {
@@ -82,6 +100,15 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(gesture:)))
         doubleTapGesture.numberOfTapsRequired = 2
         calendarView.addGestureRecognizer(doubleTapGesture)
+    }
+
+    private func setupListTableViewHeight() {
+        listTableView.estimatedRowHeight = 44.0
+        listTableView.rowHeight = UITableViewAutomaticDimension
+    }
+
+    private func setupDateTappedLabel() {
+        self.dateTapped.text = "\(displayDateFormatter.string(from: calendarView.selectedDates.first ?? Date()))"
     }
 
     //MARK: Button Actions
@@ -135,17 +162,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
         guard cellStateChanged else { return }
 
-        //set the cell.frame to a initial position outside the screen
         let cellFrame : CGRect = cell.frame
-        
-        //check the scrolling direction to verify from which side of the screen the cell should come
-        let translation : CGPoint = tableView.panGestureRecognizer.translation(in: tableView.superview)
-        //animate towards the desired final position
-        if (translation.x > 0){
-            cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
-        }else{
-            cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
-        }
+        cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
 
         UIView.animate(withDuration: 0.5) {
             cell.frame = cellFrame
@@ -318,28 +336,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
 
-    func setupCalendarView(){
-        //setup calendar spacing
-        calendarView.minimumLineSpacing = 0
-        calendarView.minimumInteritemSpacing = 0
-        calendarView.allowsMultipleSelection = false
-
-        //setup labels
-        calendarView.visibleDates { (visibleDates) in
-            self.setupViewsOfCalendar(from: visibleDates)
-        }
-    }
-
-    func setupViewsOfCalendar(from visibleDates: DateSegmentInfo){
-        let date = visibleDates.monthDates.first!.date
-        //year title
-        formatter.dateFormat = "yyyy"
-        self.year.text = formatter.string(from: date)
-        //month title
-        formatter.dateFormat = "MMMM"
-        self.month.text = formatter.string(from: date)
-    }
-
     //MARK: Calendar DataSource Methods
 
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
@@ -359,7 +355,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
         defer {
             handleCellSelected(view: cell, cellState: cellState)
-            handleCellColor(view: cell, cellState: cellState, isToday: Calendar.current.compare(date, to: currentDate, toGranularity: .day) == .orderedSame)
+            handleCellColor(view: cell, cellState: cellState, isToday: Calendar.current.compare(date, to: Date(), toGranularity: .day) == .orderedSame)
         }
 
         cell.dateLabel.text = cellState.text

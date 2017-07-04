@@ -30,7 +30,6 @@
 		11AB670B1EF81B1500AB1F00 /* API_KEYS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AB670A1EF81B1500AB1F00 /* API_KEYS.swift */; };
 		11B3EB451EEC77E900569DE9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB431EEC77E900569DE9 /* Realm.framework */; };
 		11B3EB461EEC77E900569DE9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3EB441EEC77E900569DE9 /* RealmSwift.framework */; };
-		11E94F581EF8642F009D6718 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF091EECE13100F02C3B /* PageViewController.swift */; };
 		11E94F5A1EF8644C009D6718 /* UofTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E94F591EF8644C009D6718 /* UofTAPI.swift */; };
 		11E94F5C1EF86466009D6718 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E94F5B1EF86466009D6718 /* Models.swift */; };
 		11EDFEA51EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */; };
@@ -46,17 +45,13 @@
 		31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31170ED51EF32D45004AFE2F /* MapViewController.swift */; };
 		311983AB1F02B9A2004EA57C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 311983AA1F02B9A2004EA57C /* CoreLocation.framework */; };
 		313674591EF755FB008B3DC6 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */; };
-		313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */; };
 		3140F9D11EFDD22300679115 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3140F9D01EFDD22300679115 /* MapKit.framework */; };
 		3140F9D41EFDE60400679115 /* AddAthleticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3140F9D31EFDE60400679115 /* AddAthleticsViewController.swift */; };
 		315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616931EF0991700CE51D3 /* CalendarCell.swift */; };
 		315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616951EF0997000CE51D3 /* CalendarViewController.swift */; };
 		315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */; };
-		3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315616991EF09F2F00CE51D3 /* UserData.swift */; };
-		317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */; };
 		317DDF081EECDE9700F02C3B /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */; };
 		3182A8661EFF398600F1DD26 /* AthleticCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3182A8651EFF398600F1DD26 /* AthleticCollectionViewCell.swift */; };
-		31A955D11EF84EB500EEF0CD /* courses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A955D01EF84EB500EEF0CD /* courses.plist */; };
 		31A955D81EF8C42D00EEF0CD /* SelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */; };
 		31A955DA1EF8CFA200EEF0CD /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */; };
 		31CBBB981EF97D21009DA415 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB941EF97D21009DA415 /* Alamofire.framework */; };
@@ -66,7 +61,6 @@
 		31CBBB9D1EF97D21009DA415 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB961EF97D21009DA415 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31CBBB9F1EF97D21009DA415 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31CBBB971EF97D21009DA415 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31F1D88F1EF8282000F215F2 /* DepartmentCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1D88E1EF8282000F215F2 /* DepartmentCollectionReusableView.swift */; };
-		31F1D8941EF8475A00F215F2 /* CourseUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1D8931EF8475A00F215F2 /* CourseUI.swift */; };
 		6E1614EC7142A27CA79E38C7 /* Pods_CourseTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC1493EE2D55CC0FD568D1C /* Pods_CourseTrackerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -149,19 +143,14 @@
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		311983AA1F02B9A2004EA57C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
-		313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		3140F9D01EFDD22300679115 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3140F9D31EFDE60400679115 /* AddAthleticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAthleticsViewController.swift; sourceTree = "<group>"; };
 		315616931EF0991700CE51D3 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		315616951EF0997000CE51D3 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
-		315616991EF09F2F00CE51D3 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUniversityViewController.swift; sourceTree = "<group>"; };
 		317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
-		317DDF091EECE13100F02C3B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		317DDF0D1EED0DFE00F02C3B /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
 		3182A8651EFF398600F1DD26 /* AthleticCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleticCollectionViewCell.swift; sourceTree = "<group>"; };
-		31A955D01EF84EB500EEF0CD /* courses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = courses.plist; sourceTree = "<group>"; };
 		31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedTableViewCell.swift; sourceTree = "<group>"; };
 		31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		31B29A9D1EEC8CEC00BF3F91 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
@@ -170,7 +159,6 @@
 		31CBBB961EF97D21009DA415 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		31CBBB971EF97D21009DA415 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		31F1D88E1EF8282000F215F2 /* DepartmentCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentCollectionReusableView.swift; sourceTree = "<group>"; };
-		31F1D8931EF8475A00F215F2 /* CourseUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseUI.swift; sourceTree = "<group>"; };
 		37DB3FC3A4B43C107CEBDAD4 /* Pods-CourseTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.release.xcconfig"; sourceTree = "<group>"; };
 		39B01FD6C5EF2C6B201C9995 /* Pods-CourseTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTracker/Pods-CourseTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		48DB551F1F9415D6C4940CEC /* Pods-CourseTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseTrackerTests/Pods-CourseTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,7 +233,6 @@
 		110F4EC71EEB617F00D88F8E /* CourseTracker */ = {
 			isa = PBXGroup;
 			children = (
-				31EEE9231EEF885800094B8F /* ToDelete */,
 				31B29A9E1EEC8D9B00BF3F91 /* APIs */,
 				31B29A9F1EEC8DAC00BF3F91 /* Data Model */,
 				31B29AA21EEC8E4100BF3F91 /* View Controllers */,
@@ -366,7 +353,6 @@
 		31B29A9F1EEC8DAC00BF3F91 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				315616991EF09F2F00CE51D3 /* UserData.swift */,
 				11E94F5B1EF86466009D6718 /* Models.swift */,
 				11EDFEAA1EFD6CE400654CA3 /* Models+Athletics.swift */,
 				11EDFEA81EFD6C9800654CA3 /* Models+Course.swift */,
@@ -407,18 +393,6 @@
 				31F1D8921EF8454300F215F2 /* Course */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		31EEE9231EEF885800094B8F /* ToDelete */ = {
-			isa = PBXGroup;
-			children = (
-				31F1D8931EF8475A00F215F2 /* CourseUI.swift */,
-				313FBF251EF1AD02005E2D3C /* AddEventViewController.swift */,
-				317DDF091EECE13100F02C3B /* PageViewController.swift */,
-				317DDF051EECDE5400F02C3B /* AddUniversityViewController.swift */,
-				31A955D01EF84EB500EEF0CD /* courses.plist */,
-			);
-			name = ToDelete;
 			sourceTree = "<group>";
 		};
 		31F1D8921EF8454300F215F2 /* Course */ = {
@@ -572,7 +546,6 @@
 				116BBA551F04827E00B6EA31 /* access_control.balance.mx in Resources */,
 				116BBA571F04827E00B6EA31 /* access_control.write.mx in Resources */,
 				116BBA561F04827E00B6EA31 /* access_control.control.mx in Resources */,
-				31A955D11EF84EB500EEF0CD /* courses.plist in Resources */,
 				3105109F1EF67D5900F34D43 /* buildings.plist in Resources */,
 				110F4ECE1EEB617F00D88F8E /* Main.storyboard in Resources */,
 				116BBA531F04827E00B6EA31 /* default.realm in Resources */,
@@ -756,7 +729,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				317DDF061EECDE5500F02C3B /* AddUniversityViewController.swift in Sources */,
 				11EDFEAB1EFD6CE400654CA3 /* Models+Athletics.swift in Sources */,
 				3140F9D41EFDE60400679115 /* AddAthleticsViewController.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
@@ -765,7 +737,6 @@
 				11E94F5C1EF86466009D6718 /* Models.swift in Sources */,
 				119C969A1EF5E5980035FD9A /* UofTAPI+Textbook.swift in Sources */,
 				3182A8661EFF398600F1DD26 /* AthleticCollectionViewCell.swift in Sources */,
-				11E94F581EF8642F009D6718 /* PageViewController.swift in Sources */,
 				31A955D81EF8C42D00EEF0CD /* SelectedTableViewCell.swift in Sources */,
 				31064C8A1EFF5255006816F8 /* AthleticTableViewCell.swift in Sources */,
 				11EDFEA51EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift in Sources */,
@@ -777,9 +748,7 @@
 				11AB670B1EF81B1500AB1F00 /* API_KEYS.swift in Sources */,
 				315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
-				31F1D8941EF8475A00F215F2 /* CourseUI.swift in Sources */,
 				31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */,
-				313FBF261EF1AD02005E2D3C /* AddEventViewController.swift in Sources */,
 				119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */,
 				119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */,
 				3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */,
@@ -788,7 +757,6 @@
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
 				11EDFEAD1EFD9FF800654CA3 /* Date+Utility.swift in Sources */,
 				31F1D88F1EF8282000F215F2 /* DepartmentCollectionReusableView.swift in Sources */,
-				3156169A1EF09F2F00CE51D3 /* UserData.swift in Sources */,
 				11EDFEA91EFD6C9800654CA3 /* Models+Course.swift in Sources */,
 				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
 				11EDFEA71EFD6C1B00654CA3 /* Models+Textbook.swift in Sources */,
