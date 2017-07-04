@@ -34,6 +34,27 @@ final class Address: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+
+    convenience init?(fromJSON json: [String:String]) {
+        self.init()
+
+        guard
+            let street = json["street"],
+            let city = json["city"],
+            let province = json["province"],
+            let country = json["country"],
+            let postalCode = json["postal"] else {
+                print("JSON does not conform to Address Prototype JSON")
+                return nil
+        }
+
+        self.street = street
+        self.city = city
+        self.province = province
+        self.country = country
+        self.postalCode = postalCode
+        self.id = [street, city, province, country, postalCode].joined(separator: ", ")
+    }
 }
 
 final class Building: Object {

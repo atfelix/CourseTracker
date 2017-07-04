@@ -24,12 +24,8 @@ extension UofTAPI {
 
         let url = makeTextbooksRequestURL(skip: skip, limit: limit)
         Alamofire.request((url?.absoluteString)!).responseJSON { response in
-            print(response.request!)
-            print(response.response!)
-            print(response.data!)
-            print(response.result)
-            print("================")
-
+            logResponseInfo(response: response)
+            
             if let JSON = response.result.value as? [[String:Any]], JSON.count > 0 {
                 for textbook in JSON {
                     addOrUpdateTextbook(fromJSON: textbook)

@@ -23,11 +23,7 @@ extension UofTAPI {
 
         let url = makeBuildingsRequestURL(skip: skip, limit: limit)
         Alamofire.request((url?.absoluteString)!).responseJSON { response in
-            print(response.request!)
-            print(response.response!)
-            print(response.data!)
-            print(response.result)
-            print("================")
+            logResponseInfo(response: response)
 
             if let JSON = response.result.value as? [[String:Any]], JSON.count > 0 {
                 for building in JSON {
@@ -69,8 +65,7 @@ extension UofTAPI {
         building.campus = campus
         building.geoLocation = geoLocation
 
-        let address = Address()
-        addOrUpdateAddress(address: address, fromJSON: addressJSON)
+        let address = addOrUpdateAddress(fromJSON: addressJSON)
         building.address = address
 
         for location in polygonArray {
@@ -94,31 +89,21 @@ extension UofTAPI {
         }
     }
 
-    static func addOrUpdateAddress(address: Address, fromJSON json: [String:String]) {
-        guard
-            let street = json["street"],
-            let city = json["city"],
-            let province = json["province"],
-            let country = json["country"],
-            let postalCode = json["postal"] else {
-                print("JSON does not conform to Address Prototype JSON")
-                return
+    @discardableResult static func addOrUpdateAddress(fromJSON json: [String:String]) -> Address? {
+        guard let address = Address(fromJSON: json) else {
+            print("JSON does not conform to Address Prototype JSON")
+            return nil
         }
-
-        address.street = street
-        address.city = city
-        address.province = province
-        address.country = country
-        address.postalCode = postalCode
-        address.id = [street, city, province, country, postalCode].joined(separator: ", ")
 
         do {
             try realm.write {
                 realm.add(address, update: true)
             }
+            return address
         }
         catch let error {
             UofTAPI.logRealmError(error)
+            return nil
         }
     }
 }
