@@ -12,10 +12,20 @@ import JTAppleCalendar
 
 final class RealmString: Object {
     dynamic var string: String?
+
+    convenience init(string: String) {
+        self.init()
+        self.string = string
+    }
 }
 
 final class RealmInt: Object {
     dynamic var int = 0
+
+    convenience init(int: Int) {
+        self.init()
+        self.int = int
+    }
 }
 
 final class GeoLocation: Object {

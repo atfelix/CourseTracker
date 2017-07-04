@@ -17,6 +17,24 @@ final class CourseMeetingSection: Object {
     let times = List<CourseTime>()
     let instructors = List<RealmString>()
 
+    convenience init?(fromJSON json: [String:Any]) {
+        self.init()
+
+        guard
+            let code = json["code"] as? String,
+            let size = json["size"] as? Int,
+            let enrolment = json["enrolment"] as? Int,
+            let _ = json["times"] as? [[String:Any]],
+            let _ = json["instructors"] as? [String] else {
+                print("JSON does not conform to Course Meeting Section Prototype JSON")
+                return nil
+        }
+
+        self.code = code
+        self.size = size
+        self.enrolment = enrolment
+    }
+
     dynamic var isLecture: Bool {
         get {
             return code.hasPrefix("L")
@@ -47,6 +65,26 @@ final class CourseTime: Object {
     dynamic var endTime = 0
     dynamic var duration = 0
     dynamic var location = ""
+
+    convenience init?(fromJSON json: [String:Any]) {
+        self.init()
+
+        guard
+            let day = json["day"] as? String,
+            let startTime = json["start"] as? Int,
+            let endTime = json["end"] as? Int,
+            let duration = json["duration"] as? Int,
+            let location = json["location"] as? String else {
+                print("JSON does not conform to Course Time Prototype JSON")
+                return nil
+        }
+
+        self.day = day
+        self.startTime = startTime
+        self.endTime = endTime
+        self.duration = duration
+        self.location = location
+    }
 
     dynamic var building: Building? {
         get {
@@ -130,6 +168,40 @@ final class Course: Object {
 
     override static func primaryKey() -> String? {
         return "id"
+    }
+
+    convenience init?(fromJSON json: [String:Any]) {
+        self.init()
+
+        guard
+            let id = json["id"] as? String,
+            let code = json["code"] as? String,
+            let name = json["name"] as? String,
+            let courseDescription = json["description"] as? String,
+            let division = json["division"] as? String,
+            let department = json["department"] as? String,
+            let prerequisites = json["prerequisites"] as? String,
+            let exclusions = json["exclusions"] as? String,
+            let level = json["level"] as? Int,
+            let campus = json["campus"] as? String,
+            let term = json["term"] as? String,
+            let _ = json["meeting_sections"] as? [[String:Any]],
+            let _ = json["breadths"] as? [Int] else {
+                print("JSON does not conform to Course Prototype JSON")
+                return nil
+        }
+
+        self.id = id
+        self.code = code
+        self.name = name
+        self.courseDescription = courseDescription
+        self.division = division
+        self.department = department
+        self.prerequistes = prerequisites
+        self.exclusions = exclusions
+        self.level = level
+        self.campus = campus
+        self.term = term
     }
 
     dynamic var textbooks: [Textbook]{
