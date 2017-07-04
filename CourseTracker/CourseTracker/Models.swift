@@ -21,6 +21,13 @@ final class RealmInt: Object {
 final class GeoLocation: Object {
     dynamic var longitude: Double = 0.0
     dynamic var latitude: Double = 0.0
+
+    convenience init(latitude: Double, longitude: Double) {
+        self.init()
+
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
 
 final class Address: Object {
@@ -70,6 +77,40 @@ final class Building: Object {
 
     override static func primaryKey() -> String? {
         return "id"
+    }
+
+    convenience init?(fromJSON json: [String:Any], address: Address?) {
+        self.init()
+
+        guard
+            let id = json["id"] as? String,
+            let code = json["code"] as? String,
+            let name = json["name"] as? String,
+            let shortName = json["short_name"] as? String,
+            let campus = json["campus"] as? String,
+            let latitude = json["lat"] as? Double,
+            let longitude = json["lng"] as? Double,
+            let polygonArray = json["polygon"] as? [[Double]],
+            let _ = json["address"] as? [String: String] else {
+                print("JSON does not conform to Building Prototype JSON")
+                return nil
+        }
+
+        self.id = id
+        self.code = code
+        self.name = name
+        self.shortName = shortName
+        self.campus = campus
+        self.geoLocation = GeoLocation(latitude: latitude, longitude: longitude)
+
+        for location in polygonArray {
+            guard location.count == 2 else {
+                print("location is not 2 points")
+                continue
+            }
+
+            self.polygon.append(GeoLocation(latitude: location[0], longitude: location[1]))
+        }
     }
 }
 

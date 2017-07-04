@@ -40,44 +40,14 @@ extension UofTAPI {
 
     static func addOrUpdateBuilding(fromJSON json: [String: Any]) {
         guard
-            let id = json["id"] as? String,
-            let code = json["code"] as? String,
-            let name = json["name"] as? String,
-            let shortName = json["short_name"] as? String,
-            let campus = json["campus"] as? String,
-            let latitude = json["lat"] as? Double,
-            let longitude = json["lng"] as? Double,
-            let polygonArray = json["polygon"] as? [[Double]],
-            let addressJSON = json["address"] as? [String: String] else {
+            let addressJSON = json["address"] as? [String:String],
+            let address = addOrUpdateAddress(fromJSON: addressJSON),
+            let building = Building(fromJSON: json, address: address) else {
                 print("JSON does not conform to Building Prototype JSON")
                 return
         }
 
-        let geoLocation = GeoLocation()
-        geoLocation.latitude = latitude
-        geoLocation.longitude = longitude
-
-        let building = Building()
-        building.id = id
-        building.code = code
-        building.name = name
-        building.shortName = shortName
-        building.campus = campus
-        building.geoLocation = geoLocation
-
-        let address = addOrUpdateAddress(fromJSON: addressJSON)
         building.address = address
-
-        for location in polygonArray {
-            guard location.count == 2 else {
-                print("location is not 2 points")
-                continue
-            }
-            let geoLocation = GeoLocation()
-            geoLocation.latitude = location[0]
-            geoLocation.longitude = location[1]
-            building.polygon.append(geoLocation)
-        }
 
         do {
             try realm.write {
