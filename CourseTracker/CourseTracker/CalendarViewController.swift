@@ -11,26 +11,21 @@ import RealmSwift
 
 class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource, AddAthleticsDelegate, AddCourseDelegate {
 
+    //MARK: Properties
+
     var realm: Realm!
 
-    //MARK: Properties
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
     @IBOutlet weak var dateTapped: UILabel!
 
-    //TableView
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var slidingView: UIView!
     @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
-    
-    //AddEvent
-    @IBOutlet weak var addEvent: UIButton!
-    //AddCourses
-    @IBOutlet weak var addCourse: UIButton!
 
-    //ChangeLayout
-    @IBOutlet weak var changeLayout: UIButton!
+    @IBOutlet weak var addEventButton: UIButton!
+    @IBOutlet weak var addCourseButton: UIButton!
 
     //Set colors of Calendar
     let outsideMonthColor = UIColor.gray
@@ -54,64 +49,42 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         formatter.timeStyle = DateFormatter.Style.none
         return formatter
     }()
-    var firstDate : Date?
+
     var currentDate = Date()
     var cellStateChanged = false
 
-    //UserDate
-    let userData = UserData()
-    //Events
-    var eventsAtCalendar = [EventProtocol]()
-
-    //Student
     var student: Student!
     
     
-    //MARK: ViewDidLoad
+    // MARK: View life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //setup the Calendar
         setupCalendarView()
+        addGestureRecognizers()
         
-        //table constraints
         listTableView.estimatedRowHeight = 44.0
         listTableView.rowHeight = UITableViewAutomaticDimension
 
-        //Swipe on Table to make it go up
-        let swipeUpGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeUp(gesture:)))
-        swipeUpGesture.direction = .up// add swipe down
-        slidingView.addGestureRecognizer(swipeUpGesture)
-
-        //Swipe on Table to make it go down
-        let swipeDownGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeDown(gesture:)))
-        swipeDownGesture.direction = .down// add swipe down
-        slidingView.addGestureRecognizer(swipeDownGesture)
-
-        //Tap on Calendar Date to segue to daily route
-        let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(gesture:)))
-        doubleTapGesture.numberOfTapsRequired = 2  // add double tap
-        calendarView.addGestureRecognizer(doubleTapGesture)
-
+        self.dateTapped.text = "\(displayDateFormatter.string(from: calendarView.selectedDates.first ?? Date()))"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func addGestureRecognizers() {
+        let swipeUpGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeUp(gesture:)))
+        swipeUpGesture.direction = .up
+        slidingView.addGestureRecognizer(swipeUpGesture)
+
+        let swipeDownGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeDown(gesture:)))
+        swipeDownGesture.direction = .down
+        slidingView.addGestureRecognizer(swipeDownGesture)
+
+        let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(gesture:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        calendarView.addGestureRecognizer(doubleTapGesture)
     }
 
     //MARK: Button Actions
-    
-    @IBAction func addEventTapped(_ sender: Any) {
-        performSegue(withIdentifier: "AddEvent", sender: sender)
-    }
-    @IBAction func dropTableTapped(_ sender: Any) {
-
-    }
-
-    @IBAction func mapButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "ShowMap", sender: sender)
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddCourse" {
@@ -124,32 +97,21 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             let addAthleticsVC = segue.destination as! AddAthleticsViewController
             addAthleticsVC.student = student
             addAthleticsVC.date = calendarView.selectedDates.first ?? Date()
-            let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'")
             addAthleticsVC.athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'").first
             addAthleticsVC.realm = realm
             addAthleticsVC.delegate = self
         }
     }
 
-    //Change background color of calendar
-    @IBAction func changeLayoutTapped(_ sender: UIButton) {
-        //take colors and put them into array and go through 1 by 1 when button is tapped
-        self.calendarView.backgroundColor = UIColor.init(red: 200/255, green: 100/255, blue: 100/255, alpha: 1.0)
-
-    }
-
-    //This will change the layout to week view
     func didDoubleTapCollectionView(gesture: UITapGestureRecognizer) {
-        let point = gesture.location(in: gesture.view!)
-        let cellState = calendarView.cellStatus(at: point)
-        
-        let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowMap") as! MapViewController
+        guard let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowMap") as? MapViewController else {
+            return
+        }
+
         mapVC.realm = realm
         mapVC.student = student
         mapVC.date = calendarView.selectedDates.first ?? Date()
         self.present(mapVC, animated: true, completion: nil)
-        
-        print("Calculating Route for: \(cellState!.date)")
     }
 
     func didSwipeUp(gesture: UISwipeGestureRecognizer){
@@ -382,7 +344,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
 
-        let startDate = dateFormatter.date(from: "2017 06 01")!
+        let startDate = Date()
         let endDate = dateFormatter.date(from: "2017 12 31")!
 
         let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate, numberOfRows: 5, generateInDates:  .forAllMonths, generateOutDates: .tillEndOfRow, firstDayOfWeek: .sunday )
@@ -434,42 +396,24 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
 
         handleCellSelected(view: cell, cellState: cellState)
-
         handleCellColor(view: cell, cellState: cellState, isToday: false)
-
-
-        let eventsAtDate = userData.events?.filter({event -> Bool in
-            let temp: Date = event.startDate as Date
-            let isSameDay = Calendar.current.isDate(temp, equalTo: date, toGranularity: .day)
-            return isSameDay
-        })
-        //if it exists then filter events and reload table
-        if let filteredEvents = eventsAtDate{
-            eventsAtCalendar = filteredEvents
-            listTableView.reloadData()
-        }
-        //set the current date
-        let selectedDates = calendarView.selectedDates
-        if firstDate == nil{
-            self.dateTapped.text = "\(displayDateFormatter.string(from: selectedDates.first!))"
-        }
-
         cellStateChanged = true
 
+        self.dateTapped.text = "\(displayDateFormatter.string(from: calendarView.selectedDates.first ?? Date()))"
+
         let count = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").count
-        addEvent.isEnabled = count != 0
+        addEventButton.isEnabled = count != 0
 
         UIView.animate(withDuration: 0.2, animations: {
-            self.addEvent.alpha = (self.addEvent.isEnabled) ? 1.0 : 0.1
+            self.addEventButton.alpha = (self.addEventButton.isEnabled) ? 1.0 : 0.1
         })
     }
 
-    //deselect a cell
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelected(view: cell, cellState: cellState)
         handleCellColor(view: cell, cellState: cellState, isToday: false)
     }
-    //scroll to a new calendar page
+
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setupViewsOfCalendar(from: visibleDates)
     }
