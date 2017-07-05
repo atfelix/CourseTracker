@@ -20,11 +20,18 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var athleticTableView: UITableView!
     @IBOutlet weak var athleticCollectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
-    
-    //vars
 
     var date: Date!
-    var athleticDate: AthleticDate!
+    var athleticDate: AthleticDate? {
+        get {
+            let dateFormatter : DateFormatter = {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                return formatter
+            }()
+            return realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date ?? Date()))'").first
+        }
+    }
     var student: Student!
     var realm: Realm!
     weak var delegate: AddAthleticsDelegate?
@@ -74,17 +81,6 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
 
         athleticTableView.rowHeight = UITableViewAutomaticDimension
         athleticTableView.estimatedRowHeight = 60
-
-        
-        //Realm
-        let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
-            return formatter
-        }()
-
-
-        athleticDate = try! Realm().objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").first!
     }
 
     override func didReceiveMemoryWarning() {
@@ -183,7 +179,7 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = athleticCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! AthleticCollectionViewCell
-        cell.athleticEvent = athleticDate.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
+        cell.athleticEvent = athleticDate?.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
         cell.category = categories[indexPath.item]
         
         

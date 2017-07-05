@@ -1,3 +1,4 @@
+//
 //  CalendarViewController.swift
 //  CourseTracker
 //
@@ -32,32 +33,18 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var addEventButton: UIButton!
     @IBOutlet weak var addCourseButton: UIButton!
 
-    // MARK: Colour Scheme properties
+    var athleticDate: AthleticDate? {
+        get {
+            let dateFormatter : DateFormatter = {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                return formatter
+            }()
+            return realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'").first
+        }
+    }
 
-    let outsideMonthColor = UIColor.gray
-    let monthColor = UIColor.white
-    let selectedMonthColor = UIColor.black
-    let currentDateSelectedViewColor = UIColor.cyan
-
-    // MARK: DateFormatters
-
-    let dateFormatter : DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeZone = Calendar.current.timeZone
-        let locale = Locale(identifier: "en_US_POSIX")
-        formatter.locale = locale
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-    let displayDateFormatter : DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.dateStyle = DateFormatter.Style.medium
-        formatter.timeStyle = DateFormatter.Style.none
-        return formatter
-    }()
-
-    var cellStateChanged = false
+    var redrawTableView = false
     
     
     // MARK: View life cycle
@@ -68,6 +55,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         setupCalendarView()
         addGestureRecognizers()
         setupListTableViewHeight()
+        setupDateTappedLabel()
     }
 
     private func setupCalendarView(){
@@ -108,6 +96,11 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     private func setupDateTappedLabel() {
+        let displayDateFormatter : DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = DateFormatter.Style.medium
+            return formatter
+        }()
         self.dateTapped.text = "\(displayDateFormatter.string(from: calendarView.selectedDates.first ?? Date()))"
     }
 
@@ -124,7 +117,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             let addAthleticsVC = segue.destination as! AddAthleticsViewController
             addAthleticsVC.student = student
             addAthleticsVC.date = calendarView.selectedDates.first ?? Date()
-            addAthleticsVC.athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: calendarView.selectedDates.first ?? Date()))'").first
             addAthleticsVC.realm = realm
             addAthleticsVC.delegate = self
         }
@@ -160,7 +152,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     //animation method
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
-        guard cellStateChanged else { return }
+        guard redrawTableView else { return }
 
         let cellFrame : CGRect = cell.frame
         cell.frame = CGRect(x: cellFrame.origin.x , y: tableView.frame.width, width: 0, height: 0)
@@ -170,7 +162,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            cellStateChanged = false
+            redrawTableView = false
         }
     }
     
@@ -187,7 +179,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
         var count = student.coursesFor(day: dayOfWeek).count
 
-        guard let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: selectedDate))'").first else {
+        guard let athleticDate = self.athleticDate else {
             return count
         }
 
@@ -211,7 +203,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
         var athleticEvents = [AthleticEvent]()
 
-        if let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: selectedDate))'").first {
+        if let athleticDate = self.athleticDate {
             for event in athleticDate.athleticEvents {
                 if event.studentAttending {
                     athleticEvents.append(event)
@@ -285,70 +277,55 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            cellStateChanged = false
+            redrawTableView = false
         }
     }
 
-    //select item
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
-
     //MARK: Calendar Helper Methods
 
-    //handles the color schema
     func handleCellColor(view: JTAppleCell?, cellState: CellState, isToday: Bool){
         guard let validCell = view as? CalendarCell else {
             return
         }
+
         validCell.selectedView.isHidden = !cellState.isSelected
-        //if cell is today cell
-        if isToday{
+
+        if isToday {
             validCell.todayView.isHidden = false
             validCell.todayView.backgroundColor = UIColor.black
-            return
         }
-
-        //if cell is selected change color
-        if cellState.isSelected{
-            validCell.selectedView.isHidden = false
+        else if cellState.isSelected {
             validCell.dateLabel.textColor = selectedMonthColor
-        }else{
-            validCell.selectedView.isHidden = true
-            if cellState.dateBelongsTo == .thisMonth {
-                validCell.dateLabel.textColor = monthColor
-            }else{
-                validCell.dateLabel.textColor = outsideMonthColor
-            }
+        }
+        else {
+            validCell.dateLabel.textColor = (cellState.dateBelongsTo == .thisMonth) ? monthColor : outsideMonthColor
         }
     }
 
-    //if cell is selected, show selection
     func handleCellSelected(view: JTAppleCell?, cellState: CellState){
         guard let validCell = view as? CalendarCell else {
             return
         }
-        if validCell.isSelected{
-            validCell.selectedView.isHidden = false
-        }else{
-            validCell.selectedView.isHidden = true
-        }
 
+        validCell.selectedView.isHidden = !validCell.isSelected
     }
 
     //MARK: Calendar DataSource Methods
 
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
 
-        let startDate = Date()
-        let endDate = dateFormatter.date(from: "2017 12 31")!
+        let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            return formatter
+        }()
 
-        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate, numberOfRows: 5, generateInDates:  .forAllMonths, generateOutDates: .tillEndOfRow, firstDayOfWeek: .sunday )
+        let parameters = ConfigurationParameters(startDate: Date(), endDate: dateFormatter.date(from: "2017 12 31")!, numberOfRows: 5, generateInDates:  .forAllMonths, generateOutDates: .tillEndOfRow, firstDayOfWeek: .sunday )
         return parameters
     }
 
     //MARK: Calendar Delegate Methods
-    //display the cell
+
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
 
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier:"CalendarCell", for: indexPath) as! CalendarCell
@@ -359,9 +336,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         cell.dateLabel.text = cellState.text
-
-
-        //set the courseLabel indicator to yellow or silver for different events
 
         if student.coursesFor(day: cellState.day).count > 0 {
             cell.coursesLabel.backgroundColor =  UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 1)
@@ -374,7 +348,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
         cell.customLabel.backgroundColor = .clear
 
-        if let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").first {
+        if let athleticDate = self.athleticDate {
 
             for event in athleticDate.athleticEvents {
                 if event.studentAttending {
@@ -388,17 +362,22 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
 
-    //select a cell
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+
+        let displayDateFormatter : DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = DateFormatter.Style.medium
+            return formatter
+        }()
 
         handleCellSelected(view: cell, cellState: cellState)
         handleCellColor(view: cell, cellState: cellState, isToday: false)
-        cellStateChanged = true
+        redrawTableView = true
 
         self.dateTapped.text = "\(displayDateFormatter.string(from: calendarView.selectedDates.first ?? Date()))"
+        listTableView.reloadData()
 
-        let count = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").count
-        addEventButton.isEnabled = count != 0
+        addEventButton.isEnabled = self.athleticDate != nil
 
         UIView.animate(withDuration: 0.2, animations: {
             self.addEventButton.alpha = (self.addEventButton.isEnabled) ? 1.0 : 0.1

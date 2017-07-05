@@ -166,7 +166,7 @@ final class ParkingLocation: Object {
     }
 }
 
-final class Student: Object{
+final class Student: Object {
     dynamic var name: String?
     let courses = List<Course>()
     let athleticEvents = List<AthleticEvent>()
