@@ -214,33 +214,32 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         let courses = student.coursesFor(day: dayOfWeek)
         athleticEvents = athleticEvents.sorted { $0.startTime < $1.startTime }
 
-        var count = indexPath.row
+        var count = courses.count + athleticEvents.count
         var courseIndex = 0
         var athleticEventIndex = 0
+        let combinedEvents = NSMutableArray()
 
-        while count > 0 && courseIndex < courses.count && athleticEventIndex < athleticEvents.count {
-            if courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
+        while count > 0 {
+            if courseIndex == courses.count || courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
+                combinedEvents.add(athleticEvents[athleticEventIndex])
+                athleticEventIndex += 1
+            }
+            else if athleticEventIndex == athleticEvents.count {
+                combinedEvents.add(courses[courseIndex])
+                courseIndex += 1
+            }
+            else if courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
+                combinedEvents.add(courses[courseIndex])
                 courseIndex += 1
             }
             else {
+                combinedEvents.add(athleticEvents[athleticEventIndex])
                 athleticEventIndex += 1
             }
             count -= 1
         }
 
-        if courseIndex == courses.count {
-            athleticEventIndex += count
-            let event = athleticEvents[athleticEventIndex]
-            cell.listImage.image = UIImage(named: "ic_pool_white")
-            cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.10)
-            cell.listLocation.text = "\(event.campus): \(event.location)"
-            cell.listData.text = event.title
-            cell.listTime.numberOfLines = 0
-            cell.listTime.text = "\(event.startTime.convertSecondsFromMidnight())\n\(event.endTime.convertSecondsFromMidnight())"
-        }
-        else if athleticEventIndex == athleticEvents.count {
-            courseIndex += count
-            let course = courses[courseIndex]
+        if let course = combinedEvents[indexPath.row] as? Course {
             cell.listImage.image = UIImage(named: "ic_account_balance_white")
             cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.10)
             cell.listLocation.text = "\(course.campus)"
@@ -251,20 +250,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.listTime.text = "\(firstTime.startTime.convertSecondsFromMidnight())\n\(firstTime.endTime.convertSecondsFromMidnight())"
             }
         }
-        else if courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
-            let course = courses[courseIndex]
-            cell.listImage.image = UIImage(named: "ic_account_balance_white")
-            cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.10)
-            cell.listLocation.text = "\(course.campus)"
-            cell.listData.text = course.name
-            cell.listTime.numberOfLines = 0
-
-            if let firstTime = course.courseTimeFor(day: dayOfWeek).first {
-                cell.listTime.text = "\(firstTime.startTime.convertSecondsFromMidnight())\n\(firstTime.endTime.convertSecondsFromMidnight())"
-            }
-        }
-        else {
-            let event = athleticEvents[athleticEventIndex]
+        else if let event = combinedEvents[indexPath.row] as? AthleticEvent {
             cell.listImage.image = UIImage(named: "ic_pool_white")
             cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.10)
             cell.listLocation.text = "\(event.campus): \(event.location)"
