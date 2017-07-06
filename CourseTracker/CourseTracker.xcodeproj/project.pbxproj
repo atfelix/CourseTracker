@@ -24,6 +24,7 @@
 		116BBA571F04827E00B6EA31 /* access_control.write.mx in Resources */ = {isa = PBXBuildFile; fileRef = 116BBA521F04827E00B6EA31 /* access_control.write.mx */; };
 		117920101EF9979500858073 /* UofTAPI+CourseShortCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179200F1EF9979500858073 /* UofTAPI+CourseShortCode.swift */; };
 		1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */; };
+		118A5A711F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A701F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift */; };
 		119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */; };
 		119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */; };
 		119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */; };
@@ -124,6 +125,7 @@
 		1179200D1EF866FF00858073 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		1179200F1EF9979500858073 /* UofTAPI+CourseShortCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+CourseShortCode.swift"; sourceTree = "<group>"; };
 		1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Course.swift"; sourceTree = "<group>"; };
+		118A5A701F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCellEvent.swift; sourceTree = "<group>"; };
 		119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Athletics.swift"; sourceTree = "<group>"; };
 		119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Building.swift"; sourceTree = "<group>"; };
 		119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Parking.swift"; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				315616951EF0997000CE51D3 /* CalendarViewController.swift */,
+				118A5A701F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift */,
 				315616931EF0991700CE51D3 /* CalendarCell.swift */,
 				11EDFEAC1EFD9FF800654CA3 /* Date+Utility.swift */,
 				315616971EF09CDC00CE51D3 /* ListTableViewCell.swift */,
@@ -734,6 +737,7 @@
 			files = (
 				11EDFEAB1EFD6CE400654CA3 /* Models+Athletics.swift in Sources */,
 				3140F9D41EFDE60400679115 /* AddAthleticsViewController.swift in Sources */,
+				118A5A711F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
 				31A955DA1EF8CFA200EEF0CD /* PopoverViewController.swift in Sources */,
 				1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */,

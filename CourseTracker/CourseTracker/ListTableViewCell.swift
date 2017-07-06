@@ -16,17 +16,15 @@ class ListTableViewCell: UITableViewCell{
     @IBOutlet weak var listTime: UILabel!
     @IBOutlet weak var listData: UILabel!
     @IBOutlet weak var listLocation: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+
+    var event: ListTableViewCellEvent!
+
+    func update() {
+        self.listImage.image = UIImage(named: event.imageName)
+        self.listView.backgroundColor = event.backgroundColor
+        self.listLocation.text = event.location
+        self.listData.text = event.data
+        self.listTime.numberOfLines = 0
+        self.listTime.text = event.timeString
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
-    
-
 }

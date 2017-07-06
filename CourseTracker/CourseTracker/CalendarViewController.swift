@@ -192,7 +192,38 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         return count
     }
 
+    private func mergeTimedEvents(courseEvents: [Course], athleticEvents: [AthleticEvent], for day: DaysOfWeek) -> [ListTableViewCellEvent] {
+        var count = courseEvents.count + athleticEvents.count
+        var courseIndex = 0
+        var athleticEventIndex = 0
+        var combinedEvents = [ListTableViewCellEvent]()
+
+        while count > 0 {
+            if athleticEventIndex == athleticEvents.count {
+                combinedEvents.append(ListTableViewCellEvent(for: day, from: courseEvents[courseIndex]))
+                courseIndex += 1
+            }
+            else if courseIndex == courseEvents.count {
+                combinedEvents.append(ListTableViewCellEvent(from: athleticEvents[athleticEventIndex]))
+                athleticEventIndex += 1
+            }
+
+            else if courseEvents[courseIndex].courseTimeFor(day: day).first!.startTime < athleticEvents[athleticEventIndex].startTime {
+                combinedEvents.append(ListTableViewCellEvent(for: day, from: courseEvents[courseIndex]))
+                courseIndex += 1
+            }
+            else {
+                combinedEvents.append(ListTableViewCellEvent(from: athleticEvents[athleticEventIndex]))
+                athleticEventIndex += 1
+            }
+            count -= 1
+        }
+
+        return combinedEvents
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ListTableViewCell
         
         guard
@@ -211,53 +242,14 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
 
-        let courses = student.coursesFor(day: dayOfWeek)
+        let courseEvents = student.coursesFor(day: dayOfWeek)
         athleticEvents = athleticEvents.sorted { $0.startTime < $1.startTime }
 
-        var count = courses.count + athleticEvents.count
-        var courseIndex = 0
-        var athleticEventIndex = 0
-        let combinedEvents = NSMutableArray()
+        let combinedEvents = mergeTimedEvents(courseEvents: courseEvents, athleticEvents: athleticEvents, for: dayOfWeek)
 
-        while count > 0 {
-            if courseIndex == courses.count {
-                combinedEvents.add(athleticEvents[athleticEventIndex])
-                athleticEventIndex += 1
-            }
-            else if athleticEventIndex == athleticEvents.count {
-                combinedEvents.add(courses[courseIndex])
-                courseIndex += 1
-            }
-            else if courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
-                combinedEvents.add(courses[courseIndex])
-                courseIndex += 1
-            }
-            else {
-                combinedEvents.add(athleticEvents[athleticEventIndex])
-                athleticEventIndex += 1
-            }
-            count -= 1
-        }
+        cell.event = combinedEvents[indexPath.row]
+        cell.update()
 
-        if let course = combinedEvents[indexPath.row] as? Course {
-            cell.listImage.image = UIImage(named: "ic_account_balance_white")
-            cell.listView.backgroundColor = UIColor.init(red: 191/255, green: 150/255, blue: 94/255, alpha: 0.10)
-            cell.listLocation.text = "\(course.campus)"
-            cell.listData.text = course.name
-            cell.listTime.numberOfLines = 0
-
-            if let firstTime = course.courseTimeFor(day: dayOfWeek).first {
-                cell.listTime.text = "\(firstTime.startTime.convertSecondsFromMidnight())\n\(firstTime.endTime.convertSecondsFromMidnight())"
-            }
-        }
-        else if let event = combinedEvents[indexPath.row] as? AthleticEvent {
-            cell.listImage.image = UIImage(named: "ic_pool_white")
-            cell.listView.backgroundColor = UIColor.init(red: 102/255, green: 0/255, blue: 0/255, alpha: 0.10)
-            cell.listLocation.text = "\(event.campus): \(event.location)"
-            cell.listData.text = event.title
-            cell.listTime.numberOfLines = 0
-            cell.listTime.text = "\(event.startTime.convertSecondsFromMidnight())\n\(event.endTime.convertSecondsFromMidnight())"
-        }
         return cell
     }
 
@@ -353,11 +345,12 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             formatter.dateStyle = DateFormatter.Style.medium
             return formatter
         }()
+
         handleCellState(cell: cell, cellState: cellState, isToday: false)
-        redrawTableView = true
 
         self.dateTapped.text = "\(displayDateFormatter.string(from: calendarView.selectedDates.first ?? Date()))"
         listTableView.reloadData()
+        redrawTableView = true
 
         addEventButton.isEnabled = self.athleticDate != nil
 
@@ -376,7 +369,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 
     func updateCalendarCell(for date: Date) {
         calendarView.reloadData()
-        listTableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
 
