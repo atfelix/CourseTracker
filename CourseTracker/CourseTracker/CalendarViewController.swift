@@ -220,7 +220,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         let combinedEvents = NSMutableArray()
 
         while count > 0 {
-            if courseIndex == courses.count || courses[courseIndex].courseTimeFor(day: dayOfWeek).first!.startTime < athleticEvents[athleticEventIndex].startTime {
+            if courseIndex == courses.count {
                 combinedEvents.add(athleticEvents[athleticEventIndex])
                 athleticEventIndex += 1
             }
@@ -306,8 +306,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             return formatter
         }()
 
-        let parameters = ConfigurationParameters(startDate: Date(), endDate: dateFormatter.date(from: "2017 12 31")!, numberOfRows: 5, generateInDates:  .forAllMonths, generateOutDates: .tillEndOfRow, firstDayOfWeek: .sunday )
-        return parameters
+        return ConfigurationParameters(startDate: Date(), endDate: dateFormatter.date(from: "2017 12 31")!, numberOfRows: 5, generateInDates:  .forAllMonths, generateOutDates: .tillEndOfRow, firstDayOfWeek: .sunday )
     }
 
     //MARK: Calendar Delegate Methods
@@ -317,8 +316,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier:"CalendarCell", for: indexPath) as! CalendarCell
 
         defer {
-            handleCellSelected(view: cell, cellState: cellState)
-            handleCellColor(view: cell, cellState: cellState, isToday: Calendar.current.compare(date, to: Date(), toGranularity: .day) == .orderedSame)
+            handleCellState(cell: cell, cellState: cellState, isToday: Calendar.current.compare(date, to: Date(), toGranularity: .day) == .orderedSame)
         }
 
         cell.dateLabel.text = cellState.text
@@ -355,9 +353,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
             formatter.dateStyle = DateFormatter.Style.medium
             return formatter
         }()
-
-        handleCellSelected(view: cell, cellState: cellState)
-        handleCellColor(view: cell, cellState: cellState, isToday: false)
+        handleCellState(cell: cell, cellState: cellState, isToday: false)
         redrawTableView = true
 
         self.dateTapped.text = "\(displayDateFormatter.string(from: calendarView.selectedDates.first ?? Date()))"
@@ -371,8 +367,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        handleCellSelected(view: cell, cellState: cellState)
-        handleCellColor(view: cell, cellState: cellState, isToday: false)
+        handleCellState(cell: cell, cellState: cellState, isToday: false)
     }
 
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
@@ -389,5 +384,10 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         calendarView.reloadData()
         listTableView.reloadData()
         dismiss(animated: true, completion: nil)
+    }
+
+    private func handleCellState(cell: JTAppleCell?, cellState: CellState, isToday: Bool) {
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellColor(view: cell, cellState: cellState, isToday: isToday)
     }
 }
