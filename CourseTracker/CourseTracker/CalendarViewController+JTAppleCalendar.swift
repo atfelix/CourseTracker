@@ -45,9 +45,15 @@ extension CalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendarVi
             cell.coursesLabel.backgroundColor = .clear
         }
 
+        let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            return formatter
+        }()
+
         cell.customLabel.backgroundColor = .clear
 
-        if let athleticDate = self.athleticDate {
+        if let athleticDate = realm.objects(AthleticDate.self).filter("date == '\(dateFormatter.string(from: date))'").first {
 
             for event in athleticDate.athleticEvents {
                 if event.studentAttending {
