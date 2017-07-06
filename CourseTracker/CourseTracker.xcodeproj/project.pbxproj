@@ -25,6 +25,9 @@
 		117920101EF9979500858073 /* UofTAPI+CourseShortCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1179200F1EF9979500858073 /* UofTAPI+CourseShortCode.swift */; };
 		1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */; };
 		118A5A711F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A701F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift */; };
+		118A5A731F0E94B8003EA3B5 /* CalendarViewController+ViewLifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A721F0E94B8003EA3B5 /* CalendarViewController+ViewLifeCycle.swift */; };
+		118A5A751F0E97CC003EA3B5 /* CalendarViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A741F0E97CC003EA3B5 /* CalendarViewController+TableView.swift */; };
+		118A5A771F0EB365003EA3B5 /* CalendarViewController+JTAppleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A761F0EB365003EA3B5 /* CalendarViewController+JTAppleCalendar.swift */; };
 		119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */; };
 		119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */; };
 		119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */; };
@@ -126,6 +129,9 @@
 		1179200F1EF9979500858073 /* UofTAPI+CourseShortCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+CourseShortCode.swift"; sourceTree = "<group>"; };
 		1188B2D61EF6FE62002E6FEF /* UofTAPI+Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Course.swift"; sourceTree = "<group>"; };
 		118A5A701F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCellEvent.swift; sourceTree = "<group>"; };
+		118A5A721F0E94B8003EA3B5 /* CalendarViewController+ViewLifeCycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+ViewLifeCycle.swift"; sourceTree = "<group>"; };
+		118A5A741F0E97CC003EA3B5 /* CalendarViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+TableView.swift"; sourceTree = "<group>"; };
+		118A5A761F0EB365003EA3B5 /* CalendarViewController+JTAppleCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+JTAppleCalendar.swift"; sourceTree = "<group>"; };
 		119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Athletics.swift"; sourceTree = "<group>"; };
 		119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Building.swift"; sourceTree = "<group>"; };
 		119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Parking.swift"; sourceTree = "<group>"; };
@@ -238,8 +244,11 @@
 			isa = PBXGroup;
 			children = (
 				111EB98F1F0D487A0099B4CD /* Constants.swift */,
+				31F1D8921EF8454300F215F2 /* Course */,
+				315616071EF06A8100CE51D3 /* Calendar */,
 				31B29A9E1EEC8D9B00BF3F91 /* APIs */,
 				31B29A9F1EEC8DAC00BF3F91 /* Data Model */,
+				3140F9D21EFDE5C300679115 /* Athletics */,
 				31B29AA21EEC8E4100BF3F91 /* View Controllers */,
 				31B29AA01EEC8DBF00BF3F91 /* Storyboards */,
 				31B29AA11EEC8E2000BF3F91 /* Additional */,
@@ -306,6 +315,9 @@
 			isa = PBXGroup;
 			children = (
 				315616951EF0997000CE51D3 /* CalendarViewController.swift */,
+				118A5A761F0EB365003EA3B5 /* CalendarViewController+JTAppleCalendar.swift */,
+				118A5A721F0E94B8003EA3B5 /* CalendarViewController+ViewLifeCycle.swift */,
+				118A5A741F0E97CC003EA3B5 /* CalendarViewController+TableView.swift */,
 				118A5A701F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift */,
 				315616931EF0991700CE51D3 /* CalendarCell.swift */,
 				11EDFEAC1EFD9FF800654CA3 /* Date+Utility.swift */,
@@ -364,7 +376,6 @@
 				11EDFEA81EFD6C9800654CA3 /* Models+Course.swift */,
 				11EDFEA61EFD6C1B00654CA3 /* Models+Textbook.swift */,
 				3156169D1EF0D98C00CE51D3 /* Map */,
-				315616071EF06A8100CE51D3 /* Calendar */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -395,8 +406,6 @@
 			children = (
 				110F4EC81EEB617F00D88F8E /* AppDelegate.swift */,
 				110F4ECA1EEB617F00D88F8E /* ViewController.swift */,
-				3140F9D21EFDE5C300679115 /* Athletics */,
-				31F1D8921EF8454300F215F2 /* Course */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -754,6 +763,7 @@
 				116219BA1EFACCB4009E1885 /* CourseStore+UICollectionViewDataSource.swift in Sources */,
 				11AB670B1EF81B1500AB1F00 /* API_KEYS.swift in Sources */,
 				315616981EF09CDC00CE51D3 /* ListTableViewCell.swift in Sources */,
+				118A5A731F0E94B8003EA3B5 /* CalendarViewController+ViewLifeCycle.swift in Sources */,
 				110F4ECB1EEB617F00D88F8E /* ViewController.swift in Sources */,
 				31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */,
 				119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */,
@@ -766,7 +776,9 @@
 				11EDFEAD1EFD9FF800654CA3 /* Date+Utility.swift in Sources */,
 				31F1D88F1EF8282000F215F2 /* DepartmentCollectionReusableView.swift in Sources */,
 				11EDFEA91EFD6C9800654CA3 /* Models+Course.swift in Sources */,
+				118A5A751F0E97CC003EA3B5 /* CalendarViewController+TableView.swift in Sources */,
 				315616941EF0991700CE51D3 /* CalendarCell.swift in Sources */,
+				118A5A771F0EB365003EA3B5 /* CalendarViewController+JTAppleCalendar.swift in Sources */,
 				11EDFEA71EFD6C1B00654CA3 /* Models+Textbook.swift in Sources */,
 				31064C8C1EFF52D4006816F8 /* Int+TimeUtility.swift in Sources */,
 			);
