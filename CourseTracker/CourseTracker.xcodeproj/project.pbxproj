@@ -46,8 +46,6 @@
 		11EDFEAB1EFD6CE400654CA3 /* Models+Athletics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EDFEAA1EFD6CE400654CA3 /* Models+Athletics.swift */; };
 		11EDFEAD1EFD9FF800654CA3 /* Date+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EDFEAC1EFD9FF800654CA3 /* Date+Utility.swift */; };
 		3098E6A0384D8DFC60394230 /* Pods_CourseTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14F213B0A12B116A4A4C7B3 /* Pods_CourseTrackerUITests.framework */; };
-		3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105109C1EF6759800F34D43 /* BuildingData.swift */; };
-		3105109F1EF67D5900F34D43 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3105109E1EF67D5900F34D43 /* buildings.plist */; };
 		31064C8A1EFF5255006816F8 /* AthleticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31064C891EFF5255006816F8 /* AthleticTableViewCell.swift */; };
 		31064C8C1EFF52D4006816F8 /* Int+TimeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31064C8B1EFF52D4006816F8 /* Int+TimeUtility.swift */; };
 		31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31170ED51EF32D45004AFE2F /* MapViewController.swift */; };
@@ -152,8 +150,6 @@
 		11EDFEA81EFD6C9800654CA3 /* Models+Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Models+Course.swift"; sourceTree = "<group>"; };
 		11EDFEAA1EFD6CE400654CA3 /* Models+Athletics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Models+Athletics.swift"; sourceTree = "<group>"; };
 		11EDFEAC1EFD9FF800654CA3 /* Date+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Utility.swift"; sourceTree = "<group>"; };
-		3105109C1EF6759800F34D43 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
-		3105109E1EF67D5900F34D43 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 		31064C891EFF5255006816F8 /* AthleticTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleticTableViewCell.swift; sourceTree = "<group>"; };
 		31064C8B1EFF52D4006816F8 /* Int+TimeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+TimeUtility.swift"; sourceTree = "<group>"; };
 		31170ED51EF32D45004AFE2F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +249,7 @@
 				31B29A9E1EEC8D9B00BF3F91 /* APIs */,
 				31F1D8921EF8454300F215F2 /* Course */,
 				315616071EF06A8100CE51D3 /* Calendar */,
+				3156169D1EF0D98C00CE51D3 /* Map */,
 				31B29A9F1EEC8DAC00BF3F91 /* Data Model */,
 				3140F9D21EFDE5C300679115 /* Athletics */,
 				31B29AA21EEC8E4100BF3F91 /* View Controllers */,
@@ -335,28 +332,9 @@
 		3156169D1EF0D98C00CE51D3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				3105109C1EF6759800F34D43 /* BuildingData.swift */,
 				31170ED51EF32D45004AFE2F /* MapViewController.swift */,
-				3105109E1EF67D5900F34D43 /* buildings.plist */,
 			);
 			name = Map;
-			sourceTree = "<group>";
-		};
-		31A955D21EF8C34000EEF0CD /* CollectionCells */ = {
-			isa = PBXGroup;
-			children = (
-				313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */,
-				31F1D88E1EF8282000F215F2 /* DepartmentCollectionReusableView.swift */,
-			);
-			name = CollectionCells;
-			sourceTree = "<group>";
-		};
-		31A955D31EF8C35500EEF0CD /* TableCells */ = {
-			isa = PBXGroup;
-			children = (
-				31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */,
-			);
-			name = TableCells;
 			sourceTree = "<group>";
 		};
 		31B29A9E1EEC8D9B00BF3F91 /* APIs */ = {
@@ -381,7 +359,6 @@
 				11EDFEAA1EFD6CE400654CA3 /* Models+Athletics.swift */,
 				11EDFEA81EFD6C9800654CA3 /* Models+Course.swift */,
 				11EDFEA61EFD6C1B00654CA3 /* Models+Textbook.swift */,
-				3156169D1EF0D98C00CE51D3 /* Map */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -427,8 +404,9 @@
 				118A5A781F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift */,
 				11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */,
 				31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */,
-				31A955D31EF8C35500EEF0CD /* TableCells */,
-				31A955D21EF8C34000EEF0CD /* CollectionCells */,
+				31A955D71EF8C42D00EEF0CD /* SelectedTableViewCell.swift */,
+				313674581EF755FB008B3DC6 /* CourseCollectionViewCell.swift */,
+				31F1D88E1EF8282000F215F2 /* DepartmentCollectionReusableView.swift */,
 			);
 			name = Course;
 			sourceTree = "<group>";
@@ -570,7 +548,6 @@
 				116BBA551F04827E00B6EA31 /* access_control.balance.mx in Resources */,
 				116BBA571F04827E00B6EA31 /* access_control.write.mx in Resources */,
 				116BBA561F04827E00B6EA31 /* access_control.control.mx in Resources */,
-				3105109F1EF67D5900F34D43 /* buildings.plist in Resources */,
 				110F4ECE1EEB617F00D88F8E /* Main.storyboard in Resources */,
 				116BBA531F04827E00B6EA31 /* default.realm in Resources */,
 				116BBA541F04827E00B6EA31 /* default.realm.lock in Resources */,
@@ -779,7 +756,6 @@
 				119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */,
 				119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */,
 				118A5A7D1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift in Sources */,
-				3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */,
 				111EB9901F0D487A0099B4CD /* Constants.swift in Sources */,
 				116219B81EF9BFB1009E1885 /* CourseStore.swift in Sources */,
 				11E94F5A1EF8644C009D6718 /* UofTAPI.swift in Sources */,

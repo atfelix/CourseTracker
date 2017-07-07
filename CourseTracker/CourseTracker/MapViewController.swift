@@ -23,7 +23,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //core location
     var locationManager = CLLocationManager()
-    //print labels in middle of map
     var middlePoint: MKMapPoint!
     var time: Int = 0
     var distance: Float = 0 {
@@ -45,63 +44,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Set Map View
+
+        setupMapView()
+        setupLocationManager()
+        setupBuildingData()
+    }
+
+    private func setupMapView() {
         mapView.delegate = self
         mapView.mapType = .standard
-        mapView.isZoomEnabled = true //zoom
-        mapView.isScrollEnabled = true //scroll
+        mapView.isZoomEnabled = true
+        mapView.isScrollEnabled = true
+        distanceLabel.text = ""
+    }
 
-        //Set Core Location
-
+    private func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // You can change the locaiton accuary here.
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+    }
 
-        //add buildings to the map
-
+    private func setupBuildingData() {
         buildingArray = getBuildingInfo()
 
         mapView.addAnnotations(buildingArray)
         self.width = buildingArray.count - 1
 
-        if buildingArray.count > 0 {
-
-            mapView.selectAnnotation(buildingArray[0], animated: true)
-
-            for i in stride(from: buildingArray.count - 2, through: 0, by: -1) {
-                addDirections(between: buildingArray[i + 1], and: buildingArray[i])
-            }
-
-            if let maxLatitude = buildingArray.map({ $0.coordinate.latitude }).max(),
-                let minLatitude = buildingArray.map({ $0.coordinate.latitude }).min(),
-                let maxLongitude = buildingArray.map({ $0.coordinate.longitude }).max(),
-                let minLongitude = buildingArray.map({ $0.coordinate.longitude }).min() {
-
-                let centerPoint = CLLocationCoordinate2D(latitude: (minLatitude + maxLatitude) / 2, longitude: (minLongitude + maxLongitude) / 2)
-                let latitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: maxLatitude, longitude: minLongitude))
-                let longitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: minLatitude, longitude: maxLongitude))
-                let region = MKCoordinateRegionMakeWithDistance(centerPoint, 3 * max(100, latitudinalMeters), 3 * max(100, longitudinalMeters))
-                mapView.setRegion(region, animated: true)
-            }
-        }
-
-
-        
-        //connect all the events using poly line
-        var points = [CLLocationCoordinate2D]()
-        
-        for annotation in buildingArray {
-            points.append(annotation.coordinate) //append the points
-        }
-
-        distanceLabel.text = ""
-        
-        //let polyline = MKPolyline(coordinates: &points, count: points.count)
-//        add the poly line to the map
-        //mapView.add(polyline)
-        
+        addAllDirections()
+        centerLocationAroundRoute()
     }
 
     func addParkingLocations(type: Int) {
@@ -136,6 +107,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         pin.canShowCallout = true
         return pin
+    }
+
+    func centerLocationAroundRoute() {
+        if let maxLatitude = buildingArray.map({ $0.coordinate.latitude }).max(),
+            let minLatitude = buildingArray.map({ $0.coordinate.latitude }).min(),
+            let maxLongitude = buildingArray.map({ $0.coordinate.longitude }).max(),
+            let minLongitude = buildingArray.map({ $0.coordinate.longitude }).min() {
+
+            let centerPoint = CLLocationCoordinate2D(latitude: (minLatitude + maxLatitude) / 2, longitude: (minLongitude + maxLongitude) / 2)
+            let latitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: maxLatitude, longitude: minLongitude))
+            let longitudinalMeters = CLLocation(latitude: minLatitude, longitude: minLongitude).distance(from: CLLocation(latitude: minLatitude, longitude: maxLongitude))
+            let region = MKCoordinateRegionMakeWithDistance(centerPoint, 3 * max(100, latitudinalMeters), 3 * max(100, longitudinalMeters))
+            mapView.setRegion(region, animated: true)
+        }
+    }
+
+    func addAllDirections() {
+        for i in stride(from: buildingArray.count - 2, through: 0, by: -1) {
+            addDirections(between: buildingArray[i + 1], and: buildingArray[i])
+        }
     }
 
     func addDirections(between source: MKPointAnnotation, and destination: MKPointAnnotation) {
@@ -213,42 +204,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         return buildings
     }
-    
-    //print the routes to the map
-    func getRouteInfo() -> [BuildingData]{
-        
-        let myLocation = CLLocation(latitude: 43.66, longitude: -79.39)
-        
-        var buildingArray: Array = [BuildingData]()
-        //get the array of building data
-        var buildings: NSArray?
-        
-        if let path = Bundle.main.path(forResource: "buildings", ofType: "plist"){
-            buildings = NSArray(contentsOfFile: path)
-        }
-        
-        
-        if let items = buildings{
-            for item in items{
-                let lat = (item as AnyObject).value(forKey: "latitude") as! Double
-                let long = (item as AnyObject).value(forKey: "longitude") as! Double
-                //initialize the buildings
-                let annotation = BuildingData(latitude: lat, longitude: long)
-                //set the name of the annotation
-                annotation.name = (item as AnyObject).value(forKey: "name") as? String
-                //append the building array with annotation items
-                buildingArray.append(annotation)
-                
-                //set the distance label to current distance
-                let distance = myLocation.distance(from: CLLocation(latitude: lat, longitude: long))
-                let result = String(format: "%.1f", distance/1000)
-                self.distanceLabel.text = "" //add time to get to route
-                
-            }
-        }
-        return buildingArray
-    }
-    
+
     //MARK: MapView Delegate
     
     //sets the line for the route path
@@ -263,21 +219,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         return render
     }
-    
-    //MARK: Core Location
-    
-    //    func startLocationUpdates(){
-    //        locationManager = CLLocationManager()
-    //        locationManager.delegate = self
-    //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    //        locationManager.requestAlwaysAuthorization()
-    //
-    //        if CLLocationManager.locationServicesEnabled() {
-    //            locationManager.startUpdatingLocation()
-    //            locationManager.startUpdatingHeading()
-    //        }
-    //    }
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation: CLLocation = locations[0]
