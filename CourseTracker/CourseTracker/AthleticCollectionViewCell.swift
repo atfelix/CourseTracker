@@ -21,6 +21,7 @@ class AthleticCollectionViewCell: UICollectionViewCell {
     var category: AthleticCategory!
     
     func updateUI(){
+        print(#function)
         eventTitleLabel.text = "\(category.category)"
         eventImageView.image = UIImage(named: category.imageName)
         eventBackgroundView.backgroundColor = category.color.withAlphaComponent(0.3)

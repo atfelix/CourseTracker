@@ -20,6 +20,7 @@ class ListTableViewCell: UITableViewCell{
     var event: ListTableViewCellEvent!
 
     func update() {
+        print(#function)
         self.listImage.image = UIImage(named: event.imageName)
         self.listView.backgroundColor = event.backgroundColor
         self.listLocation.text = event.location
