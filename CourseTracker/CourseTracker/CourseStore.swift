@@ -14,80 +14,86 @@ protocol CourseStoreDelegate: class {
 }
 
 class CourseStore: NSObject {
-    
-    var departments = [CourseShortCode]()
-    var courses = [Course]()
-    var sectionsToCollapse = [Int]()
-    weak var delegate: CourseStoreDelegate!
 
-    private static let config = Realm.Configuration(shouldCompactOnLaunch: { totalBytes, usedBytes in
-        return true
-    })
-    static let realm = try! Realm(configuration: config)
+    static var realm: Realm!
+    private static var allDepartments = [CourseShortCode]()
+    static var departments = [CourseShortCode]()
+    static var courses = [Course]()
+    static var sectionsToCollapse = [Int]()
+    static let shared = CourseStore()
+    weak static var delegate: CourseStoreDelegate?
 
-    override init() {
-        do {
-            let _departmentCodes: [CourseShortCode]
-            let _courses: [Course]
-            try _departmentCodes = Array(Realm().objects(CourseShortCode.self))
-            try _courses = Array(Realm().objects(Course.self).filter("term BEGINSWITH '2017 Summer'"))
+    private override init() {}
 
-            for code in _departmentCodes {
-                if CourseStore.countForCourses(code: code) > 0 {
-                    departments.append(code)
-                }
+    static func setup() {
+        resetAllDepartments()
+        CourseStore.departments = CourseStore.allDepartments
+        resetCourses()
+    }
+
+    static func resetAllDepartments() {
+        let _departmentCodes = Array(CourseStore.realm.objects(CourseShortCode.self))
+
+        for code in _departmentCodes {
+            if CourseStore.countForCourses(code: code) > 0 {
+                CourseStore.allDepartments.append(code)
             }
-            
-            for course in _courses {
-                if course.courseMeetingSections.count > 0 {
-                    courses.append(course)
-                }
-            }
-        }
-        catch let error {
-            print("Error: \(error.localizedDescription)")
-            fatalError("Realm read error: could not read departments")
         }
     }
 
-    func numberOfRowsInEachGroup(_ index: Int) -> Int {
-        guard let rowsInGroup = coursesForIndex(index) else {
+    static func filterDepartments(by searchText: String) {
+        let predicate = NSPredicate(format: "shortCode contains[c] '\(searchText)'")
+        CourseStore.departments = CourseStore.allDepartments.filter { (searchText.isEmpty) ? true : predicate.evaluate(with: $0) }
+    }
+
+    static func resetCourses() {
+        let _courses = Array(CourseStore.realm.objects(Course.self).filter("term BEGINSWITH '2017 Summer'"))
+
+        for course in _courses {
+            if course.courseMeetingSections.count > 0 {
+                CourseStore.courses.append(course)
+            }
+        }
+    }
+
+    static func numberOfRowsInEachGroup(_ index: Int) -> Int {
+        guard let rowsInGroup = CourseStore.coursesForIndex(index) else {
             return -1
         }
 
         return rowsInGroup.count
     }
 
-    func numberOfGroups() -> Int {
-        return departments.count
+    static func numberOfGroups() -> Int {
+        return CourseStore.departments.count
     }
 
-    func getGroupLabelAtIndex(_ index: Int) -> String {
-        return departments[index].shortCode
+    static func getGroupLabelAtIndex(_ index: Int) -> String {
+        return CourseStore.departments[index].shortCode
     }
 
-    func coursesInGroup(_ index: Int) -> [Course] {
-        guard let rowsInGroup = coursesForIndex(index) else {
+    static func coursesInGroup(_ index: Int) -> [Course] {
+        guard let rowsInGroup = CourseStore.coursesForIndex(index) else {
             return []
         }
 
         return rowsInGroup
     }
     
-    func deleteItems(courses: [Course]) {
+    static func deleteItems(courses: [Course]) {
         for course in courses {
-            guard let index = self.courses.index(of: course) else { continue }
+            guard let index = CourseStore.courses.index(of: course) else { continue }
 
-            self.courses.remove(at: index)
+            CourseStore.courses.remove(at: index)
         }
     }
 
-    private func coursesForIndex(_ index: Int) -> [Course]? {
-        if index < 0 || departments.count <= index {
+    static private func coursesForIndex(_ index: Int) -> [Course]? {
+        if index < 0 || CourseStore.departments.count <= index {
             return nil
         }
 
-        let department = departments[index].shortCode
+        let department = CourseStore.departments[index].shortCode
         let predicate = NSPredicate(format: "term BEGINSWITH '2017 Summer' AND code BEGINSWITH '\(department)' AND courseMeetingSections.@count > 0")
         let courses = Array(CourseStore.realm.objects(Course.self).filter(predicate))
         return courses
@@ -102,11 +108,11 @@ class CourseStore: NSObject {
         return Array(CourseStore.realm.objects(Course.self).filter(predicate)) 
     }
 
-    func courseFor(indexPath: IndexPath) -> Course? {
-        guard
-            let courses = coursesForIndex(indexPath.section) else {
+    static func courseFor(indexPath: IndexPath) -> Course? {
+        guard let courses = CourseStore.coursesForIndex(indexPath.section) else {
                 return nil
         }
+
         return courses[indexPath.item]
     }
 }

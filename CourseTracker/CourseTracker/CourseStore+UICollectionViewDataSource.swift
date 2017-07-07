@@ -11,21 +11,17 @@ import UIKit
 extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if sectionsToCollapse.index(of: section) != nil {
-            return numberOfRowsInEachGroup(section)
+        if CourseStore.sectionsToCollapse.index(of: section) != nil {
+            return CourseStore.numberOfRowsInEachGroup(section)
         }
         return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        
-    }
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CourseIcon", for: indexPath) as! CourseCollectionViewCell
-        let course = courseFor(indexPath: indexPath)
+        let course = CourseStore.courseFor(indexPath: indexPath)
 
-        cell.courseLabel.text = course?.code
+        cell.courseLabel.text = course?.code ?? "NO COURSE LABEL INFO"
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 1
         
@@ -33,41 +29,42 @@ extension CourseStore: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return numberOfGroups()
+        return CourseStore.numberOfGroups()
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as? DepartmentCollectionReusableView else {
-            return UICollectionReusableView()
-        }
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! DepartmentCollectionReusableView
 
         headerView.button.tag = indexPath.section
-        headerView.button.addTarget(self, action: #selector(headerButtonTapped(with:)), for: .touchUpInside)
+        headerView.button.addTarget(self, action: #selector(CourseStore.headerButtonTapped(with:)), for: .touchUpInside)
 
-        if sectionsToCollapse.index(of: indexPath.section) != nil {
+        if CourseStore.sectionsToCollapse.index(of: indexPath.section) != nil {
             headerView.button.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
         }
         else {
             headerView.button.transform = CGAffineTransform(rotationAngle: 0)
         }
 
-        headerView.departmentLabel.text = getGroupLabelAtIndex(indexPath.section)
+        headerView.departmentLabel.text = CourseStore.getGroupLabelAtIndex(indexPath.section)
 
         return headerView
     }
 
     func headerButtonTapped(with button: UIButton){
+        CourseStore.headerViewTapped(with: button)
+    }
 
-        defer { delegate?.reloadData() }
-        
-        //rotate the button
+    static func headerViewTapped(with button: UIButton) {
+
+        defer { CourseStore.delegate?.reloadData() }
+
         button.transform = button.transform.rotated(by: CGFloat.pi/2)
 
-        guard let index = sectionsToCollapse.index(of: button.tag) else {
-            sectionsToCollapse.append(button.tag)
+        guard let index = CourseStore.sectionsToCollapse.index(of: button.tag) else {
+            CourseStore.sectionsToCollapse.append(button.tag)
             return
         }
-        sectionsToCollapse.remove(at: index)
+        CourseStore.sectionsToCollapse.remove(at: index)
     }
 }

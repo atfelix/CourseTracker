@@ -49,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         realm = try! Realm(configuration: config)
 
+        CourseStore.realm = realm
+        CourseStore.setup()
+
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController() as! ViewController

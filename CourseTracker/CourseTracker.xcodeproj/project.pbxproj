@@ -28,6 +28,9 @@
 		118A5A731F0E94B8003EA3B5 /* CalendarViewController+ViewLifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A721F0E94B8003EA3B5 /* CalendarViewController+ViewLifeCycle.swift */; };
 		118A5A751F0E97CC003EA3B5 /* CalendarViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A741F0E97CC003EA3B5 /* CalendarViewController+TableView.swift */; };
 		118A5A771F0EB365003EA3B5 /* CalendarViewController+JTAppleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A761F0EB365003EA3B5 /* CalendarViewController+JTAppleCalendar.swift */; };
+		118A5A791F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A781F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift */; };
+		118A5A7B1F0FF999003EA3B5 /* AddCourseViewController+ViewLifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A7A1F0FF999003EA3B5 /* AddCourseViewController+ViewLifeCycle.swift */; };
+		118A5A7D1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A7C1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift */; };
 		119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */; };
 		119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */; };
 		119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */; };
@@ -132,6 +135,9 @@
 		118A5A721F0E94B8003EA3B5 /* CalendarViewController+ViewLifeCycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+ViewLifeCycle.swift"; sourceTree = "<group>"; };
 		118A5A741F0E97CC003EA3B5 /* CalendarViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+TableView.swift"; sourceTree = "<group>"; };
 		118A5A761F0EB365003EA3B5 /* CalendarViewController+JTAppleCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+JTAppleCalendar.swift"; sourceTree = "<group>"; };
+		118A5A781F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCourseViewController+UITableView.swift"; sourceTree = "<group>"; };
+		118A5A7A1F0FF999003EA3B5 /* AddCourseViewController+ViewLifeCycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCourseViewController+ViewLifeCycle.swift"; sourceTree = "<group>"; };
+		118A5A7C1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCourseViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Athletics.swift"; sourceTree = "<group>"; };
 		119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Building.swift"; sourceTree = "<group>"; };
 		119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Parking.swift"; sourceTree = "<group>"; };
@@ -244,9 +250,9 @@
 			isa = PBXGroup;
 			children = (
 				111EB98F1F0D487A0099B4CD /* Constants.swift */,
+				31B29A9E1EEC8D9B00BF3F91 /* APIs */,
 				31F1D8921EF8454300F215F2 /* Course */,
 				315616071EF06A8100CE51D3 /* Calendar */,
-				31B29A9E1EEC8D9B00BF3F91 /* APIs */,
 				31B29A9F1EEC8DAC00BF3F91 /* Data Model */,
 				3140F9D21EFDE5C300679115 /* Athletics */,
 				31B29AA21EEC8E4100BF3F91 /* View Controllers */,
@@ -416,6 +422,9 @@
 				116219B71EF9BFB1009E1885 /* CourseStore.swift */,
 				116219B91EFACCB4009E1885 /* CourseStore+UICollectionViewDataSource.swift */,
 				317DDF071EECDE9700F02C3B /* AddCourseViewController.swift */,
+				118A5A7C1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift */,
+				118A5A7A1F0FF999003EA3B5 /* AddCourseViewController+ViewLifeCycle.swift */,
+				118A5A781F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift */,
 				11EDFEA41EFB25EC00654CA3 /* AddCourseViewController+UICollectionViewDelegate.swift */,
 				31A955D91EF8CFA200EEF0CD /* PopoverViewController.swift */,
 				31A955D31EF8C35500EEF0CD /* TableCells */,
@@ -747,6 +756,7 @@
 				11EDFEAB1EFD6CE400654CA3 /* Models+Athletics.swift in Sources */,
 				3140F9D41EFDE60400679115 /* AddAthleticsViewController.swift in Sources */,
 				118A5A711F0E8C2C003EA3B5 /* ListTableViewCellEvent.swift in Sources */,
+				118A5A7B1F0FF999003EA3B5 /* AddCourseViewController+ViewLifeCycle.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
 				31A955DA1EF8CFA200EEF0CD /* PopoverViewController.swift in Sources */,
 				1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */,
@@ -768,11 +778,13 @@
 				31170ED61EF32D45004AFE2F /* MapViewController.swift in Sources */,
 				119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */,
 				119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */,
+				118A5A7D1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift in Sources */,
 				3105109D1EF6759800F34D43 /* BuildingData.swift in Sources */,
 				111EB9901F0D487A0099B4CD /* Constants.swift in Sources */,
 				116219B81EF9BFB1009E1885 /* CourseStore.swift in Sources */,
 				11E94F5A1EF8644C009D6718 /* UofTAPI.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
+				118A5A791F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift in Sources */,
 				11EDFEAD1EFD9FF800654CA3 /* Date+Utility.swift in Sources */,
 				31F1D88F1EF8282000F215F2 /* DepartmentCollectionReusableView.swift in Sources */,
 				11EDFEA91EFD6C9800654CA3 /* Models+Course.swift in Sources */,

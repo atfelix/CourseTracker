@@ -13,7 +13,7 @@ extension AddCourseViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         let popover = self.storyboard?.instantiateViewController(withIdentifier: "Popover") as! PopoverViewController
-        popover.course = courseStore.courseFor(indexPath: indexPath)
+        popover.course = CourseStore.courseFor(indexPath: indexPath)
         popover.delegate = self
         self.present(popover, animated: true, completion: nil)
 

@@ -62,13 +62,10 @@ class PopoverViewController: UIViewController {
     //MARK: Helper Methods
     
     @IBAction func addSelectedTapped(_ sender: Any) {
-        //add the selected cell to the tableview Cell
         delegate?.didSelectCourse(course: course!)
     }
     
     @IBAction func cancelSelectedTapped(_ sender: Any) {
         delegate?.didCancel()
     }
-    
-    
 }
