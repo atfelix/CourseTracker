@@ -31,6 +31,9 @@
 		118A5A791F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A781F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift */; };
 		118A5A7B1F0FF999003EA3B5 /* AddCourseViewController+ViewLifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A7A1F0FF999003EA3B5 /* AddCourseViewController+ViewLifeCycle.swift */; };
 		118A5A7D1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A7C1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift */; };
+		118A5A7F1F101056003EA3B5 /* MapViewController+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A7E1F101056003EA3B5 /* MapViewController+MapViewDelegate.swift */; };
+		118A5A811F101234003EA3B5 /* MapViewController+ViewLifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A801F101234003EA3B5 /* MapViewController+ViewLifeCycle.swift */; };
+		118A5A831F1012A1003EA3B5 /* MapViewController+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118A5A821F1012A1003EA3B5 /* MapViewController+Utility.swift */; };
 		119C96921EF5D6940035FD9A /* UofTAPI+Athletics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */; };
 		119C96961EF5D7D80035FD9A /* UofTAPI+Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */; };
 		119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */; };
@@ -136,6 +139,9 @@
 		118A5A781F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCourseViewController+UITableView.swift"; sourceTree = "<group>"; };
 		118A5A7A1F0FF999003EA3B5 /* AddCourseViewController+ViewLifeCycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCourseViewController+ViewLifeCycle.swift"; sourceTree = "<group>"; };
 		118A5A7C1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddCourseViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		118A5A7E1F101056003EA3B5 /* MapViewController+MapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MapViewController+MapViewDelegate.swift"; path = "../MapViewController+MapViewDelegate.swift"; sourceTree = "<group>"; };
+		118A5A801F101234003EA3B5 /* MapViewController+ViewLifeCycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+ViewLifeCycle.swift"; sourceTree = "<group>"; };
+		118A5A821F1012A1003EA3B5 /* MapViewController+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+Utility.swift"; sourceTree = "<group>"; };
 		119C96911EF5D6940035FD9A /* UofTAPI+Athletics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Athletics.swift"; sourceTree = "<group>"; };
 		119C96951EF5D7D80035FD9A /* UofTAPI+Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Building.swift"; sourceTree = "<group>"; };
 		119C96971EF5D9310035FD9A /* UofTAPI+Parking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UofTAPI+Parking.swift"; sourceTree = "<group>"; };
@@ -333,6 +339,9 @@
 			isa = PBXGroup;
 			children = (
 				31170ED51EF32D45004AFE2F /* MapViewController.swift */,
+				118A5A821F1012A1003EA3B5 /* MapViewController+Utility.swift */,
+				118A5A7E1F101056003EA3B5 /* MapViewController+MapViewDelegate.swift */,
+				118A5A801F101234003EA3B5 /* MapViewController+ViewLifeCycle.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -736,6 +745,7 @@
 				118A5A7B1F0FF999003EA3B5 /* AddCourseViewController+ViewLifeCycle.swift in Sources */,
 				315616961EF0997000CE51D3 /* CalendarViewController.swift in Sources */,
 				31A955DA1EF8CFA200EEF0CD /* PopoverViewController.swift in Sources */,
+				118A5A7F1F101056003EA3B5 /* MapViewController+MapViewDelegate.swift in Sources */,
 				1188B2D71EF6FE62002E6FEF /* UofTAPI+Course.swift in Sources */,
 				11E94F5C1EF86466009D6718 /* Models.swift in Sources */,
 				119C969A1EF5E5980035FD9A /* UofTAPI+Textbook.swift in Sources */,
@@ -757,8 +767,10 @@
 				119C96981EF5D9310035FD9A /* UofTAPI+Parking.swift in Sources */,
 				118A5A7D1F0FFA52003EA3B5 /* AddCourseViewController+SearchBar.swift in Sources */,
 				111EB9901F0D487A0099B4CD /* Constants.swift in Sources */,
+				118A5A831F1012A1003EA3B5 /* MapViewController+Utility.swift in Sources */,
 				116219B81EF9BFB1009E1885 /* CourseStore.swift in Sources */,
 				11E94F5A1EF8644C009D6718 /* UofTAPI.swift in Sources */,
+				118A5A811F101234003EA3B5 /* MapViewController+ViewLifeCycle.swift in Sources */,
 				110F4EC91EEB617F00D88F8E /* AppDelegate.swift in Sources */,
 				118A5A791F0FF878003EA3B5 /* AddCourseViewController+UITableView.swift in Sources */,
 				11EDFEAD1EFD9FF800654CA3 /* Date+Utility.swift in Sources */,
