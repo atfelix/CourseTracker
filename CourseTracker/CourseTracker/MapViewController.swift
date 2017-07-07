@@ -81,23 +81,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let parkingLocations = realm.objects(ParkingLocation.self).filter("type == '\(stringType)'")
 
         for location in parkingLocations {
-            let point = MKPointAnnotation()
-            guard
-                let latitude = location.geoLocation?.latitude,
-                let longitude = location.geoLocation?.longitude else {
-                    continue
-            }
-            point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            point.title = location.parkingDescription
-            point.subtitle = "Type: \(location.type)"
-
-            mapView.addAnnotation(point)
-            currentParkingPins.append(point)
+            addParkingLocation(location: location)
         }
+    }
+
+    func addParkingLocation(location: ParkingLocation) {
+        guard
+            let latitude = location.geoLocation?.latitude,
+            let longitude = location.geoLocation?.longitude else {
+                return
+        }
+
+        let point = MKPointAnnotation()
+        point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        point.title = location.parkingDescription
+        point.subtitle = "Type: \(location.type)"
+
+        mapView.addAnnotation(point)
+        currentParkingPins.append(point)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let pin = MKPinAnnotationView()
+
         if let subtitle = annotation.subtitle {
             switch subtitle {
                 case "Type: bicycle"?: pin.pinTintColor = .green
