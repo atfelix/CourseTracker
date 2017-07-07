@@ -18,25 +18,21 @@ class AthleticCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var eventTitleLabel: UILabel!
     
     var athleticEvent: AthleticEvent!
-    var category: String!
+    var category: AthleticCategory!
     
     func updateUI(){
-        eventTitleLabel.text = "\(category!)"
-        //        eventImageView.image = athleticEvent.image
-        //eventBackgroundView.backgroundColor = UIColor.random().withAlphaComponent(0.30)
+        eventTitleLabel.text = "\(category.category)"
+        eventImageView.image = UIImage(named: category.imageName)
+        eventBackgroundView.backgroundColor = category.color.withAlphaComponent(0.3)
     }
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        //cell layouts
+
         self.layer.cornerRadius = 3.0
         layer.shadowRadius = 10
         layer.shadowOpacity = 0.3
         layer.shadowOffset = CGSize(width:5, height: 10)
-        
         self.clipsToBounds = false
     }
-    //
 }

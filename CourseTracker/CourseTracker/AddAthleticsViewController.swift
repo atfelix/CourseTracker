@@ -53,69 +53,52 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Collectionview Layouts
+
+        setupCollectionViewLayout()
+        setupCollectionView()
+    }
+
+    private func setupCollectionViewLayout() {
         let screenSize = UIScreen.main.bounds.size
         let cellWidth = floor(screenSize.width * cellScaling)
         let cellHeight = floor(screenSize.height * cellScaling)
-        
+
+        let layout = athleticCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+    }
+
+    private func setupCollectionView() {
+        let screenSize = UIScreen.main.bounds.size
+        let cellWidth = floor(screenSize.width * cellScaling)
+        let cellHeight = floor(screenSize.height * cellScaling)
+
         let insetX = (view.bounds.width - cellWidth) / 2.0
         let insetY = (view.bounds.height - cellHeight) / 2.0
-        
-        let layout = athleticCollectionView!.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
 
-        athleticCollectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
-        
-        //Tableview scrolling fix
-//        athleticTableView.setContentOffset(CGPoint.zero, animated: true
+        athleticCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
 
-        athleticCollectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
-        
-        //Tableview scrolling fix
-//        athleticTableView.setContentOffset(CGPoint.zero, animated: true)
-        
-        //data/ delegate
         athleticCollectionView.dataSource = self
         athleticCollectionView.delegate = self
 
         athleticTableView.rowHeight = UITableViewAutomaticDimension
         athleticTableView.estimatedRowHeight = 60
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    //MARK: Helper Methods
-    
-    @IBAction func courseButtonTapped(_ sender: Any) {
-    }
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         delegate?.updateCalendarCell(for: date)
     }
 
-    //MARK: Scrollview Delegate
-
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
-        if scrollView == athleticTableView {
-            return
-        }
-        
-        let layout = self.athleticCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-        
-        var offset = targetContentOffset.pointee
-        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-        
-        let roundedIndex = round(index)
-        
-        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
+        guard
+            let collectionView = scrollView as? UICollectionView,
+            let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+                return }
 
-        targetContentOffset.pointee = offset
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        let index = (targetContentOffset.pointee.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+
+        targetContentOffset.pointee = CGPoint(x: round(index) * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
     }
     
     //MARK: TableView Delegate/ Data
@@ -127,16 +110,21 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    //when selecting a row in the tableview, populate calendar tableview with the data
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Get Cell Label
-        let indexPath = tableView.indexPathForSelectedRow!
-        let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
+
+        guard let currentCell = tableView.cellForRow(at: indexPath) else { return }
 
         let athleticEvent = tableViewDataSource[indexPath.row]
 
-        try! realm.write {
-            athleticEvent.studentAttending = !athleticEvent.studentAttending
+        do {
+            try realm.write {
+                athleticEvent.studentAttending = !athleticEvent.studentAttending
+            }
+        }
+        catch let error {
+            print("Realm write error: \(error.localizedDescription)")
+            return
         }
 
         let bgcolor = currentCell.backgroundColor
@@ -168,7 +156,6 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
         return categories.count
     }
 
-    //when selecting an item populate tableview with the data of the item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let predicate = NSPredicate(format: "location contains '\(categories[indexPath.item])'")
         guard let dataSource = athleticDate?.athleticEvents.filter(predicate).sorted(byKeyPath: "startTime") else { return }
@@ -178,32 +165,12 @@ class AddAthleticsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         let cell = athleticCollectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! AthleticCollectionViewCell
         cell.athleticEvent = athleticDate?.athleticEvents.sorted(byKeyPath: "startTime")[indexPath.item]
-        cell.category = categories[indexPath.item]
-        
-        
-        cell.eventImageView.image = categoryImages[indexPath.item]
-        cell.eventBackgroundView.backgroundColor  = categoryColors[indexPath.item].withAlphaComponent(0.30)
-        
+        cell.category = AthleticCategory.item(at: indexPath.item)
         cell.updateUI()
         
         return cell
-    }
-}
-
-//random color extension
-extension CGFloat {
-    static func random() -> CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UInt32.max)
-    }
-}
-
-extension UIColor {
-    static func random() -> UIColor {
-        return UIColor(red:   .random(),
-                       green: .random(),
-                       blue:  .random(),
-                       alpha: 1.0)
     }
 }
